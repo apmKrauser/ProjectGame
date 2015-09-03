@@ -12,11 +12,14 @@
     <Window.Resources>
 
         <!--Data Templates for GDataGrid :-->
+        <DataTemplate x:Key="ObjectStaticTextTemplate">
+            <TextBlock Text="{Binding ValueAsString}"  />
+        </DataTemplate>        
         <DataTemplate x:Key="ObjectTextTemplate">
             <TextBox Text="{Binding ValueAsString}" Name="DGEditStyleTmpl" BorderBrush="{x:Null}" LostFocus="DGEditStyleTmpl_LostFocus"/>
         </DataTemplate>
         <DataTemplate x:Key="ObjectBooleanTemplate">
-            <CheckBox IsChecked="{Binding ValueAsBool}" BorderBrush="{Binding BorderBrush, ElementName=DGEditStyleTmpl}"  LostFocus="DGEditStyleTmpl_LostFocus"/>
+            <CheckBox IsChecked="{Binding ValueAsBool}"  BorderBrush="{Binding BorderBrush, ElementName=DGEditStyleTmpl}" LostFocus="DGEditStyleTmpl_LostFocus"/>
         </DataTemplate>
         <DataTemplate x:Key="ObjectDoubleTemplate">
             <!--<TextBlock Text="{Binding Path=b ,  StringFormat={}\{0:F\}}" />-->
@@ -39,7 +42,8 @@
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="Value" IsReadOnly="false" >
                     <DataGridTemplateColumn.CellTemplateSelector>
-                        <local:PropTemplateSelector                         
+                        <local:PropTemplateSelector         
+                            ObjectStaticTextTemplate="{StaticResource ObjectStaticTextTemplate}"
                             ObjectTextTemplate="{StaticResource ObjectTextTemplate}"
                             ObjectBooleanTemplate="{StaticResource ObjectBooleanTemplate}" 
                             ObjectDoubleTemplate="{StaticResource ObjectDoubleTemplate}"

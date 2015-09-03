@@ -99,6 +99,7 @@ namespace ZweiachsMofa
 
     public class PropTemplateSelector : DataTemplateSelector
     {
+        public DataTemplate ObjectStaticTextTemplate { get; set; }
         public DataTemplate ObjectTextTemplate { get; set; }
         public DataTemplate ObjectDoubleTemplate { get; set; }
         public DataTemplate ObjectBooleanTemplate { get; set; }
@@ -113,25 +114,23 @@ namespace ZweiachsMofa
                 value = propgs.ValueObj;
 
             if (value != null)
-                Debug.WriteLine("=> value: " + value.GetType().Name);
             if (value is String)
             {
-                Debug.WriteLine("    ^ String");
-                return ObjectTextTemplate;
+                if (propgs.Name.Equals("Name") || propgs.Name.Equals("TypeName"))
+                    return ObjectStaticTextTemplate;
+                else
+                    return ObjectTextTemplate;
             }
             if (value is Boolean)
             {
-                Debug.WriteLine("    ^ Bool");
                 return ObjectBooleanTemplate;
             }
             else if (value is double)
             {
-                Debug.WriteLine("    ^ Double");
                 return ObjectDoubleTemplate;
             }
             else if (value is Vector)
             {
-                Debug.WriteLine("    ^ Vector");
                 return ObjectVectorTemplate;
             }
             else

@@ -54,6 +54,7 @@
     <Compile Include="AnimatonLinearTranslation.cs" />
     <Compile Include="CarObject.cs" />
     <Compile Include="GameScroller.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="IAnimationOnDispose.cs" />
     <Compile Include="IAnimatonRigidBody.cs" />
     <Compile Include="GFXParticle.cs" />

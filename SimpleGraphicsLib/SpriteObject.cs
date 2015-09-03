@@ -363,10 +363,10 @@ namespace SimpleGraphicsLib
             try
             {
                 //Bmp = new BitmapImage(new Uri(@"file:///" + ImagePath));
-                String path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase) + "\\" + ImagePath;
-                Debug.WriteLine("=> Set Image: " + path);
+                String path = Helper.AssemblyLocalPath + "\\" + ImagePath;
+                //Debug.WriteLine("=> Set Image: " + path);
                 //Bmp = new BitmapImage(new Uri(path));
-                Bmp = BitmapConversion.LoadBitmapAndDispose((new Uri(path)).LocalPath);
+                Bmp = BitmapConversion.LoadBitmapAndDispose(path);
             }
             catch (Exception ex)
             {

@@ -139,6 +139,22 @@ namespace ZweiachsMofa
 
         private void cmdSaveLevel_Click(object sender, RoutedEventArgs e)
         {
+            //String fullpath = "";
+            //String relpath = "";
+            //try
+            //{
+            //    OpenFileDialog dlgOpen = new OpenFileDialog();
+            //    dlgOpen.Filter = "png|*.png|jpeg|*.jpg";
+            //    if (dlgOpen.ShowDialog() == DialogResult.OK)
+            //    {
+            //        fullpath = dlgOpen.FileName;
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    System.Windows.Forms.MessageBox.Show("Error in File Selection SpriteObject " + obj.Name + ":\n" + ex.Message);
+            //}
+            //Helper.DataLocalPath
             using (FileStream fs = new FileStream(@"data\Test.xml", FileMode.Create, FileAccess.Write))
             {
                 XmlSerializer xs = new XmlSerializer(typeof(LevelSet));

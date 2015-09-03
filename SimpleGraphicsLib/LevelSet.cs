@@ -30,11 +30,11 @@ namespace SimpleGraphicsLib
                 if (dlgOpen.ShowDialog() == DialogResult.OK)
                 {
                     fullpath = dlgOpen.FileName;
-                    relpath = @"data\" + dlgOpen.SafeFileName;
+                    relpath = Helper.DataDir + "\\" + dlgOpen.SafeFileName;
                 }
-                if (!Directory.Exists("data"))
-                    Directory.CreateDirectory("data");
-                File.Copy(fullpath, relpath, true);
+                if (!Directory.Exists(Helper.DataLocalPath))
+                    Directory.CreateDirectory(Helper.DataLocalPath);
+                File.Copy(fullpath, Helper.AssemblyLocalPath +"\\"+ relpath, true);
                 obj.ImagePath = relpath;
                 obj.loadFromImagePath();
             }
