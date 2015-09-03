@@ -10,6 +10,7 @@ using System.Windows.Threading;
 using System.Xml.Serialization;
 using System.Threading;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using System.Windows.Media;
 using WPF.JoshSmith.ServiceProviders.UI;
 using System.Reflection;
@@ -29,10 +30,9 @@ namespace ZweiachsMofa
         LevelSet ThisLevel = new LevelSet();
         Vector objResizeRefpoint = new Vector();
         //Point dragDropPoint = new Point(0,0);
-        ObservableCollection<Type> typs;
 
         ListViewDragDropManager<SpriteObject> dragMgr;
-        ListViewDragDropManager<Type> dragMgr2;
+        //ListViewDragDropManager<SpriteObject> dragMgr2;
 
         public GameDesigner()
         {
@@ -46,11 +46,11 @@ namespace ZweiachsMofa
 
             // Drag&Drop Mngr
             this.dragMgr = new ListViewDragDropManager<SpriteObject>(lstSprites);
-            this.dragMgr2 = new ListViewDragDropManager<Type>(lstNewObj);
+            //this.dragMgr2 = new ListViewDragDropManager<SpriteObject>(lstNewObj);
             // Turn the ListViewDragManager on . 
             //dragMgr.ListView = lstSprites;
             dragMgr.ShowDragAdorner = true;
-            dragMgr2.ShowDragAdorner = true;
+            //dragMgr2.ShowDragAdorner = true;
             //dragMgr.DragAdornerOpacity = 5;
             // Apply or remove the item container style, which responds to changes
             // in the attached properties of ListViewItemDragState.
@@ -58,14 +58,20 @@ namespace ZweiachsMofa
             //lstSprites.ItemContainerStyle = null;
 
             this.dragMgr.ProcessDrop += dragMgr_ProcessDrop;
-            this.dragMgr2.ProcessDrop += dragMgr_ProcessDropNewObj;
+            //this.dragMgr2.ProcessDrop += dragMgr_ProcessDropNewObj;
 
+            Assembly assi = Assembly.GetAssembly(typeof(GFXContainer));
+            var GameObjects = from typ in assi.GetTypes()
+                              where typeof(SpriteObject).IsAssignableFrom(typ) && !typ.IsInterface
+                              select typ;
+            dbNewObj.ItemsSource = GameObjects;
+            dbNewObj.SelectedIndex = 0;
         }
 
 
         private void GameSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            Debug.WriteLine("=> Slider = {0}", GameSlider.Value);
+           // Debug.WriteLine("=> Slider = {0}", GameSlider.Value);
         }
 
         private void GameSlider_MouseUp(object sender, MouseButtonEventArgs e)
@@ -164,12 +170,21 @@ namespace ZweiachsMofa
             lstSprites.Items.Refresh();
         }
 
+
+
         private void cmdAddSprite_Click(object sender, RoutedEventArgs e)
         {
             //MainGFX.RemoveObject(ThisLevel.LevelBkg);
 
-            SpriteObject sobj;
-            sobj= new SpriteObject(txtSpriteName.Text);
+            // var name = await this.ShowInputAsync("Hello!", "What is your name?");
+            // txtSpriteName.Text = name ?? "";
+            //await this.ShowMessageAsync("Hello", "Hello " + result + "!");
+
+            //var sobj= new SpriteObject(txtSpriteName.Text);
+
+            var sobj = Activator.CreateInstance(dbNewObj.SelectedItem as Type) as SpriteObject;
+
+            sobj.Name = txtSpriteName.Text;
             sobj.Position =  new Vector(GameSlider.Value, 100);
             //sobj.CenterOfMass = new Vector(0, 0);
             sobj.IsMovable = false;
@@ -353,7 +368,7 @@ namespace ZweiachsMofa
             ThisLevel.AddSpritesTo(MainGFX);
         }
 
-        void dragMgr_ProcessDropNewObj(object sender, ProcessDropEventArgs<Type> e)
+        void dragMgr_ProcessDropNewObj(object sender, ProcessDropEventArgs<SpriteObject> e)
         {
             // This shows how to customize the behavior of a drop.
             // Here we perform a swap, instead of just moving the dropped item.
@@ -428,11 +443,32 @@ namespace ZweiachsMofa
                               select typ;
 
 
-             typs = new ObservableCollection<Type>(GameObjects);
-            lstNewObj.ItemsSource = typs;
+           // lstNewObj.ItemsSource = typs;
+            dbNewObj.ItemsSource = GameObjects;
+            dbNewObj.SelectedIndex = 0;
             //lstNewObj.ItemsSource = GameObjects;
 
             //System.Windows.Forms.MessageBox.Show("Test: " + assi.FullName);
+        }
+
+        private async void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var mySettings = new MetroDialogSettings()
+            {
+                AffirmativeButtonText = "Quit",
+                NegativeButtonText = "Cancel",
+                AnimateShow = true,
+                AnimateHide = false
+            };
+
+            var result = await this.ShowMessageAsync("Quit application?",
+                "Sure you want to quit application?",
+                MessageDialogStyle.AffirmativeAndNegative, mySettings);
+
+            bool _shutdown = result == MessageDialogResult.Affirmative;
+
+            //if (_shutdown)
+                //Application.Current.Shutdown();
         }
 
 

@@ -4,13 +4,14 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"                      
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
+        xmlns:SimpleGraphicsLib="clr-namespace:SimpleGraphicsLib;assembly=SimpleGraphicsLib" xmlns:local="clr-namespace:ZweiachsMofa" xmlns:System="clr-namespace:System;assembly=mscorlib"                      
         WindowStartupLocation="CenterScreen"
         GlowBrush="{DynamicResource AccentColorBrush}"    
-        xmlns:SimpleGraphicsLib="clr-namespace:SimpleGraphicsLib;assembly=SimpleGraphicsLib" xmlns:local="clr-namespace:ZweiachsMofa" x:Class="ZweiachsMofa.GameDesigner"
-        Title="GameDesigner" Height="769" Width="1537.5" Loaded="Window_Loaded">
+        x:Class="ZweiachsMofa.GameDesigner"
+        Title="GameDesigner" Height="769" Width="1537.5" Loaded="Window_Loaded" Closing="MetroWindow_Closing">
 
-    <Grid Name="MainGrid"  Background ="#FF3E3E3E">
+    <Grid x:Name="MainGrid"  Background ="#FF3E3E3E">
         <WrapPanel x:Name="GameWrapper" HorizontalAlignment="Left" Height="598" Margin="10,10,-593,-317" VerticalAlignment="Top" Width="1179">
             <SimpleGraphicsLib:GFXContainer x:Name="MainGFX" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" 
 				Width="{Binding Width, ElementName=GameWrapper}" Height="{Binding Height, ElementName=GameWrapper}" MouseMove="MainGFX_MouseMove" MouseRightButtonDown="MainGFX_MouseRightButtonDown"/>
@@ -18,14 +19,14 @@
         <Rectangle Fill="{Binding Background, ElementName=MainGrid}" HorizontalAlignment="Left" Height="728" Margin="1194,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="336" StrokeThickness="0"/>
         <Button x:Name="cmdSetParBkg" Content="Set Parallax Background" HorizontalAlignment="Left" Margin="1300,46,0,0" VerticalAlignment="Top" Width="144" Height="32" Click="cmdSetParBkg_Click" Background="#FF878787"/>
         <Button x:Name="cmdSetLevelBkg" Content="Set Level Background" HorizontalAlignment="Left" Margin="1299,83,0,0" VerticalAlignment="Top" Width="145" Height="32" Click="cmdSetLevelBkg_Click" Background="#FF878787"/>
-        <Button x:Name="cmdAddStaticCollider" Content="Add static collider frame" HorizontalAlignment="Left" Margin="1300,547,0,0" VerticalAlignment="Top" Width="145" Height="32" Background="#FF878787" Click="cmdAddStaticCollider_Click"/>
+        <Button x:Name="cmdAddStaticCollider" Content="Add static collider frame" HorizontalAlignment="Left" Margin="1375,576,0,0" VerticalAlignment="Top" Width="145" Height="32" Background="#FF878787" Click="cmdAddStaticCollider_Click"/>
 
         <local:GameWindowSlider x:Name="GameSlider" Minimum="0" Maximum="{Binding Width, ElementName=MainGFX}" HorizontalAlignment="Left" Margin="10,619,0,0" VerticalAlignment="Top" Height="25" Width="1179" ValueChanged="GameSlider_ValueChanged" MouseUp="GameSlider_MouseUp"/>
         <Button x:Name="cmdSaveLevel" Content="Save as XML" HorizontalAlignment="Left" Margin="667,668,0,0" VerticalAlignment="Top" Width="145" Height="32" Click="cmdSaveLevel_Click" Background="#FF878787"/>
         <Button x:Name="cmdLoadLevel" Content="Load XML" HorizontalAlignment="Left" Margin="835,668,0,0" VerticalAlignment="Top" Width="145" Height="32" Click="cmdLoadLevel_Click" Background="#FF878787"/>
-        <ListView  Name="lstSprites" BorderThickness="0"  HorizontalAlignment="Left" Height="288" Margin="1230,155,0,0" VerticalAlignment="Top" Width="272" KeyDown="lstSprites_KeyDown"  MouseDoubleClick="lstSprites_MouseDoubleClick"  DragEnter="lstSprites_DragEnter" Drop="lstSprites_Drop" >
+        <ListView  x:Name="lstSprites" BorderThickness="0"  HorizontalAlignment="Left" Height="288" Margin="1230,155,0,0" VerticalAlignment="Top" Width="272" KeyDown="lstSprites_KeyDown"  MouseDoubleClick="lstSprites_MouseDoubleClick"  DragEnter="lstSprites_DragEnter" Drop="lstSprites_Drop" >
             <ListView.Resources>
-                <Style TargetType="GridViewColumnHeader">
+                <Style TargetType="{x:Type GridViewColumnHeader}">
                     <Setter Property="Visibility" Value="Collapsed" />
                 </Style>
             </ListView.Resources>
@@ -48,22 +49,22 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Name" >
+                    <GridViewColumn Header="Name" Width="200" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Name}" MouseRightButtonDown="TextBlock_MouseRightButtonDown" />
+                                <TextBlock Text="{Binding Name}" MouseRightButtonDown="TextBlock_MouseRightButtonDown" HorizontalAlignment="Left"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Name="cmdAddSprite" Content="Add Sprite" HorizontalAlignment="Left" Margin="1412,448,0,0" VerticalAlignment="Top" Width="90" Height="19" Click="cmdAddSprite_Click" Background="#FF878787"/>
-        <TextBox Name="txtSpriteName" HorizontalAlignment="Left" Height="19" Margin="1230,448,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Foreground="White" Background="#FF2C2C2C"/>
-        <CheckBox Name="chkDrawShape" Content="Draw Shape" HorizontalAlignment="Left" Margin="1230,498,0,0" VerticalAlignment="Top" Checked="chkDrawShape_Checked" Unchecked="chkDrawShape_Unchecked"/>
-        <ListView Name ="lstNewObj" BorderThickness="0"  HorizontalAlignment="Left" Height="84" Margin="1263,616,0,0" VerticalAlignment="Top" Width="204" Drop="lstSprites_Drop" DragEnter="lstSprites_DragEnter">
+        <Button x:Name="cmdAddSprite" Content="Add Sprite" HorizontalAlignment="Left" Margin="1412,448,0,0" VerticalAlignment="Top" Width="90" Height="19" Click="cmdAddSprite_Click" Background="#FF878787"/>
+        <TextBox x:Name="txtSpriteName" HorizontalAlignment="Left" Height="19" Margin="1230,448,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Foreground="White" Background="#FF2C2C2C"/>
+        <CheckBox x:Name="chkDrawShape" Content="Draw Shape" HorizontalAlignment="Left" Margin="1213,547,0,0" VerticalAlignment="Top" Checked="chkDrawShape_Checked" Unchecked="chkDrawShape_Unchecked"/>
+        <ListView x:Name ="lstNewObj" BorderThickness="0" HorizontalAlignment="Left" Height="84" Margin="1263,616,0,0" VerticalAlignment="Top" Width="204" Drop="lstSprites_Drop" DragEnter="lstSprites_DragEnter">
             <ListView.Resources>
-                <Style TargetType="GridViewColumnHeader">
+                <Style TargetType="{x:Type GridViewColumnHeader}">
                     <Setter Property="Visibility" Value="Collapsed" />
                 </Style>
             </ListView.Resources>
@@ -80,6 +81,15 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <ComboBox Name="dbNewObj" HorizontalAlignment="Left" Margin="1230,479,0,0" VerticalAlignment="Top" Width="140">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
     </Grid>
 </Controls:MetroWindow>

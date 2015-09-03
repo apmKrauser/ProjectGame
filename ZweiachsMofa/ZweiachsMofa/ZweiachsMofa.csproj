@@ -59,11 +59,15 @@
     <Compile Include="DragDropMgmr\DragAdorner.cs" />
     <Compile Include="DragDropMgmr\ListViewDragDropManager.cs" />
     <Compile Include="DragDropMgmr\MouseUtilities.cs" />
+    <Compile Include="EditAnimators.xaml.cs">
+      <DependentUpon>EditAnimators.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GameDesigner.xaml.cs">
       <DependentUpon>GameDesigner.xaml</DependentUpon>
     </Compile>
     <Compile Include="GameWindowSlider.cs" />
     <Compile Include="GFXContainer_alt.cs" />
+    <Compile Include="GUIHelper.cs" />
     <Compile Include="PropertyInspect.xaml.cs">
       <DependentUpon>PropertyInspect.xaml</DependentUpon>
     </Compile>
@@ -72,6 +76,10 @@
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
+    <Page Include="EditAnimators.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GameDesigner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

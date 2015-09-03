@@ -51,6 +51,12 @@ namespace SimpleGraphicsLib
         //private AnimationLinearTranslation _aniMove = new AnimationLinearTranslation();
 
         public string Name { get; set; }
+        public String TypeName
+        {
+            get { return this.GetType().Name; }
+            set {  } // empty setter in order to show up in property inspector
+        }
+        
 
         private String myVar;
 
