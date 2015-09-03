@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Threading;
 using System.Xml.Serialization;
 using System.IO;
+using System.Collections.ObjectModel;
 
 namespace SimpleGraphicsLib
 {
@@ -32,7 +33,8 @@ namespace SimpleGraphicsLib
 
         protected List<DrawingVisual> Visuals = new List<DrawingVisual>();
         //protected List<GFXAnimation> Animations = new List<GFXAnimation>();
-        protected SortedList<string, IAnimatonRigidBody> Animations = new SortedList<string, IAnimatonRigidBody>();
+        // public due to XMLSerializer
+        protected  ObservableCollection<IAnimatonRigidBody> Animations = new ObservableCollection<IAnimatonRigidBody>();
 
         protected BitmapImage _bmp = null;
 
@@ -60,6 +62,14 @@ namespace SimpleGraphicsLib
 
         private String myVar;
 
+
+        private int myVar;
+
+        public ObservableCollection<IAnimatonRigidBody> Get.....
+        {
+            get { return myVar; }
+            set { myVar = value; }
+        }
         
 
         [XmlIgnore]
@@ -251,9 +261,10 @@ namespace SimpleGraphicsLib
             //{
             //    Debug.WriteLine("## Ani: " + animation.Name);
             //}
-            for (int i = 0; i < Animations.Count; i++)
+            // dispose is designed to remove ani from list, hence, foreach impossible 
+            for (int i = Animations.Count - 1; i >= 0; i--)
             {
-                Animations.Values[0].Dispose();
+                Animations[i].Dispose();
             }
 //            foreach (var animation in Animations.Values)
 //            {
@@ -268,14 +279,24 @@ namespace SimpleGraphicsLib
             this.Dispose();
         }
 
+        public IAnimatonRigidBody GetAnimation(string name)
+        {
+            var r = (from n in Animations
+                    where n.Name.Equals(name)
+                    select n).FirstOrDefault();
+            return r;
+        }
+
         public void AddAnimation(IAnimatonRigidBody animation, string name = null)
         {
             if (name == null) name = animation.GetType().Name + "::" + animation.GetHashCode().ToString();
             animation.Name = name;
-            if (Animations.ContainsKey(name))
-                Animations[name] = animation;
+            int i = Animations.IndexOf(animation);
+            if (i < 0)
+                Animations.Add(animation);
             else
-                Animations.Add(name, animation);
+                Animations[i] = animation;
+
             animation.Sprite = this;
             animation.SetTimingSource(this.Parent);
         }
@@ -284,11 +305,12 @@ namespace SimpleGraphicsLib
         {
             try
             {
-                Animations[animation].Dispose();
+                GetAnimation(animation).Dispose();
                 //Animations.Remove(animation);
             }
             catch (Exception e)
             {
+                Debug.WriteLine("Animation {0} not present in {1} :: ", animation, Name, e.Message);
             }
         }
 
@@ -297,12 +319,12 @@ namespace SimpleGraphicsLib
             //RemoveAnimation(animation.Name);
             try
             {
-                 Animations.Remove(animation.Name);
+                 Animations.Remove(animation);
             }
             catch (Exception e)
             {
-                
-                throw;
+                Debug.WriteLine("Animation {0} not present in {1}.", animation.Name, Name);
+                //throw;
             }
         }
 

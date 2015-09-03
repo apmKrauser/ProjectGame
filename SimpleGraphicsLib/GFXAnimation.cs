@@ -11,8 +11,8 @@ namespace SimpleGraphicsLib
         
         private static double PixelsPerGameMeter = 1;
 
-        TimingSource.Sources _timingSource = TimingSource.Sources.Manual;
-        GFXContainer GFXCont = null;
+        private TimingSource.Sources _timingSource = TimingSource.Sources.Manual;
+        private GFXContainer GFXCont = null;
 
         protected GFXAnimation()
         {

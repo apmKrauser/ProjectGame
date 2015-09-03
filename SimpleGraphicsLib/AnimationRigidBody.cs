@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace SimpleGraphicsLib
 {
@@ -14,6 +15,7 @@ namespace SimpleGraphicsLib
         public string Name { get; set; }
 
 
+        [XmlIgnore]
         public IRigidBody Sprite
         {
             get { return _sprite; }
