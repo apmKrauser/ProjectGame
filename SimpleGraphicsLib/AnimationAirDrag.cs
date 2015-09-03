@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace SimpleGraphicsLib
 {
-    public class AnimationAirDrag : AnimationRigidBody, IAnimatonRigidBody
+    public class AnimationAirDrag : AnimationRigidBody, IAnimationRigidBody
     {
 
         public AnimationAirDrag(IRigidBody _sprite) : base(_sprite) {}

@@ -18,11 +18,11 @@ namespace SimpleGraphicsLib
         //public List<SpriteObject> Sprites = new List<SpriteObject>();
         public ObservableCollection<SpriteObject> Sprites = new ObservableCollection<SpriteObject>();
 
+
         public void selectImage(SpriteObject obj)
         {
             String fullpath = "";
             String relpath = "";
-            BitmapImage img = null;
             try
             {
                 OpenFileDialog dlgOpen = new OpenFileDialog();

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace SimpleGraphicsLib
 {
-    public interface IAnimatonRigidBody  : IGFXAnimation
+    public interface IAnimationRigidBody  : IGFXAnimation
     {
 
         IRigidBody Sprite { get; set; }
         string Name { get; set; }
-        event Action<IAnimatonRigidBody> OnDispose;
+        event Action<IAnimationRigidBody> OnDispose;
 
     }
 }

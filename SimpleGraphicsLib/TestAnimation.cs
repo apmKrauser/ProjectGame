@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 
 namespace SimpleGraphicsLib
 {
-    public class TestAnimation : AnimationRigidBody, IAnimatonRigidBody
+    public class TestAnimation : AnimationRigidBody, IAnimationRigidBody
     {
 
 

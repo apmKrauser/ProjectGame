@@ -33,8 +33,25 @@ namespace SimpleGraphicsLib
 
         protected List<DrawingVisual> Visuals = new List<DrawingVisual>();
         //protected List<GFXAnimation> Animations = new List<GFXAnimation>();
-        // public due to XMLSerializer
-        protected  ObservableCollection<IAnimatonRigidBody> Animations = new ObservableCollection<IAnimatonRigidBody>();
+
+        // public and moved from IAnimation... to class due to XMLSerializer
+        protected  ObservableCollection<IAnimationRigidBody> Animations = new ObservableCollection<IAnimationRigidBody>();
+
+        //private ObservableCollection<AnimationRigidBody> SerializableAnimations
+        //{
+        //    get {
+        //        var r = from a in Animations
+        //                select a as AnimationRigidBody;
+        //        return new ObservableCollection<AnimationRigidBody>(r); 
+        //    }
+        //    set {
+        //        foreach (var ani in value)
+        //        {
+        //            AddAnimation(ani);  
+        //        }  
+        //    }
+        //}
+        
 
         protected BitmapImage _bmp = null;
 
@@ -48,27 +65,13 @@ namespace SimpleGraphicsLib
         private Vector _deformationPos  = new Vector(0, 0);  // position offset
         private Vector _deformationSize = new Vector(0, 0);  // size offset
 
-        //[XmlIgnore]
-        static public bool DrawShape = false; // draw outline; debug
-        //private AnimationLinearTranslation _aniMove = new AnimationLinearTranslation();
+        static public bool DrawShape = false; // draw outline
 
         public string Name { get; set; }
         public String TypeName
         {
             get { return this.GetType().Name; }
-            set {  } // empty setter in order to show up in property inspector
-        }
-        
-
-        private String myVar;
-
-
-        private int myVar;
-
-        public ObservableCollection<IAnimatonRigidBody> Get.....
-        {
-            get { return myVar; }
-            set { myVar = value; }
+            set { } // empty setter in order to show up in property inspector
         }
         
 
@@ -279,7 +282,7 @@ namespace SimpleGraphicsLib
             this.Dispose();
         }
 
-        public IAnimatonRigidBody GetAnimation(string name)
+        public IAnimationRigidBody GetAnimation(string name)
         {
             var r = (from n in Animations
                     where n.Name.Equals(name)
@@ -287,7 +290,7 @@ namespace SimpleGraphicsLib
             return r;
         }
 
-        public void AddAnimation(IAnimatonRigidBody animation, string name = null)
+        public void AddAnimation(IAnimationRigidBody animation, string name = null)
         {
             if (name == null) name = animation.GetType().Name + "::" + animation.GetHashCode().ToString();
             animation.Name = name;
@@ -314,7 +317,7 @@ namespace SimpleGraphicsLib
             }
         }
 
-        public void RemoveAnimation(IAnimatonRigidBody animation)
+        public void RemoveAnimation(IAnimationRigidBody animation)
         {
             //RemoveAnimation(animation.Name);
             try
@@ -328,7 +331,7 @@ namespace SimpleGraphicsLib
             }
         }
 
-        public void Animation_OnDispose(IAnimatonRigidBody animation)
+        public void Animation_OnDispose(IAnimationRigidBody animation)
         {
             RemoveAnimation(animation);
             //Debug.WriteLine("=> Animation_OnDispose = {0}");

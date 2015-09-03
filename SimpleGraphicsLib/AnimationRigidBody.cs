@@ -7,10 +7,10 @@ using System.Xml.Serialization;
 
 namespace SimpleGraphicsLib
 {
-    public class AnimationRigidBody :  GFXAnimation, IAnimatonRigidBody
+    public class AnimationRigidBody :  GFXAnimation, IAnimationRigidBody
     {
 
-        public event Action<IAnimatonRigidBody> OnDispose;
+        public event Action<IAnimationRigidBody> OnDispose;
         private IRigidBody _sprite;
         public string Name { get; set; }
 

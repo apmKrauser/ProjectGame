@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleGraphicsLib
 {
-    public class Helper
+    public static class Helper
     {
 
         public const string DataDir = "data";

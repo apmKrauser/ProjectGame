@@ -15,8 +15,9 @@ using System.Windows.Media;
 using WPF.JoshSmith.ServiceProviders.UI;
 using System.Reflection;
 using System.Linq;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+//using System.Collections.ObjectModel;
+
+// todo: http://stackoverflow.com/questions/4616505/is-there-a-reason-why-a-base-class-decorated-with-xmlinclude-would-still-throw-a
 
 namespace ZweiachsMofa
 {
@@ -451,7 +452,7 @@ namespace ZweiachsMofa
         {
             Assembly assi = Assembly.GetAssembly(typeof(GFXContainer));
             var AnimatorTypes = from typ in assi.GetTypes()
-                                where typeof(IAnimatonRigidBody).IsAssignableFrom(typ) && !typ.IsInterface
+                                where typeof(IAnimationRigidBody).IsAssignableFrom(typ) && !typ.IsInterface
                                 select typ;
 
             var GameObjects = from typ in assi.GetTypes()
