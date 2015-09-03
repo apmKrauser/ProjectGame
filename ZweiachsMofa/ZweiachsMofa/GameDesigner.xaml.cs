@@ -12,6 +12,10 @@ using System.Threading;
 using MahApps.Metro.Controls;
 using System.Windows.Media;
 using WPF.JoshSmith.ServiceProviders.UI;
+using System.Reflection;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace ZweiachsMofa
 {
@@ -25,8 +29,10 @@ namespace ZweiachsMofa
         LevelSet ThisLevel = new LevelSet();
         Vector objResizeRefpoint = new Vector();
         //Point dragDropPoint = new Point(0,0);
-        
+        ObservableCollection<Type> typs;
+
         ListViewDragDropManager<SpriteObject> dragMgr;
+        ListViewDragDropManager<Type> dragMgr2;
 
         public GameDesigner()
         {
@@ -40,9 +46,11 @@ namespace ZweiachsMofa
 
             // Drag&Drop Mngr
             this.dragMgr = new ListViewDragDropManager<SpriteObject>(lstSprites);
+            this.dragMgr2 = new ListViewDragDropManager<Type>(lstNewObj);
             // Turn the ListViewDragManager on . 
             //dragMgr.ListView = lstSprites;
             dragMgr.ShowDragAdorner = true;
+            dragMgr2.ShowDragAdorner = true;
             //dragMgr.DragAdornerOpacity = 5;
             // Apply or remove the item container style, which responds to changes
             // in the attached properties of ListViewItemDragState.
@@ -50,6 +58,7 @@ namespace ZweiachsMofa
             //lstSprites.ItemContainerStyle = null;
 
             this.dragMgr.ProcessDrop += dragMgr_ProcessDrop;
+            this.dragMgr2.ProcessDrop += dragMgr_ProcessDropNewObj;
 
         }
 
@@ -312,12 +321,12 @@ namespace ZweiachsMofa
         {
             // This shows how to customize the behavior of a drop.
             // Here we perform a swap, instead of just moving the dropped item.
-
             int higherIdx = Math.Max(e.OldIndex, e.NewIndex);
             int lowerIdx = Math.Min(e.OldIndex, e.NewIndex);
 
             if (lowerIdx < 0)
             {
+                Debug.WriteLine("=> item = {0} {1}", lowerIdx, sender.GetType().Name);
                 // The item came from the lower ListView
                 // so just insert it.
                 //e.ItemsSource.Insert(higherIdx, e.DataItem);
@@ -344,6 +353,42 @@ namespace ZweiachsMofa
             ThisLevel.AddSpritesTo(MainGFX);
         }
 
+        void dragMgr_ProcessDropNewObj(object sender, ProcessDropEventArgs<Type> e)
+        {
+            // This shows how to customize the behavior of a drop.
+            // Here we perform a swap, instead of just moving the dropped item.
+            Debug.WriteLine("=> anderebox <");
+            int higherIdx = Math.Max(e.OldIndex, e.NewIndex);
+            int lowerIdx = Math.Min(e.OldIndex, e.NewIndex);
+
+            if (lowerIdx < 0)
+            {
+                Debug.WriteLine("=> anderebox = {0} {1}", lowerIdx, sender.GetType().Name);
+                // The item came from the lower ListView
+                // so just insert it.
+                //e.ItemsSource.Insert(higherIdx, e.DataItem);
+            }
+            else
+            {
+                // null values will cause an error when calling Move.
+                // It looks like a bug in ObservableCollection to me.
+                if (e.ItemsSource[lowerIdx] == null ||
+                    e.ItemsSource[higherIdx] == null)
+                    return;
+
+                // The item came from the ListView into which
+                // it was dropped, so swap it with the item
+                // at the target index.
+                e.ItemsSource.Move(lowerIdx, higherIdx);
+                e.ItemsSource.Move(higherIdx - 1, lowerIdx);
+            }
+
+            // Set this to 'Move' so that the OnListViewDrop knows to 
+            // remove the item from the other ListView.
+            e.Effects = System.Windows.DragDropEffects.Move;
+
+        }
+
         private void lstSprites_Drop(object sender, System.Windows.DragEventArgs e)
         {
             if (e.Effects == System.Windows.DragDropEffects.None)
@@ -354,7 +399,6 @@ namespace ZweiachsMofa
 
             //int removedIdx = lstSprites.Items.IndexOf(droppedData);
             //int targetIdx = lstSprites.Items.IndexOf(target);
-
             if (sender == this.lstSprites)
             {
                 if (this.dragMgr.IsDragInProgress)
@@ -374,11 +418,23 @@ namespace ZweiachsMofa
 
         private void cmdAddStaticCollider_Click(object sender, RoutedEventArgs e)
         {
-            ThisLevel.RemoveSpritesFrom(MainGFX);
-            ThisLevel.AddSpritesTo(MainGFX);
-            //MainGFX.RemoveObject(ThisLevel.Background);
-            //MainGFX.AddObject(ThisLevel.Background);
+            Assembly assi = Assembly.GetAssembly(typeof(GFXContainer));
+            var AnimatorTypes = from typ in assi.GetTypes()
+                                where typeof(IAnimatonRigidBody).IsAssignableFrom(typ) && !typ.IsInterface
+                                select typ;
+
+            var GameObjects = from typ in assi.GetTypes()
+                              where typeof(SpriteObject).IsAssignableFrom(typ) && !typ.IsInterface
+                              select typ;
+
+
+             typs = new ObservableCollection<Type>(GameObjects);
+            lstNewObj.ItemsSource = typs;
+            //lstNewObj.ItemsSource = GameObjects;
+
+            //System.Windows.Forms.MessageBox.Show("Test: " + assi.FullName);
         }
+
 
 
     }

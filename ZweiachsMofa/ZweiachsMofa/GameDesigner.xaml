@@ -23,7 +23,7 @@
         <local:GameWindowSlider x:Name="GameSlider" Minimum="0" Maximum="{Binding Width, ElementName=MainGFX}" HorizontalAlignment="Left" Margin="10,619,0,0" VerticalAlignment="Top" Height="25" Width="1179" ValueChanged="GameSlider_ValueChanged" MouseUp="GameSlider_MouseUp"/>
         <Button x:Name="cmdSaveLevel" Content="Save as XML" HorizontalAlignment="Left" Margin="667,668,0,0" VerticalAlignment="Top" Width="145" Height="32" Click="cmdSaveLevel_Click" Background="#FF878787"/>
         <Button x:Name="cmdLoadLevel" Content="Load XML" HorizontalAlignment="Left" Margin="835,668,0,0" VerticalAlignment="Top" Width="145" Height="32" Click="cmdLoadLevel_Click" Background="#FF878787"/>
-        <ListView  Name="lstSprites" BorderThickness="0"  HorizontalAlignment="Left" Height="288" Margin="1230,155,0,0" VerticalAlignment="Top" Width="272" KeyDown="lstSprites_KeyDown"  MouseDoubleClick="lstSprites_MouseDoubleClick"  DragEnter="lstSprites_DragEnter" Drop="lstSprites_Drop" UseLayoutRounding="False" >
+        <ListView  Name="lstSprites" BorderThickness="0"  HorizontalAlignment="Left" Height="288" Margin="1230,155,0,0" VerticalAlignment="Top" Width="272" KeyDown="lstSprites_KeyDown"  MouseDoubleClick="lstSprites_MouseDoubleClick"  DragEnter="lstSprites_DragEnter" Drop="lstSprites_Drop" >
             <ListView.Resources>
                 <Style TargetType="GridViewColumnHeader">
                     <Setter Property="Visibility" Value="Collapsed" />
@@ -61,6 +61,25 @@
         <Button Name="cmdAddSprite" Content="Add Sprite" HorizontalAlignment="Left" Margin="1412,448,0,0" VerticalAlignment="Top" Width="90" Height="19" Click="cmdAddSprite_Click" Background="#FF878787"/>
         <TextBox Name="txtSpriteName" HorizontalAlignment="Left" Height="19" Margin="1230,448,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Foreground="White" Background="#FF2C2C2C"/>
         <CheckBox Name="chkDrawShape" Content="Draw Shape" HorizontalAlignment="Left" Margin="1230,498,0,0" VerticalAlignment="Top" Checked="chkDrawShape_Checked" Unchecked="chkDrawShape_Unchecked"/>
+        <ListView Name ="lstNewObj" BorderThickness="0"  HorizontalAlignment="Left" Height="84" Margin="1263,616,0,0" VerticalAlignment="Top" Width="204" Drop="lstSprites_Drop" DragEnter="lstSprites_DragEnter">
+            <ListView.Resources>
+                <Style TargetType="GridViewColumnHeader">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Typ" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </Controls:MetroWindow>
