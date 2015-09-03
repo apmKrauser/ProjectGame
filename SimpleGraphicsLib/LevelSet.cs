@@ -15,7 +15,7 @@ namespace SimpleGraphicsLib
     {
         public SpriteObject Background = null;
         public SpriteObject LevelBkg = null;
-       // public List<SpriteObject> Sprites = new List<SpriteObject>();
+        //public List<SpriteObject> Sprites = new List<SpriteObject>();
         public ObservableCollection<SpriteObject> Sprites = new ObservableCollection<SpriteObject>();
 
         public void selectImage(SpriteObject obj)
