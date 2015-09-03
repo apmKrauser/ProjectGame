@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3C3074E3-475F-489C-A3CD-89CEFA8071CB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SimpleGraphicsLib</RootNamespace>
+    <AssemblyName>SimpleGraphicsLib</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Presentation" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnimationAirDrag.cs" />
+    <Compile Include="AnimationConstAcceleration.cs" />
+    <Compile Include="AnimationMotor.cs" />
+    <Compile Include="AnimationRigidBody.cs" />
+    <Compile Include="AnimationWobble.cs" />
+    <Compile Include="AnimatonLinearTranslation.cs" />
+    <Compile Include="CarObject.cs" />
+    <Compile Include="GameScroller.cs" />
+    <Compile Include="IAnimationOnDispose.cs" />
+    <Compile Include="IAnimatonRigidBody.cs" />
+    <Compile Include="GFXParticle.cs" />
+    <Compile Include="GFXAnimation.cs" />
+    <Compile Include="BitmapConversion.cs" />
+    <Compile Include="FlyingSphericParticle.cs" />
+    <Compile Include="FrameUpdateEventArgs.cs" />
+    <Compile Include="GFXContainer.cs" />
+    <Compile Include="IGFXAnimation.cs" />
+    <Compile Include="IGFXObject.cs" />
+    <Compile Include="IElasticBody.cs" />
+    <Compile Include="IHasSeperateAnimationListener.cs" />
+    <Compile Include="IRigidBody.cs" />
+    <Compile Include="IParticleConfigurable.cs" />
+    <Compile Include="LevelSet.cs" />
+    <Compile Include="ParticleSystem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SimpleCollider.cs" />
+    <Compile Include="SimpleSprite.cs" />
+    <Compile Include="SmokeParticle.cs" />
+    <Compile Include="SmokeParticleSystem.cs" />
+    <Compile Include="SpriteObject.cs" />
+    <Compile Include="SpriteObjectElastic.cs" />
+    <Compile Include="TestAnimation.cs" />
+    <Compile Include="TimingSource.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cyberscooty-cartoon-car_kl2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\strip-of-wood-wood-border-wood-lath-wood-plank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\water--ripples-texture-3-of-3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cartoon-jungle-background-09.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cartoon-jungle-background-11.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon1.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
