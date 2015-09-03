@@ -25,8 +25,6 @@ namespace ZweiachsMofa
         internal event Action UpdateEvent;
         private bool crashed;
 
-
-
         public TimedMover(/*GFXContainer _Gfx*/)
         {
             //Gfx = _Gfx;
