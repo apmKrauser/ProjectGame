@@ -1,8 +1,11 @@
-﻿using SimpleGraphicsLib;
+﻿using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using SimpleGraphicsLib;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -17,12 +20,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WPF.JoshSmith.ServiceProviders.UI;
 
+
 namespace ZweiachsMofa
 {
     /// <summary>
     /// Interaktionslogik für EditAnimators.xaml
     /// </summary>
-    public partial class EditAnimators 
+    public partial class EditAnimators : MetroWindow
     {
 
         IPropertyInspectable GObj;
@@ -65,20 +69,37 @@ namespace ZweiachsMofa
             lstAnimations.ItemsSource = AList;
         }
 
-        private void dragMgr_ProcessDrop(object sender, ProcessDropEventArgs<AnimationRigidBody> e)
+        
+        private async void dragMgr_ProcessDrop(object sender, ProcessDropEventArgs<AnimationRigidBody> e)
         {
             // This shows how to customize the behavior of a drop.
             // Here we perform a swap, instead of just moving the dropped item.
             int higherIdx = Math.Max(e.OldIndex, e.NewIndex);
             int lowerIdx = Math.Min(e.OldIndex, e.NewIndex);
 
-            Debug.WriteLine("=> Drop ACTION <");
-            if (lowerIdx < 0)
+            if ((lowerIdx < 0) && (e.DataItem.Name == null))
             {
-                if (sender == this.lstNewAnimations)
-                    Debug.WriteLine("=> Do Stuff" );
-                Debug.WriteLine("=> item = {0} {1}", lowerIdx, sender.GetType().Name);
-                // The item came from the lower ListView
+                var name = await this.ShowInputAsync("Name", "Please specify unique animator name or hit cancel!");
+
+                //await this.ShowMessageAsync("Hello", "Hello " + result + "!");
+
+                //var sobj= new SpriteObject(txtSpriteName.Text);
+                Debug.WriteLine("=> item = {0} {1}", e.DataItem.GetType().Name, e.DataItem.Name);
+                AnimationRigidBody ani = Activator.CreateInstance(e.DataItem.GetType()) as AnimationRigidBody;
+                ani.Name = name;
+                (GObj as SpriteObject).AddAnimation(ani);  // generates unique  name if name==null
+                AList.Add(ani) ;
+                //lstAnimations.Items.Refresh();
+
+                // Resize Columns
+                var gridView = lstAnimations.View as GridView;
+                foreach (var column in gridView.Columns.Where(column => Double.IsNaN(column.Width)))
+                {
+                    Contract.Assume(column != null);
+                    column.Width = column.ActualWidth;
+                    column.Width = Double.NaN;
+                }
+
                 // so just insert it.
                 //e.ItemsSource.Insert(higherIdx, e.DataItem);
             }
@@ -95,6 +116,8 @@ namespace ZweiachsMofa
                 // at the target index.
                 e.ItemsSource.Move(lowerIdx, higherIdx);
                 e.ItemsSource.Move(higherIdx - 1, lowerIdx);
+                // update Sprite animation list
+                (GObj as SpriteObject).SerializableAnimations = AList;
             }
 
             // Set this to 'Move' so that the OnListViewDrop knows to 
@@ -106,13 +129,11 @@ namespace ZweiachsMofa
 
         private void lstAnimations_DragEnter(object sender, DragEventArgs e)
         {
-            Debug.WriteLine("=> Draaaag <");
             e.Effects = System.Windows.DragDropEffects.Move;
         }
 
         private void lstAnimations_Drop(object sender, DragEventArgs e)
         {
-            Debug.WriteLine("=> Drop <");
             // todo: alles löschen
             if (e.Effects == System.Windows.DragDropEffects.None)
                 return;
@@ -137,6 +158,21 @@ namespace ZweiachsMofa
             IPropertyInspectable obj = (lstAnimations.SelectedItem as IPropertyInspectable);
             PropertyInspect pi = new PropertyInspect(obj);
             pi.Show();
+        }
+
+        private void lstAnimations_KeyDown(object sender, KeyEventArgs e)
+        {
+            AnimationRigidBody obj = (lstAnimations.SelectedItem as AnimationRigidBody);
+            if (obj != null)
+            {
+                if (e.Key == Key.Delete)
+                {
+                    AList.Remove(obj);
+                    (GObj as SpriteObject).RemoveAnimation(obj);
+                    //GObj as SpriteObject  RemoveHandler und add
+                    //lstAnimations.Items.Refresh();
+                }
+            }
         }
 
     }

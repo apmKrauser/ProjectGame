@@ -12,6 +12,15 @@ namespace SimpleGraphicsLib
 {
     public static class Helper
     {
+        public class ObjectWrapper
+        {
+            public IPropertyInspectable Control { get; private set; }
+
+            public ObjectWrapper(Object control)
+            {
+                this.Control = (IPropertyInspectable)control; // as IPropertyInspectable;
+            }
+        }
 
         public const string DataDir = "data";
 

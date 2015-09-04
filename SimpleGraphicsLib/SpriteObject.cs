@@ -354,8 +354,8 @@ namespace SimpleGraphicsLib
 
         public void AddAnimation(IAnimationRigidBody animation, string name = null)
         {
-            if (name == null) name = animation.GetType().Name + "::" + animation.GetHashCode().ToString();
-            animation.Name = name;
+            if (name != null) animation.Name = name;
+            if ((animation.Name ?? "").Equals("")) animation.Name = animation.GetType().Name + "::" + animation.GetHashCode().ToString();
             int i = Animations.IndexOf(animation);
             if (i < 0)
                 Animations.Add(animation);

@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Input;
 using WPF.JoshSmith.Adorners;
 using WPF.JoshSmith.Controls.Utilities;
+using SimpleGraphicsLib;
 
 namespace WPF.JoshSmith.ServiceProviders.UI
 {
@@ -326,23 +327,27 @@ namespace WPF.JoshSmith.ServiceProviders.UI
 
 			e.Effects = DragDropEffects.None;
 
-			if( !e.Data.GetDataPresent( typeof( ItemType ) ) )
+            if (!e.Data.GetDataPresent(typeof(Helper.ObjectWrapper)))
 				return;
 
 			// Get the data object which was dropped.
-            //ItemType data = e.Data.GetData( typeof( ItemType ) ) as ItemType;
-            //if( data == null )
-            //    return;
+            ItemType data = (e.Data.GetData(typeof(Helper.ObjectWrapper)) as Helper.ObjectWrapper).Control as ItemType;
+            if( data == null )
+                return;
 
             // todo: geändert
-            var zd = e.Data.GetData(typeof(ItemType).Name, true);
-            ItemType data = zd as ItemType;
+            //var zd = e.Data.GetData(typeof(ItemType).Name, true);
+            //ItemType data = zd as ItemType;
 
 			// Get the ObservableCollection<ItemType> which contains the dropped data object.
 			ObservableCollection<ItemType> itemsSource = this.listView.ItemsSource as ObservableCollection<ItemType>;
-			if( itemsSource == null )
-				throw new Exception(
-					"A ListView managed by ListViewDragManager must have its ItemsSource set to an ObservableCollection<ItemType>." );
+            if (itemsSource == null)
+            {
+                Debug.WriteLine("==> A ListView managed by ListViewDragManager must have its ItemsSource set to an ObservableCollection<ItemType>.");
+                return;
+            }
+		//		throw new Exception(
+		//			"A ListView managed by ListViewDragManager must have its ItemsSource set to an ObservableCollection<ItemType>." );
 
 			int oldIndex = itemsSource.IndexOf( data );
 			int newIndex = this.IndexUnderDragCursor;
@@ -647,7 +652,7 @@ namespace WPF.JoshSmith.ServiceProviders.UI
 		{
 			ItemType selectedItem = this.listView.SelectedItem as ItemType;
 			DragDropEffects allowedEffects = DragDropEffects.Move | DragDropEffects.Move | DragDropEffects.Link;
-            if (DragDrop.DoDragDrop(this.listView, selectedItem, allowedEffects) != DragDropEffects.None)
+            if (DragDrop.DoDragDrop(this.listView, new Helper.ObjectWrapper(selectedItem), allowedEffects) != DragDropEffects.None)
 			{
 				// The item was dropped into a new location,
 				// so make it the new selected item.
