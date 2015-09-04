@@ -18,6 +18,12 @@ namespace SimpleGraphicsLib
         private TimingSource.Sources _timingSource = TimingSource.Sources.Manual;
         private GFXContainer GFXCont = null;
 
+        public String TypeName
+        {
+            get { return this.GetType().Name; }
+            set { } // empty setter in order to show up in property inspector
+        }
+
         protected GFXAnimation()
         {
         }

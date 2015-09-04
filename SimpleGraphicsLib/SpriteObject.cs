@@ -20,7 +20,7 @@ namespace SimpleGraphicsLib
 {
     [DataContract]
     [KnownType("GetDerivedTypes")]
-    public class SpriteObject : IGFXObject, IRigidBody, IAnimationOnDispose
+    public class SpriteObject : IGFXObject, IRigidBody, IAnimationOnDispose, IPropertyInspectable
     {
 
         #region FieldsProperties
@@ -42,6 +42,7 @@ namespace SimpleGraphicsLib
         //[DataMember]
         protected  ObservableCollection<IAnimationRigidBody> Animations = new ObservableCollection<IAnimationRigidBody>();
 
+        // for serialization
         [DataMember]
         public ObservableCollection<AnimationRigidBody> SerializableAnimations
         {
@@ -53,12 +54,14 @@ namespace SimpleGraphicsLib
             }
             set
             {
+                RemoveAnimations();
                 foreach (var ani in value)
                 {
                     AddAnimation(ani);
                 }
             }
         }
+
         
 
         protected BitmapImage _bmp = null;
@@ -279,6 +282,7 @@ namespace SimpleGraphicsLib
             RenderOptions.SetBitmapScalingMode(vis, BitmapScalingMode.Fant);
             Visuals.Add(vis);
             AddAnimation(new AnimationLinearTranslation(), "LinMove");
+            AddAnimation(new AnimationConstAcceleration(), "Acellerator");  // todo: delme
         }
 
         protected virtual void init ()   // bei setparent aufrufen?  artikel über virtual in ctor aufrufen lesen
@@ -309,6 +313,14 @@ namespace SimpleGraphicsLib
             }
         }
 
+        private void RemoveAnimations()
+        {
+            for (int i = Animations.Count - 1; i >= 0; i--)
+            {
+                Animations[i].Dispose();
+            }
+        }
+
         public virtual void Dispose()
         {
             UnregisterAllVisuals();
@@ -318,11 +330,8 @@ namespace SimpleGraphicsLib
             //    Debug.WriteLine("## Ani: " + animation.Name);
             //}
             // dispose is designed to remove ani from list, hence, foreach impossible 
-            for (int i = Animations.Count - 1; i >= 0; i--)
-            {
-                Animations[i].Dispose();
-            }
-//            foreach (var animation in Animations.Values)
+            RemoveAnimations();
+            //            foreach (var animation in Animations.Values)
 //            {
 //            }
             Animations.Clear();

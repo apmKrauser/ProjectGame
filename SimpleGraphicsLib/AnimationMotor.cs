@@ -11,6 +11,9 @@ namespace SimpleGraphicsLib
     public class AnimationMotor
     {
 
+        public AnimationMotor()
+        {                }
+
         [OnDeserializing]
         protected void OnDeserializing(StreamingContext context)
         {        }

@@ -20,6 +20,9 @@ namespace SimpleGraphicsLib
         [DataMember]
         public double WobbleAmplitude { get; set; }
 
+        public AnimationWobble()
+        {     }
+
         public AnimationWobble(double WobbleSpeed, double WobbleAmplitude)
         {
             this.WobbleSpeed = WobbleSpeed;

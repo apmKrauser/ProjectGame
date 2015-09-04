@@ -330,9 +330,13 @@ namespace WPF.JoshSmith.ServiceProviders.UI
 				return;
 
 			// Get the data object which was dropped.
-			ItemType data = e.Data.GetData( typeof( ItemType ) ) as ItemType;
-			if( data == null )
-				return;
+            //ItemType data = e.Data.GetData( typeof( ItemType ) ) as ItemType;
+            //if( data == null )
+            //    return;
+
+            // todo: geändert
+            var zd = e.Data.GetData(typeof(ItemType).Name, true);
+            ItemType data = zd as ItemType;
 
 			// Get the ObservableCollection<ItemType> which contains the dropped data object.
 			ObservableCollection<ItemType> itemsSource = this.listView.ItemsSource as ObservableCollection<ItemType>;
@@ -643,7 +647,7 @@ namespace WPF.JoshSmith.ServiceProviders.UI
 		{
 			ItemType selectedItem = this.listView.SelectedItem as ItemType;
 			DragDropEffects allowedEffects = DragDropEffects.Move | DragDropEffects.Move | DragDropEffects.Link;
-			if( DragDrop.DoDragDrop( this.listView, selectedItem, allowedEffects ) != DragDropEffects.None )
+            if (DragDrop.DoDragDrop(this.listView, selectedItem, allowedEffects) != DragDropEffects.None)
 			{
 				// The item was dropped into a new location,
 				// so make it the new selected item.

@@ -25,7 +25,7 @@ namespace ZweiachsMofa
     /// </summary>
     public partial class PropertyInspect : MetroWindow
     {
-        IGFXObject GObj;
+        IPropertyInspectable GObj;
 
 //        public ObservableCollection<PropertyGridSet> PList = new ObservableCollection<PropertyGridSet>();
         public List<PropertyGridSet> PList = new List<PropertyGridSet>();
@@ -36,7 +36,7 @@ namespace ZweiachsMofa
             InitializeComponent();
         }
 
-        public PropertyInspect(IGFXObject obj)
+        public PropertyInspect(IPropertyInspectable obj)
         {
             GObj = obj;
             InitializeComponent();
@@ -47,18 +47,14 @@ namespace ZweiachsMofa
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //ReadProperties();
-            PropertyGrid.Items.Refresh();
-            var s = new Vector(0, 5);
-            var t = s.ToString(CultureInfo.InvariantCulture);
-            var t2 = s.ToString();
-            var o = Vector.Parse(t);
-            double d = 5.33;
-            var d1 = d.ToString();
-
-            var x = double.Parse(d1);
-            var x2 = double.Parse(d1, CultureInfo.InvariantCulture);
-            int ii;
+            EditAnimators edani = new EditAnimators(GObj);
+            try
+            {
+                edani.Show();
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void ReadProperties()

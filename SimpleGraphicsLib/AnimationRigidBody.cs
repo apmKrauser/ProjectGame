@@ -11,7 +11,7 @@ namespace SimpleGraphicsLib
 {
     [DataContract]
     [KnownType("GetDerivedTypes")]
-    public class AnimationRigidBody :  GFXAnimation, IAnimationRigidBody
+    public class AnimationRigidBody : GFXAnimation, IAnimationRigidBody, IPropertyInspectable
     {
 
         public event Action<IAnimationRigidBody> OnDispose;

@@ -14,6 +14,9 @@ namespace SimpleGraphicsLib
         [DataMember]
         public Vector Acceleration { get; set; }
 
+        public AnimationConstAcceleration()
+        {       }
+
         public AnimationConstAcceleration(Vector Acceleration) : base()  // kann man weglassen?
         {
             // TODO: Complete member initialization

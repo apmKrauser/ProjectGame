@@ -13,6 +13,9 @@ namespace SimpleGraphicsLib
     public class AnimationAirDrag : AnimationRigidBody, IAnimationRigidBody
     {
 
+        public AnimationAirDrag()
+        {     }
+
         public AnimationAirDrag(IRigidBody _sprite) : base(_sprite) {}
 
 

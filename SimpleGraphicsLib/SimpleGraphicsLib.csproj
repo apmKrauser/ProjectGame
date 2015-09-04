@@ -68,6 +68,7 @@
     <Compile Include="IGFXObject.cs" />
     <Compile Include="IElasticBody.cs" />
     <Compile Include="IHasSeperateAnimationListener.cs" />
+    <Compile Include="IPropertyInspectable.cs" />
     <Compile Include="IRigidBody.cs" />
     <Compile Include="IParticleConfigurable.cs" />
     <Compile Include="LevelSet.cs" />

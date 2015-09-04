@@ -30,14 +30,6 @@
                     <Setter Property="Visibility" Value="Collapsed" />
                 </Style>
             </ListView.Resources>
-            <!--<ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Name}"/>
-                        <Image Source="{Binding Bmp}" Stretch="Uniform" StretchDirection="Both"  Margin="0,5" Height="20"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>-->
             <ListView.View >
                 <GridView >
                     <GridViewColumn Header="" Width="60" >

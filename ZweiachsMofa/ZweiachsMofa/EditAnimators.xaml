@@ -1,8 +1,57 @@
-﻿<Window x:Class="ZweiachsMofa.EditAnimators"
+﻿<Controls:MetroWindow x:Class="ZweiachsMofa.EditAnimators"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="EditAnimators" Height="300" Width="300">
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"                      
+        xmlns:local="clr-namespace:ZweiachsMofa"
+        WindowStartupLocation="CenterScreen"
+        GlowBrush="{DynamicResource AccentColorBrush}"                         
+        Title="EditAnimators" Height="394" Width="716">
     <Grid>
-        
+        <ListView  x:Name="lstNewAnimations" BorderThickness="0"  HorizontalAlignment="Left" Height="288" Margin="379,31,0,0" VerticalAlignment="Top" Width="272"  DragEnter="lstAnimations_DragEnter" Drop="lstAnimations_Drop" >
+            <ListView.Resources>
+                <Style TargetType="{x:Type GridViewColumnHeader}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </Style>
+            </ListView.Resources>
+            <ListView.View >
+                <GridView >
+                    <GridViewColumn Header="Name" Width="200" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding TypeName}"  HorizontalAlignment="Left"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView  x:Name="lstAnimations" BorderThickness="0"  MouseDoubleClick="lstAnimations_MouseDoubleClick" HorizontalAlignment="Left" Height="288" Margin="50,31,0,0" VerticalAlignment="Top" Width="294"    DragEnter="lstAnimations_DragEnter" Drop="lstAnimations_Drop" >
+            <ListView.Resources>
+                <Style TargetType="{x:Type GridViewColumnHeader}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </Style>
+            </ListView.Resources>
+            <ListView.View >
+                <GridView >
+                    <GridViewColumn Header="Name" Width="100" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"  HorizontalAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Type" Width="200" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding TypeName}"  HorizontalAlignment="Left"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
-</Window>
+</Controls:MetroWindow>
