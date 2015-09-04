@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SimpleGraphicsLib
 {
@@ -25,6 +29,15 @@ namespace SimpleGraphicsLib
             }
         }
 
+        public static IEnumerable<Type> GetDerivedTypes(this Type baseType, Assembly assembly)
+        {
+            var types = from t in assembly.GetTypes()
+                        where t.IsSubclassOf(baseType)
+                        select t;
+
+            return types;
+        }
+
         public static string AssemblyLocalPath
         {
             get
@@ -40,5 +53,27 @@ namespace SimpleGraphicsLib
                 return AssemblyLocalPath + "\\" + DataDir;
             }
         }
+
+        public static String OpenFile()
+        {
+            String fullpath = null;
+            String relpath = "";
+            try
+            {
+                OpenFileDialog dlgOpen = new OpenFileDialog();
+                dlgOpen.Filter = "json|*.json|*.*|*.*";
+                if (dlgOpen.ShowDialog() == DialogResult.OK)
+                {
+                    fullpath = dlgOpen.FileName;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Error Opening File:\n"  + ex.Message);
+            }
+            return fullpath;
+        }
+
+
     }
 }

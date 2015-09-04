@@ -1,23 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace SimpleGraphicsLib
 {
+    [DataContract]
     public class AnimationWobble : AnimationRigidBody
     {
 
         double sinex = 0;
+
+        [DataMember]
         public double WobbleSpeed { get; set; }
+
+        [DataMember]
         public double WobbleAmplitude { get; set; }
 
         public AnimationWobble(double WobbleSpeed, double WobbleAmplitude)
         {
             this.WobbleSpeed = WobbleSpeed;
             this.WobbleAmplitude = WobbleAmplitude;
+        }
+
+        [OnDeserializing]
+        protected void OnDeserializing(StreamingContext context)
+        {
+            sinex = 0;
         }
 
         public override void Update(object sender, FrameUpdateEventArgs e)

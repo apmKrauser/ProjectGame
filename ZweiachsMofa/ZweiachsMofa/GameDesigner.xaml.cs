@@ -15,6 +15,8 @@ using System.Windows.Media;
 using WPF.JoshSmith.ServiceProviders.UI;
 using System.Reflection;
 using System.Linq;
+using System.Runtime.Serialization.Json;
+using System.Runtime.Serialization;
 //using System.Collections.ObjectModel;
 
 // todo: http://stackoverflow.com/questions/4616505/is-there-a-reason-why-a-base-class-decorated-with-xmlinclude-would-still-throw-a
@@ -31,6 +33,7 @@ namespace ZweiachsMofa
         LevelSet ThisLevel = new LevelSet();
         Vector objResizeRefpoint = new Vector();
         //Point dragDropPoint = new Point(0,0);
+        private bool _shutdown = false;
 
         ListViewDragDropManager<SpriteObject> dragMgr;
         //ListViewDragDropManager<SpriteObject> dragMgr2;
@@ -139,39 +142,14 @@ namespace ZweiachsMofa
         }
 
         private void cmdSaveLevel_Click(object sender, RoutedEventArgs e)
-        {
-            //String fullpath = "";
-            //String relpath = "";
-            //try
-            //{
-            //    OpenFileDialog dlgOpen = new OpenFileDialog();
-            //    dlgOpen.Filter = "png|*.png|jpeg|*.jpg";
-            //    if (dlgOpen.ShowDialog() == DialogResult.OK)
-            //    {
-            //        fullpath = dlgOpen.FileName;
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    System.Windows.Forms.MessageBox.Show("Error in File Selection SpriteObject " + obj.Name + ":\n" + ex.Message);
-            //}
-            //Helper.DataLocalPath
-            using (FileStream fs = new FileStream(@"data\Test.xml", FileMode.Create, FileAccess.Write))
-            {
-                XmlSerializer xs = new XmlSerializer(typeof(LevelSet));
-                //XmlSerializer xs = new XmlSerializer(typeof(SpriteObject));
-                xs.Serialize(fs, ThisLevel);
-            }
+        {         
+            ThisLevel.SaveLevel();
         }
 
         private void cmdLoadLevel_Click(object sender, RoutedEventArgs e)
         {
-            using (FileStream fs = new FileStream(@"data\Test.xml", FileMode.Open, FileAccess.Read))
-            {
-                XmlSerializer xs = new XmlSerializer(typeof(LevelSet));
-                //XmlSerializer xs = new XmlSerializer(typeof(SpriteObject));
-                ThisLevel = (xs.Deserialize(fs) as LevelSet);
-            }
+            ThisLevel = LevelSet.LoadLevel();
+
             ThisLevel.Background.loadFromImagePathPreserveObjectSize();
             ThisLevel.LevelBkg.loadFromImagePathPreserveObjectSize();
             MainGFX.AddObject(ThisLevel.Background);
@@ -450,6 +428,9 @@ namespace ZweiachsMofa
 
         private void cmdAddStaticCollider_Click(object sender, RoutedEventArgs e)
         {
+
+            Debug.WriteLine("=> dooooneeeeeeeeee= {0}" );
+            return;
             Assembly assi = Assembly.GetAssembly(typeof(GFXContainer));
             var AnimatorTypes = from typ in assi.GetTypes()
                                 where typeof(IAnimationRigidBody).IsAssignableFrom(typ) && !typ.IsInterface
@@ -468,25 +449,38 @@ namespace ZweiachsMofa
             //System.Windows.Forms.MessageBox.Show("Test: " + assi.FullName);
         }
 
-        private async void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private async void MetroWindow_Closing_Async(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            e.Cancel = !_shutdown;
+            if (_shutdown) return;
+
             var mySettings = new MetroDialogSettings()
             {
-                AffirmativeButtonText = "Quit",
-                NegativeButtonText = "Cancel",
+                AffirmativeButtonText = "Save & Quit",
+                NegativeButtonText = "Quit",
                 AnimateShow = true,
                 AnimateHide = false
             };
 
-            var result = await this.ShowMessageAsync("Quit application?",
-                "Sure you want to quit application?",
+            var result = await this.ShowMessageAsync("Quit Gamedesigner?",
+                "Do you want to save changes?",
                 MessageDialogStyle.AffirmativeAndNegative, mySettings);
 
-            bool _shutdown = result == MessageDialogResult.Affirmative;
+            bool affirm = result == MessageDialogResult.Affirmative;
+            if (affirm)
+            {
+                Debug.WriteLine("=> fwfghjrgeöerhgöerg = {0}");
+                Thread.Sleep(2000);
+            }
 
-            //if (_shutdown)
-                //Application.Current.Shutdown();
+            _shutdown = true;
+            Debug.WriteLine("=> result = {0}", result);
+
+            if (_shutdown)
+                this.Close();
+                //System.Windows.Application.Current.Shutdown();
         }
+
 
 
 

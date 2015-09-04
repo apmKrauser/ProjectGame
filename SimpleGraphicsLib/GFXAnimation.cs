@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Windows;
 
 namespace SimpleGraphicsLib
 {
+    [DataContract]
+    [KnownType("GetDerivedTypes")]
     public class GFXAnimation : IDisposable, IGFXAnimation
     {
         
@@ -99,6 +103,14 @@ namespace SimpleGraphicsLib
         public static Vector NormToPixelSpeed(Vector _normSpeed)
         {
             return _normSpeed * PixelsPerGameMeter;
+        }
+
+        public static IEnumerable<Type> GetDerivedTypes()
+        {
+            var types = from t in Assembly.GetExecutingAssembly().GetTypes()
+                        where t.IsSubclassOf(typeof(AnimationRigidBody))
+                        select t;
+            return types;
         }
 
     }

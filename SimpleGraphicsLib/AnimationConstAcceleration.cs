@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace SimpleGraphicsLib
 {
+    [DataContract]
     public class AnimationConstAcceleration : AnimationRigidBody
     {
+        [DataMember]
         public Vector Acceleration { get; set; }
 
         public AnimationConstAcceleration(Vector Acceleration) : base()  // kann man weglassen?

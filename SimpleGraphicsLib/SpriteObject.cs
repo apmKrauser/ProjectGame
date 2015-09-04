@@ -13,9 +13,13 @@ using System.Threading;
 using System.Xml.Serialization;
 using System.IO;
 using System.Collections.ObjectModel;
+using System.Runtime.Serialization;
+using System.Reflection;
 
 namespace SimpleGraphicsLib
 {
+    [DataContract]
+    [KnownType("GetDerivedTypes")]
     public class SpriteObject : IGFXObject, IRigidBody, IAnimationOnDispose
     {
 
@@ -35,39 +39,45 @@ namespace SimpleGraphicsLib
         //protected List<GFXAnimation> Animations = new List<GFXAnimation>();
 
         // public and moved from IAnimation... to class due to XMLSerializer
+        //[DataMember]
         protected  ObservableCollection<IAnimationRigidBody> Animations = new ObservableCollection<IAnimationRigidBody>();
 
-        //private ObservableCollection<AnimationRigidBody> SerializableAnimations
-        //{
-        //    get {
-        //        var r = from a in Animations
-        //                select a as AnimationRigidBody;
-        //        return new ObservableCollection<AnimationRigidBody>(r); 
-        //    }
-        //    set {
-        //        foreach (var ani in value)
-        //        {
-        //            AddAnimation(ani);  
-        //        }  
-        //    }
-        //}
+        [DataMember]
+        public ObservableCollection<AnimationRigidBody> SerializableAnimations
+        {
+            get
+            {
+                var r = from a in Animations
+                        select a as AnimationRigidBody;
+                return new ObservableCollection<AnimationRigidBody>(r);
+            }
+            set
+            {
+                foreach (var ani in value)
+                {
+                    AddAnimation(ani);
+                }
+            }
+        }
         
 
         protected BitmapImage _bmp = null;
 
 
         protected GFXContainer _parent;
-        private double _blurEffectRadius = 0;
-        private Vector _centerOfMassAbs = new Vector(0, 0);
+        private double _blurEffectRadius ;
+        private Vector _centerOfMassAbs ;
         private Vector _size;
         private Vector _centerOfMass;
-        private Rect _deformation = new Rect(0,0,1,1);
-        private Vector _deformationPos  = new Vector(0, 0);  // position offset
-        private Vector _deformationSize = new Vector(0, 0);  // size offset
+        private Rect _deformation ;
+        private Vector _deformationPos ;  // position offset
+        private Vector _deformationSize ;  // size offset
 
         static public bool DrawShape = false; // draw outline
 
+        [DataMember]
         public string Name { get; set; }
+        
         public String TypeName
         {
             get { return this.GetType().Name; }
@@ -75,7 +85,7 @@ namespace SimpleGraphicsLib
         }
         
 
-        [XmlIgnore]
+        //[XmlIgnore]
         public BitmapImage Bmp
         {
             get { return _bmp; }
@@ -86,7 +96,7 @@ namespace SimpleGraphicsLib
             } 
         }
 
-        [XmlIgnore]
+        //[XmlIgnore]
         public BitmapImage BmpNullfree
         {
             get 
@@ -98,18 +108,26 @@ namespace SimpleGraphicsLib
             }
         }
 
+        [DataMember]
         public bool IsMovable { get; set; }
+
+        [DataMember]
         public bool IsObstacle { get; set; }
+
+        [DataMember]
         public Vector NormSpeed { get; set; }
 
-        private object _positionSync = new object();
+        private object _positionSync; // Semaphore
         private Vector _position;
+
+        [DataMember]
         public Vector Position
         {
             get { lock (_positionSync) return _position; }
             set { lock (_positionSync) _position = value; }
         }
 
+        [DataMember]
         public double ScrollScaling { get; set; }
 
         [XmlIgnore]
@@ -118,6 +136,7 @@ namespace SimpleGraphicsLib
             get { return new Rect(Position.X - _centerOfMassAbs.X, Position.Y - _centerOfMassAbs.Y, SizeV.X, SizeV.Y); }
         }
 
+        [DataMember]
         public Rect Deformation
         {
             get { return _deformation; }
@@ -130,14 +149,17 @@ namespace SimpleGraphicsLib
                                                        (_deformation.Height * SizeV.Y) - SizeV.Y );
             }
         }
-        
 
+        [DataMember]
         public double Weight { get; set; }
 
+        [DataMember]
         public double AirDrag { get; set; }
 
+        [DataMember]
         public double Angle { get; set; }
 
+        [DataMember]
         public virtual Vector SizeV 
         { 
             get { return _size; }
@@ -148,8 +170,10 @@ namespace SimpleGraphicsLib
             } 
         }
 
+        [DataMember]
         public virtual String ImagePath { get; set; }
 
+        [DataMember]
         public Vector CenterOfMass  // (0,0)..(1,1)
         {
             get { return _centerOfMass; } 
@@ -162,7 +186,7 @@ namespace SimpleGraphicsLib
             }
         }
 
-
+        [DataMember]
         public virtual double BlurEffectRadius {
             get { return _blurEffectRadius; }
             set 
@@ -206,6 +230,13 @@ namespace SimpleGraphicsLib
 
 #endregion
 
+        public static IEnumerable<Type> GetDerivedTypes()
+        {
+            var types = from t in Assembly.GetExecutingAssembly().GetTypes()
+                        where t.IsSubclassOf(typeof(SpriteObject))
+                        select t;
+            return types;
+        }
 
         public SpriteObject() : this("") { }
 
@@ -215,6 +246,7 @@ namespace SimpleGraphicsLib
             // https://msdn.microsoft.com/en-us/library/ms182331.aspx
             this.Name = name;
             ImagePath = "";
+            OnCreate();
             Position = NormSpeed = new Vector(0, 0);
             SizeV = new Vector(1, 1);
             CenterOfMass = new Vector(0.5, 0.5);
@@ -224,18 +256,39 @@ namespace SimpleGraphicsLib
             ScrollScaling = 1;
             IsMovable = false;
             IsObstacle = true;
+        }
+
+        [OnDeserializing]  
+        protected void OnDeserializing(StreamingContext context)
+        {
+            OnCreate();
+        }
+
+        protected void OnCreate()
+        {
+            _positionSync = new object();
+            _blurEffectRadius = 0;
+            _centerOfMassAbs = new Vector(0, 0);
+            _deformation = new Rect(0,0,1,1);
+            _deformationPos  = new Vector(0, 0);  // position offset
+            _deformationSize = new Vector(0, 0);  // size offset
             // Drawing Visuals erstellen
+            Animations = new ObservableCollection<IAnimationRigidBody>();
+            Visuals = new List<DrawingVisual>();
             DrawingVisual vis = new DrawingVisual();
             RenderOptions.SetBitmapScalingMode(vis, BitmapScalingMode.Fant);
             Visuals.Add(vis);
-
-            //Debug.WriteLine("=> Constructor von SpriteObject called !!!");
+            AddAnimation(new AnimationLinearTranslation(), "LinMove");
         }
 
         protected virtual void init ()   // bei setparent aufrufen?  artikel über virtual in ctor aufrufen lesen
         {
             RegisterDrawingVisual(Visuals[0]);
-            AddAnimation(new AnimationLinearTranslation(), "LinMove");
+            foreach (var animation in Animations)
+            {
+                // if animations are added before GFXContainer
+                animation.SetTimingSource(this.Parent);
+            }
         }
 
         protected void UnregisterAllVisuals ()
@@ -301,7 +354,9 @@ namespace SimpleGraphicsLib
                 Animations[i] = animation;
 
             animation.Sprite = this;
-            animation.SetTimingSource(this.Parent);
+
+            if (this.Parent != null)
+                animation.SetTimingSource(this.Parent);
         }
 
         public void RemoveAnimation(string animation)
@@ -385,6 +440,7 @@ namespace SimpleGraphicsLib
 
         public void  loadFromImagePath()
         {
+            if (ImagePath.Equals("")) return;
             try
             {
                 //Bmp = new BitmapImage(new Uri(@"file:///" + ImagePath));

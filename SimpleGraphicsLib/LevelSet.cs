@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -11,11 +13,16 @@ using System.Windows.Media.Imaging;
 
 namespace SimpleGraphicsLib
 {
+    [DataContract]
     public class LevelSet
     {
+        [DataMember]
         public SpriteObject Background = null;
+
+        [DataMember]
         public SpriteObject LevelBkg = null;
         //public List<SpriteObject> Sprites = new List<SpriteObject>();
+        [DataMember]
         public ObservableCollection<SpriteObject> Sprites = new ObservableCollection<SpriteObject>();
 
 
@@ -61,6 +68,29 @@ namespace SimpleGraphicsLib
             }
         }
 
+        public void SaveLevel()
+        {
+            //DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(LevelSet));
+            DataContractSerializer ser = new DataContractSerializer(typeof(LevelSet));
+
+            using (FileStream fs = new FileStream(@"data\Test.xml", FileMode.Create, FileAccess.Write))
+            {
+                ser.WriteObject(fs, this);
+            }
+        }
+
+        public static LevelSet LoadLevel()
+        {
+            LevelSet lvl = null;
+            //DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(LevelSet));
+            DataContractSerializer ser = new DataContractSerializer(typeof(LevelSet));
+
+            using (FileStream fs = new FileStream(@"data\Test.xml", FileMode.Open, FileAccess.Read))
+            {
+                lvl = ser.ReadObject(fs) as LevelSet;
+            }
+            return lvl;
+        }
 
     }
 }

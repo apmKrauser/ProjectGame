@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         GlowBrush="{DynamicResource AccentColorBrush}"    
         x:Class="ZweiachsMofa.GameDesigner"
-        Title="GameDesigner" Height="769" Width="1537.5" Loaded="Window_Loaded" Closing="MetroWindow_Closing">
+        Title="GameDesigner" Height="769" Width="1537.5" Loaded="Window_Loaded" Closing="MetroWindow_Closing_Async">
 
     <Grid x:Name="MainGrid"  Background ="#FF3E3E3E">
         <WrapPanel x:Name="GameWrapper" HorizontalAlignment="Left" Height="598" Margin="10,10,-593,-317" VerticalAlignment="Top" Width="1179">

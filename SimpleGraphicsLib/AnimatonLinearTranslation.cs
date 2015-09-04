@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace SimpleGraphicsLib
 {
+    [DataContract]
     public class AnimationLinearTranslation : AnimationRigidBody
     {
         //public IRigidBody Sprite { get; set; }

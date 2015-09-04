@@ -1,17 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace SimpleGraphicsLib
 {
+    [DataContract]
+    [KnownType("GetDerivedTypes")]
     public class AnimationRigidBody :  GFXAnimation, IAnimationRigidBody
     {
 
         public event Action<IAnimationRigidBody> OnDispose;
         private IRigidBody _sprite;
+
+        [DataMember]
         public string Name { get; set; }
 
 
@@ -54,5 +60,18 @@ namespace SimpleGraphicsLib
             SetTimingSource(_GFXContainer);
         }
 
+        public static IEnumerable<Type> GetDerivedTypes()
+        {
+            var types = from t in Assembly.GetExecutingAssembly().GetTypes()
+                        where t.IsSubclassOf(typeof(AnimationRigidBody))
+                        select t;
+            return types;
+        }
+
+        [OnDeserializing]
+        protected void OnDeserializing(StreamingContext context)
+        {
+            
+        }
     }
 }

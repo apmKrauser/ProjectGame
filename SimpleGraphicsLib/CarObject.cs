@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace SimpleGraphicsLib
 {
+    [DataContract]
     public class CarObject : SpriteObjectElastic, IHasSeperateAnimationEvent
     {
 
         public ParticleSystem<SmokeParticle, SmokeParticle.ParticleConfig> PSAuspuff;
 
-        private const int AuspuffMaxParticles = 70;
+        [DataMember]
+        public int AuspuffMaxParticles { get; set; }
+
+        [DataMember]
         private Vector _posAuspuff = new Vector(0,0);
+
         private Vector _posAuspuffPixel = new Vector(0,0);
 
         public Vector PosAuspuff
@@ -41,7 +47,13 @@ namespace SimpleGraphicsLib
 
         public CarObject(string name) : base(name) 
         {
-            PSAuspuff = new ParticleSystem<SmokeParticle, SmokeParticle.ParticleConfig>(0, AuspuffMaxParticles, false);
+            AuspuffMaxParticles = 70;
+        }
+
+        [OnDeserializing]
+        protected void OnDeserializing(StreamingContext context)
+        {
+            
         }
 
         protected override void init()   // bei setparent aufrufen?  artikel über virtual in ctor aufrufen lesen
@@ -51,6 +63,7 @@ namespace SimpleGraphicsLib
             //Visuals.Add(vis);
             //RegisterDrawingVisual(vis);
             //AddAnimation(new AnimationLinearTranslation(), "LinMove");
+            PSAuspuff = new ParticleSystem<SmokeParticle, SmokeParticle.ParticleConfig>(0, AuspuffMaxParticles, false);
             PosAuspuff = new Vector(-0.1, 0.5);
             PSAuspuff.Config.AverageLifetime = 3000; // ms
             PSAuspuff.GenerationRate = 15; // particles/sec
