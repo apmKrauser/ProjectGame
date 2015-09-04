@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace SimpleGraphicsLib
 {
@@ -16,6 +17,8 @@ namespace SimpleGraphicsLib
 
         [DataMember]
         public double WobbleSpeed { get; set; }
+
+
 
         [DataMember]
         public double WobbleAmplitude { get; set; }

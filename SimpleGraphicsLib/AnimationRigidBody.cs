@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
 
 namespace SimpleGraphicsLib
@@ -20,7 +21,7 @@ namespace SimpleGraphicsLib
         [DataMember]
         public string Name { get; set; }
 
-        public virtual string Symbol { get; private set; }
+        public virtual BitmapImage Symbol { get { return Properties.Resources.NoImage.ToBitmap().ToMediaBitmap(); } }
 
 
         [XmlIgnore]

@@ -35,7 +35,7 @@
                     <GridViewColumn Header="Symbol" Width="30" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Image Source="{Binding Symbol}"  HorizontalAlignment="Left"/>
+                                <Image Source="{Binding Symbol}"  Stretch="Uniform" StretchDirection="Both" HorizontalAlignment="Left"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -61,7 +61,7 @@
                     <GridViewColumn Header="Symbol" Width="30" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Image Source="{Binding Symbol}"  HorizontalAlignment="Left"/>
+                                <Image Source="{Binding Symbol}"  Stretch="Uniform" StretchDirection="Both" HorizontalAlignment="Left"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
