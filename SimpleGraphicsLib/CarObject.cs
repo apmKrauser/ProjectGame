@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace SimpleGraphicsLib
 {
@@ -19,15 +20,33 @@ namespace SimpleGraphicsLib
         public int AuspuffMaxParticles { get; set; }
 
         [DataMember]
+        public SmokeParticle.ParticleConfig AuspuffPSConfig;
+
         private Vector _posAuspuff = new Vector(0,0);
 
         private Vector _posAuspuffPixel = new Vector(0,0);
 
+        [DataMember]
         public Vector PosAuspuff
         {
             get { return _posAuspuff; }
             set { _posAuspuff = value; }
         }
+
+        private double _auspuffGenRate;
+
+        [DataMember]
+        public double AuspuffGenerationRate
+        {
+            get { return _auspuffGenRate; }
+            set 
+            { 
+                _auspuffGenRate = value;
+                if (PSAuspuff != null)
+                    PSAuspuff.GenerationRate = _auspuffGenRate;
+            }
+        }
+        
 
         public override GFXContainer Parent
         {
@@ -45,15 +64,39 @@ namespace SimpleGraphicsLib
         }
         public CarObject() : this("") { }
 
-        public CarObject(string name) : base(name) 
+        public CarObject(string name) : base(name)
         {
-            AuspuffMaxParticles = 70;
+               OnCreate();
         }
 
         [OnDeserializing]
         protected void OnDeserializing(StreamingContext context)
         {
-            
+            OnCreate();
+        }
+
+        private void OnCreate()
+        {
+            AuspuffMaxParticles = 70;
+            AuspuffGenerationRate = 15; // particles/sec
+            _posAuspuffPixel = new Vector(0,0);
+            PosAuspuff = new Vector(-0.1, 0.5);
+            // Provide an existing config object at deserialization
+            AuspuffPSConfig = new SmokeParticle.ParticleConfig();
+            AuspuffPSConfig.AverageLifetime = 3000; // ms
+            AuspuffPSConfig.GroupVelocity = new Vector(-100, -35);
+            AuspuffPSConfig.GroupSpread = 5; // isotropic speed
+            AuspuffPSConfig.AirDrag = 0.6;
+            AuspuffPSConfig.EmmissionArea = new Rect(0, 0, 30, 30);
+            AuspuffPSConfig.AppearanceSpread = 0.05;
+            AuspuffPSConfig.SubParticleSpread = 20;
+
+            AuspuffPSConfig.ColorFrom = Color.FromArgb(230, 30, 30, 30);
+            AuspuffPSConfig.ColorTo = Color.FromArgb(0, 108, 108, 108);
+            AuspuffPSConfig.RadiusFrom = 4;
+            AuspuffPSConfig.RadiusTo = 50;
+            AuspuffPSConfig.BlurFrom = 7;
+            AuspuffPSConfig.BlurTo = 20;
         }
 
         protected override void init()   // bei setparent aufrufen?  artikel über virtual in ctor aufrufen lesen
@@ -63,16 +106,9 @@ namespace SimpleGraphicsLib
             //Visuals.Add(vis);
             //RegisterDrawingVisual(vis);
             //AddAnimation(new AnimationLinearTranslation(), "LinMove");
-            PSAuspuff = new ParticleSystem<SmokeParticle, SmokeParticle.ParticleConfig>(0, AuspuffMaxParticles, false);
-            PosAuspuff = new Vector(-0.1, 0.5);
-            PSAuspuff.Config.AverageLifetime = 3000; // ms
-            PSAuspuff.GenerationRate = 15; // particles/sec
-            PSAuspuff.Config.GroupVelocity = new Vector(-100, -35);
-            PSAuspuff.Config.GroupSpread = 5; // isotropic speed
-            PSAuspuff.Config.AirDrag = 0.6;
-            PSAuspuff.Config.EmmissionArea = new Rect(0, 0, 1, 1);
-            PSAuspuff.Config.AppearanceSpread = 0.05;
-            PSAuspuff.Config.SubParticleSpread = 20;
+            PSAuspuff = new ParticleSystem<SmokeParticle, SmokeParticle.ParticleConfig>(0, AuspuffMaxParticles, false, AuspuffPSConfig);
+            PSAuspuff.GenerationRate = AuspuffGenerationRate; // particles/sec
+
             _parent.AddObject(PSAuspuff);
             //Ps2.Start();
             base.init();
@@ -82,7 +118,7 @@ namespace SimpleGraphicsLib
         {
             _posAuspuffPixel = new Vector(Shape.Width * _posAuspuff.X, Shape.Height * _posAuspuff.Y);
             _posAuspuffPixel += (Vector)Shape.Location;
-            PSAuspuff.Config.EmmissionArea = new Rect(_posAuspuffPixel.X, _posAuspuffPixel.Y, 30, 30);
+            PSAuspuff.Config.EmmissionArea = new Rect(_posAuspuffPixel.X, _posAuspuffPixel.Y, PSAuspuff.Config.EmmissionArea.Width, PSAuspuff.Config.EmmissionArea.Height);
         }
 
     }

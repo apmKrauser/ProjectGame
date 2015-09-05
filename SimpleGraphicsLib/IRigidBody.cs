@@ -62,6 +62,7 @@ namespace SimpleGraphicsLib
         }
 
         bool IsMovable { get; set; }
+        bool CanCollide { get; set; }
         bool IsObstacle { get; set; }
 
     }

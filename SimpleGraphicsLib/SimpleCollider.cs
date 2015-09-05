@@ -42,7 +42,7 @@ namespace SimpleGraphicsLib
                     {
                         Rect overlap = Rect.Intersect(rme,rother);
                         //Vector overlap = new Vector(rme.Width, rme.Height);
-                        if (other.IsObstacle)
+                        if (other.CanCollide)
                         {
                             ProcessCollision(me, other, overlap, rme, rother, e.ElapsedMilliseconds / 1000);
                         }

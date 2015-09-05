@@ -92,7 +92,7 @@ namespace ZweiachsMofa
             ThisLevel.Background.Name = "Background";
             ThisLevel.Background.CenterOfMass = new Vector(0, 0);
             ThisLevel.Background.IsMovable = false;
-            ThisLevel.Background.IsObstacle = false;
+            ThisLevel.Background.CanCollide = false;
             ThisLevel.selectImage(ThisLevel.Background);
             ThisLevel.Background.ZoomPreserveAspectRatio(height: GameWrapper.Height);
             MainGFX.AddObject(ThisLevel.Background);
@@ -108,7 +108,7 @@ namespace ZweiachsMofa
             ThisLevel.LevelBkg.Name = "LevelBkg";
             ThisLevel.LevelBkg.CenterOfMass = new Vector(0, 0);
             ThisLevel.LevelBkg.IsMovable = false;
-            ThisLevel.LevelBkg.IsObstacle = false;
+            ThisLevel.LevelBkg.CanCollide = false;
             ThisLevel.selectImage(ThisLevel.LevelBkg);
             ThisLevel.LevelBkg.ZoomPreserveAspectRatio(height: GameWrapper.Height);
             ThisLevel.Background.ScrollScaling = (ThisLevel.Background.SizeV.X - (GameWrapper.Width/2))/ ThisLevel.LevelBkg.SizeV.X;
@@ -183,7 +183,7 @@ namespace ZweiachsMofa
             sobj.Position =  new Vector(GameSlider.Value, 100);
             //sobj.CenterOfMass = new Vector(0, 0);
             sobj.IsMovable = false;
-            sobj.IsObstacle = false;
+            sobj.CanCollide = false;
             //ThisLevel.selectImage(sobj);
             ThisLevel.Sprites.Add(sobj);
             MainGFX.AddObject(sobj);

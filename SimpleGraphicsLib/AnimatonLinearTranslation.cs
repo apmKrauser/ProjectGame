@@ -14,6 +14,14 @@ namespace SimpleGraphicsLib
         //public IRigidBody Sprite { get; set; }
 
         //public event Action<IAnimatonRigidBody> OnDispose;
+
+        public override System.Windows.Media.Imaging.BitmapImage Symbol
+        {
+            get
+            {
+                return Properties.Resources.locked.ToMediaBitmap();
+            }
+        }
         public AnimationLinearTranslation(IRigidBody _sprite) : base(_sprite) {}
 
         public AnimationLinearTranslation()  {}
@@ -28,7 +36,7 @@ namespace SimpleGraphicsLib
                 if (ESprite != null)
                     ESprite.Deformation = new Rect(0, 0, 1, 1);
                 // check collisions first
-                if (Sprite.IsObstacle)
+                if (Sprite.CanCollide)
                     (Sprite as IGFXObject).Parent.Collider.Check(Sprite, e);
                 // speed threshold in order to avoid oscillations
                 nSpeed.X = (Math.Abs(Sprite.NormSpeed.X) < 0.1) ? 0 : Sprite.NormSpeed.X;

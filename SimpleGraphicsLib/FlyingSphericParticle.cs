@@ -55,8 +55,9 @@ namespace SimpleGraphicsLib
             set { lock (_positionSync) _position = value; }
         }
 
-        public bool IsObstacle { get; set; }
+        public bool CanCollide { get; set; }
         public bool IsMovable { get; set; }
+        public bool IsObstacle { get; set; }
 
         public double Weight { get; set; }
 
@@ -108,6 +109,7 @@ namespace SimpleGraphicsLib
         public FlyingSphericParticle()
         {
             IsMovable = true;
+            CanCollide = false;
             IsObstacle = false;
             BlurEffect myBlurEffect = new BlurEffect();
             myBlurEffect.Radius = BlurEffectRadius;
@@ -128,6 +130,7 @@ namespace SimpleGraphicsLib
             _config.BlurTo = 30;
             _config.AppearanceSpread = 0.2;
         }
+
 
         public override void init(GFXParticle.ParticleConfig _cfg)
         {

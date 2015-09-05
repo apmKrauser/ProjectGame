@@ -58,11 +58,17 @@ namespace SimpleGraphicsLib
         protected T _configParticle = new T();
         protected double MillisSinceLastEmmission = 0;
 
-        
+
         public ParticleSystem(int initialParticleCount, int maxParticleCount, bool growDynamically)
+            : this(initialParticleCount, maxParticleCount, growDynamically, null)
+        { }
+
+        public ParticleSystem(int initialParticleCount, int maxParticleCount, bool growDynamically, TConf particleConf)
         {
-            _configParticle.init();
-            
+            if (particleConf != null)
+                _configParticle.init(particleConf as GFXParticle.ParticleConfig);
+            else
+                _configParticle.init();
             //Debug.WriteLine("Mist");
             //var grrr = (_configParticle as T).BaseConfig;
             //var grrr3 = (_configParticle.BaseConfig as TConf);
@@ -75,7 +81,7 @@ namespace SimpleGraphicsLib
         protected void init()
         {
             if (GrowDynamically)
-                GenerateNewParticles((int)(MaxParticles / 32));
+                GenerateNewParticles((int)(MaxParticles / 32) + 1);
             else
                 GenerateNewParticles(MaxParticles);
         }

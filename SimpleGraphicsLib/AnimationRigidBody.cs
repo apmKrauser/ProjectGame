@@ -21,7 +21,13 @@ namespace SimpleGraphicsLib
         [DataMember]
         public string Name { get; set; }
 
-        public virtual BitmapImage Symbol { get { return Properties.Resources.NoImage.ToBitmap().ToMediaBitmap(); } }
+        public virtual BitmapImage Symbol 
+        {
+            get
+            {
+                return Properties.Resources.movie.ToMediaBitmap();
+            }
+        }
 
 
         [XmlIgnore]

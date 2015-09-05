@@ -11,13 +11,21 @@ namespace SimpleGraphicsLib
     public class GFXParticle : IDisposable//, IParticleConfigurable
     {
 
-        public class ParticleConfig : IParticleConfigurable
+        public class ParticleConfig : IParticleConfigurable, IPropertyInspectable
         {
             public double AverageLifetime { get; set; }
             public double LifetimeSpread { get; set; } // % of max life time
             public Rect EmmissionArea { get; set; }
             public Vector GroupVelocity { get; set; }
             public double GroupSpread { get; set; }
+
+            public string Name { get; set;}
+
+            public string TypeName
+            {
+                get { return this.GetType().Name; }
+                set {}
+            }
         }
 
 

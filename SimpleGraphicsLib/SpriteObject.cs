@@ -115,6 +115,9 @@ namespace SimpleGraphicsLib
         public bool IsMovable { get; set; }
 
         [DataMember]
+        public bool CanCollide { get; set; }
+
+        [DataMember]
         public bool IsObstacle { get; set; }
 
         [DataMember]
@@ -258,7 +261,7 @@ namespace SimpleGraphicsLib
             BlurEffectRadius = 0;
             ScrollScaling = 1;
             IsMovable = false;
-            IsObstacle = true;
+            CanCollide = true;
         }
 
         [OnDeserializing]  
@@ -282,7 +285,6 @@ namespace SimpleGraphicsLib
             RenderOptions.SetBitmapScalingMode(vis, BitmapScalingMode.Fant);
             Visuals.Add(vis);
             AddAnimation(new AnimationLinearTranslation(), "LinMove");
-            AddAnimation(new AnimationConstAcceleration(), "Acellerator");  // todo: delme
         }
 
         protected virtual void init ()   // bei setparent aufrufen?  artikel über virtual in ctor aufrufen lesen

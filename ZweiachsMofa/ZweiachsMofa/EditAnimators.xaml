@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:ZweiachsMofa"
         WindowStartupLocation="CenterScreen"
         GlowBrush="{DynamicResource AccentColorBrush}"                         
-        Title="EditAnimators" Height="394" Width="716">
+        Title="EditAnimators" Height="343.6" Width="536.8">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

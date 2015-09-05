@@ -72,6 +72,8 @@ namespace ZweiachsMofa
         }
 
         public bool IsMovable { get; set; }
+        public bool CanCollide { get; set; }
+
         public bool IsObstacle { get; set; }
     }
 }
