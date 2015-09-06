@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 
 namespace SimpleGraphicsLib
@@ -37,6 +38,7 @@ namespace SimpleGraphicsLib
                 return path;
             }
         }
+
 
         public static IEnumerable<Type> GetDerivedTypes(this Type baseType, Assembly assembly)
         {

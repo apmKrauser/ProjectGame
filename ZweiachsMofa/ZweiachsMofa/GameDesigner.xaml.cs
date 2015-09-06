@@ -38,6 +38,24 @@ namespace ZweiachsMofa
         ListViewDragDropManager<SpriteObject> dragMgr;
         //ListViewDragDropManager<SpriteObject> dragMgr2;
 
+        public double DesignWindowStartWidth
+        {
+            get
+            {
+                return SystemParameters.WorkArea.Width * 0.9;
+            }
+
+            set { }
+        }
+
+        public double DesignWindowStartHeight
+        {
+            get
+            {
+                return SystemParameters.WorkArea.Height * 0.9;
+            }
+        }
+
         public GameDesigner()
         {
             InitializeComponent();
@@ -70,6 +88,8 @@ namespace ZweiachsMofa
                               select typ;
             dbNewObj.ItemsSource = GameObjects;
             dbNewObj.SelectedIndex = 0;
+
+            SpriteObject.AnimatedByDefault = false;
         }
 
 
@@ -208,8 +228,26 @@ namespace ZweiachsMofa
 
         private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-
-            GameSlider.Value =  (lstSprites.SelectedItem as SpriteObject).Position.X;
+            SpriteObject obj = (lstSprites.SelectedItem as SpriteObject);
+            GameSlider.Value = obj.Position.X;
+            // Results in Errors due to selection changes !!!
+            //switch (Keyboard.Modifiers)
+            //{
+            //    case ModifierKeys.Alt:
+            //        break;
+            //    case ModifierKeys.Control:
+            //        obj.Animated = !obj.Animated;
+            //        break;
+            //    case ModifierKeys.None:
+            //        GameSlider.Value = obj.Position.X;
+            //        break;
+            //    case ModifierKeys.Shift:
+            //        break;
+            //    case ModifierKeys.Windows:
+            //        break;
+            //    default:
+            //        break;
+            //}
         }
 
         private void chkDrawShape_Checked(object sender, RoutedEventArgs e)
@@ -253,11 +291,18 @@ namespace ZweiachsMofa
             SpriteObject obj = (lstSprites.SelectedItem as SpriteObject);
             if (obj != null)
             {
-                if (e.Key == Key.Delete)
+                switch (e.Key)
                 {
-                    ThisLevel.Sprites.Remove(obj);
-                    MainGFX.RemoveObject(obj);
-                    lstSprites.Items.Refresh();
+                    case Key.Delete:
+                        ThisLevel.Sprites.Remove(obj);
+                        MainGFX.RemoveObject(obj);
+                        lstSprites.Items.Refresh();
+                        break;
+                    case Key.Space:
+                        obj.Animated = !obj.Animated;
+                        break;
+                    default:
+                        break;
                 }
             }
         }
@@ -479,6 +524,11 @@ namespace ZweiachsMofa
             if (_shutdown)
                 this.Close();
                 //System.Windows.Application.Current.Shutdown();
+        }
+
+        private void MainGFX_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            object o = MainGFX.GetObjectXY((Point)e.GetPosition(MainGFX));
         }
 
 

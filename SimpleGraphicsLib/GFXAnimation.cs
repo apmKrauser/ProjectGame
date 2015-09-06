@@ -18,6 +18,8 @@ namespace SimpleGraphicsLib
         private TimingSource.Sources _timingSource = TimingSource.Sources.Manual;
         private GFXContainer GFXCont = null;
 
+        public bool IsActive { get; set; }
+
         public String TypeName
         {
             get { return this.GetType().Name; }
@@ -26,12 +28,14 @@ namespace SimpleGraphicsLib
 
         protected GFXAnimation()
         {
+            IsActive = true;
         }
 
         // tiggered by GFXContainer
         protected GFXAnimation(TimingSource.Sources _tsrc)
         {
             SetTimingSource(_tsrc);
+            IsActive = true;
         }
 
         protected GFXAnimation(GFXContainer _GFXContainer)
@@ -98,7 +102,22 @@ namespace SimpleGraphicsLib
 
         public virtual void Update(object sender, FrameUpdateEventArgs e)
         {
+            if (IsActive)
+                Update_Active(sender, e);
+        }
 
+        public virtual void Update_Active(object sender, FrameUpdateEventArgs e)
+        {
+
+        }
+
+        public virtual void Start()
+        {
+            IsActive = true;
+        }
+        public virtual void Stop()
+        {
+            IsActive = false;
         }
 
         public static void CalibratePixelSpeed()

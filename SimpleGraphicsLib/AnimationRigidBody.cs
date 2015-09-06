@@ -80,7 +80,7 @@ namespace SimpleGraphicsLib
         [OnDeserializing]
         protected void OnDeserializing(StreamingContext context)
         {
-            
+            IsActive = false;
         }
     }
 }

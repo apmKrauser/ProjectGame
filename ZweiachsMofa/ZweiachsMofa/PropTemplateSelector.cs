@@ -25,7 +25,7 @@ using System.Globalization;
 namespace ZweiachsMofa
 {
 
-    public class PropertyGridSet
+    public class PropertyGridItem
     {
         public String Type { get; set; }
         public String Name { get; set; }
@@ -108,7 +108,7 @@ namespace ZweiachsMofa
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
-            PropertyGridSet propgs = (item as PropertyGridSet);
+            PropertyGridItem propgs = (item as PropertyGridItem);
             object value = null;
             if (propgs != null)
                 value = propgs.ValueObj;

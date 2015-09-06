@@ -262,5 +262,21 @@ namespace SimpleGraphicsLib
         }
 
 
+
+        public object GetObjectXY(Point _point)
+        {
+            HitTestResult ht = VisualTreeHelper.HitTest(this, _point);
+            string str = "null";
+            if (ht != null)
+            {
+                var dv = (ht.VisualHit as DrawingVisual);
+
+                str = dv == null ? "null" : "IDX[" + Visuals.IndexOf(dv) + "] : " + dv.ToString() + " > ";
+                //String str = ht == null ? "null" : (ht as DrawingVisual).ToString();
+                //str += (ht as GeometryHitTestResult).IntersectionDetail.ToString();
+                Debug.WriteLine("############## " + str);
+            }
+            return new object();
+        }
     }
 }

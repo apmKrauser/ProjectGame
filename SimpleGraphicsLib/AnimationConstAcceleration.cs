@@ -23,7 +23,7 @@ namespace SimpleGraphicsLib
             this.Acceleration = Acceleration;
         }
 
-        public override void Update(object sender, FrameUpdateEventArgs e)
+        public override void Update_Active(object sender, FrameUpdateEventArgs e)
         {
             Vector dpos = Acceleration * (e.ElapsedMilliseconds / 1000);
             Sprite.NormSpeed += dpos;

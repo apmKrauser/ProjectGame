@@ -20,7 +20,7 @@ namespace SimpleGraphicsLib
 {
     [DataContract]
     [KnownType("GetDerivedTypes")]
-    public class SpriteObject : IGFXObject, IRigidBody, IAnimationOnDispose, IPropertyInspectable
+    public class SpriteObject : IGFXObject, IRigidBody, IAnimationOnDispose, IPropertyInspectable, IHasSeperateAnimationEvent
     {
 
         #region FieldsProperties
@@ -77,6 +77,7 @@ namespace SimpleGraphicsLib
         private Vector _deformationSize ;  // size offset
 
         static public bool DrawShape = false; // draw outline
+        static public bool AnimatedByDefault = true; // start animations by default
 
         [DataMember]
         public string Name { get; set; }
@@ -85,6 +86,21 @@ namespace SimpleGraphicsLib
         {
             get { return this.GetType().Name; }
             set { } // empty setter in order to show up in property inspector
+        }
+
+        private bool _animated;
+
+        public bool Animated
+        {
+            get { return _animated; }
+            set 
+            { 
+                _animated = value;
+                foreach (var animation in Animations)
+                {
+                    animation.IsActive = _animated;
+                }
+            }
         }
         
 
@@ -272,6 +288,7 @@ namespace SimpleGraphicsLib
 
         protected void OnCreate()
         {
+            _animated = AnimatedByDefault;
             _positionSync = new object();
             _blurEffectRadius = 0;
             _centerOfMassAbs = new Vector(0, 0);
@@ -365,9 +382,10 @@ namespace SimpleGraphicsLib
                 Animations[i] = animation;
 
             animation.Sprite = this;
-
-            if (this.Parent != null)
-                animation.SetTimingSource(this.Parent);
+            animation.SetTimingSource(TimingSource.Sources.Manual);
+            animation.IsActive = Animated;
+            //if (this.Parent != null)
+            //    animation.SetTimingSource(this.Parent);
         }
 
         public void RemoveAnimation(string animation)
@@ -422,18 +440,14 @@ namespace SimpleGraphicsLib
                 if (DrawShape)
                     dc.DrawRectangle(null, new Pen(Brushes.Black, 2), rectangle: new Rect(Shape.Location + (_parent.DrawingOffset * ScrollScaling), Shape.Size));
             }
-            //BlurBitmapEffect myBlurEffectObsolete = new BlurBitmapEffect();  // obsolete check new!!
-                //visual.BitmapEffect = myBlurEffectObsolete;
-                //if (BlurEffectRadius > 0)
-                //{
-                //    BlurEffect myBlurEffect = new BlurEffect();
-                //    myBlurEffect.Radius = BlurEffectRadius;
-                //    vis.Effect = myBlurEffect;
-                //}
-                //else
-                //{
-                //    vis.Effect = null;
-                //}
+        }
+
+        public void Animation_Update(object sender, FrameUpdateEventArgs e)
+        {
+            foreach (var animation in Animations)
+            {
+                animation.Update(this, e);
+            }
         }
 
 
@@ -472,6 +486,7 @@ namespace SimpleGraphicsLib
             loadFromImagePath();
             SizeV = tmp;
         }
+
 
     }
 }

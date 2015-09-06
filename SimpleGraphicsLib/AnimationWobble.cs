@@ -38,7 +38,7 @@ namespace SimpleGraphicsLib
             sinex = 0;
         }
 
-        public override void Update(object sender, FrameUpdateEventArgs e)
+        public override void Update_Active(object sender, FrameUpdateEventArgs e)
         {
             //sinex += WobbleSpeed * e.ElapsedMilliseconds;
             sinex += WobbleSpeed * 10;

@@ -28,7 +28,7 @@ namespace ZweiachsMofa
         IPropertyInspectable GObj;
 
 //        public ObservableCollection<PropertyGridSet> PList = new ObservableCollection<PropertyGridSet>();
-        public List<PropertyGridSet> PList = new List<PropertyGridSet>();
+        public List<PropertyGridItem> PList = new List<PropertyGridItem>();
         //public BindingList<PropertyGridSet> PList = new BindingList<PropertyGridSet>();
 
         public PropertyInspect()
@@ -73,17 +73,17 @@ namespace ZweiachsMofa
                    (v is Vector))
                     && item.CanWrite)
                 {
-                    PList.Add(new PropertyGridSet { Name = item.Name, Type = t.ToString(), ValueObj = v });
+                    PList.Add(new PropertyGridItem { Name = item.Name, Type = t.ToString(), ValueObj = v });
                 }
             }
 
         }
 
-        private void UpdateProperty(PropertyGridSet propSet)
+        private void UpdateProperty(PropertyGridItem propItem)
         {
             var typ = GObj.GetType();
-            var prop = typ.GetProperty(propSet.Name);
-            prop.SetValue(GObj, propSet.ValueObj);
+            var prop = typ.GetProperty(propItem.Name);
+            prop.SetValue(GObj, propItem.ValueObj);
         }
 
         private void PropertyGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
@@ -96,7 +96,7 @@ namespace ZweiachsMofa
             //System.Windows.Forms.MessageBox.Show("lost");
             try
             {
-                PropertyGridSet item = PropertyGrid.SelectedItem as PropertyGridSet;
+                PropertyGridItem item = PropertyGrid.SelectedItem as PropertyGridItem;
                 if (sender is TextBox)
                 {
                     string txt = (sender as TextBox).Text;

@@ -19,7 +19,7 @@ namespace SimpleGraphicsLib
         public AnimationAirDrag(IRigidBody _sprite) : base(_sprite) {}
 
 
-        public override void Update(object sender, FrameUpdateEventArgs e)
+        public override void Update_Active(object sender, FrameUpdateEventArgs e)
         {
             if (Sprite.IsMovable)
             {
