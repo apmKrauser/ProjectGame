@@ -116,6 +116,7 @@ namespace ZweiachsMofa
             ThisLevel.selectImage(ThisLevel.Background);
             ThisLevel.Background.ZoomPreserveAspectRatio(height: GameWrapper.Height);
             MainGFX.AddObject(ThisLevel.Background);
+            MainGFX.Width = ThisLevel.Background.SizeV.X;
             // todo: eigentlich in setlvlbackg
             //MainGFX.Width = thisLevel.Background.SizeV.X;
            // MainGFX.Height = 500;
@@ -202,7 +203,7 @@ namespace ZweiachsMofa
             sobj.Name = txtSpriteName.Text;
             sobj.Position =  new Vector(GameSlider.Value, 100);
             //sobj.CenterOfMass = new Vector(0, 0);
-            sobj.IsMovable = false;
+            sobj.IsMovable = true;
             sobj.CanCollide = false;
             //ThisLevel.selectImage(sobj);
             ThisLevel.Sprites.Add(sobj);
@@ -291,6 +292,7 @@ namespace ZweiachsMofa
             SpriteObject obj = (lstSprites.SelectedItem as SpriteObject);
             if (obj != null)
             {
+                // Space not possible
                 switch (e.Key)
                 {
                     case Key.Delete:
@@ -298,8 +300,9 @@ namespace ZweiachsMofa
                         MainGFX.RemoveObject(obj);
                         lstSprites.Items.Refresh();
                         break;
-                    case Key.Space:
+                    case Key.Enter:
                         obj.Animated = !obj.Animated;
+                        lstSprites.Items.Refresh();
                         break;
                     default:
                         break;

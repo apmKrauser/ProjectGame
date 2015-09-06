@@ -28,7 +28,7 @@
             <local:GameWindowSlider x:Name="GameSlider" Minimum="0" Maximum="{Binding Width, ElementName=MainGFX}" HorizontalAlignment="Left" Margin="10,619,0,0" VerticalAlignment="Top" Height="25" Width="1179" ValueChanged="GameSlider_ValueChanged" MouseUp="GameSlider_MouseUp"/>
             <Button x:Name="cmdSaveLevel" Content="Save as XML" HorizontalAlignment="Left" Margin="667,668,0,0" VerticalAlignment="Top" Width="145" Height="32" Click="cmdSaveLevel_Click" Background="#FF878787"/>
             <Button x:Name="cmdLoadLevel" Content="Load XML" HorizontalAlignment="Left" Margin="835,668,0,0" VerticalAlignment="Top" Width="145" Height="32" Click="cmdLoadLevel_Click" Background="#FF878787"/>
-            <ListView  x:Name="lstSprites" BorderThickness="0"  HorizontalAlignment="Left" Height="288" Margin="1230,155,0,0" VerticalAlignment="Top" Width="272" KeyDown="lstSprites_KeyDown"  MouseDoubleClick="lstSprites_MouseDoubleClick"  DragEnter="lstSprites_DragEnter" Drop="lstSprites_Drop" >
+            <ListView  x:Name="lstSprites" BorderThickness="0" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="288" Margin="1230,155,0,0" VerticalAlignment="Top" Width="272" KeyDown="lstSprites_KeyDown"  MouseDoubleClick="lstSprites_MouseDoubleClick"  DragEnter="lstSprites_DragEnter" Drop="lstSprites_Drop" >
                 <ListView.Resources>
                     <Style TargetType="{x:Type GridViewColumnHeader}">
                         <Setter Property="Visibility" Value="Collapsed" />
@@ -57,7 +57,15 @@
                         <GridViewColumn Header="Name" Width="200" >
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Name}" MouseRightButtonDown="TextBlock_MouseRightButtonDown" HorizontalAlignment="Left"/>
+                                    <TextBlock Text="{Binding Name}" x:Name="txtSpriteName" MouseRightButtonDown="TextBlock_MouseRightButtonDown" HorizontalAlignment="Left"/>
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding Path=Animated}" Value="True">
+                                            <Setter Property="Foreground" TargetName="txtSpriteName" Value="Tomato" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Path=Animated}" Value="False">
+                                            <Setter Property="Foreground" TargetName="txtSpriteName" Value="White" />
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

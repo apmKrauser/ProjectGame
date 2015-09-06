@@ -269,7 +269,8 @@ namespace SimpleGraphicsLib
             this.Name = name;
             ImagePath = "";
             OnCreate();
-            Position = NormSpeed = new Vector(0, 0);
+            Position =  new Vector(0, 0);
+            NormSpeed = new Vector(0, 0);
             SizeV = new Vector(1, 1);
             CenterOfMass = new Vector(0.5, 0.5);
             Weight = 1;
