@@ -20,7 +20,23 @@ namespace SimpleGraphicsLib
         public int AuspuffMaxParticles { get; set; }
 
         [DataMember]
-        public SmokeParticle.ParticleConfig AuspuffPSConfig;
+        public SmokeParticle.ParticleConfig AuspuffPSConfig { get; set; }
+
+
+        public override bool Animated
+        {
+            get
+            {
+                return base.Animated;
+            }
+            set
+            {
+                base.Animated = value;
+                if (PSAuspuff != null)
+                    PSAuspuff.IsActive = Animated;
+            }
+        }
+
 
         private Vector _posAuspuff = new Vector(0,0);
 
@@ -77,6 +93,10 @@ namespace SimpleGraphicsLib
 
         private void OnCreate()
         {
+            //Animated = AnimatedByDefault;
+            IsDeformable = true;
+            CanCollide = true;
+            IsObstacle = true;
             AuspuffMaxParticles = 70;
             AuspuffGenerationRate = 15; // particles/sec
             _posAuspuffPixel = new Vector(0,0);
@@ -97,6 +117,7 @@ namespace SimpleGraphicsLib
             AuspuffPSConfig.RadiusTo = 50;
             AuspuffPSConfig.BlurFrom = 7;
             AuspuffPSConfig.BlurTo = 20;
+            AddAnimation(new AnimationWobble(1, 0.005), "Wobble");
         }
 
         protected override void init()   // bei setparent aufrufen?  artikel über virtual in ctor aufrufen lesen
@@ -107,6 +128,7 @@ namespace SimpleGraphicsLib
             //RegisterDrawingVisual(vis);
             //AddAnimation(new AnimationLinearTranslation(), "LinMove");
             PSAuspuff = new ParticleSystem<SmokeParticle, SmokeParticle.ParticleConfig>(0, AuspuffMaxParticles, false, AuspuffPSConfig);
+            PSAuspuff.IsActive = Animated;
             PSAuspuff.GenerationRate = AuspuffGenerationRate; // particles/sec
 
             _parent.AddObject(PSAuspuff);
@@ -114,8 +136,18 @@ namespace SimpleGraphicsLib
             base.init();
         }
 
-        public virtual void Animation_Update(object sender, FrameUpdateEventArgs e)
+        protected override void DrawShapeAndMarkers(DrawingContext dc)
         {
+            dc.DrawRectangle(null, new Pen(Brushes.Black, 2), rectangle: new Rect(Shape.Location + (_parent.DrawingOffset * ScrollScaling), Shape.Size));
+            dc.DrawEllipse(null, new Pen(Brushes.Red, 2), (Point)(Position + (_parent.DrawingOffset * ScrollScaling)), 5, 5);
+            _posAuspuffPixel = new Vector(Shape.Width * _posAuspuff.X, Shape.Height * _posAuspuff.Y);
+            _posAuspuffPixel += (Vector)Shape.Location;
+            dc.DrawRectangle(null, new Pen(Brushes.Green, 2), new Rect((Point)(_posAuspuffPixel + (_parent.DrawingOffset * ScrollScaling)), AuspuffPSConfig.EmmissionArea.Size));
+        }
+
+        public override void Animation_Update(object sender, FrameUpdateEventArgs e)
+        {
+            base.Animation_Update(sender, e);
             _posAuspuffPixel = new Vector(Shape.Width * _posAuspuff.X, Shape.Height * _posAuspuff.Y);
             _posAuspuffPixel += (Vector)Shape.Location;
             PSAuspuff.Config.EmmissionArea = new Rect(_posAuspuffPixel.X, _posAuspuffPixel.Y, PSAuspuff.Config.EmmissionArea.Width, PSAuspuff.Config.EmmissionArea.Height);

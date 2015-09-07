@@ -31,6 +31,17 @@ namespace ZweiachsMofa
         public List<PropertyGridItem> PList = new List<PropertyGridItem>();
         //public BindingList<PropertyGridSet> PList = new BindingList<PropertyGridSet>();
 
+
+        public Visibility ShowEditAnimators
+        {
+            get 
+            { 
+                return (GObj is SpriteObject) ? Visibility.Visible : Visibility.Hidden ; 
+            }
+            set { }
+        }
+        
+
         public PropertyInspect()
         {
             InitializeComponent();
@@ -70,7 +81,9 @@ namespace ZweiachsMofa
                    (v is Double) ||
                    (v is int) ||
                    (v is bool) ||
-                   (v is Vector))
+                   (v is Key) ||
+                   (v is Vector)) ||
+                   (v is IPropertyInspectable)
                     && item.CanWrite)
                 {
                     PList.Add(new PropertyGridItem { Name = item.Name, Type = t.ToString(), ValueObj = v });
@@ -107,6 +120,11 @@ namespace ZweiachsMofa
                     var b = sender as CheckBox;
                     item.SetValue(b.IsChecked);
                 }
+                else if (sender is ComboBox)
+                {
+                    var b = sender as ComboBox;
+                    item.SetValue(b.SelectedValue);
+                }
                 UpdateProperty(item);
             }
             catch (Exception ex)
@@ -117,6 +135,16 @@ namespace ZweiachsMofa
             {
                 PropertyGrid.Items.Refresh();
             }
+        }
+
+        private void cmdViewSubObject_Click(object sender, RoutedEventArgs e)
+        {
+            PropertyGridItem propItem = PropertyGrid.SelectedItem as PropertyGridItem;
+            if (propItem == null) return;
+            IPropertyInspectable item = propItem.ValueObj as IPropertyInspectable;
+            if (item == null) return;
+            PropertyInspect pi = new PropertyInspect(item);
+            pi.Show();
         }
 
 

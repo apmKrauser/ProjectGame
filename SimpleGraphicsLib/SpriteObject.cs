@@ -35,6 +35,8 @@ namespace SimpleGraphicsLib
         //    remove { throw new NotImplementedException(); }
         //}
 
+       
+
         protected List<DrawingVisual> Visuals = new List<DrawingVisual>();
         //protected List<GFXAnimation> Animations = new List<GFXAnimation>();
 
@@ -90,7 +92,7 @@ namespace SimpleGraphicsLib
 
         private bool _animated;
 
-        public bool Animated
+        public virtual bool Animated
         {
             get { return _animated; }
             set 
@@ -287,7 +289,7 @@ namespace SimpleGraphicsLib
             OnCreate();
         }
 
-        protected void OnCreate()
+        private void OnCreate()
         {
             _animated = AnimatedByDefault;
             _positionSync = new object();
@@ -375,7 +377,7 @@ namespace SimpleGraphicsLib
         public void AddAnimation(IAnimationRigidBody animation, string name = null)
         {
             if (name != null) animation.Name = name;
-            if ((animation.Name ?? "").Equals("")) animation.Name = animation.GetType().Name + "::" + animation.GetHashCode().ToString();
+            if ((animation.Name ?? "").Equals("")) animation.Name = "Ani" + "::" + animation.GetHashCode().ToString();
             int i = Animations.IndexOf(animation);
             if (i < 0)
                 Animations.Add(animation);
@@ -439,11 +441,19 @@ namespace SimpleGraphicsLib
                     dc.Pop();
                 }
                 if (DrawShape)
-                    dc.DrawRectangle(null, new Pen(Brushes.Black, 2), rectangle: new Rect(Shape.Location + (_parent.DrawingOffset * ScrollScaling), Shape.Size));
+                {
+                    DrawShapeAndMarkers(dc);
+                }
             }
         }
 
-        public void Animation_Update(object sender, FrameUpdateEventArgs e)
+        protected virtual void DrawShapeAndMarkers (DrawingContext dc)
+        {
+            dc.DrawRectangle(null, new Pen(Brushes.Black, 2), rectangle: new Rect(Shape.Location + (_parent.DrawingOffset * ScrollScaling), Shape.Size));
+            dc.DrawEllipse(null, new Pen(Brushes.Red, 2), (Point)(Position + (_parent.DrawingOffset * ScrollScaling)), 5, 5);
+        }
+
+        public virtual void Animation_Update(object sender, FrameUpdateEventArgs e)
         {
             foreach (var animation in Animations)
             {

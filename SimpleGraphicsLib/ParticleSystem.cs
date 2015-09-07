@@ -25,6 +25,8 @@ namespace SimpleGraphicsLib
 
         public double GenerationRate { get; set; }
         public string Name { get; set; }
+
+        public bool IsActive { get; set; }
         
 
         public TConf Config
@@ -80,6 +82,7 @@ namespace SimpleGraphicsLib
 
         protected void init()
         {
+            IsActive = false;
             if (GrowDynamically)
                 GenerateNewParticles((int)(MaxParticles / 32) + 1);
             else
@@ -100,10 +103,14 @@ namespace SimpleGraphicsLib
         }
 
         public void Start()
-        { }
+        {
+            IsActive = true;
+        }
 
         public void Stop()
-        { }
+        {
+            IsActive = false;
+        }
 
         public void SpawnParticle()
         {
@@ -129,20 +136,23 @@ namespace SimpleGraphicsLib
 
         public virtual void Animation_Update(object sender, FrameUpdateEventArgs e)
         {
-            MillisSinceLastEmmission += e.ElapsedMilliseconds;
-            if (MillisSinceLastEmmission > (1000 / GenerationRate))
+            if (IsActive)
             {
-                int newparticles = (int)(MillisSinceLastEmmission / (1000 / GenerationRate));
-                //Debug.WriteLine("=> New Particles" + newparticles);
-                for (int i = 0; i < newparticles; i++)
+                MillisSinceLastEmmission += e.ElapsedMilliseconds;
+                if (MillisSinceLastEmmission > (1000 / GenerationRate))
                 {
-                    SpawnParticle();
+                    int newparticles = (int)(MillisSinceLastEmmission / (1000 / GenerationRate));
+                    //Debug.WriteLine("=> New Particles" + newparticles);
+                    for (int i = 0; i < newparticles; i++)
+                    {
+                        SpawnParticle();
+                    }
+                    MillisSinceLastEmmission = 0;
                 }
-                MillisSinceLastEmmission = 0;
-            }
-            foreach (var particle in Particles)
-            {
-                particle.Animation_Update(this, e);
+                foreach (var particle in Particles)
+                {
+                    particle.Animation_Update(this, e);
+                }
             }
         }
 

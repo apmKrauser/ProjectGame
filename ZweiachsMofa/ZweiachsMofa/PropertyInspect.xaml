@@ -1,16 +1,25 @@
-﻿<Controls:MetroWindow  x:Class="ZweiachsMofa.PropertyInspect"
+﻿<Controls:MetroWindow  x:Name="PropertyInspectWindow"
+        x:Class="ZweiachsMofa.PropertyInspect"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:sysinput="clr-namespace:System.Windows.Input;assembly=PresentationCore"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"                      
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"     
         xmlns:local="clr-namespace:ZweiachsMofa"
         WindowStartupLocation="CenterScreen"
         GlowBrush="{DynamicResource AccentColorBrush}"                      
         Title="PropertyInspect" Height="360" Width="396">
     <Window.Resources>
-
+        <ObjectDataProvider x:Key="EnumKeyValues"
+    MethodName="GetValues"
+    ObjectType="{x:Type sys:Enum}" >
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Key"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
         <!--Data Templates for GDataGrid :-->
         <DataTemplate x:Key="ObjectStaticTextTemplate">
             <TextBlock Text="{Binding ValueAsString}"  />
@@ -25,8 +34,17 @@
             <!--<TextBlock Text="{Binding Path=b ,  StringFormat={}\{0:F\}}" />-->
             <TextBox Text="{Binding ValueAsDouble}" BorderBrush="{Binding BorderBrush, ElementName=DGEditStyleTmpl}"  LostFocus="DGEditStyleTmpl_LostFocus"/>
         </DataTemplate>
+        <DataTemplate x:Key="ObjectIntTemplate">
+            <TextBox Text="{Binding ValueAsInteger}" BorderBrush="{Binding BorderBrush, ElementName=DGEditStyleTmpl}"  LostFocus="DGEditStyleTmpl_LostFocus"/>
+        </DataTemplate>        
+        <DataTemplate x:Key="ObjectKeyEnumTemplate">
+            <ComboBox ItemsSource="{Binding Source={StaticResource EnumKeyValues}}" SelectedValue="{Binding ValueAsKey}" />
+        </DataTemplate>        
         <DataTemplate x:Key="ObjectVectorTemplate">
             <TextBox Text="{Binding ValueAsVector}" BorderBrush="{Binding BorderBrush, ElementName=DGEditStyleTmpl}"  LostFocus="DGEditStyleTmpl_LostFocus"/>
+        </DataTemplate>
+        <DataTemplate x:Key="SubObjectTemplate">
+            <Button Name="cmdViewSubObject" Content="{Binding Name}" Click="cmdViewSubObject_Click"/>
         </DataTemplate>
     </Window.Resources>
 
@@ -47,7 +65,10 @@
                             ObjectTextTemplate="{StaticResource ObjectTextTemplate}"
                             ObjectBooleanTemplate="{StaticResource ObjectBooleanTemplate}" 
                             ObjectDoubleTemplate="{StaticResource ObjectDoubleTemplate}"
-                            ObjectVectorTemplate="{StaticResource ObjectVectorTemplate}" />
+                            ObjectIntTemplate="{StaticResource ObjectIntTemplate}"
+                            ObjectKeyEnumTemplate="{StaticResource ObjectKeyEnumTemplate}"
+                            ObjectVectorTemplate="{StaticResource ObjectVectorTemplate}" 
+                            SubObjectTemplate="{StaticResource SubObjectTemplate}" />
                         <!--<local:PropTemplateSelector />-->
                         <!--<DataTemplate>
                             <TextBlock Text="{Binding b}" />
@@ -63,8 +84,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Name="cmdEditAni"  Content="Edit Animators" HorizontalAlignment="Left" Margin="258,10,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click"/>
-        <CheckBox Name="chkPlayAni" Content="play animation" HorizontalAlignment="Left" Margin="83,13,0,0" VerticalAlignment="Top"/>
+        <Button Name="cmdEditAni"  Content="Edit Animators" Visibility="{Binding ShowEditAnimators, ElementName=PropertyInspectWindow}" HorizontalAlignment="Left" Margin="258,10,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click"/>
 
     </Grid>
 </Controls:MetroWindow>

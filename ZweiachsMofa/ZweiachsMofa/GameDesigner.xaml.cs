@@ -52,7 +52,9 @@ namespace ZweiachsMofa
         {
             get
             {
-                return SystemParameters.WorkArea.Height * 0.9;
+                double height = SystemParameters.WorkArea.Width / 1550 * 720;
+                height = Math.Min(height, SystemParameters.WorkArea.Height * 0.9);
+                return height;
             }
         }
 

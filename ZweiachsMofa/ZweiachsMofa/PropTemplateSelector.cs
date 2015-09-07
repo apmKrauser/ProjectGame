@@ -21,6 +21,7 @@ using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
+using SimpleGraphicsLib;
 
 namespace ZweiachsMofa
 {
@@ -66,7 +67,33 @@ namespace ZweiachsMofa
 
             set
             {
-                ValueObj = Double.Parse(value);
+                ValueObj = Double.Parse(value, CultureInfo.InvariantCulture);
+            }
+        }
+
+        public string ValueAsInteger
+        {
+            get
+            {
+                return ((int)ValueObj).ToString();
+            }
+
+            set
+            {
+                ValueObj = int.Parse(value);
+            }
+        }
+
+        public Enum ValueAsKey
+        {
+            get
+            {
+                return (Key)ValueObj;
+            }
+
+            set
+            {
+                ValueObj = (value);
             }
         }
 
@@ -74,7 +101,7 @@ namespace ZweiachsMofa
         {
             get
             {
-                return ((Vector)ValueObj).ToString(CultureInfo.InvariantCulture); 
+                return ((Vector)ValueObj).ToString(CultureInfo.InvariantCulture);
             }
 
             set
@@ -88,9 +115,13 @@ namespace ZweiachsMofa
             if (ValueObj is string)
                 ValueAsString = (string)value;
             else if (ValueObj is double)
-                ValueAsDouble = (string)value;
+                ValueAsDouble = ((string)value);
+            else if (ValueObj is int)
+                ValueAsInteger = (string)value;
             else if (ValueObj is bool)
                 ValueAsBool = (bool)value;
+            else if (ValueObj is Enum)
+                ValueAsKey = (Key)value;
             else if (ValueObj is Vector)
                 ValueAsVector = (string)value;
         }
@@ -102,8 +133,11 @@ namespace ZweiachsMofa
         public DataTemplate ObjectStaticTextTemplate { get; set; }
         public DataTemplate ObjectTextTemplate { get; set; }
         public DataTemplate ObjectDoubleTemplate { get; set; }
+        public DataTemplate ObjectIntTemplate { get; set; }
         public DataTemplate ObjectBooleanTemplate { get; set; }
+        public DataTemplate ObjectKeyEnumTemplate { get; set; }
         public DataTemplate ObjectVectorTemplate { get; set; }
+        public DataTemplate SubObjectTemplate { get; set; }
 
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
@@ -129,53 +163,65 @@ namespace ZweiachsMofa
             {
                 return ObjectDoubleTemplate;
             }
+            else if (value is int)
+            {
+                return ObjectIntTemplate;
+            }
+            else if (value is Enum)
+            {
+                return ObjectKeyEnumTemplate;
+            }
             else if (value is Vector)
             {
                 return ObjectVectorTemplate;
+            }
+            else if (value is IPropertyInspectable)
+            {
+                return SubObjectTemplate;
             }
             else
                 return base.SelectTemplate(item, container);
         }
     }
-    public interface ITest
-    { }
-    public class Test1 : ITest
-    {
-        public String _a = "ooo";
-        public bool _b = false;
+    //public interface ITest
+    //{ }
+    //public class Test1 : ITest
+    //{
+    //    public String _a = "ooo";
+    //    public bool _b = false;
 
 
-        public String a
-        {
-            get { return _a; }
-            set { _a = value; }
-        }
+    //    public String a
+    //    {
+    //        get { return _a; }
+    //        set { _a = value; }
+    //    }
 
-        public bool b
-        {
-            get { return _b; }
-            set { _b = value; }
-        }
-    }
+    //    public bool b
+    //    {
+    //        get { return _b; }
+    //        set { _b = value; }
+    //    }
+    //}
 
-    public class Test2 : ITest
-    {
-        private String _a = "Trööt";
+    //public class Test2 : ITest
+    //{
+    //    private String _a = "Trööt";
 
-        public String a
-        {
-            get { return _a; }
-            set { _a = value; }
-        }
+    //    public String a
+    //    {
+    //        get { return _a; }
+    //        set { _a = value; }
+    //    }
 
-        private int _b = 5;
+    //    private int _b = 5;
 
-        public int b
-        {
-            get { return _b; }
-            set { _b = value; }
-        }
+    //    public int b
+    //    {
+    //        get { return _b; }
+    //        set { _b = value; }
+    //    }
 
 
-    }
+    //}
 }
