@@ -36,7 +36,7 @@ namespace SimpleGraphicsLib
                 if (ESprite != null)
                     ESprite.Deformation = new Rect(0, 0, 1, 1);
                 // check collisions first
-                if (Sprite.CanCollide)
+                if (Sprite.IsObstacle)
                     (Sprite as IGFXObject).Parent.Collider.Check(Sprite, e);
                 // speed threshold in order to avoid oscillations
                 nSpeed.X = (Math.Abs(Sprite.NormSpeed.X) < 0.1) ? 0 : Sprite.NormSpeed.X;

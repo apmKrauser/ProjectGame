@@ -36,6 +36,8 @@ namespace ZweiachsMofa
             set;
         }
 
+        public bool IsGrounded { get; set; }
+
         public Vector CenterOfMass // relative 0 = Pos; 1 = Pos+Size also rotational center
         {
             get;
@@ -72,8 +74,8 @@ namespace ZweiachsMofa
         }
 
         public bool IsMovable { get; set; }
-        public bool CanCollide { get; set; }
-
         public bool IsObstacle { get; set; }
+
+        public bool CanCollide { get; set; }
     }
 }

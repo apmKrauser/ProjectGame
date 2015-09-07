@@ -114,7 +114,7 @@ namespace ZweiachsMofa
             ThisLevel.Background.Name = "Background";
             ThisLevel.Background.CenterOfMass = new Vector(0, 0);
             ThisLevel.Background.IsMovable = false;
-            ThisLevel.Background.CanCollide = false;
+            ThisLevel.Background.IsObstacle = false;
             ThisLevel.selectImage(ThisLevel.Background);
             ThisLevel.Background.ZoomPreserveAspectRatio(height: GameWrapper.Height);
             MainGFX.AddObject(ThisLevel.Background);
@@ -131,7 +131,7 @@ namespace ZweiachsMofa
             ThisLevel.LevelBkg.Name = "LevelBkg";
             ThisLevel.LevelBkg.CenterOfMass = new Vector(0, 0);
             ThisLevel.LevelBkg.IsMovable = false;
-            ThisLevel.LevelBkg.CanCollide = false;
+            ThisLevel.LevelBkg.IsObstacle = false;
             ThisLevel.selectImage(ThisLevel.LevelBkg);
             ThisLevel.LevelBkg.ZoomPreserveAspectRatio(height: GameWrapper.Height);
             ThisLevel.Background.ScrollScaling = (ThisLevel.Background.SizeV.X - (GameWrapper.Width/2))/ ThisLevel.LevelBkg.SizeV.X;
@@ -165,13 +165,18 @@ namespace ZweiachsMofa
         }
 
         private void cmdSaveLevel_Click(object sender, RoutedEventArgs e)
-        {         
-            ThisLevel.SaveLevel();
+        {
+            string filepath = Helper.SaveFile();
+            if (filepath == null) return;
+            ThisLevel.SaveLevel(filepath);
         }
 
         private void cmdLoadLevel_Click(object sender, RoutedEventArgs e)
         {
-            ThisLevel = LevelSet.LoadLevel();
+            string filepath = Helper.OpenFile();
+            if (filepath == null) return;
+            ThisLevel.ClearLevel(MainGFX);
+            ThisLevel = LevelSet.LoadLevel(filepath);
             ThisLevel.BuildLevel(MainGFX);
             lstSprites.ItemsSource = ThisLevel.Sprites;
             lstSprites.Items.Refresh();
@@ -195,7 +200,7 @@ namespace ZweiachsMofa
             sobj.Position =  new Vector(GameSlider.Value, 100);
             //sobj.CenterOfMass = new Vector(0, 0);
             sobj.IsMovable = true;
-            sobj.CanCollide = false;
+            sobj.IsObstacle = false;
             //ThisLevel.selectImage(sobj);
             ThisLevel.Sprites.Add(sobj);
             MainGFX.AddObject(sobj);
@@ -465,27 +470,10 @@ namespace ZweiachsMofa
 
         #endregion
 
-        private void cmdAddStaticCollider_Click(object sender, RoutedEventArgs e)
+        private void cmdRefreshCollider_Click(object sender, RoutedEventArgs e)
         {
-
-            Debug.WriteLine("=> dooooneeeeeeeeee= {0}" );
-            return;
-            Assembly assi = Assembly.GetAssembly(typeof(GFXContainer));
-            var AnimatorTypes = from typ in assi.GetTypes()
-                                where typeof(IAnimationRigidBody).IsAssignableFrom(typ) && !typ.IsInterface
-                                select typ;
-
-            var GameObjects = from typ in assi.GetTypes()
-                              where typeof(SpriteObject).IsAssignableFrom(typ) && !typ.IsInterface
-                              select typ;
-
-
-           // lstNewObj.ItemsSource = typs;
-            dbNewObj.ItemsSource = GameObjects;
-            dbNewObj.SelectedIndex = 0;
-            //lstNewObj.ItemsSource = GameObjects;
-
-            //System.Windows.Forms.MessageBox.Show("Test: " + assi.FullName);
+            ThisLevel.ClearCollider(MainGFX);
+            ThisLevel.InitializeCollider(MainGFX);
         }
 
         private async void MetroWindow_Closing_Async(object sender, System.ComponentModel.CancelEventArgs e)

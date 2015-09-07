@@ -68,6 +68,20 @@ namespace SimpleGraphicsLib
             }
         }
 
+        public void ClearCollider(GFXContainer maingfx)
+        {
+            maingfx.Collider.Clear();
+        }
+
+        public void InitializeCollider(GFXContainer maingfx)
+        {
+            foreach (var sprite in Sprites)
+            {
+                if (sprite.CanCollide)
+                    maingfx.Collider.AddObject(sprite); 
+            }
+        }
+
         public void BuildLevel (GFXContainer maingfx)
         {
             this.Background.loadFromImagePathPreserveObjectSize();
@@ -78,29 +92,38 @@ namespace SimpleGraphicsLib
             foreach (var sprite in this.Sprites)
             {
                 sprite.loadFromImagePathPreserveObjectSize();
-                //MainGFX.AddObject(sprite);
             }
             this.AddSpritesTo(maingfx);
+            this.InitializeCollider(maingfx);
         }
 
-        public void SaveLevel()
+
+        public void ClearLevel (GFXContainer maingfx)
+        {
+            maingfx.Collider.Clear();
+            RemoveSpritesFrom(maingfx);
+            maingfx.RemoveObject(Background);
+            maingfx.RemoveObject(LevelBkg);
+        }
+
+        public void SaveLevel(string filepath)
         {
             //DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(LevelSet));
             DataContractSerializer ser = new DataContractSerializer(typeof(LevelSet));
 
-            using (FileStream fs = new FileStream(@"data\Test.xml", FileMode.Create, FileAccess.Write))
+            using (FileStream fs = new FileStream(filepath, FileMode.Create, FileAccess.Write))
             {
                 ser.WriteObject(fs, this);
             }
         }
 
-        public static LevelSet LoadLevel()
+        public static LevelSet LoadLevel(string filepath)
         {
             LevelSet lvl = null;
             //DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(LevelSet));
             DataContractSerializer ser = new DataContractSerializer(typeof(LevelSet));
 
-            using (FileStream fs = new FileStream(@"data\Test.xml", FileMode.Open, FileAccess.Read))
+            using (FileStream fs = new FileStream(filepath, FileMode.Open, FileAccess.Read))
             {
                 lvl = ser.ReadObject(fs) as LevelSet;
             }

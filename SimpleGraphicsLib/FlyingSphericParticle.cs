@@ -55,13 +55,15 @@ namespace SimpleGraphicsLib
             set { lock (_positionSync) _position = value; }
         }
 
-        public bool CanCollide { get; set; }
-        public bool IsMovable { get; set; }
         public bool IsObstacle { get; set; }
+        public bool IsMovable { get; set; }
+        public bool CanCollide { get; set; }
 
         public double Weight { get; set; }
 
         public double Angle { get; set; }
+
+        public bool IsGrounded { get; set; }
 
         public virtual Vector SizeV { get; set; }
 
@@ -109,8 +111,8 @@ namespace SimpleGraphicsLib
         public FlyingSphericParticle()
         {
             IsMovable = true;
-            CanCollide = false;
             IsObstacle = false;
+            CanCollide = false;
             BlurEffect myBlurEffect = new BlurEffect();
             myBlurEffect.Radius = BlurEffectRadius;
             DVisual.Effect = myBlurEffect;
@@ -235,6 +237,6 @@ namespace SimpleGraphicsLib
         }
 
 
-    
+
     }
 }

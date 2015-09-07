@@ -170,13 +170,15 @@ namespace SimpleGraphicsLib
             if (name == null) name = obj.GetType().Name + "::" + obj.GetHashCode().ToString();
             if ((obj.Name ?? "").Equals(""))
                 obj.Name = name;
+            if (GFXObjects.IndexOfKey(obj.Name) >= 0)
+                obj.Name += "#" + obj.GetHashCode().ToString();
             GFXObjects.Add(obj.Name, obj);
             obj.RegisterDrawingVisual   += this.RegisterVisual_Callback;
             obj.UnregisterDrawingVisual += this.UnregisterVisual_Callback;
+            obj.Parent = this;
             this.UpdateFrame += obj.Frame_Update;
             if (obj is IHasSeperateAnimationEvent)
                 this.UpdateAnimation += (obj as IHasSeperateAnimationEvent).Animation_Update;
-            obj.Parent = this;
         }
 
         public IGFXObject RemoveObject(IGFXObject obj)

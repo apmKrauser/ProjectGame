@@ -144,18 +144,24 @@ namespace ZweiachsMofa
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            PropertyGridItem item = PropertyGrid.SelectedItem as PropertyGridItem;
-            if (item != null)
+            try
             {
-                if (sender is ComboBox)
+                PropertyGridItem item = PropertyGrid.SelectedItem as PropertyGridItem;
+                if (item != null)
                 {
-                    var b = sender as ComboBox;
-                    item.SetValue(b.SelectedValue);
-                    Debug.WriteLine("=> Selected = " + b.SelectedValue + ":" + b.SelectedValue.GetType().Name);
-                    Debug.WriteLine("=> Sett = " + item.ValueAsKey + ":" + item.ValueObj.GetType().Name);
+                    if (sender is ComboBox)
+                    {
+                        var b = sender as ComboBox;
+                        item.SetValue(b.SelectedValue);
+                       // Debug.WriteLine("=> Selected = " + b.SelectedValue + ":" + b.SelectedValue.GetType().Name);
+                      //  Debug.WriteLine("=> Sett = " + item.ValueAsKey + ":" + item.ValueObj.GetType().Name);
+                        UpdateProperty(item);
+                        //PropertyGrid.Items.Refresh();
+                    }
                 }
-                UpdateProperty(item);
             }
+            catch (Exception ex)
+            {            }           
         }
 
 

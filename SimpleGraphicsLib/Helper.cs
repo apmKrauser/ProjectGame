@@ -72,7 +72,8 @@ namespace SimpleGraphicsLib
             try
             {
                 OpenFileDialog dlgOpen = new OpenFileDialog();
-                dlgOpen.Filter = "json|*.json|*.*|*.*";
+                //dlgOpen.Filter = "json|*.json|*.*|*.*";
+                dlgOpen.Filter = "XML|*.xml|*.*|*.*";
                 if (dlgOpen.ShowDialog() == DialogResult.OK)
                 {
                     fullpath = dlgOpen.FileName;
@@ -85,6 +86,26 @@ namespace SimpleGraphicsLib
             return fullpath;
         }
 
+        public static String SaveFile()
+        {
+            String fullpath = null;
+            String relpath = "";
+            try
+            {
+                SaveFileDialog dlgOpen = new SaveFileDialog();
+                //dlgOpen.Filter = "json|*.json|*.*|*.*";
+                dlgOpen.Filter = "XML|*.xml|*.*|*.*";
+                if (dlgOpen.ShowDialog() == DialogResult.OK)
+                {
+                    fullpath = dlgOpen.FileName;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Error Opening File:\n" + ex.Message);
+            }
+            return fullpath;
+        }
 
     }
 }

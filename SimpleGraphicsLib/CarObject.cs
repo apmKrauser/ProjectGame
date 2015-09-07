@@ -62,6 +62,22 @@ namespace SimpleGraphicsLib
                     PSAuspuff.GenerationRate = _auspuffGenRate;
             }
         }
+
+        [DataMember]
+        public override bool FlipHorizontal
+        {
+            get
+            { return base.FlipHorizontal; }
+            set
+            {
+                if (value != FlipHorizontal)
+                {
+                    AuspuffPSConfig.GroupVelocity = new Vector(-AuspuffPSConfig.GroupVelocity.X, AuspuffPSConfig.GroupVelocity.Y);
+                    PosAuspuff = new Vector(1 - PosAuspuff.X, PosAuspuff.Y);
+                }
+                base.FlipHorizontal = value;
+            }
+        }
         
 
         public override GFXContainer Parent
@@ -95,8 +111,8 @@ namespace SimpleGraphicsLib
         {
             //Animated = AnimatedByDefault;
             IsDeformable = true;
-            CanCollide = true;
             IsObstacle = true;
+            CanCollide = true;
             AuspuffMaxParticles = 70;
             AuspuffGenerationRate = 15; // particles/sec
             _posAuspuffPixel = new Vector(0,0);

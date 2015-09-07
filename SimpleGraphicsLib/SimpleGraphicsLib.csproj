@@ -57,6 +57,7 @@
     <Compile Include="AnimKeyInput.cs" />
     <Compile Include="CarObject.cs" />
     <Compile Include="GameScroller.cs" />
+    <Compile Include="GroundObject.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="IAnimationOnDispose.cs" />
     <Compile Include="IAnimatonRigidBody.cs" />

@@ -77,17 +77,27 @@ namespace SimpleGraphicsLib
         private Rect _deformation ;
         private Vector _deformationPos ;  // position offset
         private Vector _deformationSize ;  // size offset
+        private bool _isGrounded;
 
         static public bool DrawShape = false; // draw outline
         static public bool AnimatedByDefault = true; // start animations by default
 
         [DataMember]
         public string Name { get; set; }
+
+        [DataMember]
+        public virtual bool FlipHorizontal { get; set; }
         
         public String TypeName
         {
             get { return this.GetType().Name; }
             set { } // empty setter in order to show up in property inspector
+        }
+
+        public bool IsGrounded 
+        { 
+            get { return _isGrounded; }
+            set { _isGrounded = value; }
         }
 
         private bool _animated;
@@ -133,10 +143,10 @@ namespace SimpleGraphicsLib
         public bool IsMovable { get; set; }
 
         [DataMember]
-        public bool CanCollide { get; set; }
+        public bool IsObstacle { get; set; }
 
         [DataMember]
-        public bool IsObstacle { get; set; }
+        public bool CanCollide { get; set; }
 
         [DataMember]
         public Vector NormSpeed { get; set; }
@@ -287,7 +297,7 @@ namespace SimpleGraphicsLib
             BlurEffectRadius = 0;
             ScrollScaling = 1;
             IsMovable = false;
-            CanCollide = true;
+            IsObstacle = true;
         }
 
         [OnDeserializing]  
@@ -469,9 +479,13 @@ namespace SimpleGraphicsLib
                 {
                     dc.PushTransform(new TranslateTransform(Position.X + (_parent.DrawingOffset.X * ScrollScaling), Position.Y + _parent.DrawingOffset.Y));
                     dc.PushTransform(new RotateTransform(Angle));
+                    if (FlipHorizontal)
+                        dc.PushTransform(new ScaleTransform(-1, 1));
                     dc.DrawImage(Bmp, new Rect((Point)(_deformationPos - _centerOfMassAbs), SizeV + _deformationSize));
 
                     // dc.DrawImage(Bmp, new Rect(-_centerOfMassAbs.X, -_centerOfMassAbs.Y, SizeV.X, SizeV.Y));
+                    if (FlipHorizontal)
+                        dc.Pop();
                     dc.Pop();
                     dc.Pop();
                 }

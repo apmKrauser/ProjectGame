@@ -60,10 +60,11 @@ namespace SimpleGraphicsLib
         {
             get;
         }
-
+        
         bool IsMovable { get; set; }
-        bool CanCollide { get; set; }
         bool IsObstacle { get; set; }
+        bool CanCollide { get; set; }
+        bool IsGrounded { get; set; }
 
     }
 }

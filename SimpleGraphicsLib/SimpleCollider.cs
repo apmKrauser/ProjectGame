@@ -33,6 +33,7 @@ namespace SimpleGraphicsLib
         public void Check(IRigidBody me, FrameUpdateEventArgs e)
         {
             Rect rme = me.Shape;
+            bool hitsGround = false;
             foreach (var other in Obstacles)
             {
                 if (other != me)
@@ -41,15 +42,18 @@ namespace SimpleGraphicsLib
                     if (rme.IntersectsWith(rother))
                     {
                         Rect overlap = Rect.Intersect(rme,rother);
+                        if (other is GroundObject)
+                            hitsGround = true;
                         //Vector overlap = new Vector(rme.Width, rme.Height);
-                        if (other.CanCollide)
+                        if (other.IsObstacle)
                         {
                             ProcessCollision(me, other, overlap, rme, rother, e.ElapsedMilliseconds / 1000);
+                            //break;
                         }
-                        break;
                     }
                 }
             }
+            me.IsGrounded = hitsGround;
         }
 
         public void ProcessCollision(IRigidBody me, IRigidBody other, Rect overlap, Rect rme, Rect rother, double dt)
@@ -158,6 +162,11 @@ namespace SimpleGraphicsLib
             #endregion
         }
 
+
+        public void Clear()
+        {
+            Obstacles.Clear();
+        }
     }
 
 

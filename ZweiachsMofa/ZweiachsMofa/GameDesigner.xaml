@@ -23,7 +23,7 @@
             <Rectangle Fill="{Binding Background, ElementName=MainGrid}" HorizontalAlignment="Left" Height="728" Margin="1194,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="336" StrokeThickness="0"/>
             <Button x:Name="cmdSetParBkg" Content="Set Parallax Background" HorizontalAlignment="Left" Margin="1300,46,0,0" VerticalAlignment="Top" Width="144" Height="32" Click="cmdSetParBkg_Click" Background="#FF878787"/>
             <Button x:Name="cmdSetLevelBkg" Content="Set Level Background" HorizontalAlignment="Left" Margin="1299,83,0,0" VerticalAlignment="Top" Width="145" Height="32" Click="cmdSetLevelBkg_Click" Background="#FF878787"/>
-            <Button x:Name="cmdAddStaticCollider" Content="Add static collider frame" HorizontalAlignment="Left" Margin="1375,576,0,0" VerticalAlignment="Top" Width="145" Height="32" Background="#FF878787" Click="cmdAddStaticCollider_Click"/>
+            <Button x:Name="cmdRefreshCollider" Content="Refresh collider" HorizontalAlignment="Left" Margin="1375,576,0,0" VerticalAlignment="Top" Width="145" Height="32" Background="#FF878787" Click="cmdRefreshCollider_Click"/>
 
             <local:GameWindowSlider x:Name="GameSlider" Minimum="0" Maximum="{Binding Width, ElementName=MainGFX}" HorizontalAlignment="Left" Margin="10,619,0,0" VerticalAlignment="Top" Height="25" Width="1179" ValueChanged="GameSlider_ValueChanged" MouseUp="GameSlider_MouseUp"/>
             <Button x:Name="cmdSaveLevel" Content="Save as XML" HorizontalAlignment="Left" Margin="667,668,0,0" VerticalAlignment="Top" Width="145" Height="32" Click="cmdSaveLevel_Click" Background="#FF878787"/>
