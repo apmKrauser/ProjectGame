@@ -68,6 +68,21 @@ namespace SimpleGraphicsLib
             }
         }
 
+        public void BuildLevel (GFXContainer maingfx)
+        {
+            this.Background.loadFromImagePathPreserveObjectSize();
+            this.LevelBkg.loadFromImagePathPreserveObjectSize();
+            maingfx.AddObject(this.Background);
+            maingfx.AddObject(this.LevelBkg);
+            maingfx.Width = this.LevelBkg.SizeV.X;
+            foreach (var sprite in this.Sprites)
+            {
+                sprite.loadFromImagePathPreserveObjectSize();
+                //MainGFX.AddObject(sprite);
+            }
+            this.AddSpritesTo(maingfx);
+        }
+
         public void SaveLevel()
         {
             //DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(LevelSet));

@@ -12,11 +12,11 @@
         Background ="#FF3E3E3E"
         Width="{Binding ElementName=DesignerWindow, Path=DesignWindowStartWidth}"    
         Height="{Binding ElementName=DesignerWindow, Path=DesignWindowStartHeight}" 
-        Title="GameDesigner" Loaded="Window_Loaded" Closing="MetroWindow_Closing_Async">
+        Title="GameDesigner" Loaded="Window_Loaded" Closing="MetroWindow_Closing_Async" PreviewKeyDown="DesignerWindow_PreviewKeyDown" PreviewKeyUp="DesignerWindow_PreviewKeyUp">
 
     <Viewbox>
         <Grid x:Name="MainGrid"  Width="1550" Height="770" >
-            <WrapPanel x:Name="GameWrapper" HorizontalAlignment="Left" Height="598" Margin="10,10,-593,-317" VerticalAlignment="Top" Width="1179">
+            <WrapPanel x:Name="GameWrapper" HorizontalAlignment="Left" Height="598" Margin="10,10,-593,-317" VerticalAlignment="Top" Width="1179" >
                 <SimpleGraphicsLib:GFXContainer x:Name="MainGFX" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" 
 				Width="{Binding Width, ElementName=GameWrapper}" Height="{Binding Height, ElementName=GameWrapper}" MouseMove="MainGFX_MouseMove" MouseRightButtonDown="MainGFX_MouseRightButtonDown" MouseDown="MainGFX_MouseDown"/>
             </WrapPanel>

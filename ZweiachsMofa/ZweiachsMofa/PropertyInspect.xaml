@@ -38,7 +38,7 @@
             <TextBox Text="{Binding ValueAsInteger}" BorderBrush="{Binding BorderBrush, ElementName=DGEditStyleTmpl}"  LostFocus="DGEditStyleTmpl_LostFocus"/>
         </DataTemplate>        
         <DataTemplate x:Key="ObjectKeyEnumTemplate">
-            <ComboBox ItemsSource="{Binding Source={StaticResource EnumKeyValues}}" SelectedValue="{Binding ValueAsKey}" />
+            <ComboBox ItemsSource="{Binding Source={StaticResource EnumKeyValues}}" SelectedValue="{Binding ValueAsKey}" SelectionChanged="ComboBox_SelectionChanged"  />
         </DataTemplate>        
         <DataTemplate x:Key="ObjectVectorTemplate">
             <TextBox Text="{Binding ValueAsVector}" BorderBrush="{Binding BorderBrush, ElementName=DGEditStyleTmpl}"  LostFocus="DGEditStyleTmpl_LostFocus"/>

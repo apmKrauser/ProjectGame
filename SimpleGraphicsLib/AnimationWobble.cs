@@ -41,7 +41,7 @@ namespace SimpleGraphicsLib
         public override void Update_Active(object sender, FrameUpdateEventArgs e)
         {
             //sinex += WobbleSpeed * e.ElapsedMilliseconds;
-            sinex += WobbleSpeed * 10;
+            sinex += WobbleSpeed * 25;
 
             IElasticBody ESprite = Sprite as IElasticBody;
             if (ESprite != null)

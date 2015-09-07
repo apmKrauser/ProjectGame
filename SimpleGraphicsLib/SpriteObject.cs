@@ -146,31 +146,38 @@ namespace SimpleGraphicsLib
 
         [DataMember]
         public Vector Position
-        {
-            get { lock (_positionSync) return _position; }
+        {  // [MethonImpl] methode nur für 1 thread
+            get { lock (_positionSync) return _position; }  // Interlocked. increment/.... für "Atomare" operationen
             set { lock (_positionSync) _position = value; }
         }
 
         [DataMember]
         public double ScrollScaling { get; set; }
 
+        private object _shapeSync; // Semaphore
+
         [XmlIgnore]
         public Rect Shape
         {
-            get { return new Rect(Position.X - _centerOfMassAbs.X, Position.Y - _centerOfMassAbs.Y, SizeV.X, SizeV.Y); }
+            get { lock(_shapeSync) return new Rect(Position.X - _centerOfMassAbs.X, Position.Y - _centerOfMassAbs.Y, SizeV.X, SizeV.Y); }
         }
+
+        private object _deformSync; // Semaphore
 
         [DataMember]
         public Rect Deformation
         {
-            get { return _deformation; }
+            get { lock(_deformSync) return _deformation; }
             set 
             {
-                _deformation = value;
-                _deformationPos = new Vector(  _deformation.TopLeft.X * SizeV.X,
-                                                     _deformation.TopLeft.Y * SizeV.Y );
-                _deformationSize =  new Vector( (_deformation.Width  * SizeV.X) - SizeV.X, 
-                                                       (_deformation.Height * SizeV.Y) - SizeV.Y );
+                lock (_deformSync)
+                {
+                    _deformation = value;
+                    _deformationPos = new Vector(_deformation.TopLeft.X * SizeV.X,
+                                                         _deformation.TopLeft.Y * SizeV.Y);
+                    _deformationSize = new Vector((_deformation.Width * SizeV.X) - SizeV.X,
+                                                           (_deformation.Height * SizeV.Y) - SizeV.Y);
+                }
             }
         }
 
@@ -293,6 +300,8 @@ namespace SimpleGraphicsLib
         {
             _animated = AnimatedByDefault;
             _positionSync = new object();
+            _deformSync = new object();
+            _shapeSync = new object();
             _blurEffectRadius = 0;
             _centerOfMassAbs = new Vector(0, 0);
             _deformation = new Rect(0,0,1,1);
@@ -314,8 +323,15 @@ namespace SimpleGraphicsLib
             {
                 // if animations are added before GFXContainer
                 animation.SetTimingSource(this.Parent);
+                if (animation is IAnimKeyInput) 
+                {
+                    var kani = animation as IAnimKeyInput;
+                    _parent.WindowKeyDown += kani.OnKeyDown;
+                    _parent.WindowKeyUp += kani.OnKeyUp;
+                }
             }
         }
+
 
         protected void UnregisterAllVisuals ()
         {
@@ -339,6 +355,12 @@ namespace SimpleGraphicsLib
         {
             for (int i = Animations.Count - 1; i >= 0; i--)
             {
+                if ((Animations[i] is IAnimKeyInput)  && (_parent != null))
+                {
+                    var kani = Animations[i] as IAnimKeyInput;
+                    _parent.WindowKeyDown -= kani.OnKeyDown;
+                    _parent.WindowKeyUp -= kani.OnKeyUp;
+                }
                 Animations[i].Dispose();
             }
         }
@@ -387,6 +409,12 @@ namespace SimpleGraphicsLib
             animation.Sprite = this;
             animation.SetTimingSource(TimingSource.Sources.Manual);
             animation.IsActive = Animated;
+            if ((animation is IAnimKeyInput) && (_parent != null))
+            {
+                var kani = animation as IAnimKeyInput;
+                _parent.WindowKeyDown += kani.OnKeyDown;
+                _parent.WindowKeyUp += kani.OnKeyUp;
+            }
             //if (this.Parent != null)
             //    animation.SetTimingSource(this.Parent);
         }
@@ -409,7 +437,13 @@ namespace SimpleGraphicsLib
             //RemoveAnimation(animation.Name);
             try
             {
-                 Animations.Remove(animation);
+                if ((animation is IAnimKeyInput) && (_parent != null))
+                {
+                    var kani = animation as IAnimKeyInput;
+                    _parent.WindowKeyDown -= kani.OnKeyDown;
+                    _parent.WindowKeyUp -= kani.OnKeyUp;
+                }
+                Animations.Remove(animation);
             }
             catch (Exception e)
             {
@@ -420,6 +454,7 @@ namespace SimpleGraphicsLib
 
         public void Animation_OnDispose(IAnimationRigidBody animation)
         {
+                // if animations are added before GFXContainer
             RemoveAnimation(animation);
             //Debug.WriteLine("=> Animation_OnDispose = {0}");
         }

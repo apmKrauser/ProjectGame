@@ -53,6 +53,8 @@
     <Compile Include="AnimationRigidBody.cs" />
     <Compile Include="AnimationWobble.cs" />
     <Compile Include="AnimatonLinearTranslation.cs" />
+    <Compile Include="AnimKeyDrive.cs" />
+    <Compile Include="AnimKeyInput.cs" />
     <Compile Include="CarObject.cs" />
     <Compile Include="GameScroller.cs" />
     <Compile Include="Helper.cs" />

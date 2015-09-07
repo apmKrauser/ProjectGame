@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
@@ -32,6 +33,8 @@ namespace SimpleGraphicsLib
 
         public event Action<Object, FrameUpdateEventArgs> UpdateFrame;  // timing source for drawing
         public event Action<Object, FrameUpdateEventArgs> UpdateAnimation; // Preferred Animation timing source
+        public event KeyEventHandler WindowKeyDown;  // key events routet from window
+        public event KeyEventHandler WindowKeyUp;  // key events routet from window
         public SimpleCollider Collider = new SimpleCollider();
 
         public bool IsRunning { get; set; }
@@ -51,9 +54,8 @@ namespace SimpleGraphicsLib
             DrawingOffset = new Vector(0, 0);
             Visuals = new VisualCollection(this);
             SystemOverlayVisuals = new VisualCollection(this);
-
+            //Focusable = true;
             this.Loaded += new RoutedEventHandler(GFXContainer_Loaded);
-            
         }
 
         void GFXContainer_Loaded(object sender, RoutedEventArgs e)
@@ -277,6 +279,18 @@ namespace SimpleGraphicsLib
                 Debug.WriteLine("############## " + str);
             }
             return new object();
+        }
+
+        public void RaiseWindowKeyDown(object sender, KeyEventArgs e)
+        {
+            if (WindowKeyDown != null)
+                WindowKeyDown(this, e);
+        }
+
+        public void RaiseWindowKeyUp(object sender, KeyEventArgs e)
+        {
+            if (WindowKeyUp != null)
+                WindowKeyUp(this, e);
         }
     }
 }

@@ -172,19 +172,8 @@ namespace ZweiachsMofa
         private void cmdLoadLevel_Click(object sender, RoutedEventArgs e)
         {
             ThisLevel = LevelSet.LoadLevel();
-
-            ThisLevel.Background.loadFromImagePathPreserveObjectSize();
-            ThisLevel.LevelBkg.loadFromImagePathPreserveObjectSize();
-            MainGFX.AddObject(ThisLevel.Background);
-            MainGFX.AddObject(ThisLevel.LevelBkg);
-            MainGFX.Width = ThisLevel.LevelBkg.SizeV.X;
+            ThisLevel.BuildLevel(MainGFX);
             lstSprites.ItemsSource = ThisLevel.Sprites;
-            foreach (var sprite in ThisLevel.Sprites)
-            {
-                sprite.loadFromImagePathPreserveObjectSize();
-                //MainGFX.AddObject(sprite);
-            }
-            ThisLevel.AddSpritesTo(MainGFX);
             lstSprites.Items.Refresh();
         }
 
@@ -519,12 +508,11 @@ namespace ZweiachsMofa
             bool affirm = result == MessageDialogResult.Affirmative;
             if (affirm)
             {
-                Debug.WriteLine("=> fwfghjrgeöerhgöerg = {0}");
+                Debug.WriteLine("=> SAVE XML !!!!");
                 Thread.Sleep(2000);
             }
 
             _shutdown = true;
-            Debug.WriteLine("=> result = {0}", result);
 
             if (_shutdown)
                 this.Close();
@@ -535,6 +523,17 @@ namespace ZweiachsMofa
         {
             object o = MainGFX.GetObjectXY((Point)e.GetPosition(MainGFX));
         }
+
+        private void DesignerWindow_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            MainGFX.RaiseWindowKeyDown(this, e);
+        }
+
+        private void DesignerWindow_PreviewKeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            MainGFX.RaiseWindowKeyUp(this, e);
+        }
+
 
 
 

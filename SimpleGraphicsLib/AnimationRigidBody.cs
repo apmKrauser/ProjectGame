@@ -10,6 +10,7 @@ using System.Xml.Serialization;
 
 namespace SimpleGraphicsLib
 {
+
     [DataContract]
     [KnownType("GetDerivedTypes")]
     public class AnimationRigidBody : GFXAnimation, IAnimationRigidBody, IPropertyInspectable

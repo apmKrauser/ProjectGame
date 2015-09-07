@@ -117,7 +117,7 @@ namespace SimpleGraphicsLib
             AuspuffPSConfig.RadiusTo = 50;
             AuspuffPSConfig.BlurFrom = 7;
             AuspuffPSConfig.BlurTo = 20;
-            AddAnimation(new AnimationWobble(1, 0.005), "Wobble");
+            AddAnimation(new AnimationWobble(0.8, 0.005), "Wobble");
         }
 
         protected override void init()   // bei setparent aufrufen?  artikel über virtual in ctor aufrufen lesen

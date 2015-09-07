@@ -108,7 +108,7 @@ namespace ZweiachsMofa
         {
             //System.Windows.Forms.MessageBox.Show("lost");
             try
-            {
+            { 
                 PropertyGridItem item = PropertyGrid.SelectedItem as PropertyGridItem;
                 if (sender is TextBox)
                 {
@@ -119,11 +119,6 @@ namespace ZweiachsMofa
                 {
                     var b = sender as CheckBox;
                     item.SetValue(b.IsChecked);
-                }
-                else if (sender is ComboBox)
-                {
-                    var b = sender as ComboBox;
-                    item.SetValue(b.SelectedValue);
                 }
                 UpdateProperty(item);
             }
@@ -145,6 +140,22 @@ namespace ZweiachsMofa
             if (item == null) return;
             PropertyInspect pi = new PropertyInspect(item);
             pi.Show();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            PropertyGridItem item = PropertyGrid.SelectedItem as PropertyGridItem;
+            if (item != null)
+            {
+                if (sender is ComboBox)
+                {
+                    var b = sender as ComboBox;
+                    item.SetValue(b.SelectedValue);
+                    Debug.WriteLine("=> Selected = " + b.SelectedValue + ":" + b.SelectedValue.GetType().Name);
+                    Debug.WriteLine("=> Sett = " + item.ValueAsKey + ":" + item.ValueObj.GetType().Name);
+                }
+                UpdateProperty(item);
+            }
         }
 
 
