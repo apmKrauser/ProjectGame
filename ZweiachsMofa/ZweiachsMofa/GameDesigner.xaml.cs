@@ -33,6 +33,7 @@ namespace ZweiachsMofa
         LevelSet ThisLevel = new LevelSet();
         Vector objResizeRefpoint = new Vector();
         Vector objMoveRefpoint = new Vector();
+        GUIAnimator GUIAni;
         //Point dragDropPoint = new Point(0,0);
         private bool _shutdown = false;
 
@@ -181,6 +182,10 @@ namespace ZweiachsMofa
             ThisLevel.BuildLevel(MainGFX);
             lstSprites.ItemsSource = ThisLevel.Sprites;
             lstSprites.Items.Refresh();
+            GUIAni = new GUIAnimator(gfx: MainGFX,
+                                     lvl: ThisLevel,
+                                     timingSrc: TimingSource.Sources.CompositionTargetRendering,
+                                     pgJumpRes: pgJumpResource);
         }
 
 

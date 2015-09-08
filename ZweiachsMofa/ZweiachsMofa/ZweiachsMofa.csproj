@@ -68,6 +68,7 @@
     </Compile>
     <Compile Include="GameWindowSlider.cs" />
     <Compile Include="GFXContainer_alt.cs" />
+    <Compile Include="GUIAnimator.cs" />
     <Compile Include="GUIHelper.cs" />
     <Compile Include="PropertyInspect.xaml.cs">
       <DependentUpon>PropertyInspect.xaml</DependentUpon>

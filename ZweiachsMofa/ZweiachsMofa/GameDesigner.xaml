@@ -39,7 +39,7 @@
                             </DataTrigger>
                             <DataTrigger Binding="{Binding Animated}" Value="True">
                                 <Setter Property="Foreground" Value="Aquamarine" />
-                            </DataTrigger>                            
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ListView.Resources>
@@ -103,6 +103,11 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+            <Controls:MetroProgressBar Name="pgJumpResource" HorizontalAlignment="Left" Margin="165,19,0,0" VerticalAlignment="Top" Height="9" Width="88"  Opacity="0.7">
+                <Controls:MetroProgressBar.Effect>
+                    <DropShadowEffect/>
+                </Controls:MetroProgressBar.Effect>
+            </Controls:MetroProgressBar>
 
         </Grid>
     </Viewbox>

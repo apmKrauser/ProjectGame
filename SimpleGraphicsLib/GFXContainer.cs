@@ -205,6 +205,14 @@ namespace SimpleGraphicsLib
             return obj;
         }
 
+        public IGFXObject FindObject(string name)
+        {
+            IGFXObject gobj;
+            if (!GFXObjects.TryGetValue(name, out gobj))
+                gobj = null;
+            return gobj;
+        }
+
 
         public void Dispose()
         {
