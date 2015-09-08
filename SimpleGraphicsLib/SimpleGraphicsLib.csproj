@@ -55,6 +55,7 @@
     <Compile Include="AnimatonLinearTranslation.cs" />
     <Compile Include="AnimKeyDrive.cs" />
     <Compile Include="AnimKeyInput.cs" />
+    <Compile Include="AnimKeyJump.cs" />
     <Compile Include="CarObject.cs" />
     <Compile Include="GameScroller.cs" />
     <Compile Include="GroundObject.cs" />

@@ -154,8 +154,9 @@ namespace SimpleGraphicsLib
 
         protected override void DrawShapeAndMarkers(DrawingContext dc)
         {
-            dc.DrawRectangle(null, new Pen(Brushes.Black, 2), rectangle: new Rect(Shape.Location + (_parent.DrawingOffset * ScrollScaling), Shape.Size));
-            dc.DrawEllipse(null, new Pen(Brushes.Red, 2), (Point)(Position + (_parent.DrawingOffset * ScrollScaling)), 5, 5);
+            base.DrawShapeAndMarkers(dc);
+           // dc.DrawRectangle(null, new Pen(Brushes.Black, 2), rectangle: new Rect(Shape.Location + (_parent.DrawingOffset * ScrollScaling), Shape.Size));
+           // dc.DrawEllipse(null, new Pen(Brushes.Red, 2), (Point)(Position + (_parent.DrawingOffset * ScrollScaling)), 5, 5);
             _posAuspuffPixel = new Vector(Shape.Width * _posAuspuff.X, Shape.Height * _posAuspuff.Y);
             _posAuspuffPixel += (Vector)Shape.Location;
             dc.DrawRectangle(null, new Pen(Brushes.Green, 2), new Rect((Point)(_posAuspuffPixel + (_parent.DrawingOffset * ScrollScaling)), AuspuffPSConfig.EmmissionArea.Size));

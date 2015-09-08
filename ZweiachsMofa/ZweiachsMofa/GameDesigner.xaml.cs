@@ -32,6 +32,7 @@ namespace ZweiachsMofa
         GameScroller Scroller;
         LevelSet ThisLevel = new LevelSet();
         Vector objResizeRefpoint = new Vector();
+        Vector objMoveRefpoint = new Vector();
         //Point dragDropPoint = new Point(0,0);
         private bool _shutdown = false;
 
@@ -202,7 +203,13 @@ namespace ZweiachsMofa
             sobj.IsMovable = true;
             sobj.IsObstacle = false;
             //ThisLevel.selectImage(sobj);
-            ThisLevel.Sprites.Add(sobj);
+            int idx = ThisLevel.Sprites.IndexOf(lstSprites.SelectedItem as SpriteObject);
+            if ((idx >= 0) && (idx < ThisLevel.Sprites.Count - 1))
+            {
+                idx++;
+                ThisLevel.Sprites.Insert(idx, sobj);
+            } else
+                ThisLevel.Sprites.Add(sobj);
             MainGFX.AddObject(sobj);
             lstSprites.Items.Refresh();
             txtSpriteName.Text = "";
@@ -226,7 +233,17 @@ namespace ZweiachsMofa
         private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             SpriteObject obj = (lstSprites.SelectedItem as SpriteObject);
-            GameSlider.Value = obj.Position.X;
+            if (obj != null)
+            {
+                GameSlider.Value = obj.Position.X;
+                foreach (var sprite in ThisLevel.Sprites)
+                {
+                    if (sprite != null)
+                        sprite.Highlight = false;
+                }
+                obj.Highlight = true;
+            }
+            
             // Results in Errors due to selection changes !!!
             //switch (Keyboard.Modifiers)
             //{
@@ -261,10 +278,24 @@ namespace ZweiachsMofa
             SpriteObject obj = (lstSprites.SelectedItem as SpriteObject);
             if (obj != null)
             {
-                if (Keyboard.Modifiers == ModifierKeys.Shift)
+                switch (Keyboard.Modifiers)
                 {
-                   // obj.Position = new Vector(e.GetPosition(MainGFX).X, e.GetPosition(MainGFX).Y);
-                    obj.Position = (Vector)e.GetPosition(MainGFX) - MainGFX.DrawingOffset ;
+                    case ModifierKeys.Alt:
+                        break;
+                    case ModifierKeys.Control:
+                        obj.Position += 0.2 * ((Vector)e.GetPosition(MainGFX) - objMoveRefpoint);
+                        objMoveRefpoint = (Vector)e.GetPosition(MainGFX);
+                        break;
+                    case ModifierKeys.None:
+                        objMoveRefpoint = (Vector)e.GetPosition(MainGFX);
+                        break;
+                    case ModifierKeys.Shift:
+                        obj.Position = (Vector)e.GetPosition(MainGFX) - MainGFX.DrawingOffset;
+                        break;
+                    case ModifierKeys.Windows:
+                        break;
+                    default:
+                        break;
                 }
                 if (e.RightButton == MouseButtonState.Pressed)
                 {
@@ -496,8 +527,7 @@ namespace ZweiachsMofa
             bool affirm = result == MessageDialogResult.Affirmative;
             if (affirm)
             {
-                Debug.WriteLine("=> SAVE XML !!!!");
-                Thread.Sleep(2000);
+                cmdSaveLevel_Click(this, new RoutedEventArgs());
             }
 
             _shutdown = true;
@@ -507,9 +537,21 @@ namespace ZweiachsMofa
                 //System.Windows.Application.Current.Shutdown();
         }
 
-        private void MainGFX_MouseDown(object sender, MouseButtonEventArgs e)
+        private void MainGFX_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            object o = MainGFX.GetObjectXY((Point)e.GetPosition(MainGFX));
+            Visual v = MainGFX.GetObjectXY((Point)e.GetPosition(MainGFX)) as Visual;
+            if (v != null)
+            {
+                var res = from s in ThisLevel.Sprites
+                          where s.ContainsVisual(v)
+                          select s;
+                try
+                {
+                    lstSprites.SelectedItem = res.First();
+                }
+                catch (Exception) {}
+            }
+            
         }
 
         private void DesignerWindow_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -521,6 +563,7 @@ namespace ZweiachsMofa
         {
             MainGFX.RaiseWindowKeyUp(this, e);
         }
+
 
 
 

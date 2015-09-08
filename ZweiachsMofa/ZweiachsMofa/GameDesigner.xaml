@@ -18,7 +18,7 @@
         <Grid x:Name="MainGrid"  Width="1550" Height="770" >
             <WrapPanel x:Name="GameWrapper" HorizontalAlignment="Left" Height="598" Margin="10,10,-593,-317" VerticalAlignment="Top" Width="1179" >
                 <SimpleGraphicsLib:GFXContainer x:Name="MainGFX" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" 
-				Width="{Binding Width, ElementName=GameWrapper}" Height="{Binding Height, ElementName=GameWrapper}" MouseMove="MainGFX_MouseMove" MouseRightButtonDown="MainGFX_MouseRightButtonDown" MouseDown="MainGFX_MouseDown"/>
+				Width="{Binding Width, ElementName=GameWrapper}" Height="{Binding Height, ElementName=GameWrapper}" MouseMove="MainGFX_MouseMove" MouseRightButtonDown="MainGFX_MouseRightButtonDown" MouseLeftButtonDown="MainGFX_MouseLeftButtonDown"/>
             </WrapPanel>
             <Rectangle Fill="{Binding Background, ElementName=MainGrid}" HorizontalAlignment="Left" Height="728" Margin="1194,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="336" StrokeThickness="0"/>
             <Button x:Name="cmdSetParBkg" Content="Set Parallax Background" HorizontalAlignment="Left" Margin="1300,46,0,0" VerticalAlignment="Top" Width="144" Height="32" Click="cmdSetParBkg_Click" Background="#FF878787"/>

@@ -279,8 +279,9 @@ namespace SimpleGraphicsLib
                 //String str = ht == null ? "null" : (ht as DrawingVisual).ToString();
                 //str += (ht as GeometryHitTestResult).IntersectionDetail.ToString();
                 Debug.WriteLine("############## " + str);
+                return dv;
             }
-            return new object();
+            return null;
         }
 
         public void RaiseWindowKeyDown(object sender, KeyEventArgs e)

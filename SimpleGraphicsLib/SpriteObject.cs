@@ -82,6 +82,8 @@ namespace SimpleGraphicsLib
         static public bool DrawShape = false; // draw outline
         static public bool AnimatedByDefault = true; // start animations by default
 
+        public bool Highlight { get; set; }  // Highlight if DrAWShape =true
+
         [DataMember]
         public string Name { get; set; }
 
@@ -308,6 +310,7 @@ namespace SimpleGraphicsLib
 
         private void OnCreate()
         {
+            Highlight = false;
             _animated = AnimatedByDefault;
             _positionSync = new object();
             _deformSync = new object();
@@ -462,6 +465,17 @@ namespace SimpleGraphicsLib
             }
         }
 
+        public bool ContainsVisual(Visual vis)
+        {
+            bool res = false;
+            foreach (var v in Visuals)
+            {
+                if (v.Equals(vis))
+                    res = true;
+            }
+            return res;
+        }
+
         public void Animation_OnDispose(IAnimationRigidBody animation)
         {
                 // if animations are added before GFXContainer
@@ -498,8 +512,23 @@ namespace SimpleGraphicsLib
 
         protected virtual void DrawShapeAndMarkers (DrawingContext dc)
         {
-            dc.DrawRectangle(null, new Pen(Brushes.Black, 2), rectangle: new Rect(Shape.Location + (_parent.DrawingOffset * ScrollScaling), Shape.Size));
+            System.Windows.Media.Brush br;
+            if (Highlight)
+               br = new System.Windows.Media.SolidColorBrush(Color.FromArgb(120, 200, 200, 255));
+            else
+               br = null;
+            dc.DrawRectangle(br, new Pen(Brushes.Black, 2), rectangle: new Rect(Shape.Location + (_parent.DrawingOffset * ScrollScaling), Shape.Size));
             dc.DrawEllipse(null, new Pen(Brushes.Red, 2), (Point)(Position + (_parent.DrawingOffset * ScrollScaling)), 5, 5);
+
+            if (Highlight)
+            {
+                var text = new FormattedText(Name,
+                      CultureInfo.GetCultureInfo("en-us"),
+                      FlowDirection.LeftToRight,
+                      new Typeface("Verdana"),
+                      10, System.Windows.Media.Brushes.DarkRed);
+                dc.DrawText(text, (Point)(Position + (_parent.DrawingOffset * ScrollScaling)));
+            }
         }
 
         public virtual void Animation_Update(object sender, FrameUpdateEventArgs e)
