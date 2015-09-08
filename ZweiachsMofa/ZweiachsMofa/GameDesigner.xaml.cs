@@ -200,7 +200,8 @@ namespace ZweiachsMofa
             sobj.Name = txtSpriteName.Text;
             sobj.Position =  new Vector(GameSlider.Value, 100);
             //sobj.CenterOfMass = new Vector(0, 0);
-            sobj.IsMovable = true;
+            sobj.IsMovable = false;
+            sobj.CanCollide = true;
             sobj.IsObstacle = false;
             //ThisLevel.selectImage(sobj);
             int idx = ThisLevel.Sprites.IndexOf(lstSprites.SelectedItem as SpriteObject);

@@ -122,28 +122,29 @@ namespace SimpleGraphicsLib
                         SpringC = 1 / ((1 / SpringC) + (1 / otherel.SpringC));
                         Damping = (Damping + otherel.DampingC) / 2;
                         liquid = otherel.IsLiquid;
-                    }
-                    if (dx.Length > 0)
-                    {
-                        //Vector deform = new Vector(dx.X, dx.Y);
-                        mel.NormSpeed += dx * dt * SpringC; // masse ignorieren
-                        double bend = dx.Length / ((Vector)me.Shape.Size).Length;
-                        if (bend > 0.5) bend = 0.5; // maximales eindellen
-                        dx.Normalize();
-                        if (liquid)
+
+                        if (dx.Length > 0)
                         {
-                            // Water animator
-                            Vector vdamp = -Math.Abs(Vector.Multiply(mel.NormSpeed, dx)) * Damping * dt * mel.NormSpeed / mel.NormSpeed.Length; // masse ignoriert
-                            mel.NormSpeed += vdamp;
-                        }
-                        else
-                        {
-                            // Ground animator
-                            Vector vdamp = -(Vector.Multiply(mel.NormSpeed, dx)) * Damping * dt * (dx / dx.Length); // masse ignoriert
-                            mel.NormSpeed += vdamp;
-                            if (mel.IsDeformable)
+                            //Vector deform = new Vector(dx.X, dx.Y);
+                            mel.NormSpeed += dx * dt * SpringC; // masse ignorieren
+                            double bend = dx.Length / ((Vector)me.Shape.Size).Length;
+                            if (bend > 0.5) bend = 0.5; // maximales eindellen
+                            dx.Normalize();
+                            if (liquid)
                             {
-                                mel.Deformation = new Rect(mel.Deformation.X, mel.Deformation.Y, mel.Deformation.Width + (dx.X*bend), mel.Deformation.Height + (dx.Y*bend));
+                                // Water animator
+                                Vector vdamp = -Math.Abs(Vector.Multiply(mel.NormSpeed, dx)) * Damping * dt * mel.NormSpeed / mel.NormSpeed.Length; // masse ignoriert
+                                mel.NormSpeed += vdamp;
+                            }
+                            else
+                            {
+                                // Ground animator
+                                Vector vdamp = -(Vector.Multiply(mel.NormSpeed, dx)) * Damping * dt * (dx / dx.Length); // masse ignoriert
+                                mel.NormSpeed += vdamp;
+                                if (mel.IsDeformable)
+                                {
+                                    mel.Deformation = new Rect(mel.Deformation.X, mel.Deformation.Y, mel.Deformation.Width + (dx.X * bend), mel.Deformation.Height + (dx.Y * bend));
+                                }
                             }
                         }
                     }

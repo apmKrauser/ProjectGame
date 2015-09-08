@@ -41,7 +41,9 @@ namespace SimpleGraphicsLib
                 }
                 if (!Directory.Exists(Helper.DataLocalPath))
                     Directory.CreateDirectory(Helper.DataLocalPath);
-                File.Copy(fullpath, Helper.AssemblyLocalPath +"\\"+ relpath, true);
+                try
+                { File.Copy(fullpath, Helper.AssemblyLocalPath + "\\" + relpath, true); }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
                 obj.ImagePath = relpath;
                 obj.loadFromImagePath();
             }

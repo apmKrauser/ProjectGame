@@ -62,8 +62,11 @@ namespace SimpleGraphicsLib
             if (loadJump)
             {
                 double dp = Math.Min(JumpFillSpeed * e.ElapsedMilliseconds / 1000, JumpReservoir);
+                if (dp < 0) dp = 0;
                 JumpReservoir -= dp;
                 StoredJumpPower += dp;
+                if (JumpReservoir < 0) JumpReservoir = 0;
+                StoredJumpPower = Math.Min(JumpReservoirMax, StoredJumpPower);
             }
 
             // release jump
@@ -74,6 +77,13 @@ namespace SimpleGraphicsLib
                 Sprite.NormSpeed += StoredJumpPower * JumpDirection;
             }
             if (!loadJump) StoredJumpPower = 0;
+            var el = Sprite as SpriteObjectElastic;
+            if (el != null)
+            {
+                double bend = (StoredJumpPower / JumpReservoirMax) * 0.4;
+                el.Deformation = new Rect(el.Deformation.X, el.Deformation.Y + bend, el.Deformation.Width, el.Deformation.Height - bend);
+            }
+
         }
        
         
