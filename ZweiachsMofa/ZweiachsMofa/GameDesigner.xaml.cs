@@ -296,7 +296,8 @@ namespace ZweiachsMofa
                         objMoveRefpoint = (Vector)e.GetPosition(MainGFX);
                         break;
                     case ModifierKeys.Shift:
-                        obj.Position = (Vector)e.GetPosition(MainGFX) - MainGFX.DrawingOffset;
+                        if (e.RightButton == MouseButtonState.Released)
+                            obj.Position = (Vector)e.GetPosition(MainGFX) - MainGFX.DrawingOffset;
                         break;
                     case ModifierKeys.Windows:
                         break;

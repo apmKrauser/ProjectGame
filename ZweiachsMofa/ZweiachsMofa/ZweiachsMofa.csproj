@@ -168,13 +168,11 @@
     <None Include="Resources\strip-of-wood-wood-border-wood-lath-wood-plank.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="data\cyberscooty-cartoon-car_kl.png" />
     <Resource Include="data\cyberscooty-cartoon-car_kl2.png" />
     <Resource Include="data\garage1.png" />
     <Resource Include="data\garage2.png" />
     <Resource Include="data\LvLOne_background.png" />
     <Resource Include="data\LvLOne_world.png" />
-    <Resource Include="data\strip-of-wood-wood-border-wood-lath-wood-plank.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

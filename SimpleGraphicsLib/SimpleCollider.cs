@@ -100,14 +100,62 @@ namespace SimpleGraphicsLib
                 { dx = -v2; }
                 else if (Math.Abs(voverlap.Length - v1.Length) < eps)
                 { dx = -v1; }
+                // avoid insane jumping off cliffs
+                //dx = new Vector( Math.Sign(dx.X) * Math.Abs(dx.Y), Math.Sign(dx.Y) * Math.Abs(dx.X) );
+                dx = new Vector( Math.Sign(dx.X) * Math.Min(Math.Abs(dx.X), Math.Abs(dx.Y)),
+                    Math.Sign(dx.Y) * Math.Min(Math.Abs(dx.X), Math.Abs(dx.Y)));
             }
 
             #region Animation
             // animation
             if (other.IsMovable)
             {
+                if (me is IElasticBody)
+                {
+                    IElasticBody mel = (me as IElasticBody);
+                    //if mel.IsMovable
+                    double SpringC = mel.SpringC;
+                    double Damping = mel.DampingC;
+                    bool liquid = false;
+                    if (other is IElasticBody)
+                    {
+                        IElasticBody otherel = (other as IElasticBody);
+                        SpringC = 1 / ((1 / SpringC) + (1 / otherel.SpringC));
+                        Damping = (Damping + otherel.DampingC) / 2;
+                        liquid = otherel.IsLiquid;
+                    }
+                    // me - other; Position is COG; 
+                    Vector dCOG = me.Position - other.Position;
+                    if (dCOG.Length >0)
+                        dCOG.Normalize();
+                    // force
+                   // delme double df = dx.Length * other.Weight / (me.Weight + other.Weight);  // displacement regarding ralation of masses
+                    dx = dCOG * dx.Length;
+                    Vector df = dx * SpringC;
+                    
+                    mel.NormSpeed += df * dt / me.Weight;
+
+                    // damping
+                    double fdamp = Vector.Multiply(other.NormSpeed - me.NormSpeed, dCOG) * Damping; //  force against me
+                    Vector vdamp = dCOG * fdamp * dt / me.Weight;
+                    mel.NormSpeed += vdamp;
+
+                    // deformation:
+                    double bend = dx.Length / ((Vector)me.Shape.Size).Length;
+                    if (bend > 0.2) bend = 0.2; // maximales eindellen
+                    // choose one axis to avoid shrinking
+                    if (Math.Abs(dCOG.X) > Math.Abs(dCOG.Y))
+                        dCOG = new Vector(dCOG.X, 0);
+                    else
+                        dCOG = new Vector(0, dCOG.X);
+                    if (mel.IsDeformable)
+                    {
+                        mel.Deformation = new Rect(mel.Deformation.X + Math.Min(0, dCOG.X * bend), mel.Deformation.Y + Math.Min(0, dCOG.Y * bend),  // change position is force from top/left (dCOG*bend >0)
+                            mel.Deformation.Width -  Math.Abs(dCOG.X * bend), mel.Deformation.Height - Math.Abs(dCOG.Y * bend));  // size shrinks always
+                    }
+                }
             }
-            else // not Movable
+            else // not Movable:
             {
                 if (me is IElasticBody)
                 {
@@ -148,7 +196,7 @@ namespace SimpleGraphicsLib
                             }
                         }
                     }
-                    else
+                    else  // RigidBody: 
                     {
                         if (dx.Length > 0)
                         {
@@ -157,7 +205,7 @@ namespace SimpleGraphicsLib
                             me.NormSpeed -= -Math.Abs(Vector.Multiply(me.NormSpeed, dx)) * dx;
                             //Debug.WriteLine("## Inters V={0:##.0} dv={1:##.0}", dx, me.NormSpeed);
                         }
-                    }  // RigidBody
+                    }  
                 }
             }
             #endregion
