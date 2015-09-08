@@ -306,9 +306,14 @@ namespace ZweiachsMofa
                 if (e.RightButton == MouseButtonState.Pressed)
                 {
                     double newY = obj.SizeV.Y + (e.GetPosition(MainGFX) - objResizeRefpoint).Y;
+                    double newX = obj.SizeV.X + (e.GetPosition(MainGFX) - objResizeRefpoint).X;
                     if (newY < 1) newY = 1;
+                    if (newX < 1) newX = 1;
                     objResizeRefpoint = (Vector)e.GetPosition(MainGFX);
-                    obj.ZoomPreserveAspectRatio(height: newY);
+                    if (Keyboard.Modifiers == ModifierKeys.Shift)
+                        obj.SizeV = new Vector(newX, newY);
+                    else
+                        obj.ZoomPreserveAspectRatio(height: newY);
                 }
             }
         }
