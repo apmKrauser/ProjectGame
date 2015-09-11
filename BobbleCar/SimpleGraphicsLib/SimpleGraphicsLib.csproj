@@ -103,6 +103,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram2.cd" />
     <None Include="Resources\cyberscooty-cartoon-car_kl2.png" />
   </ItemGroup>
   <ItemGroup>
