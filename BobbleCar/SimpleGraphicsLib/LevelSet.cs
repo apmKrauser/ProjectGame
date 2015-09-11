@@ -25,7 +25,17 @@ namespace SimpleGraphicsLib
         [DataMember]
         public ObservableCollection<SpriteObject> Sprites = new ObservableCollection<SpriteObject>();
 
-
+        public bool AnimatedAllSprites 
+        {
+            set 
+            {
+                foreach (var sprite in Sprites)
+                {
+                    sprite.Animated = value;
+                }
+            }
+        }
+   
         public void selectImage(SpriteObject obj)
         {
             String fullpath = "";
