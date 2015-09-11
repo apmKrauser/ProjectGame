@@ -192,8 +192,8 @@ namespace BobbleCar
             if (_shutdown)
             {
                 MainGFX.Dispose();
-                this.Close();
-                //System.Windows.Application.Current.Shutdown();
+                //this.Close();
+                System.Windows.Application.Current.Shutdown();
             }
         }
 
