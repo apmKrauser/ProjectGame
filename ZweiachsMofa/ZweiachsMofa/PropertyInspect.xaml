@@ -14,8 +14,8 @@
         Title="PropertyInspect" Height="360" Width="396">
     <Window.Resources>
         <ObjectDataProvider x:Key="EnumKeyValues"
-    MethodName="GetValues"
-    ObjectType="{x:Type sys:Enum}" >
+                            MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}" >
             <ObjectDataProvider.MethodParameters>
                 <x:Type TypeName="Key"/>
             </ObjectDataProvider.MethodParameters>
@@ -84,7 +84,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Name="cmdEditAni"  Content="Edit Animators" Visibility="{Binding ShowEditAnimators, ElementName=PropertyInspectWindow}" HorizontalAlignment="Left" Margin="258,10,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click"/>
+        <Button Name="cmdEditAni"  Content="Edit Animators" Visibility="{Binding ShowEditAnimators, ElementName=PropertyInspectWindow}" HorizontalAlignment="Left" Margin="258,10,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click" Background="#FF878787"/>
 
     </Grid>
 </Controls:MetroWindow>

@@ -10,6 +10,12 @@
         xmlns:local="clr-namespace:ZweiachsMofa"
         xmlns:SimpleGraphicsLib="clr-namespace:SimpleGraphicsLib;assembly=SimpleGraphicsLib" x:Class="ZweiachsMofa.GameWindow"
         Title="Bobble Car (Zweiachs Mofa)" Height="702.843" Width="1371.472" Closing="Window_Closing">
+
+    <Window.Resources>
+        <Style  TargetType="Button"  >
+            <Setter Property="Background" Value="#FF878787"/>
+        </Style>
+    </Window.Resources>
     <Grid Margin="0,0,0,4">
 
         <Button x:Name ="CmdStart" Content="Start" HorizontalAlignment="Left" Margin="1226,51,0,0" VerticalAlignment="Top" Width="77" Click="CmdStart_Click"/>
