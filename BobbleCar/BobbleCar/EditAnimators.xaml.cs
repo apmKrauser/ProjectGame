@@ -21,7 +21,7 @@ using System.Windows.Shapes;
 using WPF.JoshSmith.ServiceProviders.UI;
 
 
-namespace ZweiachsMofa
+namespace BobbleCar
 {
     /// <summary>
     /// Interaktionslogik für EditAnimators.xaml

@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ZweiachsMofa
+namespace BobbleCar
 {
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
@@ -40,7 +40,7 @@ namespace ZweiachsMofa
             MainGFX.Start();
 
             SpriteObjectElastic Backgr = new SpriteObjectElastic("Background");
-            Backgr.Bmp = Properties.Resources.Cartoon_jungle_background.ToMediaBitmap();
+            //Backgr.Bmp = Properties.Resources.Cartoon_jungle_background.ToMediaBitmap();
             Backgr.SizeV = new Vector(MainGFX.Width, MainGFX.Height);
             Backgr.CenterOfMass = new Vector(0, 0);
             Backgr.IsLiquid = false;
@@ -51,7 +51,7 @@ namespace ZweiachsMofa
 
 
             SpriteObjectElastic WaterBk = new SpriteObjectElastic("WaterBk");
-            WaterBk.Bmp = Properties.Resources.water_texture1.ToMediaBitmap();
+           // WaterBk.Bmp = Properties.Resources.water_texture1.ToMediaBitmap();
             WaterBk.SizeV = new Vector(600, 150);
             WaterBk.CenterOfMass = new Vector(0, 0);
             WaterBk.IsLiquid = true;
@@ -62,7 +62,7 @@ namespace ZweiachsMofa
             //MainGFX.Collider.AddObject(WaterBk);
 
             SpriteObjectElastic Floor = new SpriteObjectElastic("Floor");
-            Floor.Bmp = Properties.Resources.strip_of_wood.ToMediaBitmap();
+           // Floor.Bmp = Properties.Resources.strip_of_wood.ToMediaBitmap();
             Floor.SizeV *= 0.5;
             Floor.CenterOfMass = new Vector(0, 0);
             Floor.IsLiquid = false;
@@ -73,7 +73,7 @@ namespace ZweiachsMofa
             MainGFX.Collider.AddObject(Floor);
 
             CarObject mySprite = new CarObject("Auto");
-            mySprite.Bmp = Properties.Resources.BaseCar2.ToMediaBitmap();
+            //mySprite.Bmp = Properties.Resources.BaseCar2.ToMediaBitmap();
             //mySprite.Bmp = BitmapConversion.StringToBitmap("db");
             //mySprite.CenterOfMass = new Vector(0, 0);
             //mySprite.Position = new Vector(0, 150);
@@ -89,7 +89,7 @@ namespace ZweiachsMofa
 
 
             SpriteObjectElastic Water = new SpriteObjectElastic("Water");
-            Water.Bmp = Properties.Resources.water_texture1.ToMediaBitmap();
+            //Water.Bmp = Properties.Resources.water_texture1.ToMediaBitmap();
             Water.SizeV = new Vector(600, 200);
             Water.CenterOfMass = new Vector(0, 0);
             Water.IsLiquid = true;

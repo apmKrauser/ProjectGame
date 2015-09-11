@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace ZweiachsMofa
+namespace BobbleCar
 {
     class TimedMover : IDisposable
     {

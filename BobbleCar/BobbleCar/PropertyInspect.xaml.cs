@@ -18,7 +18,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 
-namespace ZweiachsMofa
+namespace BobbleCar
 {
     /// <summary>
     /// Interaktionslogik für PropertyInspect.xaml

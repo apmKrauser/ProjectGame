@@ -21,7 +21,7 @@ using System.Runtime.Serialization;
 
 // todo: http://stackoverflow.com/questions/4616505/is-there-a-reason-why-a-base-class-decorated-with-xmlinclude-would-still-throw-a
 
-namespace ZweiachsMofa
+namespace BobbleCar
 {
     /// <summary>
     /// Interaktionslogik für GameDesigner.xaml

@@ -7,8 +7,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"                      
         WindowStartupLocation="CenterScreen"
         GlowBrush="{DynamicResource AccentColorBrush}"      
-        xmlns:local="clr-namespace:ZweiachsMofa"
-        xmlns:SimpleGraphicsLib="clr-namespace:SimpleGraphicsLib;assembly=SimpleGraphicsLib" x:Class="ZweiachsMofa.GameWindow"
+        xmlns:local="clr-namespace:BobbleCar"
+        xmlns:SimpleGraphicsLib="clr-namespace:SimpleGraphicsLib;assembly=SimpleGraphicsLib" x:Class="BobbleCar.GameWindow"
         Title="Bobble Car (Zweiachs Mofa)" Height="702.843" Width="1371.472" Closing="Window_Closing">
 
     <Window.Resources>

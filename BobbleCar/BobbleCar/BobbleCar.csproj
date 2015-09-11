@@ -7,8 +7,8 @@
     <ProjectGuid>{B77495D9-5758-47B4-8122-6B58E8881D97}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ZweiachsMofa</RootNamespace>
-    <AssemblyName>ZweiachsMofa</AssemblyName>
+    <RootNamespace>BobbleCar</RootNamespace>
+    <AssemblyName>BobbleCar</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -142,20 +142,6 @@
     <None Include="Resources\cyberscooty-cartoon-car_kl2.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MahApps.Metro-master\MahApps.Metro.Resources\MahApps.Metro.Resources.csproj">
-      <Project>{e708ac99-605b-42a0-8d20-abca8fe42dd2}</Project>
-      <Name>MahApps.Metro.Resources</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\MahApps.Metro-master\MahApps.Metro\MahApps.Metro.NET45.csproj">
-      <Project>{942d11c4-29f5-46c4-8c14-4b976d56c637}</Project>
-      <Name>MahApps.Metro.NET45</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\SimpleGraphicsLib\SimpleGraphicsLib.csproj">
-      <Project>{3c3074e3-475f-489c-a3cd-89cefa8071cb}</Project>
-      <Name>SimpleGraphicsLib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\cartoon_wood_texture_by_iemersonrosa-d5j02qc.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +169,20 @@
     <Content Include="data\Level One.svg" />
     <Resource Include="data\LvLOne_world_alt.png" />
     <Resource Include="data\LvLOne_background_alt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MahApps.Metro-master\MahApps.Metro.Resources\MahApps.Metro.Resources.csproj">
+      <Project>{e708ac99-605b-42a0-8d20-abca8fe42dd2}</Project>
+      <Name>MahApps.Metro.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MahApps.Metro-master\MahApps.Metro\MahApps.Metro.NET45.csproj">
+      <Project>{942d11c4-29f5-46c4-8c14-4b976d56c637}</Project>
+      <Name>MahApps.Metro.NET45</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleGraphicsLib\SimpleGraphicsLib.csproj">
+      <Project>{3c3074e3-475f-489c-a3cd-89cefa8071cb}</Project>
+      <Name>SimpleGraphicsLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -23,7 +23,7 @@ using System.Diagnostics;
 using System.Globalization;
 using SimpleGraphicsLib;
 
-namespace ZweiachsMofa
+namespace BobbleCar
 {
 
     public class PropertyGridItem

@@ -117,23 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="BaseCar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cyberscooty-cartoon-car_kl.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BaseCar2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cyberscooty-cartoon-car_kl2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Cartoon_jungle_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Cartoon-jungle-background-09.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="strip_of_wood" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\strip-of-wood-wood-border-wood-lath-wood-plank.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="water_texture1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\water--ripples-texture-3-of-3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="wood_texture" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cartoon_wood_texture_by_iemersonrosa-d5j02qc.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

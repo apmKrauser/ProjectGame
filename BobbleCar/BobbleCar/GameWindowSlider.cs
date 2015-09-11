@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ZweiachsMofa
+namespace BobbleCar
 {
     public class GameWindowSlider : Slider, IRigidBody
     {
