@@ -1,4 +1,6 @@
-﻿using SimpleGraphicsLib;
+﻿using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using SimpleGraphicsLib;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,101 +17,62 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace BobbleCar
 {
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
-    public partial class GameWindow 
+    public partial class GameWindow : MetroWindow
     {
-        GameScroller Scroller;
+        private bool _shutdown = false;
 
+
+        public double DesignWindowStartWidth
+        {
+            get
+            {
+                return SystemParameters.WorkArea.Width * 0.9;
+            }
+
+            set { }
+        }
+
+        public double DesignWindowStartHeight
+        {
+            get
+            {
+                double height = SystemParameters.WorkArea.Width / 1550 * 720;
+                height = Math.Min(height, SystemParameters.WorkArea.Height * 0.9);
+                return height;
+            }
+        }
+        
+        
         public GameWindow()
         {
             InitializeComponent();
+            // Animations start by default
+            SpriteObject.AnimatedByDefault = true;
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void GameMainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            MainGFX.Dispose();
-        }
-
-        private void CmdStart_Click(object sender, RoutedEventArgs e)
-        {
-            MainGFX.Start();
-
-            SpriteObjectElastic Backgr = new SpriteObjectElastic("Background");
-            //Backgr.Bmp = Properties.Resources.Cartoon_jungle_background.ToMediaBitmap();
-            Backgr.SizeV = new Vector(MainGFX.Width, MainGFX.Height);
-            Backgr.CenterOfMass = new Vector(0, 0);
-            Backgr.IsLiquid = false;
-            Backgr.SpringC = 10;
-            Backgr.DampingC = 5;
-            Backgr.Position = new Vector(0, 0);
-            MainGFX.AddObject(Backgr);
-
-
-            SpriteObjectElastic WaterBk = new SpriteObjectElastic("WaterBk");
-           // WaterBk.Bmp = Properties.Resources.water_texture1.ToMediaBitmap();
-            WaterBk.SizeV = new Vector(600, 150);
-            WaterBk.CenterOfMass = new Vector(0, 0);
-            WaterBk.IsLiquid = true;
-            WaterBk.SpringC = 10;
-            WaterBk.DampingC = 5;
-            WaterBk.Position = new Vector(550, 400);
-            MainGFX.AddObject(WaterBk);
-            //MainGFX.Collider.AddObject(WaterBk);
-
-            SpriteObjectElastic Floor = new SpriteObjectElastic("Floor");
-           // Floor.Bmp = Properties.Resources.strip_of_wood.ToMediaBitmap();
-            Floor.SizeV *= 0.5;
-            Floor.CenterOfMass = new Vector(0, 0);
-            Floor.IsLiquid = false;
-            Floor.SpringC = 30;
-            Floor.DampingC = 5;
-            Floor.Position = new Vector(50, 150);
-            MainGFX.AddObject(Floor);
-            MainGFX.Collider.AddObject(Floor);
-
-            CarObject mySprite = new CarObject("Auto");
-            //mySprite.Bmp = Properties.Resources.BaseCar2.ToMediaBitmap();
-            //mySprite.Bmp = BitmapConversion.StringToBitmap("db");
-            //mySprite.CenterOfMass = new Vector(0, 0);
-            //mySprite.Position = new Vector(0, 150);
-            mySprite.Position = new Vector(300, 400);
-            mySprite.SizeV = new Vector(mySprite.Bmp.Width / 2, mySprite.Bmp.Height / 2);
-            mySprite.NormSpeed = new Vector(0,0);
-            mySprite.SpringC = 25;
-            mySprite.DampingC = 2;
-            mySprite.IsDeformable = true;
-            mySprite.IsMovable = true;
-            MainGFX.AddObject(mySprite);
-
-
-
-            SpriteObjectElastic Water = new SpriteObjectElastic("Water");
-            //Water.Bmp = Properties.Resources.water_texture1.ToMediaBitmap();
-            Water.SizeV = new Vector(600, 200);
-            Water.CenterOfMass = new Vector(0, 0);
-            Water.IsLiquid = true;
-            Water.SpringC = 15;
-            Water.DampingC = 3;
-            Water.Position = new Vector(550, 450);
-            MainGFX.AddObject(Water);
-            MainGFX.Collider.AddObject(Water);
-
-            foreach (var item in MainGFX.ObjectList)
+            // After everything has loaded, rendered and so on
+            Dispatcher.BeginInvoke(DispatcherPriority.ContextIdle, new Action(() =>
             {
-                Debug.WriteLine(item.Key);
-            }
-
+                //System.Windows.Forms.MessageBox.Show("dispatched");
+                MainGFX.Start();
+                GameStarting();
+            }));
         }
 
-        private void MainGFX_MouseMove(object sender, MouseEventArgs e)
+        private void GameStarting()
         {
-            CmdTest.Content = MainGFX.TestHitTest(e.GetPosition(MainGFX).X, e.GetPosition(MainGFX).Y); ;
+            LevelScript.StartFirstLevel(this);
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -126,16 +89,30 @@ namespace BobbleCar
 
         private void CmdStartAni_Click(object sender, RoutedEventArgs e)
         {
-            //theAnimation = new TestAnimation(mySprite, MainGFX);
-           // mySprite.AddAnimation(new TestAnimation(), "Test");
-            SpriteObjectElastic mySprite = (MainGFX.ObjectList["Auto"] as SpriteObjectElastic);
-            mySprite.Position = new Vector(0, 200);
-            mySprite.NormSpeed = new Vector(0, -200);
-            //mySprite.AddAnimation(new AnimationLinearTranslation(), "Mover");
-            mySprite.AddAnimation(new AnimationConstAcceleration(new Vector(20, 100)), "Gravity");
-            mySprite.AddAnimation(new AnimationWobble(1, 0.005), "Wobble");
+            // construct:
+           // CarObject mySprite = new CarObject("Auto");
+           // //mySprite.Bmp = Properties.Resources.BaseCar2.ToMediaBitmap();
+           // //mySprite.Bmp = BitmapConversion.StringToBitmap("db");
+           // //mySprite.CenterOfMass = new Vector(0, 0);
+           // //mySprite.Position = new Vector(0, 150);
+           // mySprite.Position = new Vector(300, 400);
+           // mySprite.SizeV = new Vector(mySprite.Bmp.Width / 2, mySprite.Bmp.Height / 2);
+           // mySprite.NormSpeed = new Vector(0, 0);
+           // mySprite.SpringC = 25;
+           // mySprite.DampingC = 2;
+           // mySprite.IsDeformable = true;
+           // mySprite.IsMovable = true;
+           // MainGFX.AddObject(mySprite);
+           // //theAnimation = new TestAnimation(mySprite, MainGFX);
+           //// mySprite.AddAnimation(new TestAnimation(), "Test");
+           // SpriteObjectElastic mySprite = (MainGFX.ObjectList["Auto"] as SpriteObjectElastic);
+           // mySprite.Position = new Vector(0, 200);
+           // mySprite.NormSpeed = new Vector(0, -200);
+           // //mySprite.AddAnimation(new AnimationLinearTranslation(), "Mover");
+           // mySprite.AddAnimation(new AnimationConstAcceleration(new Vector(20, 100)), "Gravity");
+           // mySprite.AddAnimation(new AnimationWobble(1, 0.005), "Wobble");
 
-            Scroller = new GameScroller(mySprite, MainGFX, GameWrapper);
+           // //Scroller = new GameScroller(mySprite, MainGFX, GameWrapper);
 
         }
 
@@ -175,5 +152,51 @@ namespace BobbleCar
            // MainGFX.Height = 100;
 
         }
+
+        private void GameWindow_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            MainGFX.RaiseWindowKeyDown(this, e);
+        }
+
+        private void GameWindow_PreviewKeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            MainGFX.RaiseWindowKeyUp(this, e);
+        }
+
+        private async void MetroWindow_Closing_Async(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = !_shutdown;
+            if (_shutdown) return;
+
+            var mySettings = new MetroDialogSettings()
+            {
+                AffirmativeButtonText = "Quit",
+                NegativeButtonText = "Cancel",
+                AnimateShow = true,
+                AnimateHide = false
+            };
+
+            var result = await this.ShowMessageAsync("Quit",
+                "Close Game?",
+                MessageDialogStyle.AffirmativeAndNegative, mySettings);
+
+            bool affirm = result == MessageDialogResult.Affirmative;
+            if (affirm)
+            {
+                // Close Game 
+                // Todo: save score
+                // Todo: save score on dispose
+            }
+            _shutdown = affirm;
+
+            if (_shutdown)
+            {
+                MainGFX.Dispose();
+                this.Close();
+                //System.Windows.Application.Current.Shutdown();
+            }
+        }
+
+
     }
 }

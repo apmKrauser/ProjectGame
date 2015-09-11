@@ -1,30 +1,30 @@
-﻿<Controls:MetroWindow
+﻿<Controls:MetroWindow x:Name="GameMainWindow" x:Class="BobbleCar.GameWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"                      
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
+        xmlns:SimpleGraphicsLib="clr-namespace:SimpleGraphicsLib;assembly=SimpleGraphicsLib" xmlns:local="clr-namespace:BobbleCar" xmlns:System="clr-namespace:System;assembly=mscorlib"                      
         WindowStartupLocation="CenterScreen"
-        GlowBrush="{DynamicResource AccentColorBrush}"      
-        xmlns:local="clr-namespace:BobbleCar"
-        xmlns:SimpleGraphicsLib="clr-namespace:SimpleGraphicsLib;assembly=SimpleGraphicsLib" x:Class="BobbleCar.GameWindow"
-        Title="Bobble Car (Zweiachs Mofa)" Height="702.843" Width="1371.472" Closing="Window_Closing">
+        GlowBrush="{DynamicResource AccentColorBrush}"    
+        Background ="#FF3E3E3E"
+        Width="{Binding ElementName=GameMainWindow, Path=DesignWindowStartWidth}"    
+        Height="{Binding ElementName=GameMainWindow, Path=DesignWindowStartHeight}" 
+        Title="Bobble Car" Loaded="GameMainWindow_Loaded" Closing="MetroWindow_Closing_Async" PreviewKeyDown="GameWindow_PreviewKeyDown" PreviewKeyUp="GameWindow_PreviewKeyUp">
 
-    <Window.Resources>
-        <Style  TargetType="Button"  >
-            <Setter Property="Background" Value="#FF878787"/>
-        </Style>
-    </Window.Resources>
-    <Grid Margin="0,0,0,4">
 
-        <Button x:Name ="CmdStart" Content="Start" HorizontalAlignment="Left" Margin="1226,51,0,0" VerticalAlignment="Top" Width="77" Click="CmdStart_Click"/>
-        <Button x:Name="CmdTest" Content="Button" HorizontalAlignment="Left" Margin="1301,211,0,0" VerticalAlignment="Top" Width="30" Height="24" Click="CmdTest_Click"/>
-        <Button x:Name="CmdStartAni"  Content="Setup Animation" HorizontalAlignment="Left" Height="24" Margin="1226,104,0,0" VerticalAlignment="Top" Width="105" Click="CmdStartAni_Click"/>
-        <Button x:Name="CmdStopAni" Content="Stop Animation" HorizontalAlignment="Left" Height="24" Margin="1226,160,0,0" VerticalAlignment="Top" Width="105" Click="CmdStopAni_Click"/>
-        <WrapPanel x:Name="GameWrapper" HorizontalAlignment="Left" Height="598" Margin="10,10,0,0" VerticalAlignment="Top" Width="1179">
-            <SimpleGraphicsLib:GFXContainer x:Name="MainGFX" HorizontalAlignment="Left"  Margin="0,0,0,0" VerticalAlignment="Top" 
+    <Viewbox>
+        <Grid x:Name="MainGrid" Width="1200" Height="600" >
+            <WrapPanel x:Name="GameWrapper" Width="1200" Height="600" Margin="10,10" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <SimpleGraphicsLib:GFXContainer x:Name="MainGFX" HorizontalAlignment="Left"  Margin="0,0,0,0" VerticalAlignment="Top" 
                                             Width="{Binding ElementName=GameWrapper, Path=Width}" Height="{Binding ElementName=GameWrapper, Path=Height}"/>
-        </WrapPanel>
-    </Grid>
+            </WrapPanel>
+            <Controls:MetroProgressBar Name="pgJumpResource" HorizontalAlignment="Left" Margin="165,19,0,0" VerticalAlignment="Top" Height="9" Width="88"  Opacity="0.7">
+                <Controls:MetroProgressBar.Effect>
+                    <DropShadowEffect/>
+                </Controls:MetroProgressBar.Effect>
+            </Controls:MetroProgressBar>
+        </Grid>
+    </Viewbox>
 </Controls:MetroWindow>

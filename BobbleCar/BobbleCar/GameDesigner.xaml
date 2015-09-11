@@ -17,7 +17,7 @@
     </Window.Resources>
     <Viewbox>
         <Grid x:Name="MainGrid"  Width="1550" Height="770" >
-            <WrapPanel x:Name="GameWrapper" HorizontalAlignment="Left" Height="598" Margin="10,10,-593,-317" VerticalAlignment="Top" Width="1179" >
+            <WrapPanel x:Name="GameWrapper" HorizontalAlignment="Left" Width="1200" Height="600" Margin="10,10" VerticalAlignment="Top"  >
                 <SimpleGraphicsLib:GFXContainer x:Name="MainGFX" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" 
 				Width="{Binding Width, ElementName=GameWrapper}" Height="{Binding Height, ElementName=GameWrapper}" MouseMove="MainGFX_MouseMove" MouseRightButtonDown="MainGFX_MouseRightButtonDown" MouseLeftButtonDown="MainGFX_MouseLeftButtonDown"/>
             </WrapPanel>

@@ -10,9 +10,9 @@ namespace SimpleGraphicsLib
     public class GameScroller : IDisposable
     {
 
-        private IRigidBody CenteredObject;
-        private GFXContainer GContainer;
-        private FrameworkElement ViewWindow;
+        protected IRigidBody CenteredObject;
+        protected GFXContainer GContainer;
+        protected FrameworkElement ViewWindow;
 
         public GameScroller(IRigidBody centeredObject, GFXContainer gfxContainer, FrameworkElement viewWindow)
         {
@@ -26,14 +26,17 @@ namespace SimpleGraphicsLib
 
         public virtual void  Update(object sender, FrameUpdateEventArgs e)
         {
+            // Left border
             if (CenteredObject.Position.X < (ViewWindow.Width /2))
             {
                 GContainer.DrawingOffset = new Vector(0, 0);
             }
+            // Middle
             else if (CenteredObject.Position.X > (GContainer.Width - (ViewWindow.Width / 2)))
             {
                 GContainer.DrawingOffset = new Vector((ViewWindow.Width - GContainer.Width), 0);
             }
+            // Right border
             else
             {
                 GContainer.DrawingOffset = new Vector((ViewWindow.Width / 2) - CenteredObject.Position.X, 0);

@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace BobbleCar
 {
-    class GUIAnimator : GFXAnimation, IDisposable, IGFXAnimation
+    public class GUIAnimator : GFXAnimation, IDisposable, IGFXAnimation
     {
 
         GFXContainer Gfx;

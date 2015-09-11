@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BobbleCar</RootNamespace>
-    <AssemblyName>BobbleCar</AssemblyName>
+    <AssemblyName>BobbleCar_Designer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -70,6 +70,7 @@
     <Compile Include="GFXContainer_alt.cs" />
     <Compile Include="GUIAnimator.cs" />
     <Compile Include="GUIHelper.cs" />
+    <Compile Include="LevelScript.cs" />
     <Compile Include="PropertyInspect.xaml.cs">
       <DependentUpon>PropertyInspect.xaml</DependentUpon>
     </Compile>
@@ -163,10 +164,10 @@
   <ItemGroup>
     <Resource Include="data\LevelOne1.xml" />
     <Resource Include="data\LevelOne2.xml" />
-    <Resource Include="data\LevelOne3.xml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\Level One.svg" />
+    <Resource Include="data\LevelOne.xml" />
     <Resource Include="data\LvLOne_world_alt.png" />
     <Resource Include="data\LvLOne_background_alt.png" />
   </ItemGroup>

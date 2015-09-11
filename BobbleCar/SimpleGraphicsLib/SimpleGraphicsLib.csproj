@@ -87,6 +87,7 @@
     <Compile Include="SimpleSprite.cs" />
     <Compile Include="SmokeParticle.cs" />
     <Compile Include="SmokeParticleSystem.cs" />
+    <Compile Include="SmoothGameScroller.cs" />
     <Compile Include="SpriteObject.cs" />
     <Compile Include="SpriteObjectElastic.cs" />
     <Compile Include="TestAnimation.cs" />

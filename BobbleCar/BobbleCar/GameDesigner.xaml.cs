@@ -545,8 +545,11 @@ namespace BobbleCar
             _shutdown = true;
 
             if (_shutdown)
+            {
+                MainGFX.Dispose();
                 this.Close();
                 //System.Windows.Application.Current.Shutdown();
+            }
         }
 
         private void MainGFX_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
