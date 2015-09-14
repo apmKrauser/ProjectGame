@@ -195,9 +195,8 @@ namespace SimpleGraphicsLib
                     TimeAlive = 0;
                     //Debug.WriteLine("=> Particle gone.");
                     using (DrawingContext dc = DVisual.RenderOpen()) { }
-                }
-                
-                DrawParticle();
+                } else
+                    DrawParticle();                
             }
         }
 

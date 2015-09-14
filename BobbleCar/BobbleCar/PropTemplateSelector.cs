@@ -109,6 +109,32 @@ namespace BobbleCar
                 ValueObj = Vector.Parse(value);
             }
         }
+
+        public Color ValueAsColor
+        {
+            get
+            {
+                return (Color)(ValueObj);
+            }
+
+            set
+            {
+                ValueObj = value;
+            }
+        }
+
+        public String ValueAsRect
+        {
+            get
+            {
+                return ((Rect)ValueObj).ToString(CultureInfo.InvariantCulture);
+            }
+
+            set
+            {
+                ValueObj = Rect.Parse(value);
+            }
+        }
         
         public void SetValue(object value)
         {   // who am i
@@ -124,6 +150,10 @@ namespace BobbleCar
                 ValueAsKey = (Key)value;
             else if (ValueObj is Vector)
                 ValueAsVector = (string)value;
+            else if (ValueObj is Rect)
+                ValueAsRect = (string)value;
+            else if (ValueObj is Color)
+                ValueAsColor = (Color)value;
         }
         
     }
@@ -138,6 +168,8 @@ namespace BobbleCar
         public DataTemplate ObjectKeyEnumTemplate { get; set; }
         public DataTemplate ObjectVectorTemplate { get; set; }
         public DataTemplate SubObjectTemplate { get; set; }
+        public DataTemplate ObjectColorTemplate { get; set; }
+        public DataTemplate ObjectRectTemplate { get; set; }
 
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
@@ -174,6 +206,14 @@ namespace BobbleCar
             else if (value is Vector)
             {
                 return ObjectVectorTemplate;
+            }
+            else if (value is Color)
+            {
+                return ObjectColorTemplate;
+            }
+            else if (value is Rect)
+            {
+                return ObjectRectTemplate;
             }
             else if (value is IPropertyInspectable)
             {

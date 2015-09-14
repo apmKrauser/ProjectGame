@@ -17,6 +17,7 @@ using MahApps.Metro.Controls;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
+using Xceed.Wpf.Toolkit;
 
 namespace BobbleCar
 {
@@ -82,7 +83,10 @@ namespace BobbleCar
                    (v is int) ||
                    (v is bool) ||
                    (v is Key) ||
-                   (v is Vector)) ||
+                   (v is Vector) ||
+                   (v is Rect) ||
+                   (v is Color) 
+                   ) ||
                    (v is IPropertyInspectable)
                     && item.CanWrite)
                 {
@@ -162,6 +166,28 @@ namespace BobbleCar
             }
             catch (Exception ex)
             {            }           
+        }
+
+        private void ColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
+        {
+            try
+            {
+                PropertyGridItem item = PropertyGrid.SelectedItem as PropertyGridItem;
+                if (item != null)
+                {
+                    if (sender is ColorPicker)
+                    {
+                        var b = sender as ColorPicker;
+                        item.SetValue(b.SelectedColor);
+                        // Debug.WriteLine("=> Selected = " + b.SelectedValue + ":" + b.SelectedValue.GetType().Name);
+                        //  Debug.WriteLine("=> Sett = " + item.ValueAsKey + ":" + item.ValueObj.GetType().Name);
+                        UpdateProperty(item);
+                        //PropertyGrid.Items.Refresh();
+                    }
+                }
+            }
+            catch (Exception ex)
+            { } 
         }
 
 
