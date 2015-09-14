@@ -10,7 +10,7 @@ namespace SimpleGraphicsLib
     public class SmoothGameScroller : GameScroller
     {
 
-        public double IFkt = 1.5;
+        public double IFkt = 1.0;
         protected double PrefXPos;  // Preferred X Pos 
         
         public SmoothGameScroller(IRigidBody centeredObject, GFXContainer gfxContainer, FrameworkElement viewWindow)
