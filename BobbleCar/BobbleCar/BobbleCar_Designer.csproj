@@ -191,6 +191,7 @@
     <Resource Include="data\LevelOne2.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="data\delme.xml" />
     <Content Include="data\Level One.svg" />
     <Resource Include="data\test.xml" />
     <Resource Include="data\LevelOne.xml" />

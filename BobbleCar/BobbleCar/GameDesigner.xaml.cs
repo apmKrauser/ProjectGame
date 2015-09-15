@@ -296,7 +296,7 @@ namespace BobbleCar
                         objMoveRefpoint = (Vector)e.GetPosition(MainGFX);
                         break;
                     case ModifierKeys.Shift:
-                        if (e.RightButton == MouseButtonState.Released)
+                        if ((e.RightButton == MouseButtonState.Released) && (e.LeftButton == MouseButtonState.Pressed))
                             obj.Position = (Vector)e.GetPosition(MainGFX) - MainGFX.DrawingOffset;
                         break;
                     case ModifierKeys.Windows:
