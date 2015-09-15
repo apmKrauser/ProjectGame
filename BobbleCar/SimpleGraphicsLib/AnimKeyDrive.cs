@@ -124,8 +124,13 @@ namespace SimpleGraphicsLib
 
         public void OnKeyUp(object sender, KeyEventArgs e)
         {
-            currentAccel = new Vector(0,0);
-            breaking = false;
+            if ((e.Key == KeyBreak)
+             || (e.Key == KeyBackward)
+             || (e.Key == KeyForward))
+            {
+                currentAccel = new Vector(0, 0);
+                breaking = false;
+            }
         }
 
 

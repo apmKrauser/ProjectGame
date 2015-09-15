@@ -191,7 +191,26 @@
     <Resource Include="data\LevelOne2.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="data\WoodLayer.png" />
+    <Resource Include="data\LvLOne_world3.png" />
+    <Resource Include="data\LvLOne_world2.png" />
     <Resource Include="data\delme.xml" />
+    <Resource Include="data\g9897.png" />
+    <Resource Include="data\g9890.png" />
+    <Resource Include="data\gfx temp\bling_birdbath.png" />
+    <Resource Include="data\gfx temp\blockmaker_engine.png" />
+    <Resource Include="data\gfx temp\boulder_02.png" />
+    <Resource Include="data\gfx temp\crusher.png" />
+    <Resource Include="data\gfx temp\flying_platform_5.png" />
+    <Resource Include="data\gfx temp\flying_platform_6.png" />
+    <Resource Include="data\gfx temp\gassifier.png" />
+    <Resource Include="data\gfx temp\middleplus %28z 1%29.png" />
+    <Resource Include="data\gfx temp\npc_shrine_zille.png" />
+    <Resource Include="data\gfx temp\railing.png" />
+    <Resource Include="data\gfx temp\rock_dull_mid4.png" />
+    <Resource Include="data\gfx temp\rock_metal_1.png" />
+    <Resource Include="data\gfx temp\tower_expander.png" />
+    <Resource Include="data\gfx temp\wood_platform.png" />
     <Content Include="data\Level One.svg" />
     <Resource Include="data\test.xml" />
     <Resource Include="data\LevelOne.xml" />

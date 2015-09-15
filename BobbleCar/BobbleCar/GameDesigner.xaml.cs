@@ -554,19 +554,21 @@ namespace BobbleCar
 
         private void MainGFX_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Visual v = MainGFX.GetObjectXY((Point)e.GetPosition(MainGFX)) as Visual;
-            if (v != null)
+            if (Keyboard.Modifiers == ModifierKeys.None)
             {
-                var res = from s in ThisLevel.Sprites
-                          where s.ContainsVisual(v)
-                          select s;
-                try
+                Visual v = MainGFX.GetObjectXY((Point)e.GetPosition(MainGFX)) as Visual;
+                if (v != null)
                 {
-                    lstSprites.SelectedItem = res.First();
+                    var res = from s in ThisLevel.Sprites
+                              where s.ContainsVisual(v)
+                              select s;
+                    try
+                    {
+                        lstSprites.SelectedItem = res.First();
+                    }
+                    catch (Exception) { }
                 }
-                catch (Exception) {}
             }
-            
         }
 
         private void DesignerWindow_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
