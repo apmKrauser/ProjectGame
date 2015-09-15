@@ -191,6 +191,7 @@
     <Resource Include="data\LevelOne2.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="data\mplay_test.xml" />
     <Resource Include="data\WoodLayer.png" />
     <Resource Include="data\LvLOne_world3.png" />
     <Resource Include="data\LvLOne_world2.png" />
