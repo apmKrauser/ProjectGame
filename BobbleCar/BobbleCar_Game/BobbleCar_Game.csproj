@@ -112,6 +112,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="data\test2.xml" />
+    <Resource Include="data\tower_expander.png" />
+    <Resource Include="data\blockmaker_engine.png" />
+    <Resource Include="data\flying_platform_6.png" />
     <Resource Include="data\cyberscooty-cartoon-car_kl2.png" />
     <Resource Include="data\delme.xml" />
     <Resource Include="data\g9890.png" />
