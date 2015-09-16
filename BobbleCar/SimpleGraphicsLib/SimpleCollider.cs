@@ -117,28 +117,50 @@ namespace SimpleGraphicsLib
                     double SpringC = mel.SpringC;
                     double Damping = mel.DampingC;
                     bool liquid = false;
+
+                    // me - other; Position is COG; 
+                    Vector dCOG = me.Position - other.Position;
+                    if (dCOG.Length >0)
+                        dCOG.Normalize();
+
                     if (other is IElasticBody)
                     {
                         IElasticBody otherel = (other as IElasticBody);
                         SpringC = 1 / ((1 / SpringC) + (1 / otherel.SpringC));
                         Damping = (Damping + otherel.DampingC) / 2;
                         liquid = otherel.IsLiquid;
-                    }
-                    // me - other; Position is COG; 
-                    Vector dCOG = me.Position - other.Position;
-                    if (dCOG.Length >0)
-                        dCOG.Normalize();
-                    // force
-                   // delme double df = dx.Length * other.Weight / (me.Weight + other.Weight);  // displacement regarding ralation of masses
-                    dx = dCOG * dx.Length;
-                    Vector df = dx * SpringC;
-                    
-                    mel.NormSpeed += df * dt / me.Weight;
+                        if (otherel.isPointMass)
+                        {
+                            dx = dCOG * dx.Length;
+                            // force
+                            // delme double df = dx.Length * other.Weight / (me.Weight + other.Weight);  // displacement regarding ralation of masses
+                            Vector df = dx * SpringC;
+                            mel.NormSpeed += df * dt / me.Weight;
 
-                    // damping
-                    double fdamp = Vector.Multiply(other.NormSpeed - me.NormSpeed, dCOG) * Damping; //  force against me
-                    Vector vdamp = dCOG * fdamp * dt / me.Weight;
-                    mel.NormSpeed += vdamp;
+                            // damping
+                            double fdamp = Vector.Multiply(other.NormSpeed - me.NormSpeed, dCOG) * Damping; //  force against me
+                            Vector vdamp = dCOG * fdamp * dt / me.Weight;
+                            mel.NormSpeed += vdamp;
+                        }
+                        else
+                        {
+                            dCOG = dx;
+                            if (dx.Length > 0)
+                            {
+                                double fme = (me.Weight / (me.Weight + other.Weight));
+                                double fother = (other.Weight / (me.Weight + other.Weight));
+                                me.Position += dx * fme;
+                                other.Position -= dx * fother;
+                                dx.Normalize();
+                                me.NormSpeed -= -Math.Abs(Vector.Multiply(me.NormSpeed, dx)) * dx * fme ;
+                                //me.NormSpeed += -Math.Abs(Vector.Multiply(other.NormSpeed, dx)) * dx * fother;
+                                //Debug.WriteLine("## Inters V={0:##.0} dv={1:##.0}", dx, me.NormSpeed);
+                            }
+                        }
+                    } else
+                        dCOG = dx;
+
+                   
 
                     // deformation:
                     double bend = dx.Length / ((Vector)me.Shape.Size).Length;

@@ -18,13 +18,15 @@ namespace BobbleCar
         static CarObject Player;
 
 
-        public static LevelSet StartFirstLevel(GameWindow GWin)
+        public static LevelSet StartLevel(GameWindow GWin, string levelFileName)
         {
             LevelSet Level = null;
-
             SpriteObject.AnimatedByDefault = false;
+
+            string LevelPath = Helper.DataLocalPath + @"\" + levelFileName;
+
             ThisLevel.ClearLevel(GWin.MainGFX);
-            ThisLevel = LevelSet.LoadLevel(FirstLevelPath);
+            ThisLevel = LevelSet.LoadLevel(LevelPath);
             ThisLevel.BuildLevel(GWin.MainGFX);
 
             GUIAni = new GUIAnimator(gfx: GWin.MainGFX,

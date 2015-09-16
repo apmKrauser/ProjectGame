@@ -17,6 +17,8 @@ namespace SimpleGraphicsLib
 
         bool IsDeformable { get; set; }
 
+        bool isPointMass { get; set; }
+
         Rect Deformation { get; set; }
 
     }

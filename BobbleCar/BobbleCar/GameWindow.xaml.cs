@@ -26,6 +26,8 @@ namespace BobbleCar
     /// </summary>
     public partial class GameWindow : MetroWindow
     {
+        string LevelFile = "LevelOne.xml";
+
         private bool _shutdown = false;
 
 
@@ -57,6 +59,13 @@ namespace BobbleCar
             SpriteObject.AnimatedByDefault = true;
         }
 
+        public GameWindow(string levelFileName)
+        {
+            InitializeComponent();
+            SpriteObject.AnimatedByDefault = true;
+            LevelFile = levelFileName;
+        }
+
         private void GameMainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             // After everything has loaded, rendered and so on
@@ -70,7 +79,7 @@ namespace BobbleCar
 
         private void GameStarting()
         {
-            LevelScript.StartFirstLevel(this);
+            LevelScript.StartLevel(this, LevelFile);
         }
 
 

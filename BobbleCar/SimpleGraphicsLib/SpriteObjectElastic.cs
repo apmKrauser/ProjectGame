@@ -35,6 +35,13 @@ namespace SimpleGraphicsLib
         }
 
         [DataMember]
+        public bool isPointMass
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public bool IsDeformable
         {
             get;

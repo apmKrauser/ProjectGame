@@ -1,12 +1,37 @@
-﻿<Window x:Class="BobbleCar_Game.MainWindow"
+﻿<Controls:MetroWindow x:Name="MainWindowIntro" x:Class="BobbleCar_Game.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
+        xmlns:SimpleGraphicsLib="clr-namespace:SimpleGraphicsLib;assembly=SimpleGraphicsLib" xmlns:local="clr-namespace:BobbleCar" xmlns:System="clr-namespace:System;assembly=mscorlib"                      
+        WindowStartupLocation="CenterScreen"
+        GlowBrush="{DynamicResource AccentColorBrush}"    
+        Background ="#FF3E3E3E"
+        Width="632"    
+        Height="400" 
+        Title="Bobble Car" >
+
+
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="279*"/>
-            <ColumnDefinition Width="238*"/>
-        </Grid.ColumnDefinitions>
+        <Button Content="Level One" Background="#FF878787" FontSize="12"  HorizontalAlignment="Left" Margin="243,104,0,0" VerticalAlignment="Top" Width="141" Height="34" Click="Button_Click">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="#FF61E2FF"/>
+            </Button.Effect>
+        </Button>
+        
+        <Button Content="Multiplayer" Background="#FF878787" FontSize="12"  HorizontalAlignment="Left" Margin="243,158,0,0" VerticalAlignment="Top" Width="141" Height="34" Click="Button_Click_1">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="#FF61E2FF"/>
+            </Button.Effect>
+        </Button>
+        <Button Content="Level Editor" Background="#FF878787" FontSize="12"  HorizontalAlignment="Left" Margin="243,211,0,0" VerticalAlignment="Top" Width="141" Height="34" Click="Button_Click_2">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="#FF61E2FF"/>
+            </Button.Effect>
+        </Button>
+
 
     </Grid>
-</Window>
+</Controls:MetroWindow>
