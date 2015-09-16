@@ -20,7 +20,7 @@ namespace SimpleGraphicsLib
 {
     [DataContract]
     [KnownType("GetDerivedTypes")]
-    public class SpriteObject : IGFXObject, IRigidBody, IAnimationOnDispose, IPropertyInspectable, IHasSeperateAnimationEvent
+    public class SpriteObject : IDisposable, IGFXObject, IRigidBody, IAnimationOnDispose, IPropertyInspectable, IHasSeperateAnimationEvent
     {
 
         #region FieldsProperties
@@ -78,6 +78,7 @@ namespace SimpleGraphicsLib
         private Vector _deformationPos ;  // position offset
         private Vector _deformationSize ;  // size offset
         private bool _isGrounded;
+        private bool IsDisposed = false;
 
         static public bool DrawShape = false; // draw outline
         static public bool AnimatedByDefault = true; // start animations by default
@@ -310,6 +311,7 @@ namespace SimpleGraphicsLib
 
         private void OnCreate()
         {
+            IsDisposed = false;
             Highlight = false;
             _animated = AnimatedByDefault;
             _positionSync = new object();
@@ -380,19 +382,23 @@ namespace SimpleGraphicsLib
 
         public virtual void Dispose()
         {
-            UnregisterAllVisuals();
-            // todo: rückwärts zählen wg remove
-            //foreach (var animation in Animations.Values)
-            //{
-            //    Debug.WriteLine("## Ani: " + animation.Name);
-            //}
-            // dispose is designed to remove ani from list, hence, foreach impossible 
-            RemoveAnimations();
-            //            foreach (var animation in Animations.Values)
-//            {
-//            }
-            Animations.Clear();
-            Visuals.Clear();
+            if (!IsDisposed)
+            {
+                IsDisposed = true;
+                UnregisterAllVisuals();
+                // todo: rückwärts zählen wg remove
+                //foreach (var animation in Animations.Values)
+                //{
+                //    Debug.WriteLine("## Ani: " + animation.Name);
+                //}
+                // dispose is designed to remove ani from list, hence, foreach impossible 
+                RemoveAnimations();
+                //            foreach (var animation in Animations.Values)
+                //            {
+                //            }
+                Animations.Clear();
+                Visuals.Clear();
+            }
         }
 
 
