@@ -13,25 +13,37 @@
         Height="400" 
         Title="Bobble Car" >
 
-
+    <Window.Resources>
+        <ResourceDictionary>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                <Setter Property="Background" Value="#FF878787">
+                </Setter>
+                <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True" >
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect ShadowDepth="0" Color="#FF61E2FF" Opacity="1" BlurRadius="25"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False" >
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect ShadowDepth="0" Color="#FF61E2FF" Opacity="1" BlurRadius="7"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    
     <Grid>
-        <Button Content="Level One" Background="#FF878787" FontSize="12"  HorizontalAlignment="Left" Margin="243,104,0,0" VerticalAlignment="Top" Width="141" Height="34" Click="Button_Click">
-            <Button.Effect>
-                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="#FF61E2FF"/>
-            </Button.Effect>
-        </Button>
-        
-        <Button Content="Multiplayer" Background="#FF878787" FontSize="12"  HorizontalAlignment="Left" Margin="243,158,0,0" VerticalAlignment="Top" Width="141" Height="34" Click="Button_Click_1">
-            <Button.Effect>
-                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="#FF61E2FF"/>
-            </Button.Effect>
-        </Button>
-        <Button Content="Level Editor" Background="#FF878787" FontSize="12"  HorizontalAlignment="Left" Margin="243,211,0,0" VerticalAlignment="Top" Width="141" Height="34" Click="Button_Click_2">
-            <Button.Effect>
-                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="#FF61E2FF"/>
-            </Button.Effect>
-        </Button>
+        <Button Content="Level One"  FontSize="12"  HorizontalAlignment="Left" Margin="243,104,0,0" VerticalAlignment="Top" Width="141" Height="34" Click="Button_Click"/>
 
+            <Button Content="Multiplayer"  FontSize="12"  HorizontalAlignment="Left" Margin="243,158,0,0" VerticalAlignment="Top" Width="141" Height="34" Click="Button_Click_1"/>
+
+            <Button Content="Level Editor"  FontSize="12"  HorizontalAlignment="Left" Margin="243,211,0,0" VerticalAlignment="Top" Width="141" Height="34" Click="Button_Click_2"/>
 
     </Grid>
 </Controls:MetroWindow>
