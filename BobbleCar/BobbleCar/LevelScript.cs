@@ -25,6 +25,9 @@ namespace BobbleCar
 
             string LevelPath = Helper.DataLocalPath + @"\" + levelFileName;
 
+            //GC.Collect();
+            //GC.WaitForPendingFinalizers();
+
             ThisLevel.ClearLevel(GWin.MainGFX);
             ThisLevel = LevelSet.LoadLevel(LevelPath);
             ThisLevel.BuildLevel(GWin.MainGFX);

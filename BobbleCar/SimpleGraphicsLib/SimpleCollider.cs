@@ -147,13 +147,13 @@ namespace SimpleGraphicsLib
                             dCOG = dx;
                             if (dx.Length > 0)
                             {
-                                double fme = (me.Weight / (me.Weight + other.Weight));
-                                double fother = (other.Weight / (me.Weight + other.Weight));
+                                double fme = (other.Weight / (me.Weight + other.Weight));
+                                double fother = (me.Weight / (me.Weight + other.Weight));
                                 me.Position += dx * fme;
-                                other.Position -= dx * fother;
+                                //other.Position -= dx * fother;
                                 dx.Normalize();
                                 me.NormSpeed -= -Math.Abs(Vector.Multiply(me.NormSpeed, dx)) * dx * fme ;
-                                //me.NormSpeed += -Math.Abs(Vector.Multiply(other.NormSpeed, dx)) * dx * fother;
+                                other.NormSpeed += -Math.Abs(Vector.Multiply(other.NormSpeed, dx)) * dx * fother;
                                 //Debug.WriteLine("## Inters V={0:##.0} dv={1:##.0}", dx, me.NormSpeed);
                             }
                         }
