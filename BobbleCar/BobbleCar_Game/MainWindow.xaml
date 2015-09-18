@@ -8,7 +8,7 @@
         xmlns:SimpleGraphicsLib="clr-namespace:SimpleGraphicsLib;assembly=SimpleGraphicsLib" xmlns:local="clr-namespace:BobbleCar" xmlns:System="clr-namespace:System;assembly=mscorlib"                      
         WindowStartupLocation="CenterScreen"
         GlowBrush="{DynamicResource AccentColorBrush}"    
-        Background ="#FF3E3E3E"
+        Background ="#FF323232"
         Width="632"    
         Height="400" 
         Title="Bobble Car" >
@@ -16,7 +16,7 @@
     <Window.Resources>
         <ResourceDictionary>
         <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
-                <Setter Property="Background" Value="#FF878787">
+                <Setter Property="Background" Value="#FF5F5D5D">
                 </Setter>
                 <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True" >

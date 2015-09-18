@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SimpleGraphicsLib.SpriteObject" Collapsed="true">
+    <Position X="3.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAEksCAgBiRIEOIhAABIAtaQRGmSSFIIoGQkqBIVQAA=</HashCode>
+      <FileName>SpriteObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.179" />
+  </Class>
+  <Class Name="SimpleGraphicsLib.SpriteObjectElastic" Collapsed="true">
+    <Position X="3.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAACBAIgAAAAAAAAAAAAAAAIAAAAAAAAAAAAABA=</HashCode>
+      <FileName>SpriteObjectElastic.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SimpleGraphicsLib.CarObject" Collapsed="true">
+    <Position X="3.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAQBAQAIAAAIAAAAACDCNAIAEAAEAAAAAAA=</HashCode>
+      <FileName>CarObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SimpleGraphicsLib.ParticleSystem&lt;T, TConf&gt;" Collapsed="true">
+    <Position X="5.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGgSAACigACEAANAAIAAQABgAARBIAoAAEAiAxQAA=</HashCode>
+      <FileName>ParticleSystem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SimpleGraphicsLib.GFXComposition">
+    <Position X="7.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEgCAAACAAAAAAAAAMAAQABAAAQAAAAAAEAAABAAA=</HashCode>
+      <FileName>GFXComposition.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="SimpleGraphicsLib.IGFXObjComposition&lt;T&gt;">
+    <Position X="1.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAABAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IGFXObjComposition.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SimpleGraphicsLib.IGFXObject">
+    <Position X="1.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEgAAAAAAAAAAAAAAIAAQAAAAAAAAAAAAEAAABAAA=</HashCode>
+      <FileName>IGFXObject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

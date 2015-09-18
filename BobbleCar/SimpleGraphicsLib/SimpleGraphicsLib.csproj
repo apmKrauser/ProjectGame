@@ -58,6 +58,7 @@
     <Compile Include="AnimKeyJump.cs" />
     <Compile Include="CarObject.cs" />
     <Compile Include="GameScroller.cs" />
+    <Compile Include="GFXComposition.cs" />
     <Compile Include="GroundObject.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="IAnimationOnDispose.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="FrameUpdateEventArgs.cs" />
     <Compile Include="GFXContainer.cs" />
     <Compile Include="IGFXAnimation.cs" />
+    <Compile Include="IGFXObjComposition.cs" />
     <Compile Include="IGFXObject.cs" />
     <Compile Include="IElasticBody.cs" />
     <Compile Include="IHasSeperateAnimationListener.cs" />
@@ -86,7 +88,6 @@
     <Compile Include="SimpleCollider.cs" />
     <Compile Include="SimpleSprite.cs" />
     <Compile Include="SmokeParticle.cs" />
-    <Compile Include="SmokeParticleSystem.cs" />
     <Compile Include="SmoothGameScroller.cs" />
     <Compile Include="SpriteObject.cs" />
     <Compile Include="SpriteObjectElastic.cs" />
@@ -103,7 +104,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram2.cd" />
+    <None Include="CompositePattern.cd" />
     <None Include="Resources\cyberscooty-cartoon-car_kl2.png" />
   </ItemGroup>
   <ItemGroup>

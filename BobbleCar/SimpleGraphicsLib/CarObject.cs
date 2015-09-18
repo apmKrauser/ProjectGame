@@ -80,12 +80,12 @@ namespace SimpleGraphicsLib
         }
         
 
-        public override GFXContainer Parent
+        public override GFXContainer ParentContainer
         {
-            get { return _parent; }
+            get { return _parentContainer; }
             set
             {
-                _parent = value;
+                _parentContainer = value;
                 if (value == null)
                 {
                     UnregisterAllVisuals();
@@ -147,7 +147,7 @@ namespace SimpleGraphicsLib
             PSAuspuff.IsActive = Animated;
             PSAuspuff.GenerationRate = AuspuffGenerationRate; // particles/sec
 
-            _parent.AddObject(PSAuspuff);
+            _parentContainer.AddObject(PSAuspuff);
             //Ps2.Start();
             base.init();
         }
@@ -159,7 +159,7 @@ namespace SimpleGraphicsLib
            // dc.DrawEllipse(null, new Pen(Brushes.Red, 2), (Point)(Position + (_parent.DrawingOffset * ScrollScaling)), 5, 5);
             _posAuspuffPixel = new Vector(Shape.Width * _posAuspuff.X, Shape.Height * _posAuspuff.Y);
             _posAuspuffPixel += (Vector)Shape.Location;
-            dc.DrawRectangle(null, new Pen(Brushes.Green, 2), new Rect((Point)(_posAuspuffPixel + (_parent.DrawingOffset * ScrollScaling)), AuspuffPSConfig.EmmissionArea.Size));
+            dc.DrawRectangle(null, new Pen(Brushes.Green, 2), new Rect((Point)(_posAuspuffPixel + (_parentContainer.DrawingOffset * ScrollScaling)), AuspuffPSConfig.EmmissionArea.Size));
         }
 
         public override void Animation_Update(object sender, FrameUpdateEventArgs e)

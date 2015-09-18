@@ -175,10 +175,11 @@ namespace SimpleGraphicsLib
             GFXObjects.Add(obj.Name, obj);
             obj.RegisterDrawingVisual   += this.RegisterVisual_Callback;
             obj.UnregisterDrawingVisual += this.UnregisterVisual_Callback;
-            obj.Parent = this;
+            obj.ParentContainer = this;
             this.UpdateFrame += obj.Frame_Update;
-            if (obj is IHasSeperateAnimationEvent)
-                this.UpdateAnimation += (obj as IHasSeperateAnimationEvent).Animation_Update;
+            //if (obj is IHasSeperateAnimationEvent)
+            //this.UpdateAnimation += (obj as IHasSeperateAnimationEvent).Animation_Update;
+            this.UpdateAnimation += obj.Animation_Update;
         }
 
         public IGFXObject RemoveObject(IGFXObject obj)
@@ -191,9 +192,9 @@ namespace SimpleGraphicsLib
                     name = obj.Name;
                     GFXObjects.Remove(obj.Name);
                     this.UpdateFrame -= obj.Frame_Update;
-                    if (obj is IHasSeperateAnimationEvent)
-                        this.UpdateAnimation -= (obj as IHasSeperateAnimationEvent).Animation_Update;
-                    obj.Parent = null; // invoke UnregisterAllVisuals. important to set before event is removed
+                    //if (obj is IHasSeperateAnimationEvent)
+                    this.UpdateAnimation -= obj.Animation_Update;
+                    obj.ParentContainer = null; // invoke UnregisterAllVisuals. important to set before event is removed
                     obj.RegisterDrawingVisual -= this.RegisterVisual_Callback;
                     obj.UnregisterDrawingVisual -= this.UnregisterVisual_Callback;
                 }
@@ -303,5 +304,33 @@ namespace SimpleGraphicsLib
             if (WindowKeyUp != null)
                 WindowKeyUp(this, e);
         }
+
+        public List<string> GetAllNames(IGFXObject rootObject, int lvl)
+        {
+            List<string> lst = new List<string>();
+            foreach (var item in rootObject.GetChildren())
+            {
+                lst.Add((new String('-', lvl)) + " " + item.Name);
+                lst.AddRange(GetAllNames(item, lvl + 1));
+            }
+            return lst;
+        }
+
+        public override string ToString()
+        {
+            return String.Join("\r\n", this.ToList());
+        }
+
+        public List<string> ToList()
+        {
+            List<string> lst = new List<string>();
+            foreach (var item in GFXObjects.Values)
+            {
+                lst.Add("+ " + item.Name);
+                lst.AddRange(GetAllNames(item, 1));
+            }
+            return lst;
+        }
+
     }
 }

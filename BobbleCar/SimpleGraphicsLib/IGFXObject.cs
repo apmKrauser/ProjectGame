@@ -7,16 +7,18 @@ using System.Windows.Media;
 
 namespace SimpleGraphicsLib
 {
-    public interface IGFXObject : IDisposable
+    public interface IGFXObject : IDisposable, IGFXObjComposition<IGFXObject>
     {
         event Action<DrawingVisual> RegisterDrawingVisual;
 
         event Action<DrawingVisual> UnregisterDrawingVisual;
 
-        GFXContainer Parent { get; set; }
+        GFXContainer ParentContainer { get; set; }
 
         string Name { get; set; }
 
         void Frame_Update(object sender, FrameUpdateEventArgs e);
+
+        void Animation_Update(object sender, FrameUpdateEventArgs e);
     }
 }

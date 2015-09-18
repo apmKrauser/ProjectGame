@@ -69,7 +69,7 @@ namespace SimpleGraphicsLib
         protected BitmapImage _bmp = null;
 
 
-        protected GFXContainer _parent;
+        protected GFXContainer _parentContainer;
         private double _blurEffectRadius ;
         private Vector _centerOfMassAbs ;
         private Vector _size;
@@ -256,12 +256,12 @@ namespace SimpleGraphicsLib
         }
 
         [XmlIgnore]
-        public virtual GFXContainer Parent
+        public virtual GFXContainer ParentContainer
         {
-            get { return _parent; }
+            get { return _parentContainer; }
             set
             {
-                _parent = value;
+                _parentContainer = value;
                 if (value == null)
                     UnregisterAllVisuals();
                 else
@@ -337,12 +337,12 @@ namespace SimpleGraphicsLib
             foreach (var animation in Animations)
             {
                 // if animations are added before GFXContainer
-                animation.SetTimingSource(this.Parent);
+                animation.SetTimingSource(this.ParentContainer);
                 if (animation is IAnimKeyInput) 
                 {
                     var kani = animation as IAnimKeyInput;
-                    _parent.WindowKeyDown += kani.OnKeyDown;
-                    _parent.WindowKeyUp += kani.OnKeyUp;
+                    _parentContainer.WindowKeyDown += kani.OnKeyDown;
+                    _parentContainer.WindowKeyUp += kani.OnKeyUp;
                 }
             }
         }
@@ -370,11 +370,11 @@ namespace SimpleGraphicsLib
         {
             for (int i = Animations.Count - 1; i >= 0; i--)
             {
-                if ((Animations[i] is IAnimKeyInput)  && (_parent != null))
+                if ((Animations[i] is IAnimKeyInput)  && (_parentContainer != null))
                 {
                     var kani = Animations[i] as IAnimKeyInput;
-                    _parent.WindowKeyDown -= kani.OnKeyDown;
-                    _parent.WindowKeyUp -= kani.OnKeyUp;
+                    _parentContainer.WindowKeyDown -= kani.OnKeyDown;
+                    _parentContainer.WindowKeyUp -= kani.OnKeyUp;
                 }
                 Animations[i].Dispose();
             }
@@ -428,11 +428,11 @@ namespace SimpleGraphicsLib
             animation.Sprite = this;
             animation.SetTimingSource(TimingSource.Sources.Manual);
             animation.IsActive = Animated;
-            if ((animation is IAnimKeyInput) && (_parent != null))
+            if ((animation is IAnimKeyInput) && (_parentContainer != null))
             {
                 var kani = animation as IAnimKeyInput;
-                _parent.WindowKeyDown += kani.OnKeyDown;
-                _parent.WindowKeyUp += kani.OnKeyUp;
+                _parentContainer.WindowKeyDown += kani.OnKeyDown;
+                _parentContainer.WindowKeyUp += kani.OnKeyUp;
             }
             //if (this.Parent != null)
             //    animation.SetTimingSource(this.Parent);
@@ -456,11 +456,11 @@ namespace SimpleGraphicsLib
             //RemoveAnimation(animation.Name);
             try
             {
-                if ((animation is IAnimKeyInput) && (_parent != null))
+                if ((animation is IAnimKeyInput) && (_parentContainer != null))
                 {
                     var kani = animation as IAnimKeyInput;
-                    _parent.WindowKeyDown -= kani.OnKeyDown;
-                    _parent.WindowKeyUp -= kani.OnKeyUp;
+                    _parentContainer.WindowKeyDown -= kani.OnKeyDown;
+                    _parentContainer.WindowKeyUp -= kani.OnKeyUp;
                 }
                 Animations.Remove(animation);
             }
@@ -497,7 +497,7 @@ namespace SimpleGraphicsLib
             {
                 if (Bmp != null)
                 {
-                    dc.PushTransform(new TranslateTransform(Position.X + (_parent.DrawingOffset.X * ScrollScaling), Position.Y + _parent.DrawingOffset.Y));
+                    dc.PushTransform(new TranslateTransform(Position.X + (_parentContainer.DrawingOffset.X * ScrollScaling), Position.Y + _parentContainer.DrawingOffset.Y));
                     dc.PushTransform(new RotateTransform(Angle));
                     if (FlipHorizontal)
                         dc.PushTransform(new ScaleTransform(-1, 1));
@@ -523,8 +523,8 @@ namespace SimpleGraphicsLib
                br = new System.Windows.Media.SolidColorBrush(Color.FromArgb(120, 200, 200, 255));
             else
                br = null;
-            dc.DrawRectangle(br, new Pen(Brushes.Black, 2), rectangle: new Rect(Shape.Location + (_parent.DrawingOffset * ScrollScaling), Shape.Size));
-            dc.DrawEllipse(null, new Pen(Brushes.Red, 2), (Point)(Position + (_parent.DrawingOffset * ScrollScaling)), 5, 5);
+            dc.DrawRectangle(br, new Pen(Brushes.Black, 2), rectangle: new Rect(Shape.Location + (_parentContainer.DrawingOffset * ScrollScaling), Shape.Size));
+            dc.DrawEllipse(null, new Pen(Brushes.Red, 2), (Point)(Position + (_parentContainer.DrawingOffset * ScrollScaling)), 5, 5);
 
             if (Highlight)
             {
@@ -533,7 +533,7 @@ namespace SimpleGraphicsLib
                       FlowDirection.LeftToRight,
                       new Typeface("Verdana"),
                       10, System.Windows.Media.Brushes.DarkRed);
-                dc.DrawText(text, (Point)(Position + (_parent.DrawingOffset * ScrollScaling)));
+                dc.DrawText(text, (Point)(Position + (_parentContainer.DrawingOffset * ScrollScaling)));
             }
         }
 
@@ -583,5 +583,21 @@ namespace SimpleGraphicsLib
         }
 
 
+
+        public void AddObject(IGFXObject obj)
+        {
+            throw new NotImplementedException("A Leaf of a Composion cannot hold children.\nUse GFXComposition instead.");
+        }
+
+        public void RemoveObject(IGFXObject obj)
+        {
+            throw new NotImplementedException("A Leaf of a Composion cannot hold children.\nUse GFXComposition instead.");
+        }
+
+        public ObservableCollection<IGFXObject> GetChildren()
+        {
+            // A "Leaf" of a composition doesn't have children
+            return new ObservableCollection<IGFXObject>();
+        }
     }
 }

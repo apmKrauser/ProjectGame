@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,8 @@ namespace SimpleGraphicsLib
 {
 
 
-    public class ParticleSystem<T, TConf> : IGFXObject, IHasSeperateAnimationEvent where T: GFXParticle, new()
-                                                                                      where TConf: class, IParticleConfigurable, new()
+    public class ParticleSystem<T, TConf> : IGFXObject where T: GFXParticle, new()
+                                                       where TConf: class, IParticleConfigurable, new()
     {
 
         public const double DropFramesMinFPS = 40;
@@ -39,13 +40,13 @@ namespace SimpleGraphicsLib
         private int frameShift = 0;
 
 
-        private GFXContainer _parent;
-        public GFXContainer Parent
+        private GFXContainer _parentContainer;
+        public GFXContainer ParentContainer
         {
-            get { return _parent; }
+            get { return _parentContainer; }
             set
             {
-                _parent = value;
+                _parentContainer = value;
                 if (value == null)
                     Dispose();
                 else
@@ -94,7 +95,7 @@ namespace SimpleGraphicsLib
             for (int i = 0; i < count; i++)
             {
                 T particle = new T();
-                particle.Parent = _parent;
+                particle.ParentContainer = _parentContainer;
                 particle.init(_configParticle.BaseConfig);
                 Particles.Add(particle);
                 RegisterDrawingVisual(particle.DVisual);
@@ -222,5 +223,20 @@ namespace SimpleGraphicsLib
         }
 
 
+
+        public void AddObject(IGFXObject obj)
+        {
+            throw new NotImplementedException("A Leaf of a Composion cannot hold children.\nUse GFXComposition instead.");
+        }
+
+        public void RemoveObject(IGFXObject obj)
+        {
+            throw new NotImplementedException("A Leaf of a Composion cannot hold children.\nUse GFXComposition instead.");
+        }
+
+        public ObservableCollection<IGFXObject> GetChildren()
+        {
+            return new ObservableCollection<IGFXObject>();
+        }
     }
 }

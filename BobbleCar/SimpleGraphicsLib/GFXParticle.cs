@@ -35,12 +35,12 @@ namespace SimpleGraphicsLib
 
         public DrawingVisual DVisual = new DrawingVisual();
 
-        public GFXContainer Parent { get; set; }
+        public GFXContainer ParentContainer { get; set; }
         protected Vector DrawingOffset
         {
             get
             {
-                try { return Parent.DrawingOffset; }
+                try { return ParentContainer.DrawingOffset; }
                 catch { return new Vector(0, 0); }
             }
         }
