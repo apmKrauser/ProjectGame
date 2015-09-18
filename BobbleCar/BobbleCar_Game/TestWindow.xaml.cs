@@ -28,7 +28,7 @@ namespace BobbleCar_Game
 
         private void cmdTest_Click(object sender, RoutedEventArgs e)
         {
-            // Objecte erstellen
+            // Objekte erstellen
             IGFXObject obj1 = new SpriteObject("Test Sprite");
             //IGFXObject obj2 = new CarObject("Test Auto");  // erstellt ParticleSystem. passt nicht zu neuer Baumstruktur
             IGFXObject obj2 = new SpriteObjectElastic("Fussball");

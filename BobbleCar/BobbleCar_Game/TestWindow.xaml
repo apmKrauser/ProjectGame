@@ -35,9 +35,9 @@
         </ResourceDictionary>
     </Window.Resources>
 
-    <Grid>
-        <Button Name="cmdTest" Width="140" Height="30" Margin="24,10,388,266" Click="cmdTest_Click">Show Object Tree</Button>
-        <ListView Name="lstTree" HorizontalAlignment="Left" Height="203" Margin="24,50,0,0" VerticalAlignment="Top" Width="284">
+    <Grid Margin="0,0,-23,-31">
+        <Button Name="cmdTest" Width="140" Height="30" Margin="24,10,411,297" Click="cmdTest_Click">Show Object Tree</Button>
+        <ListView Name="lstTree" HorizontalAlignment="Left" Height="246" Margin="24,50,0,0" VerticalAlignment="Top" Width="290">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>

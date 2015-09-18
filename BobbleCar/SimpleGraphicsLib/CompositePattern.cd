@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="SimpleGraphicsLib.SpriteObject" Collapsed="true">
-    <Position X="3.75" Y="3" Width="1.5" />
+    <Position X="9.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAEksCAgBiRIEOIhAABIAtaQRGmSSFIIoGQkqBIVQAA=</HashCode>
       <FileName>SpriteObject.cs</FileName>
@@ -9,7 +9,7 @@
     <Lollipop Position="0.179" />
   </Class>
   <Class Name="SimpleGraphicsLib.SpriteObjectElastic" Collapsed="true">
-    <Position X="3.75" Y="4.25" Width="1.5" />
+    <Position X="9.5" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACAACBAIgAAAAAAAAAAAAAAAIAAAAAAAAAAAAABA=</HashCode>
       <FileName>SpriteObjectElastic.cs</FileName>
@@ -17,7 +17,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="SimpleGraphicsLib.CarObject" Collapsed="true">
-    <Position X="3.75" Y="5.5" Width="1.5" />
+    <Position X="9.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAABAQBAQAIAAAIAAAAACDCNAIAEAAEAAAAAAA=</HashCode>
       <FileName>CarObject.cs</FileName>
@@ -25,7 +25,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="SimpleGraphicsLib.ParticleSystem&lt;T, TConf&gt;" Collapsed="true">
-    <Position X="5.75" Y="3" Width="1.5" />
+    <Position X="11.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAGgSAACigACEAANAAIAAQABgAARBIAoAAEAiAxQAA=</HashCode>
       <FileName>ParticleSystem.cs</FileName>
@@ -33,22 +33,25 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="SimpleGraphicsLib.GFXComposition">
-    <Position X="7.75" Y="3" Width="1.5" />
+    <Position X="3.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEgCAAACAAAAAAAAAMAAQABAAAQAAAAAAEAAABAAA=</HashCode>
       <FileName>GFXComposition.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="Children" />
+    </ShowAsCollectionAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Interface Name="SimpleGraphicsLib.IGFXObjComposition&lt;T&gt;">
-    <Position X="1.5" Y="1.5" Width="1.5" />
+    <Position X="6.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACAAAAAAAAAAAAAAAAAABAAAQAAAAAAAAAAAAAA=</HashCode>
       <FileName>IGFXObjComposition.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="SimpleGraphicsLib.IGFXObject">
-    <Position X="1.5" Y="3.5" Width="1.5" />
+    <Position X="6.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEgAAAAAAAAAAAAAAIAAQAAAAAAAAAAAAEAAABAAA=</HashCode>
       <FileName>IGFXObject.cs</FileName>

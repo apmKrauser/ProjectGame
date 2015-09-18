@@ -316,11 +316,6 @@ namespace SimpleGraphicsLib
             return lst;
         }
 
-        public override string ToString()
-        {
-            return String.Join("\r\n", this.ToList());
-        }
-
         public List<string> ToList()
         {
             List<string> lst = new List<string>();
@@ -330,6 +325,10 @@ namespace SimpleGraphicsLib
                 lst.AddRange(GetAllNames(item, 1));
             }
             return lst;
+        }
+        public override string ToString()
+        {
+            return String.Join("\r\n", this.ToList());
         }
 
     }
