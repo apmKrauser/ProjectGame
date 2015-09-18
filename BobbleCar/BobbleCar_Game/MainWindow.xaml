@@ -44,6 +44,7 @@
             <Button Content="Multiplayer"  FontSize="12"  HorizontalAlignment="Left" Margin="243,158,0,0" VerticalAlignment="Top" Width="141" Height="34" Click="Button_Click_1"/>
 
             <Button Content="Level Editor"  FontSize="12"  HorizontalAlignment="Left" Margin="243,211,0,0" VerticalAlignment="Top" Width="141" Height="34" Click="Button_Click_2"/>
+        <Button Content="Test Window" HorizontalAlignment="Left" Margin="69,70,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click_3"/>
 
     </Grid>
 </Controls:MetroWindow>

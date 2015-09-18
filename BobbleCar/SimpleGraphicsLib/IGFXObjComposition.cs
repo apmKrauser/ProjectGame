@@ -7,12 +7,19 @@ using System.Threading.Tasks;
 
 namespace SimpleGraphicsLib
 {
-    public interface IGFXObjComposition<T>
+    public interface IGFXObjComposable<T>
     {
-        void AddObject(T obj);
+        //void AddObject(T obj);  // nur in container implementieren !
 
-        void RemoveObject(T obj);
+        //void RemoveObject(T obj);
 
         ObservableCollection<T> GetChildren();
+    }
+
+    public interface IGFXObjComposition : IGFXObject
+    {
+        void AddObject(IGFXObject obj); 
+
+        void RemoveObject(IGFXObject obj);
     }
 }

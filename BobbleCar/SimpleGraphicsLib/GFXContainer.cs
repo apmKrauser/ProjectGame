@@ -287,7 +287,7 @@ namespace SimpleGraphicsLib
                 str = dv == null ? "null" : "IDX[" + Visuals.IndexOf(dv) + "] : " + dv.ToString() + " > ";
                 //String str = ht == null ? "null" : (ht as DrawingVisual).ToString();
                 //str += (ht as GeometryHitTestResult).IntersectionDetail.ToString();
-                Debug.WriteLine("############## " + str);
+                //Debug.WriteLine("############## " + str);
                 return dv;
             }
             return null;
@@ -310,7 +310,7 @@ namespace SimpleGraphicsLib
             List<string> lst = new List<string>();
             foreach (var item in rootObject.GetChildren())
             {
-                lst.Add((new String('-', lvl)) + " " + item.Name);
+                lst.Add(" " + (new String('-', lvl)) + " " + item.Name);
                 lst.AddRange(GetAllNames(item, lvl + 1));
             }
             return lst;

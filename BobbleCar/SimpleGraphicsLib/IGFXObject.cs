@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace SimpleGraphicsLib
 {
-    public interface IGFXObject : IDisposable, IGFXObjComposition<IGFXObject>
+    public interface IGFXObject : IDisposable, IGFXObjComposable<IGFXObject>
     {
         event Action<DrawingVisual> RegisterDrawingVisual;
 

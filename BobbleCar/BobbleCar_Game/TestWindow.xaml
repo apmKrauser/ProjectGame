@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         GlowBrush="{DynamicResource AccentColorBrush}"    
         Background ="#FF323232"
-        Title="TestWindow" Height="337" Width="560">
+        Title="TestWindow" Height="337" Width="560" Closed="MetroWindow_Closed">
     <Window.Resources>
         <ResourceDictionary>
             <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
@@ -37,7 +37,7 @@
 
     <Grid Margin="0,0,-23,-31">
         <Button Name="cmdTest" Width="140" Height="30" Margin="24,10,411,297" Click="cmdTest_Click">Show Object Tree</Button>
-        <ListView Name="lstTree" HorizontalAlignment="Left" Height="246" Margin="24,50,0,0" VerticalAlignment="Top" Width="290">
+        <ListView Name="lstTree" HorizontalAlignment="Left" Height="246" Margin="24,50,0,0" VerticalAlignment="Top" Width="290" FontFamily="Lucida Console">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>

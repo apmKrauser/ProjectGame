@@ -69,6 +69,7 @@
     <Compile Include="FlyingSphericParticle.cs" />
     <Compile Include="FrameUpdateEventArgs.cs" />
     <Compile Include="GFXContainer.cs" />
+    <Compile Include="IGameObject.cs" />
     <Compile Include="IGFXAnimation.cs" />
     <Compile Include="IGFXObjComposition.cs" />
     <Compile Include="IGFXObject.cs" />

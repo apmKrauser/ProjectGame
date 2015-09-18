@@ -17,10 +17,10 @@ namespace SimpleGraphicsLib
     public class LevelSet
     {
         [DataMember]
-        public SpriteObject Background = null;
+        public IGameObject Background = null;
 
         [DataMember]
-        public SpriteObject LevelBkg = null;
+        public IGameObject LevelBkg = null;
         //public List<SpriteObject> Sprites = new List<SpriteObject>();
         [DataMember]
         public ObservableCollection<SpriteObject> Sprites = new ObservableCollection<SpriteObject>();
@@ -35,9 +35,11 @@ namespace SimpleGraphicsLib
                 }
             }
         }
-   
-        public void selectImage(SpriteObject obj)
+
+        public void selectImage(IGameObject sobj)
         {
+            if (!(sobj is SpriteObject)) return;
+            SpriteObject obj = sobj as SpriteObject;
             String fullpath = "";
             String relpath = "";
             try
@@ -101,9 +103,11 @@ namespace SimpleGraphicsLib
             maingfx.AddObject(this.Background);
             maingfx.AddObject(this.LevelBkg);
             maingfx.Width = this.LevelBkg.SizeV.X;
+            // Load Pictures
             foreach (var sprite in this.Sprites)
             {
-                sprite.loadFromImagePathPreserveObjectSize();
+                if (sprite is SpriteObject)
+                   (sprite as SpriteObject).loadFromImagePathPreserveObjectSize();
             }
             this.AddSpritesTo(maingfx);
             this.InitializeCollider(maingfx);

@@ -59,5 +59,15 @@ namespace BobbleCar_Game
             this.Hide();
         }
 
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            TestWindow GW = new TestWindow();
+            GW.Show();
+            // this.Close();
+            this.Hide();
+            //Task.Delay(1000);
+            //this.Close();
+        }
+
     }
 }
