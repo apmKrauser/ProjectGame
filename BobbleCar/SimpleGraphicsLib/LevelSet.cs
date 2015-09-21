@@ -40,6 +40,7 @@ namespace SimpleGraphicsLib
         {
             if (!(sobj is SpriteObject)) return;
             SpriteObject obj = sobj as SpriteObject;
+
             String fullpath = "";
             String relpath = "";
             try

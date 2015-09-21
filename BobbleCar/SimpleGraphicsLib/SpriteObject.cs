@@ -35,7 +35,7 @@ namespace SimpleGraphicsLib
         //    remove { throw new NotImplementedException(); }
         //}
 
-       
+        //[Conditional("Debug")] bleded ganze Funktion aus
 
         protected List<DrawingVisual> Visuals = new List<DrawingVisual>();
         //protected List<GFXAnimation> Animations = new List<GFXAnimation>();
@@ -419,6 +419,7 @@ namespace SimpleGraphicsLib
         {
             if (name != null) animation.Name = name;
             if ((animation.Name ?? "").Equals("")) animation.Name = "Ani" + "::" + animation.GetHashCode().ToString();
+            //if (String.IsNullOrEmpty(animation.Name))
             int i = Animations.IndexOf(animation);
             if (i < 0)
                 Animations.Add(animation);
@@ -516,6 +517,7 @@ namespace SimpleGraphicsLib
             }
         }
 
+        //[Conditional("Debug")]
         protected virtual void DrawShapeAndMarkers (DrawingContext dc)
         {
             System.Windows.Media.Brush br;
@@ -584,15 +586,6 @@ namespace SimpleGraphicsLib
 
 
 
-        public void AddObject(IGFXObject obj)
-        {
-            throw new NotImplementedException("A Leaf of a Composion cannot hold children.\nUse GFXComposition instead.");
-        }
-
-        public void RemoveObject(IGFXObject obj)
-        {
-            throw new NotImplementedException("A Leaf of a Composion cannot hold children.\nUse GFXComposition instead.");
-        }
 
         public ObservableCollection<IGFXObject> GetChildren()
         {
