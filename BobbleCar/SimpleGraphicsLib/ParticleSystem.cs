@@ -27,7 +27,7 @@ namespace SimpleGraphicsLib
         public double GenerationRate { get; set; }
         public string Name { get; set; }
 
-        public bool IsActive { get; set; }
+        public bool Animated { get; set; }
         
 
         public TConf Config
@@ -83,7 +83,7 @@ namespace SimpleGraphicsLib
 
         protected void init()
         {
-            IsActive = false;
+            Animated = false;
             if (GrowDynamically)
                 GenerateNewParticles((int)(MaxParticles / 32) + 1);
             else
@@ -105,12 +105,12 @@ namespace SimpleGraphicsLib
 
         public void Start()
         {
-            IsActive = true;
+            Animated = true;
         }
 
         public void Stop()
         {
-            IsActive = false;
+            Animated = false;
         }
 
         public void SpawnParticle()
@@ -137,7 +137,7 @@ namespace SimpleGraphicsLib
 
         public virtual void Animation_Update(object sender, FrameUpdateEventArgs e)
         {
-            if (IsActive)
+            if (Animated)
             {
                 MillisSinceLastEmmission += e.ElapsedMilliseconds;
                 if (MillisSinceLastEmmission > (1000 / GenerationRate))
@@ -237,6 +237,25 @@ namespace SimpleGraphicsLib
         public ObservableCollection<IGFXObject> GetChildren()
         {
             return new ObservableCollection<IGFXObject>();
+        }
+
+
+        public bool Highlight
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+
+        public bool ContainsVisual(Visual v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

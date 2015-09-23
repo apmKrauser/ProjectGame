@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 namespace SimpleGraphicsLib
 {
     [DataContract]
+    [KnownType(typeof(SpriteObject))]
     public class LevelSet
     {
         [DataMember]
@@ -23,7 +24,7 @@ namespace SimpleGraphicsLib
         public IGameObject LevelBkg = null;
         //public List<SpriteObject> Sprites = new List<SpriteObject>();
         [DataMember]
-        public ObservableCollection<SpriteObject> Sprites = new ObservableCollection<SpriteObject>();
+        public ObservableCollection<IGameObject> Sprites = new ObservableCollection<IGameObject>();
 
         public bool AnimatedAllSprites 
         {
@@ -99,8 +100,8 @@ namespace SimpleGraphicsLib
 
         public void BuildLevel (GFXContainer maingfx)
         {
-            this.Background.loadFromImagePathPreserveObjectSize();
-            this.LevelBkg.loadFromImagePathPreserveObjectSize();
+            (this.Background as SpriteObject).loadFromImagePathPreserveObjectSize();
+            (this.LevelBkg as SpriteObject).loadFromImagePathPreserveObjectSize();
             maingfx.AddObject(this.Background);
             maingfx.AddObject(this.LevelBkg);
             maingfx.Width = this.LevelBkg.SizeV.X;

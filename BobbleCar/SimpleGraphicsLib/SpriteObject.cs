@@ -20,7 +20,7 @@ namespace SimpleGraphicsLib
 {
     [DataContract]
     [KnownType("GetDerivedTypes")]
-    public class SpriteObject : IDisposable, IGFXObject, IRigidBody, IAnimationOnDispose, IPropertyInspectable, IHasSeperateAnimationEvent
+    public class SpriteObject : IDisposable, IGameObject, IAnimationOnDispose, IHasSeperateAnimationEvent, IPropertyInspectable
     {
 
         #region FieldsProperties

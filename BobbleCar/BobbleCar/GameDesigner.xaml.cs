@@ -118,7 +118,7 @@ namespace BobbleCar
             ThisLevel.Background.IsMovable = false;
             ThisLevel.Background.IsObstacle = false;
             ThisLevel.selectImage(ThisLevel.Background);
-            ThisLevel.Background.ZoomPreserveAspectRatio(height: GameWrapper.Height);
+            (ThisLevel.Background as SpriteObject).ZoomPreserveAspectRatio(height: GameWrapper.Height);
             MainGFX.AddObject(ThisLevel.Background);
             MainGFX.Width = ThisLevel.Background.SizeV.X;
             // todo: eigentlich in setlvlbackg
@@ -135,8 +135,8 @@ namespace BobbleCar
             ThisLevel.LevelBkg.IsMovable = false;
             ThisLevel.LevelBkg.IsObstacle = false;
             ThisLevel.selectImage(ThisLevel.LevelBkg);
-            ThisLevel.LevelBkg.ZoomPreserveAspectRatio(height: GameWrapper.Height);
-            ThisLevel.Background.ScrollScaling = (ThisLevel.Background.SizeV.X - (GameWrapper.Width/2))/ ThisLevel.LevelBkg.SizeV.X;
+            (ThisLevel.LevelBkg as SpriteObject).ZoomPreserveAspectRatio(height: GameWrapper.Height);
+            (ThisLevel.Background as SpriteObject).ScrollScaling = (ThisLevel.Background.SizeV.X - (GameWrapper.Width/2))/ ThisLevel.LevelBkg.SizeV.X;
             MainGFX.AddObject(ThisLevel.LevelBkg);
             // todo: eigentlich in setlvlbackg
             MainGFX.Width = ThisLevel.LevelBkg.SizeV.X;

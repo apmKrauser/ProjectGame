@@ -15,7 +15,13 @@ namespace SimpleGraphicsLib
 
         GFXContainer ParentContainer { get; set; }
 
+        bool ContainsVisual(System.Windows.Media.Visual v);
+
+        bool Highlight { get; set; }
+
         string Name { get; set; }
+
+        bool Animated { get; set; }
 
         void Frame_Update(object sender, FrameUpdateEventArgs e);
 

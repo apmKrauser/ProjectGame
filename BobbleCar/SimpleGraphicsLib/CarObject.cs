@@ -33,7 +33,7 @@ namespace SimpleGraphicsLib
             {
                 base.Animated = value;
                 if (PSAuspuff != null)
-                    PSAuspuff.IsActive = Animated;
+                    PSAuspuff.Animated = Animated;
             }
         }
 
@@ -144,7 +144,7 @@ namespace SimpleGraphicsLib
             //RegisterDrawingVisual(vis);
             //AddAnimation(new AnimationLinearTranslation(), "LinMove");
             PSAuspuff = new ParticleSystem<SmokeParticle, SmokeParticle.ParticleConfig>(0, AuspuffMaxParticles, false, AuspuffPSConfig);
-            PSAuspuff.IsActive = Animated;
+            PSAuspuff.Animated = Animated;
             PSAuspuff.GenerationRate = AuspuffGenerationRate; // particles/sec
 
             _parentContainer.AddObject(PSAuspuff);

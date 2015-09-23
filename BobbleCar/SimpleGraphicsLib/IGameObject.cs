@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SimpleGraphicsLib
 {
-    public interface IGameObject : IGFXObject, IRigidBody, IPropertyInspectable
+    public interface IGameObject : IGFXObject, IRigidBody
     {
+
     }
 }

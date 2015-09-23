@@ -98,5 +98,37 @@ namespace SimpleGraphicsLib
         {
             return Children;
         }
+
+
+        public bool Animated
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+
+        public bool Highlight
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+
+        public bool ContainsVisual(Visual v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
