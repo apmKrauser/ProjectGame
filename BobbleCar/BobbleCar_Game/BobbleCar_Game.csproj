@@ -120,6 +120,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="data\tank5.png" />
     <Resource Include="data\test2.xml" />
     <Resource Include="data\tower_expander.png" />
     <Resource Include="data\blockmaker_engine.png" />
@@ -144,6 +145,8 @@
     <Resource Include="data\gfx temp\rock_metal_1.png" />
     <Resource Include="data\gfx temp\tower_expander.png" />
     <Resource Include="data\gfx temp\wood_platform.png" />
+    <Resource Include="data\img_lic_res.txt" />
+    <Content Include="data\cyberscooty-cartoon-car.svg" />
     <Content Include="data\Level One.svg" />
     <Resource Include="data\LevelOne - Kopie.xml" />
     <Resource Include="data\LevelOne.xml" />
