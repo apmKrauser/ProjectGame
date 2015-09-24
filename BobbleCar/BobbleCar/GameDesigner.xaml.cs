@@ -37,7 +37,7 @@ namespace BobbleCar
         //Point dragDropPoint = new Point(0,0);
         private bool _shutdown = false;
 
-        ListViewDragDropManager<SpriteObject> dragMgr;
+        ListViewDragDropManager<IGameObject> dragMgr;
         //ListViewDragDropManager<SpriteObject> dragMgr2;
 
         public double DesignWindowStartWidth
@@ -71,7 +71,7 @@ namespace BobbleCar
             //lstSprites.ItemContainerStyle = itemContainerStyle;
 
             // Drag&Drop Mngr
-            this.dragMgr = new ListViewDragDropManager<SpriteObject>(lstSprites);
+            this.dragMgr = new ListViewDragDropManager<IGameObject>(lstSprites);
             //this.dragMgr2 = new ListViewDragDropManager<SpriteObject>(lstNewObj);
             // Turn the ListViewDragManager on . 
             //dragMgr.ListView = lstSprites;
@@ -414,7 +414,7 @@ namespace BobbleCar
         //    return null;
         //}
 
-        void dragMgr_ProcessDrop(object sender, ProcessDropEventArgs<SpriteObject> e)
+        void dragMgr_ProcessDrop(object sender, ProcessDropEventArgs<IGameObject> e)
         {
             // This shows how to customize the behavior of a drop.
             // Here we perform a swap, instead of just moving the dropped item.

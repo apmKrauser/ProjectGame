@@ -159,7 +159,7 @@ namespace SimpleGraphicsLib
            // dc.DrawEllipse(null, new Pen(Brushes.Red, 2), (Point)(Position + (_parent.DrawingOffset * ScrollScaling)), 5, 5);
             _posAuspuffPixel = new Vector(Shape.Width * _posAuspuff.X, Shape.Height * _posAuspuff.Y);
             _posAuspuffPixel += (Vector)Shape.Location;
-            dc.DrawRectangle(null, new Pen(Brushes.Green, 2), new Rect((Point)(_posAuspuffPixel + (_parentContainer.DrawingOffset * ScrollScaling)), AuspuffPSConfig.EmmissionArea.Size));
+            dc.DrawRectangle(null, new Pen(Brushes.Green, 2), new Rect( new Point(_posAuspuffPixel.X - (0.5 * PSAuspuff.Config.EmmissionArea.Width), _posAuspuffPixel.Y - (0.5 * PSAuspuff.Config.EmmissionArea.Height)) + (_parentContainer.DrawingOffset * ScrollScaling), AuspuffPSConfig.EmmissionArea.Size));
         }
 
         public override void Animation_Update(object sender, FrameUpdateEventArgs e)
@@ -167,7 +167,7 @@ namespace SimpleGraphicsLib
             base.Animation_Update(sender, e);
             _posAuspuffPixel = new Vector(Shape.Width * _posAuspuff.X, Shape.Height * _posAuspuff.Y);
             _posAuspuffPixel += (Vector)Shape.Location;
-            PSAuspuff.Config.EmmissionArea = new Rect(_posAuspuffPixel.X, _posAuspuffPixel.Y, PSAuspuff.Config.EmmissionArea.Width, PSAuspuff.Config.EmmissionArea.Height);
+            PSAuspuff.Config.EmmissionArea = new Rect(_posAuspuffPixel.X - (0.5 * PSAuspuff.Config.EmmissionArea.Width), _posAuspuffPixel.Y - (0.5* PSAuspuff.Config.EmmissionArea.Height), PSAuspuff.Config.EmmissionArea.Width, PSAuspuff.Config.EmmissionArea.Height);
         }
 
     }

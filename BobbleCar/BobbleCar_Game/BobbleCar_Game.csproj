@@ -120,6 +120,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="data\tank5kl.png" />
     <Resource Include="data\tank5.png" />
     <Resource Include="data\test2.xml" />
     <Resource Include="data\tower_expander.png" />

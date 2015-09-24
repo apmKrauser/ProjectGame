@@ -57,7 +57,7 @@ namespace SimpleGraphicsLib
                     Directory.CreateDirectory(Helper.DataLocalPath);
                 try
                 { File.Copy(fullpath, Helper.AssemblyLocalPath + "\\" + relpath, true); }
-                catch (Exception ex) { /*MessageBox.Show(ex.Message); */ Debug.WriteLine("selectImage[copy] ==> " + ex.Message)}
+                catch (Exception ex) { /*MessageBox.Show(ex.Message); */ Debug.WriteLine("selectImage[copy] ==> " + ex.Message); }
                 obj.ImagePath = relpath;
                 obj.loadFromImagePath();
             }
