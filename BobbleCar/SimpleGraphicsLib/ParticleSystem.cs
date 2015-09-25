@@ -170,7 +170,7 @@ namespace SimpleGraphicsLib
             //    frameDrop = Math.Max(frameDrop - 1, 1);
             //    frameShift = 0;
             //}
-            //frameShift ++;
+            //frameShift++;
             //if (frameShift > frameDrop - 1) frameShift = 0;
             //for (int i = frameShift; i < Particles.Count; i += frameDrop)
             //{
