@@ -56,7 +56,9 @@
     <Compile Include="AnimKeyDrive.cs" />
     <Compile Include="AnimKeyInput.cs" />
     <Compile Include="AnimKeyJump.cs" />
+    <Compile Include="BitmapParticle.cs" />
     <Compile Include="CarObject.cs" />
+    <Compile Include="CarObject2.cs" />
     <Compile Include="GameScroller.cs" />
     <Compile Include="GFXComposition.cs" />
     <Compile Include="GroundObject.cs" />
@@ -140,6 +142,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\smoketest.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

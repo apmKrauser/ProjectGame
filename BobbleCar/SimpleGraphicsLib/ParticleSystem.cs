@@ -36,7 +36,7 @@ namespace SimpleGraphicsLib
             //private set { Config = value; }
         }
 
-        private int frameDrop = 1;  // 2 = draw every 2nd frame, 3 = draw every 3rd frame
+        private int frameDrop = 3;  // 2 = draw every 2nd frame, 3 = draw every 3rd frame
         private int frameShift = 0;
 
 
@@ -163,12 +163,12 @@ namespace SimpleGraphicsLib
             //if (e.ElapsedMilliseconds > (1000 / DropFramesMinFPS))
             //{
             //    //frameDrop = Math.Min(frameDrop + 1, Particles.Count / 4);
-            //    frameDrop = Math.Min(frameDrop + 1, 2);
+            ////    frameDrop = Math.Min(frameDrop + 1, 2);
             //}
             //if (e.ElapsedMilliseconds < (1000 / DropFramesMaxFPS))
             //{
-            //    frameDrop = Math.Max(frameDrop - 1, 1);
-            //    frameShift = 0;
+            ////    frameDrop = Math.Max(frameDrop - 1, 1);
+            ////    frameShift = 0;
             //}
             //frameShift++;
             //if (frameShift > frameDrop - 1) frameShift = 0;
@@ -177,7 +177,7 @@ namespace SimpleGraphicsLib
             //    Particles[i].Frame_Update(this, e);
             //}
 
-            // Todo: drawShape für PS !
+            //// Todo: drawShape für PS !
             //if (Config.DrawShape)
             //using (DrawingContext dc = vis.RenderOpen())
             //{
