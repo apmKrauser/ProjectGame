@@ -73,7 +73,7 @@ namespace SimpleGraphicsLib
             Sprite.NormSpeed += dv;
             // breaking
             double dbreak = AccBreak * (e.ElapsedMilliseconds / 1000);
-            if (breaking)
+            if ((breaking) && (!NeedsGround || Sprite.IsGrounded))
             {
                 if (Sprite.NormSpeed.Length <= dbreak)
                     Sprite.NormSpeed = new Vector(0, 0);
