@@ -57,31 +57,34 @@ namespace SimpleGraphicsLib
         {
             if (currentAccel == null) currentAccel = new Vector(0, 0);
 
+            double fkt = 1;
             if (!NeedsGround || Sprite.IsGrounded)
+                fkt = 1;
+            else
+                fkt = 0.1; // drive "in air"
+
+            Vector dv = (currentAccel * fkt) * (e.ElapsedMilliseconds / 1000);
+            // speen in currentAccel direction
+            if ((dv.Length > 0) && (Sprite.NormSpeed.Length > 0))
             {
-                Vector dv = currentAccel * (e.ElapsedMilliseconds / 1000);
-                // speen in currentAccel direction
-                if ((dv.Length > 0) && (Sprite.NormSpeed.Length > 0))
-                {
-                    double s = Vector.Multiply(Sprite.NormSpeed, currentAccel) / currentAccel.Length;
-                    if (s > VMax) dv = new Vector(0, 0);
-                }
-                Sprite.NormSpeed += dv;
-                // breaking
-                double dbreak = AccBreak * (e.ElapsedMilliseconds / 1000);
-                if (breaking)
-                {
-                    if (Sprite.NormSpeed.Length <= dbreak)
-                        Sprite.NormSpeed = new Vector(0, 0);
-                    else
-                    {
-                        dv = Sprite.NormSpeed;
-                        dv.Normalize();
-                        dv *= dbreak;
-                        Sprite.NormSpeed -= dv;
-                    }
-                } 
+                double s = Vector.Multiply(Sprite.NormSpeed, currentAccel) / currentAccel.Length;
+                if (s > VMax) dv = new Vector(0, 0);
             }
+            Sprite.NormSpeed += dv;
+            // breaking
+            double dbreak = AccBreak * (e.ElapsedMilliseconds / 1000);
+            if (breaking)
+            {
+                if (Sprite.NormSpeed.Length <= dbreak)
+                    Sprite.NormSpeed = new Vector(0, 0);
+                else
+                {
+                    dv = Sprite.NormSpeed;
+                    dv.Normalize();
+                    dv *= dbreak;
+                    Sprite.NormSpeed -= dv;
+                }
+            } 
         }
        
         
@@ -124,11 +127,12 @@ namespace SimpleGraphicsLib
 
         public void OnKeyUp(object sender, KeyEventArgs e)
         {
-            if ((e.Key == KeyBreak)
-             || (e.Key == KeyBackward)
-             || (e.Key == KeyForward))
+            if ((e.Key == KeyBackward) || (e.Key == KeyForward))
             {
                 currentAccel = new Vector(0, 0);
+            }
+            if (e.Key == KeyBreak)
+            {
                 breaking = false;
             }
         }

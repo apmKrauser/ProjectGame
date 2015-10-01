@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimationAirDrag.cs" />
+    <Compile Include="AnimationBindProperty.cs" />
     <Compile Include="AnimationConstAcceleration.cs" />
     <Compile Include="AnimationMotor.cs" />
     <Compile Include="AnimationRigidBody.cs" />

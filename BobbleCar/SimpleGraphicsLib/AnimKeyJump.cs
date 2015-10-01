@@ -70,13 +70,19 @@ namespace SimpleGraphicsLib
             }
 
             // release jump
-            if ((!NeedsGround || Sprite.IsGrounded) && 
-                (!loadJump) && (StoredJumpPower > 0))
-            {   
-                // Jump
-                Sprite.NormSpeed += StoredJumpPower * JumpDirection;
+            if (!loadJump)
+            {
+                if ((!NeedsGround || Sprite.IsGrounded) && (StoredJumpPower > 0))
+                {
+                    // Jump
+                    Sprite.NormSpeed += StoredJumpPower * JumpDirection;
+                }
+                else
+                {
+                    JumpReservoir += StoredJumpPower; // Jump not working
+                }
+                StoredJumpPower = 0;
             }
-            if (!loadJump) StoredJumpPower = 0;
             var el = Sprite as SpriteObjectElastic;
             if (el != null)
             {
