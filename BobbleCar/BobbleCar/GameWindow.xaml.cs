@@ -27,6 +27,7 @@ namespace BobbleCar
     public partial class GameWindow : MetroWindow
     {
         string LevelFile = "LevelOne.xml";
+        int LevelNumber = 0;
 
         private bool _shutdown = false;
 
@@ -59,11 +60,12 @@ namespace BobbleCar
             SpriteObject.AnimatedByDefault = true;
         }
 
-        public GameWindow(string levelFileName)
+        public GameWindow(string levelFileName, int levelNumber)
         {
             InitializeComponent();
             SpriteObject.AnimatedByDefault = true;
             LevelFile = levelFileName;
+            this.LevelNumber = levelNumber;
         }
 
         private void GameMainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -80,6 +82,8 @@ namespace BobbleCar
         private void GameStarting()
         {
             LevelScript.StartLevel(this, LevelFile);
+            LevelScript.LevelInit(this, LevelNumber);
+            LevelScript.Intro_Level(this, LevelNumber);
         }
 
 
@@ -204,6 +208,18 @@ namespace BobbleCar
                 //this.Close();
                 System.Windows.Application.Current.Shutdown();
             }
+        }
+
+        public void MetroWindow_MessageBox(string title, string text)
+        {
+            Action<string, string> del = async (_title, _text) => { await this.ShowMessageAsync(_title, _text); };
+            del(title, text);
+        }
+
+        public void MessageBox_Dispatched(string title, string text)
+        {
+            //this.Dispatcher.Invoke(MetroWindow_MessageBox,(object)title, (object)text));
+            this.Dispatcher.Invoke(new Action( () => MetroWindow_MessageBox(title, text) ));
         }
 
 

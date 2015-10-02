@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
+using System.Xml;
 
 namespace SimpleGraphicsLib
 {
@@ -129,7 +130,9 @@ namespace SimpleGraphicsLib
             //DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(LevelSet));
             DataContractSerializer ser = new DataContractSerializer(typeof(LevelSet));
 
-            using (FileStream fs = new FileStream(filepath, FileMode.Create, FileAccess.Write))
+            var settings = new XmlWriterSettings { Indent = true };
+
+            using (var fs = XmlWriter.Create(filepath, settings))
             {
                 ser.WriteObject(fs, this);
             }

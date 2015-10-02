@@ -77,5 +77,13 @@ namespace BobbleCar
         public bool IsObstacle { get; set; }
 
         public bool CanCollide { get; set; }
+
+
+        public event Action<IGameObject, IGameObject, bool> OnCollision;
+
+        public void RaiseOnCollision(IGameObject me, IGameObject other, bool calledByMe)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

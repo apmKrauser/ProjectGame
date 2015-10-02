@@ -24,6 +24,8 @@ namespace SimpleGraphicsLib
     {
 
         #region FieldsProperties
+
+        public event Action<IGameObject, IGameObject, bool> OnCollision;  //  Me, Other, CalledByMe(me == caller of CheckCollision)
         //[XmlIgnore]
         public event Action<DrawingVisual> RegisterDrawingVisual;
         //[XmlIgnore]
@@ -591,6 +593,13 @@ namespace SimpleGraphicsLib
         {
             // A "Leaf" of a composition doesn't have children
             return new ObservableCollection<IGFXObject>();
+        }
+
+
+        public void RaiseOnCollision(IGameObject me, IGameObject other, bool calledByMe)
+        {
+            if (OnCollision != null)
+                OnCollision(me, other, calledByMe);
         }
     }
 }

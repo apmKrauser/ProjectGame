@@ -32,6 +32,7 @@ namespace SimpleGraphicsLib
         private ParticleConfig _config;
         public virtual ParticleConfig BaseConfig { get { return _config; } }
 
+        public event Action<IGameObject, IGameObject, bool> OnCollision;  //  Me, Other, CalledByMe(me == caller of CheckCollision)
 
         public DrawingVisual DVisual = new DrawingVisual();
 
@@ -111,6 +112,11 @@ namespace SimpleGraphicsLib
         public virtual void Dispose()
         {
             //throw new NotImplementedException();
+        }
+
+        public void RaiseOnCollision(IGameObject me, IGameObject other, bool calledByMe)
+        {
+            OnCollision(me, other, calledByMe);
         }
 
     }

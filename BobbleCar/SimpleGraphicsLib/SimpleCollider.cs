@@ -12,25 +12,25 @@ namespace SimpleGraphicsLib
     public class SimpleCollider
     {
 
-        List<IRigidBody> Obstacles = new List<IRigidBody>();
+        List<IGameObject> Obstacles = new List<IGameObject>();
 
         public SimpleCollider()
         {
 
         }
 
-        public void AddObject(IRigidBody obj)
+        public void AddObject(IGameObject obj)
         {
             Obstacles.Add(obj);
         }
 
-        public void RemoveObject(IRigidBody obj)
+        public void RemoveObject(IGameObject obj)
         {
             Obstacles.Remove(obj);
         }
 
         //[MethodImpl(MethodImplOptions.Synchronized)] // single threaded
-        public void Check(IRigidBody me, FrameUpdateEventArgs e)
+        public void Check(IGameObject me, FrameUpdateEventArgs e)
         {
             Rect rme = me.Shape;
             bool hitsGround = false;
@@ -50,13 +50,15 @@ namespace SimpleGraphicsLib
                             ProcessCollision(me, other, overlap, rme, rother, e.ElapsedMilliseconds / 1000);
                             //break;
                         }
+                        me.RaiseOnCollision(me, other, true); // bool: me = caller of CheckCollision
+                        other.RaiseOnCollision(other, me, false);
                     }
                 }
             }
             me.IsGrounded = hitsGround;
         }
 
-        public void ProcessCollision(IRigidBody me, IRigidBody other, Rect overlap, Rect rme, Rect rother, double dt)
+        public void ProcessCollision(IGameObject me, IGameObject other, Rect overlap, Rect rme, Rect rother, double dt)
         {
             //double overlap = voverlap.Length;
             /* if beide IBallistic

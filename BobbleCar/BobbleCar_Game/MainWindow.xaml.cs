@@ -37,7 +37,7 @@ namespace BobbleCar_Game
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            GameWindow GW = new GameWindow("LevelOne.xml");
+            GameWindow GW = new GameWindow("LevelOne.xml", 1);
             GW.Show();
             // this.Close();
             this.Hide();
@@ -45,7 +45,7 @@ namespace BobbleCar_Game
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            GameWindow GW = new GameWindow("mplay_test.xml");
+            GameWindow GW = new GameWindow("mplay_test.xml", 10);
             GW.Show();
             // this.Close();
             this.Hide();

@@ -8,6 +8,11 @@ namespace SimpleGraphicsLib
 {
     public interface IRigidBody
     {
+
+        event Action<IGameObject, IGameObject, bool> OnCollision;  //  Me, Other, CalledByMe(me == caller of CheckCollision)
+
+        void RaiseOnCollision(IGameObject me, IGameObject other, bool calledByMe);
+
         Vector NormSpeed
         {
             get;

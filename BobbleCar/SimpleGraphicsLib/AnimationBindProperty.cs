@@ -22,7 +22,7 @@ namespace SimpleGraphicsLib
         }
 
         [DataMember]
-        public BindingProperty BoundProp { get; set; }
+        public BindingProperty BoundProp { get; set; } 
 
         [DataMember]
         public string BoundSpriteName { get; set; }

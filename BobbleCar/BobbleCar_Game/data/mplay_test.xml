@@ -1,1 +1,1582 @@
-<LevelSet xmlns="http://schemas.datacontract.org/2004/07/SimpleGraphicsLib" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Background><AirDrag>0</AirDrag><Angle>0</Angle><BlurEffectRadius>0</BlurEffectRadius><CanCollide>false</CanCollide><CenterOfMass xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></CenterOfMass><Deformation xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_height>1</a:_height><a:_width>1</a:_width><a:_x>0</a:_x><a:_y>0</a:_y></Deformation><FlipHorizontal>false</FlipHorizontal><ImagePath>data\LvLOne_background.png</ImagePath><IsMovable>false</IsMovable><IsObstacle>false</IsObstacle><Name>Background</Name><NormSpeed xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></NormSpeed><Position xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></Position><ScrollScaling>0.51762527233115485</ScrollScaling><SerializableAnimations><AnimationRigidBody i:type="AnimationLinearTranslation"><Name>LinMove</Name></AnimationRigidBody></SerializableAnimations><SizeV xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>3239.8888888888891</a:_x><a:_y>598</a:_y></SizeV><Weight>1</Weight></Background><LevelBkg><AirDrag>0</AirDrag><Angle>0</Angle><BlurEffectRadius>0</BlurEffectRadius><CanCollide>false</CanCollide><CenterOfMass xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></CenterOfMass><Deformation xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_height>1</a:_height><a:_width>1</a:_width><a:_x>0</a:_x><a:_y>0</a:_y></Deformation><FlipHorizontal>false</FlipHorizontal><ImagePath>data\LvLOne_world2.png</ImagePath><IsMovable>false</IsMovable><IsObstacle>false</IsObstacle><Name>LevelBkg</Name><NormSpeed xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></NormSpeed><Position xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></Position><ScrollScaling>1</ScrollScaling><SerializableAnimations><AnimationRigidBody i:type="AnimationLinearTranslation"><Name>LinMove</Name></AnimationRigidBody></SerializableAnimations><SizeV xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>5099.9999999999991</a:_x><a:_y>600</a:_y></SizeV><Weight>1</Weight></LevelBkg><Sprites><SpriteObject i:type="GroundObject"><AirDrag>0</AirDrag><Angle>0</Angle><BlurEffectRadius>0</BlurEffectRadius><CanCollide>true</CanCollide><CenterOfMass xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></CenterOfMass><Deformation xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_height>1</a:_height><a:_width>1</a:_width><a:_x>0</a:_x><a:_y>0</a:_y></Deformation><FlipHorizontal>false</FlipHorizontal><ImagePath/><IsMovable>false</IsMovable><IsObstacle>false</IsObstacle><Name>FahrGrundUnten</Name><NormSpeed xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></NormSpeed><Position xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0.1333333333333222</a:_x><a:_y>482.8</a:_y></Position><ScrollScaling>1</ScrollScaling><SerializableAnimations><AnimationRigidBody i:type="AnimationLinearTranslation"><Name>LinMove</Name></AnimationRigidBody></SerializableAnimations><SizeV xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>1915.5066666666685</a:_x><a:_y>58.493333333333496</a:_y></SizeV><Weight>1</Weight><DampingC>0.1</DampingC><IsDeformable>false</IsDeformable><IsLiquid>false</IsLiquid><SpringC>0.1</SpringC><isPointMass>false</isPointMass></SpriteObject><SpriteObject i:type="GroundObject"><AirDrag>0</AirDrag><Angle>0</Angle><BlurEffectRadius>0</BlurEffectRadius><CanCollide>true</CanCollide><CenterOfMass xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></CenterOfMass><Deformation xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_height>1</a:_height><a:_width>1</a:_width><a:_x>0</a:_x><a:_y>0</a:_y></Deformation><FlipHorizontal>false</FlipHorizontal><ImagePath/><IsMovable>false</IsMovable><IsObstacle>false</IsObstacle><Name>FahrGrundBerg</Name><NormSpeed xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></NormSpeed><Position xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>1902.9686073059356</a:_x><a:_y>284.65333333333331</a:_y></Position><ScrollScaling>1</ScrollScaling><SerializableAnimations><AnimationRigidBody i:type="AnimationLinearTranslation"><Name>LinMove</Name></AnimationRigidBody></SerializableAnimations><SizeV xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>650</a:_x><a:_y>42</a:_y></SizeV><Weight>1</Weight><DampingC>0.1</DampingC><IsDeformable>false</IsDeformable><IsLiquid>false</IsLiquid><SpringC>0.1</SpringC><isPointMass>false</isPointMass></SpriteObject><SpriteObject i:type="SpriteObjectElastic"><AirDrag>0</AirDrag><Angle>0</Angle><BlurEffectRadius>0</BlurEffectRadius><CanCollide>true</CanCollide><CenterOfMass xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></CenterOfMass><Deformation xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_height>1</a:_height><a:_width>1</a:_width><a:_x>0</a:_x><a:_y>0</a:_y></Deformation><FlipHorizontal>false</FlipHorizontal><ImagePath/><IsMovable>false</IsMovable><IsObstacle>true</IsObstacle><Name>FesterBodenBerg</Name><NormSpeed xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></NormSpeed><Position xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>1903.6679360730593</a:_x><a:_y>300.66933333333327</a:_y></Position><ScrollScaling>1</ScrollScaling><SerializableAnimations><AnimationRigidBody i:type="AnimationLinearTranslation"><Name>LinMove</Name></AnimationRigidBody></SerializableAnimations><SizeV xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>650</a:_x><a:_y>242.266666666667</a:_y></SizeV><Weight>1</Weight><DampingC>3</DampingC><IsDeformable>false</IsDeformable><IsLiquid>false</IsLiquid><SpringC>30</SpringC><isPointMass>false</isPointMass></SpriteObject><SpriteObject i:type="SpriteObjectElastic"><AirDrag>0</AirDrag><Angle>0</Angle><BlurEffectRadius>0</BlurEffectRadius><CanCollide>true</CanCollide><CenterOfMass xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></CenterOfMass><Deformation xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_height>1</a:_height><a:_width>1</a:_width><a:_x>0</a:_x><a:_y>0</a:_y></Deformation><FlipHorizontal>false</FlipHorizontal><ImagePath/><IsMovable>false</IsMovable><IsObstacle>true</IsObstacle><Name>FesterBodenUnten</Name><NormSpeed xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></NormSpeed><Position xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0.30133333333367152</a:_x><a:_y>500.45866666666694</a:_y></Position><ScrollScaling>1</ScrollScaling><SerializableAnimations><AnimationRigidBody i:type="AnimationLinearTranslation"><Name>LinMove</Name></AnimationRigidBody></SerializableAnimations><SizeV xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>1913.3466666666664</a:_x><a:_y>97.5</a:_y></SizeV><Weight>1</Weight><DampingC>5</DampingC><IsDeformable>false</IsDeformable><IsLiquid>false</IsLiquid><SpringC>30</SpringC><isPointMass>false</isPointMass></SpriteObject><SpriteObject><AirDrag>0</AirDrag><Angle>0</Angle><BlurEffectRadius>0</BlurEffectRadius><CanCollide>true</CanCollide><CenterOfMass xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>1</a:_x><a:_y>0.5</a:_y></CenterOfMass><Deformation xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_height>1</a:_height><a:_width>1</a:_width><a:_x>0</a:_x><a:_y>0</a:_y></Deformation><FlipHorizontal>false</FlipHorizontal><ImagePath/><IsMovable>false</IsMovable><IsObstacle>true</IsObstacle><Name>WandLevelAnfang</Name><NormSpeed xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></NormSpeed><Position xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>27.853333333333318</a:_x><a:_y>368.84</a:_y></Position><ScrollScaling>1</ScrollScaling><SerializableAnimations><AnimationRigidBody i:type="AnimationLinearTranslation"><Name>LinMove</Name></AnimationRigidBody></SerializableAnimations><SizeV xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>40.0133333333333</a:_x><a:_y>300</a:_y></SizeV><Weight>1</Weight></SpriteObject><SpriteObject i:type="SpriteObjectElastic"><AirDrag>0</AirDrag><Angle>0</Angle><BlurEffectRadius>0</BlurEffectRadius><CanCollide>false</CanCollide><CenterOfMass xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></CenterOfMass><Deformation xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_height>1</a:_height><a:_width>1</a:_width><a:_x>0</a:_x><a:_y>0</a:_y></Deformation><FlipHorizontal>false</FlipHorizontal><ImagePath/><IsMovable>true</IsMovable><IsObstacle>false</IsObstacle><Name>Bergwand1</Name><NormSpeed xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></NormSpeed><Position xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>45.306666666666651</a:_x><a:_y>108.06666666666665</a:_y></Position><ScrollScaling>1</ScrollScaling><SerializableAnimations><AnimationRigidBody i:type="AnimationLinearTranslation"><Name>LinMove</Name></AnimationRigidBody></SerializableAnimations><SizeV xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>30.773333333333333</a:_x><a:_y>30.773333333333326</a:_y></SizeV><Weight>1</Weight><DampingC>0.1</DampingC><IsDeformable>false</IsDeformable><IsLiquid>false</IsLiquid><SpringC>0.1</SpringC><isPointMass>false</isPointMass></SpriteObject><SpriteObject i:type="SpriteObjectElastic"><AirDrag>0</AirDrag><Angle>0</Angle><BlurEffectRadius>0</BlurEffectRadius><CanCollide>true</CanCollide><CenterOfMass xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0.5</a:_x><a:_y>0.5</a:_y></CenterOfMass><Deformation xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_height>1</a:_height><a:_width>1</a:_width><a:_x>0</a:_x><a:_y>0</a:_y></Deformation><FlipHorizontal>false</FlipHorizontal><ImagePath>data\g9890.png</ImagePath><IsMovable>false</IsMovable><IsObstacle>true</IsObstacle><Name>Flugfelsen1</Name><NormSpeed xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></NormSpeed><Position xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>3209.69602739726</a:_x><a:_y>194.30666666666667</a:_y></Position><ScrollScaling>1</ScrollScaling><SerializableAnimations><AnimationRigidBody i:type="AnimationLinearTranslation"><Name>LinMove</Name></AnimationRigidBody></SerializableAnimations><SizeV xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>87.474245086540932</a:_x><a:_y>90.674522345804618</a:_y></SizeV><Weight>30</Weight><DampingC>4</DampingC><IsDeformable>false</IsDeformable><IsLiquid>false</IsLiquid><SpringC>30</SpringC><isPointMass>false</isPointMass></SpriteObject><SpriteObject i:type="SpriteObjectElastic"><AirDrag>0</AirDrag><Angle>0</Angle><BlurEffectRadius>0</BlurEffectRadius><CanCollide>true</CanCollide><CenterOfMass xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0.5</a:_x><a:_y>0.5</a:_y></CenterOfMass><Deformation xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_height>1</a:_height><a:_width>1</a:_width><a:_x>0</a:_x><a:_y>0</a:_y></Deformation><FlipHorizontal>false</FlipHorizontal><ImagePath>data\g9897.png</ImagePath><IsMovable>false</IsMovable><IsObstacle>true</IsObstacle><Name>Flugfelsen2</Name><NormSpeed xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></NormSpeed><Position xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>3011.549360730593</a:_x><a:_y>279.52</a:_y></Position><ScrollScaling>1</ScrollScaling><SerializableAnimations><AnimationRigidBody i:type="AnimationLinearTranslation"><Name>LinMove</Name></AnimationRigidBody></SerializableAnimations><SizeV xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>131.21136762981141</a:_x><a:_y>133.34488580265386</a:_y></SizeV><Weight>30</Weight><DampingC>4</DampingC><IsDeformable>false</IsDeformable><IsLiquid>false</IsLiquid><SpringC>30</SpringC><isPointMass>false</isPointMass></SpriteObject><SpriteObject><AirDrag>0</AirDrag><Angle>0</Angle><BlurEffectRadius>0</BlurEffectRadius><CanCollide>false</CanCollide><CenterOfMass xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0.5</a:_x><a:_y>0.5</a:_y></CenterOfMass><Deformation xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_height>1</a:_height><a:_width>1</a:_width><a:_x>0</a:_x><a:_y>0</a:_y></Deformation><FlipHorizontal>false</FlipHorizontal><ImagePath>data\garage2.png</ImagePath><IsMovable>true</IsMovable><IsObstacle>false</IsObstacle><Name>Höhle portal</Name><NormSpeed xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></NormSpeed><Position xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>151.46400000000006</a:_x><a:_y>466.784</a:_y></Position><ScrollScaling>1</ScrollScaling><SerializableAnimations><AnimationRigidBody i:type="AnimationLinearTranslation"><Name>LinMove</Name></AnimationRigidBody></SerializableAnimations><SizeV xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>62.7158245185939</a:_x><a:_y>77.4724891112042</a:_y></SizeV><Weight>1</Weight></SpriteObject><SpriteObject i:type="GroundObject"><AirDrag>3</AirDrag><Angle>0</Angle><BlurEffectRadius>0</BlurEffectRadius><CanCollide>true</CanCollide><CenterOfMass xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0.5</a:_x><a:_y>0.5</a:_y></CenterOfMass><Deformation xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_height>1</a:_height><a:_width>1</a:_width><a:_x>0</a:_x><a:_y>0</a:_y></Deformation><FlipHorizontal>false</FlipHorizontal><ImagePath>data\tower_expander.png</ImagePath><IsMovable>true</IsMovable><IsObstacle>true</IsObstacle><Name>Schemel</Name><NormSpeed xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>-8.3424431529868974E-19</a:_x><a:_y>4.1992324822380684</a:_y></NormSpeed><Position xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>1645.0870776255706</a:_x><a:_y>380.13333333333333</a:_y></Position><ScrollScaling>1</ScrollScaling><SerializableAnimations><AnimationRigidBody i:type="AnimationLinearTranslation"><Name>LinMove</Name></AnimationRigidBody><AnimationRigidBody i:type="AnimationAirDrag"><Name>Ani::42250861</Name></AnimationRigidBody><AnimationRigidBody i:type="AnimationConstAcceleration"><Name>Gravity</Name><Acceleration xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>140</a:_y></Acceleration></AnimationRigidBody></SerializableAnimations><SizeV xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>202.36635689117526</a:_x><a:_y>80.812443038250748</a:_y></SizeV><Weight>3</Weight><DampingC>10</DampingC><IsDeformable>false</IsDeformable><IsLiquid>false</IsLiquid><SpringC>3000</SpringC><isPointMass>false</isPointMass></SpriteObject><SpriteObject i:type="CarObject"><AirDrag>0.2</AirDrag><Angle>0</Angle><BlurEffectRadius>0</BlurEffectRadius><CanCollide>true</CanCollide><CenterOfMass xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0.5</a:_x><a:_y>0.5</a:_y></CenterOfMass><Deformation xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_height>0.92947744930975951</a:_height><a:_width>1.0044352922402202</a:_width><a:_x>0.0088705844804406169</a:_x><a:_y>0.022176461201101547</a:_y></Deformation><FlipHorizontal>false</FlipHorizontal><ImagePath>data\cyberscooty-cartoon-car_kl2.png</ImagePath><IsMovable>true</IsMovable><IsObstacle>true</IsObstacle><Name>Player</Name><NormSpeed xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>-0.095666563832672108</a:_x><a:_y>1.6338463028567147</a:_y></NormSpeed><Position xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>738.71733333333327</a:_x><a:_y>434.54666666666657</a:_y></Position><ScrollScaling>1</ScrollScaling><SerializableAnimations><AnimationRigidBody i:type="AnimationLinearTranslation"><Name>LinMove</Name></AnimationRigidBody><AnimationRigidBody i:type="AnimationWobble"><Name>Wobble</Name><WobbleAmplitude>0.005</WobbleAmplitude><WobbleSpeed>0.8</WobbleSpeed></AnimationRigidBody><AnimationRigidBody i:type="AnimationConstAcceleration"><Name>Gravity</Name><Acceleration xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>55</a:_y></Acceleration></AnimationRigidBody><AnimationRigidBody i:type="AnimKeyDrive"><Name>Motor</Name><AccBreak>40</AccBreak><Acceleration xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>40</a:_x><a:_y>0</a:_y></Acceleration><KeyBackward>Left</KeyBackward><KeyBreak>Down</KeyBreak><KeyForward>Right</KeyForward><NeedsGround>true</NeedsGround><VMax>80</VMax></AnimationRigidBody><AnimationRigidBody i:type="AnimationAirDrag"><Name>Ani::1719388</Name></AnimationRigidBody><AnimationRigidBody i:type="AnimKeyJump"><Name>Jump</Name><JumpDirection xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>-1</a:_y></JumpDirection><JumpFillSpeed>100</JumpFillSpeed><JumpPowerRestore>11</JumpPowerRestore><JumpReservoir>260</JumpReservoir><JumpReservoirMax>260</JumpReservoirMax><KeyJump>Up</KeyJump><NeedsGround>true</NeedsGround><StoredJumpPower>0</StoredJumpPower></AnimationRigidBody></SerializableAnimations><SizeV xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>72.50799653329743</a:_x><a:_y>60.4233304444146</a:_y></SizeV><Weight>1</Weight><DampingC>2</DampingC><IsDeformable>true</IsDeformable><IsLiquid>false</IsLiquid><SpringC>20</SpringC><isPointMass>true</isPointMass><AuspuffGenerationRate>8</AuspuffGenerationRate><AuspuffMaxParticles>40</AuspuffMaxParticles><AuspuffPSConfig><AverageLifetime>3000</AverageLifetime><EmmissionArea xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_height>30</a:_height><a:_width>30</a:_width><a:_x>695.21253541335477</a:_x><a:_y>434.54666666666662</a:_y></EmmissionArea><GroupSpread>5</GroupSpread><GroupVelocity xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>-100</a:_x><a:_y>-35</a:_y></GroupVelocity><LifetimeSpread>0.25</LifetimeSpread><Name i:nil="true"/><TypeName>ParticleConfig</TypeName><AirDrag>0.6</AirDrag><AppearanceSpread>0.05</AppearanceSpread><BlurFrom>7</BlurFrom><BlurTo>20</BlurTo><ColorFrom xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows.Media"><a:A>230</a:A><a:B>30</a:B><a:G>30</a:G><a:R>30</a:R><a:ScA>0.9019608</a:ScA><a:ScB>0.0129830325</a:ScB><a:ScG>0.0129830325</a:ScG><a:ScR>0.0129830325</a:ScR></ColorFrom><ColorTo xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows.Media"><a:A>0</a:A><a:B>108</a:B><a:G>108</a:G><a:R>108</a:R><a:ScA>0</a:ScA><a:ScB>0.149959788</a:ScB><a:ScG>0.149959788</a:ScG><a:ScR>0.149959788</a:ScR></ColorTo><RadiusFrom>4</RadiusFrom><RadiusTo>50</RadiusTo><SubParticleSpread>20</SubParticleSpread></AuspuffPSConfig><PosAuspuff xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>-0.10000000000000009</a:_x><a:_y>0.5</a:_y></PosAuspuff></SpriteObject><SpriteObject i:type="CarObject"><AirDrag>0.2</AirDrag><Angle>0</Angle><BlurEffectRadius>0</BlurEffectRadius><CanCollide>true</CanCollide><CenterOfMass xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0.5</a:_x><a:_y>0.5</a:_y></CenterOfMass><Deformation xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_height>0.94813663115617641</a:_height><a:_width>1.0002820014256821</a:_width><a:_x>0.0005640028513641893</a:_x><a:_y>0.0014100071284104732</a:_y></Deformation><FlipHorizontal>false</FlipHorizontal><ImagePath>data\cyberscooty-cartoon-car_kl2.png</ImagePath><IsMovable>true</IsMovable><IsObstacle>true</IsObstacle><Name>Player2</Name><NormSpeed xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>-5.2314941139426926E-06</a:_x><a:_y>0.840917991474872</a:_y></NormSpeed><Position xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>735.55706849315152</a:_x><a:_y>366.78666666666686</a:_y></Position><ScrollScaling>1</ScrollScaling><SerializableAnimations><AnimationRigidBody i:type="AnimationLinearTranslation"><Name>LinMove</Name></AnimationRigidBody><AnimationRigidBody i:type="AnimationWobble"><Name>Wobble</Name><WobbleAmplitude>0.005</WobbleAmplitude><WobbleSpeed>0.8</WobbleSpeed></AnimationRigidBody><AnimationRigidBody i:type="AnimationConstAcceleration"><Name>grav</Name><Acceleration xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>30</a:_y></Acceleration></AnimationRigidBody><AnimationRigidBody i:type="AnimationAirDrag"><Name>Ani::14238685</Name></AnimationRigidBody><AnimationRigidBody i:type="AnimKeyDrive"><Name>Ani::46427742</Name><AccBreak>30</AccBreak><Acceleration xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>40</a:_x><a:_y>0</a:_y></Acceleration><KeyBackward>A</KeyBackward><KeyBreak>S</KeyBreak><KeyForward>D</KeyForward><NeedsGround>true</NeedsGround><VMax>80</VMax></AnimationRigidBody><AnimationRigidBody i:type="AnimKeyJump"><Name>Jump</Name><JumpDirection xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>-1</a:_y></JumpDirection><JumpFillSpeed>100</JumpFillSpeed><JumpPowerRestore>40</JumpPowerRestore><JumpReservoir>200</JumpReservoir><JumpReservoirMax>200</JumpReservoirMax><KeyJump>W</KeyJump><NeedsGround>true</NeedsGround><StoredJumpPower>0</StoredJumpPower></AnimationRigidBody></SerializableAnimations><SizeV xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>40.039408454142922</a:_x><a:_y>28.596663777747892</a:_y></SizeV><Weight>0.5</Weight><DampingC>3</DampingC><IsDeformable>true</IsDeformable><IsLiquid>false</IsLiquid><SpringC>20</SpringC><isPointMass>true</isPointMass><AuspuffGenerationRate>5</AuspuffGenerationRate><AuspuffMaxParticles>30</AuspuffMaxParticles><AuspuffPSConfig><AverageLifetime>3000</AverageLifetime><EmmissionArea xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_height>15</a:_height><a:_width>15</a:_width><a:_x>711.53342342066583</a:_x><a:_y>361.06733391111732</a:_y></EmmissionArea><GroupSpread>8</GroupSpread><GroupVelocity xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>-60</a:_x><a:_y>-25</a:_y></GroupVelocity><LifetimeSpread>0.1</LifetimeSpread><Name i:nil="true"/><TypeName>ParticleConfig</TypeName><AirDrag>0.6</AirDrag><AppearanceSpread>0.08</AppearanceSpread><BlurFrom>5</BlurFrom><BlurTo>12</BlurTo><ColorFrom xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows.Media"><a:A>255</a:A><a:B>222</a:B><a:G>196</a:G><a:R>176</a:R><a:ScA>1</a:ScA><a:ScB>0.730460763</a:ScB><a:ScG>0.55201143</a:ScG><a:ScR>0.434153646</a:ScR></ColorFrom><ColorTo xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows.Media"><a:A>0</a:A><a:B>108</a:B><a:G>108</a:G><a:R>108</a:R><a:ScA>0</a:ScA><a:ScB>0.149959788</a:ScB><a:ScG>0.149959788</a:ScG><a:ScR>0.149959788</a:ScR></ColorTo><RadiusFrom>2</RadiusFrom><RadiusTo>40</RadiusTo><SubParticleSpread>20</SubParticleSpread></AuspuffPSConfig><PosAuspuff xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>-0.10000000000000009</a:_x><a:_y>0.3</a:_y></PosAuspuff></SpriteObject><SpriteObject><AirDrag>0</AirDrag><Angle>0</Angle><BlurEffectRadius>0</BlurEffectRadius><CanCollide>false</CanCollide><CenterOfMass xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0.5</a:_x><a:_y>0.5</a:_y></CenterOfMass><Deformation xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_height>1</a:_height><a:_width>1</a:_width><a:_x>0</a:_x><a:_y>0</a:_y></Deformation><FlipHorizontal>false</FlipHorizontal><ImagePath>data\garage1.png</ImagePath><IsMovable>true</IsMovable><IsObstacle>false</IsObstacle><Name>Höhle berg</Name><NormSpeed xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></NormSpeed><Position xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>19.845333333333325</a:_x><a:_y>424.8959999999999</a:_y></Position><ScrollScaling>1</ScrollScaling><SerializableAnimations><AnimationRigidBody i:type="AnimationLinearTranslation"><Name>LinMove</Name></AnimationRigidBody></SerializableAnimations><SizeV xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>287.19584144933992</a:_x><a:_y>185.76071446936038</a:_y></SizeV><Weight>1</Weight></SpriteObject><SpriteObject><AirDrag>0</AirDrag><Angle>0</Angle><BlurEffectRadius>0</BlurEffectRadius><CanCollide>true</CanCollide><CenterOfMass xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0.5</a:_x><a:_y>0.5</a:_y></CenterOfMass><Deformation xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_height>1</a:_height><a:_width>1</a:_width><a:_x>0</a:_x><a:_y>0</a:_y></Deformation><FlipHorizontal>false</FlipHorizontal><ImagePath>data\WoodLayer.png</ImagePath><IsMovable>false</IsMovable><IsObstacle>false</IsObstacle><Name>SpriteObject::50841092</Name><NormSpeed xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>0</a:_x><a:_y>0</a:_y></NormSpeed><Position xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>788.61333333333334</a:_x><a:_y>461.23999999999995</a:_y></Position><ScrollScaling>1</ScrollScaling><SerializableAnimations><AnimationRigidBody i:type="AnimationLinearTranslation"><Name>LinMove</Name></AnimationRigidBody></SerializableAnimations><SizeV xmlns:a="http://schemas.datacontract.org/2004/07/System.Windows"><a:_x>1567.4094015611536</a:_x><a:_y>298.81333333333509</a:_y></SizeV><Weight>1</Weight></SpriteObject></Sprites></LevelSet>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LevelSet xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/SimpleGraphicsLib">
+  <Background i:type="SpriteObject">
+    <AirDrag>0</AirDrag>
+    <Angle>0</Angle>
+    <BlurEffectRadius>0</BlurEffectRadius>
+    <CanCollide>false</CanCollide>
+    <CenterOfMass xmlns:d3p1="http://schemas.datacontract.org/2004/07/System.Windows">
+      <d3p1:_x>0</d3p1:_x>
+      <d3p1:_y>0</d3p1:_y>
+    </CenterOfMass>
+    <Deformation xmlns:d3p1="http://schemas.datacontract.org/2004/07/System.Windows">
+      <d3p1:_height>1</d3p1:_height>
+      <d3p1:_width>1</d3p1:_width>
+      <d3p1:_x>0</d3p1:_x>
+      <d3p1:_y>0</d3p1:_y>
+    </Deformation>
+    <FlipHorizontal>false</FlipHorizontal>
+    <ImagePath>data\LvLOne_background.png</ImagePath>
+    <IsMovable>false</IsMovable>
+    <IsObstacle>false</IsObstacle>
+    <Name>Background</Name>
+    <NormSpeed xmlns:d3p1="http://schemas.datacontract.org/2004/07/System.Windows">
+      <d3p1:_x>0</d3p1:_x>
+      <d3p1:_y>0</d3p1:_y>
+    </NormSpeed>
+    <Position xmlns:d3p1="http://schemas.datacontract.org/2004/07/System.Windows">
+      <d3p1:_x>0</d3p1:_x>
+      <d3p1:_y>0</d3p1:_y>
+    </Position>
+    <ScrollScaling>0.51762527233115485</ScrollScaling>
+    <SerializableAnimations>
+      <AnimationRigidBody i:type="AnimationLinearTranslation">
+        <Name>LinMove</Name>
+      </AnimationRigidBody>
+    </SerializableAnimations>
+    <SizeV xmlns:d3p1="http://schemas.datacontract.org/2004/07/System.Windows">
+      <d3p1:_x>3239.8888888888891</d3p1:_x>
+      <d3p1:_y>598</d3p1:_y>
+    </SizeV>
+    <Weight>1</Weight>
+  </Background>
+  <LevelBkg i:type="SpriteObject">
+    <AirDrag>0</AirDrag>
+    <Angle>0</Angle>
+    <BlurEffectRadius>0</BlurEffectRadius>
+    <CanCollide>false</CanCollide>
+    <CenterOfMass xmlns:d3p1="http://schemas.datacontract.org/2004/07/System.Windows">
+      <d3p1:_x>0</d3p1:_x>
+      <d3p1:_y>0</d3p1:_y>
+    </CenterOfMass>
+    <Deformation xmlns:d3p1="http://schemas.datacontract.org/2004/07/System.Windows">
+      <d3p1:_height>1</d3p1:_height>
+      <d3p1:_width>1</d3p1:_width>
+      <d3p1:_x>0</d3p1:_x>
+      <d3p1:_y>0</d3p1:_y>
+    </Deformation>
+    <FlipHorizontal>false</FlipHorizontal>
+    <ImagePath>data\LvLOne_world2.png</ImagePath>
+    <IsMovable>false</IsMovable>
+    <IsObstacle>false</IsObstacle>
+    <Name>LevelBkg</Name>
+    <NormSpeed xmlns:d3p1="http://schemas.datacontract.org/2004/07/System.Windows">
+      <d3p1:_x>0</d3p1:_x>
+      <d3p1:_y>0</d3p1:_y>
+    </NormSpeed>
+    <Position xmlns:d3p1="http://schemas.datacontract.org/2004/07/System.Windows">
+      <d3p1:_x>0</d3p1:_x>
+      <d3p1:_y>0</d3p1:_y>
+    </Position>
+    <ScrollScaling>1</ScrollScaling>
+    <SerializableAnimations>
+      <AnimationRigidBody i:type="AnimationLinearTranslation">
+        <Name>LinMove</Name>
+      </AnimationRigidBody>
+    </SerializableAnimations>
+    <SizeV xmlns:d3p1="http://schemas.datacontract.org/2004/07/System.Windows">
+      <d3p1:_x>5099.9999999999991</d3p1:_x>
+      <d3p1:_y>600</d3p1:_y>
+    </SizeV>
+    <Weight>1</Weight>
+  </LevelBkg>
+  <Sprites xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+    <d2p1:anyType i:type="GroundObject">
+      <AirDrag>0</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath></ImagePath>
+      <IsMovable>false</IsMovable>
+      <IsObstacle>false</IsObstacle>
+      <Name>FahrGrundUnten</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.1333333333333222</d4p1:_x>
+        <d4p1:_y>482.8</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>1915.5066666666685</d4p1:_x>
+        <d4p1:_y>58.493333333333496</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+      <DampingC>0.1</DampingC>
+      <IsDeformable>false</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>0.1</SpringC>
+      <isPointMass>false</isPointMass>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="GroundObject">
+      <AirDrag>0</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath></ImagePath>
+      <IsMovable>false</IsMovable>
+      <IsObstacle>false</IsObstacle>
+      <Name>FahrGrundBerg</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>1902.9686073059356</d4p1:_x>
+        <d4p1:_y>284.65333333333331</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>650</d4p1:_x>
+        <d4p1:_y>42</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+      <DampingC>0.1</DampingC>
+      <IsDeformable>false</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>0.1</SpringC>
+      <isPointMass>false</isPointMass>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="SpriteObjectElastic">
+      <AirDrag>0</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath></ImagePath>
+      <IsMovable>false</IsMovable>
+      <IsObstacle>true</IsObstacle>
+      <Name>FesterBodenBerg</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>1903.6679360730593</d4p1:_x>
+        <d4p1:_y>300.66933333333327</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>851.22666666666657</d4p1:_x>
+        <d4p1:_y>244.32000000000033</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+      <DampingC>3</DampingC>
+      <IsDeformable>false</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>30</SpringC>
+      <isPointMass>false</isPointMass>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="SpriteObjectElastic">
+      <AirDrag>0</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath></ImagePath>
+      <IsMovable>false</IsMovable>
+      <IsObstacle>true</IsObstacle>
+      <Name>FesterBodenUnten</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.30133333333367152</d4p1:_x>
+        <d4p1:_y>500.45866666666694</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>1913.3466666666664</d4p1:_x>
+        <d4p1:_y>97.5</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+      <DampingC>5</DampingC>
+      <IsDeformable>false</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>30</SpringC>
+      <isPointMass>false</isPointMass>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="SpriteObject">
+      <AirDrag>0</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>1</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath></ImagePath>
+      <IsMovable>false</IsMovable>
+      <IsObstacle>true</IsObstacle>
+      <Name>WandLevelAnfang</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>27.853333333333318</d4p1:_x>
+        <d4p1:_y>368.84</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>40.0133333333333</d4p1:_x>
+        <d4p1:_y>300</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="SpriteObjectElastic">
+      <AirDrag>0</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath></ImagePath>
+      <IsMovable>false</IsMovable>
+      <IsObstacle>true</IsObstacle>
+      <Name>FesterBodenBerg2</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>2475.2164840182641</d4p1:_x>
+        <d4p1:_y>221</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>364.44000000000005</d4p1:_x>
+        <d4p1:_y>112.90666666666664</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+      <DampingC>3</DampingC>
+      <IsDeformable>false</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>30</SpringC>
+      <isPointMass>false</isPointMass>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="GroundObject">
+      <AirDrag>0</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.5</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath></ImagePath>
+      <IsMovable>false</IsMovable>
+      <IsObstacle>false</IsObstacle>
+      <Name>FahrGrundBerg2</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>2659.4004840182643</d4p1:_x>
+        <d4p1:_y>221.82133333333334</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>379.83999999999992</d4p1:_x>
+        <d4p1:_y>35.906666666666638</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+      <DampingC>3</DampingC>
+      <IsDeformable>false</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>30</SpringC>
+      <isPointMass>false</isPointMass>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="SpriteObjectElastic">
+      <AirDrag>0</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath></ImagePath>
+      <IsMovable>false</IsMovable>
+      <IsObstacle>true</IsObstacle>
+      <Name>Bergwand1</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>20.666666666666647</d4p1:_x>
+        <d4p1:_y>360.83199999999943</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>134.46666666666664</d4p1:_x>
+        <d4p1:_y>32.826666666666668</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+      <DampingC>2</DampingC>
+      <IsDeformable>false</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>40</SpringC>
+      <isPointMass>false</isPointMass>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="SpriteObjectElastic">
+      <AirDrag>0</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath></ImagePath>
+      <IsMovable>false</IsMovable>
+      <IsObstacle>false</IsObstacle>
+      <Name>FesterBoden2</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>2549.5786940639268</d4p1:_x>
+        <d4p1:_y>523.25066666666612</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>2310.9999999999927</d4p1:_x>
+        <d4p1:_y>63.626666666666623</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+      <DampingC>0.1</DampingC>
+      <IsDeformable>false</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>0.1</SpringC>
+      <isPointMass>false</isPointMass>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="GroundObject">
+      <AirDrag>0</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath></ImagePath>
+      <IsMovable>false</IsMovable>
+      <IsObstacle>true</IsObstacle>
+      <Name>FahrGrund2</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>2553.518703196346</d4p1:_x>
+        <d4p1:_y>509.49333333333311</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>2309.9733333333234</d4p1:_x>
+        <d4p1:_y>25.63999999999993</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+      <DampingC>3</DampingC>
+      <IsDeformable>false</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>30</SpringC>
+      <isPointMass>false</isPointMass>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="GroundObject">
+      <AirDrag>0</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.5</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath>data\g9897.png</ImagePath>
+      <IsMovable>false</IsMovable>
+      <IsObstacle>false</IsObstacle>
+      <Name>Flugfelsen1</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>3005.3879543378985</d4p1:_x>
+        <d4p1:_y>236.60533333333336</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>132.23803429647805</d4p1:_x>
+        <d4p1:_y>131.29155246932052</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+      <DampingC>0.1</DampingC>
+      <IsDeformable>false</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>0.1</SpringC>
+      <isPointMass>false</isPointMass>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="GroundObject">
+      <AirDrag>0</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.5</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath>data\g9890.png</ImagePath>
+      <IsMovable>false</IsMovable>
+      <IsObstacle>false</IsObstacle>
+      <Name>Flugfelsen2</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>3154.459954337899</d4p1:_x>
+        <d4p1:_y>164.5333333333333</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>136.75424508654089</d4p1:_x>
+        <d4p1:_y>88.621189012471277</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+      <DampingC>0.1</DampingC>
+      <IsDeformable>false</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>0.1</SpringC>
+      <isPointMass>false</isPointMass>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="SpriteObjectElastic">
+      <AirDrag>0</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.5</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath></ImagePath>
+      <IsMovable>false</IsMovable>
+      <IsObstacle>true</IsObstacle>
+      <Name>FlugfelsenGrund</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>3012.574621004565</d4p1:_x>
+        <d4p1:_y>230.65066666666684</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>136.52000000000004</d4p1:_x>
+        <d4p1:_y>75.946666666666658</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+      <DampingC>3</DampingC>
+      <IsDeformable>false</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>30</SpringC>
+      <isPointMass>false</isPointMass>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="SpriteObjectElastic">
+      <AirDrag>0</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.5</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath></ImagePath>
+      <IsMovable>false</IsMovable>
+      <IsObstacle>true</IsObstacle>
+      <Name>FlugfelsenGrund#37106137</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>3156.5132876712323</d4p1:_x>
+        <d4p1:_y>161.45333333333332</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>151.92000000000007</d4p1:_x>
+        <d4p1:_y>42.066666666666734</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+      <DampingC>3</DampingC>
+      <IsDeformable>false</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>30</SpringC>
+      <isPointMass>false</isPointMass>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="GroundObject">
+      <AirDrag>1</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.5</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath>data\flying_platform_6.png</ImagePath>
+      <IsMovable>true</IsMovable>
+      <IsObstacle>true</IsObstacle>
+      <Name>Flugfelsen3</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>3359.7932876712325</d4p1:_x>
+        <d4p1:_y>183.01333333333332</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimationAirDrag">
+          <Name>Ani::45595192</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>211.01253409151633</d4p1:_x>
+        <d4p1:_y>85.781596382882512</d4p1:_y>
+      </SizeV>
+      <Weight>5</Weight>
+      <DampingC>5</DampingC>
+      <IsDeformable>false</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>15</SpringC>
+      <isPointMass>false</isPointMass>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="GroundObject">
+      <AirDrag>1</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.5</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath>data\tower_expander.png</ImagePath>
+      <IsMovable>true</IsMovable>
+      <IsObstacle>true</IsObstacle>
+      <Name>Schemel</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>16.172646141486378</d4p1:_x>
+        <d4p1:_y>-14.662654953308639</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>1695.3141095890403</d4p1:_x>
+        <d4p1:_y>419.14666666666665</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimationConstAcceleration">
+          <Name>Gravity</Name>
+          <Acceleration xmlns:d6p1="http://schemas.datacontract.org/2004/07/System.Windows">
+            <d6p1:_x>0</d6p1:_x>
+            <d6p1:_y>50</d6p1:_y>
+          </Acceleration>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimationAirDrag">
+          <Name>Ani::53939931</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>163.25924051140189</d4p1:_x>
+        <d4p1:_y>56.172443038250691</d4p1:_y>
+      </SizeV>
+      <Weight>3</Weight>
+      <DampingC>5</DampingC>
+      <IsDeformable>false</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>300</SpringC>
+      <isPointMass>false</isPointMass>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="SpriteObjectElastic">
+      <AirDrag>0</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.5</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath>data\snow_cliffface_01a_al1.png</ImagePath>
+      <IsMovable>false</IsMovable>
+      <IsObstacle>true</IsObstacle>
+      <Name>SpriteObjectElastic::44040614</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>3973.8086666666659</d4p1:_x>
+        <d4p1:_y>307.23999999999995</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>487</d4p1:_x>
+        <d4p1:_y>419</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+      <DampingC>0.5</DampingC>
+      <IsDeformable>false</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>40</SpringC>
+      <isPointMass>false</isPointMass>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="SpriteObject">
+      <AirDrag>0</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.5</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath>data\juju_grandma_tent_01a_al1.png</ImagePath>
+      <IsMovable>false</IsMovable>
+      <IsObstacle>false</IsObstacle>
+      <Name>SpriteObject::14844001</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>3947.1153333333323</d4p1:_x>
+        <d4p1:_y>119.36</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>132.59304347826082</d4p1:_x>
+        <d4p1:_y>105.16000000000003</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="GroundObject">
+      <AirDrag>0.6</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.5</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath>data\flying_platform_6_remote.png</ImagePath>
+      <IsMovable>false</IsMovable>
+      <IsObstacle>true</IsObstacle>
+      <Name>Flugfelsen4</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>2899.5054703196347</d4p1:_x>
+        <d4p1:_y>470.47999999999871</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimationAirDrag">
+          <Name>Ani::67032102</Name>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimationBindProperty">
+          <Name>Ani::25241519</Name>
+          <BindScaling>-0.85</BindScaling>
+          <BoundProp>PosY</BoundProp>
+          <BoundSpriteName>Flugfelsen3</BoundSpriteName>
+          <TwoWayBinding>false</TwoWayBinding>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>149.59550438854629</d4p1:_x>
+        <d4p1:_y>72.43492971621589</d4p1:_y>
+      </SizeV>
+      <Weight>3</Weight>
+      <DampingC>8</DampingC>
+      <IsDeformable>false</IsDeformable>
+      <IsLiquid>true</IsLiquid>
+      <SpringC>25</SpringC>
+      <isPointMass>false</isPointMass>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="SpriteObject">
+      <AirDrag>0</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>false</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.5</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath>data\garage2.png</ImagePath>
+      <IsMovable>false</IsMovable>
+      <IsObstacle>false</IsObstacle>
+      <Name>Höhle portal</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>151.46400000000006</d4p1:_x>
+        <d4p1:_y>466.784</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>62.7158245185939</d4p1:_x>
+        <d4p1:_y>77.4724891112042</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="GroundObject">
+      <AirDrag>1</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.5</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath>data\tower_expander.png</ImagePath>
+      <IsMovable>true</IsMovable>
+      <IsObstacle>true</IsObstacle>
+      <Name>Schemel2</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>3586.6604018264834</d4p1:_x>
+        <d4p1:_y>468.42666666666662</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimationAirDrag">
+          <Name>Ani::5946219</Name>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimationConstAcceleration">
+          <Name>Gravity</Name>
+          <Acceleration xmlns:d6p1="http://schemas.datacontract.org/2004/07/System.Windows">
+            <d6p1:_x>0</d6p1:_x>
+            <d6p1:_y>60</d6p1:_y>
+          </Acceleration>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>139.51544892616451</d4p1:_x>
+        <d4p1:_y>58.225776371584047</d4p1:_y>
+      </SizeV>
+      <Weight>5</Weight>
+      <DampingC>8</DampingC>
+      <IsDeformable>false</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>200</SpringC>
+      <isPointMass>false</isPointMass>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="GroundObject">
+      <AirDrag>0.4</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.5</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>0.98552651600420427</d4p1:_height>
+        <d4p1:_width>1.0028946967991592</d4p1:_width>
+        <d4p1:_x>0.0057893935983183049</d4p1:_x>
+        <d4p1:_y>0.014473483995795762</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath>data\blockmaker_engine.png</ImagePath>
+      <IsMovable>true</IsMovable>
+      <IsObstacle>true</IsObstacle>
+      <Name>Generator</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>-1.042644557661124E-61</d4p1:_x>
+        <d4p1:_y>2.5223190258267287</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>2786.300100456619</d4p1:_x>
+        <d4p1:_y>175.62678277013086</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimationWobble">
+          <Name>Ani::26498440</Name>
+          <WobbleAmplitude>0.004</WobbleAmplitude>
+          <WobbleSpeed>0.06</WobbleSpeed>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimationConstAcceleration">
+          <Name>grav</Name>
+          <Acceleration xmlns:d6p1="http://schemas.datacontract.org/2004/07/System.Windows">
+            <d6p1:_x>0</d6p1:_x>
+            <d6p1:_y>80</d6p1:_y>
+          </Acceleration>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimationAirDrag">
+          <Name>Ani::45631425</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>90.737476931476309</d4p1:_x>
+        <d4p1:_y>88.4690400081894</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+      <DampingC>5</DampingC>
+      <IsDeformable>false</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>40</SpringC>
+      <isPointMass>true</isPointMass>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="CarObject">
+      <AirDrag>0.2</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.5</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>0.9391090812083428</d4p1:_height>
+        <d4p1:_width>1.0013255404737991</d4p1:_width>
+        <d4p1:_x>0.0026510809475979919</d4p1:_x>
+        <d4p1:_y>0.00662770236899498</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>true</FlipHorizontal>
+      <ImagePath>data\cyberscooty-cartoon-car_kl2.png</ImagePath>
+      <IsMovable>true</IsMovable>
+      <IsObstacle>true</IsObstacle>
+      <Name>Player</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.78073421335240722</d4p1:_x>
+        <d4p1:_y>1.8496382176986277</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>66.456000000000174</d4p1:_x>
+        <d4p1:_y>458.98133333333328</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimationWobble">
+          <Name>Wobble</Name>
+          <WobbleAmplitude>0.005</WobbleAmplitude>
+          <WobbleSpeed>0.8</WobbleSpeed>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimationConstAcceleration">
+          <Name>Gravity</Name>
+          <Acceleration xmlns:d6p1="http://schemas.datacontract.org/2004/07/System.Windows">
+            <d6p1:_x>0</d6p1:_x>
+            <d6p1:_y>55</d6p1:_y>
+          </Acceleration>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimKeyDrive">
+          <Name>Motor</Name>
+          <AccBreak>60</AccBreak>
+          <Acceleration xmlns:d6p1="http://schemas.datacontract.org/2004/07/System.Windows">
+            <d6p1:_x>40</d6p1:_x>
+            <d6p1:_y>0</d6p1:_y>
+          </Acceleration>
+          <KeyBackward>Left</KeyBackward>
+          <KeyBreak>Down</KeyBreak>
+          <KeyForward>Right</KeyForward>
+          <NeedsGround>true</NeedsGround>
+          <VMax>80</VMax>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimationAirDrag">
+          <Name>Ani::1719388</Name>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimKeyJump">
+          <Name>Jump</Name>
+          <JumpDirection xmlns:d6p1="http://schemas.datacontract.org/2004/07/System.Windows">
+            <d6p1:_x>0</d6p1:_x>
+            <d6p1:_y>-1</d6p1:_y>
+          </JumpDirection>
+          <JumpFillSpeed>100</JumpFillSpeed>
+          <JumpPowerRestore>11</JumpPowerRestore>
+          <JumpReservoir>260</JumpReservoir>
+          <JumpReservoirMax>260</JumpReservoirMax>
+          <KeyJump>Up</KeyJump>
+          <NeedsGround>true</NeedsGround>
+          <StoredJumpPower>0</StoredJumpPower>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>63.883996533297378</d4p1:_x>
+        <d4p1:_y>53.236663777747879</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+      <DampingC>2</DampingC>
+      <IsDeformable>true</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>20</SpringC>
+      <isPointMass>true</isPointMass>
+      <AuspuffGenerationRate>8</AuspuffGenerationRate>
+      <AuspuffMaxParticles>30</AuspuffMaxParticles>
+      <AuspuffPSConfig>
+        <AverageLifetime>3000</AverageLifetime>
+        <EmmissionArea xmlns:d5p1="http://schemas.datacontract.org/2004/07/System.Windows">
+          <d5p1:_height>30</d5p1:_height>
+          <d5p1:_width>30</d5p1:_width>
+          <d5p1:_x>89.786397919978612</d5p1:_x>
+          <d5p1:_y>443.98133333333328</d5p1:_y>
+        </EmmissionArea>
+        <GroupSpread>5</GroupSpread>
+        <GroupVelocity xmlns:d5p1="http://schemas.datacontract.org/2004/07/System.Windows">
+          <d5p1:_x>100</d5p1:_x>
+          <d5p1:_y>-35</d5p1:_y>
+        </GroupVelocity>
+        <LifetimeSpread>0</LifetimeSpread>
+        <Name i:nil="true" />
+        <TypeName>ParticleConfig</TypeName>
+        <AirDrag>0.6</AirDrag>
+        <AppearanceSpread>0.05</AppearanceSpread>
+        <BlurFrom>7</BlurFrom>
+        <BlurTo>20</BlurTo>
+        <ColorFrom xmlns:d5p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
+          <d5p1:A>230</d5p1:A>
+          <d5p1:B>30</d5p1:B>
+          <d5p1:G>30</d5p1:G>
+          <d5p1:R>30</d5p1:R>
+          <d5p1:ScA>0.9019608</d5p1:ScA>
+          <d5p1:ScB>0.0129830325</d5p1:ScB>
+          <d5p1:ScG>0.0129830325</d5p1:ScG>
+          <d5p1:ScR>0.0129830325</d5p1:ScR>
+        </ColorFrom>
+        <ColorTo xmlns:d5p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
+          <d5p1:A>0</d5p1:A>
+          <d5p1:B>108</d5p1:B>
+          <d5p1:G>108</d5p1:G>
+          <d5p1:R>108</d5p1:R>
+          <d5p1:ScA>0</d5p1:ScA>
+          <d5p1:ScB>0.149959788</d5p1:ScB>
+          <d5p1:ScG>0.149959788</d5p1:ScG>
+          <d5p1:ScR>0.149959788</d5p1:ScR>
+        </ColorTo>
+        <RadiusFrom>4</RadiusFrom>
+        <RadiusTo>50</RadiusTo>
+        <SubParticleSpread>20</SubParticleSpread>
+      </AuspuffPSConfig>
+      <PosAuspuff xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>1.1</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </PosAuspuff>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="CarObject">
+      <AirDrag>0.2</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.5</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>0.9391090812083428</d4p1:_height>
+        <d4p1:_width>1.0013255404737991</d4p1:_width>
+        <d4p1:_x>0.0026510809475979919</d4p1:_x>
+        <d4p1:_y>0.00662770236899498</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath>data\cyberscooty-cartoon-car_kl3.png</ImagePath>
+      <IsMovable>true</IsMovable>
+      <IsObstacle>true</IsObstacle>
+      <Name>Player2</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.78073421335240722</d4p1:_x>
+        <d4p1:_y>1.8496382176986277</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>135.65333333333325</d4p1:_x>
+        <d4p1:_y>460.21333333333325</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimationWobble">
+          <Name>Wobble</Name>
+          <WobbleAmplitude>0.005</WobbleAmplitude>
+          <WobbleSpeed>0.8</WobbleSpeed>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimationConstAcceleration">
+          <Name>Gravity</Name>
+          <Acceleration xmlns:d6p1="http://schemas.datacontract.org/2004/07/System.Windows">
+            <d6p1:_x>0</d6p1:_x>
+            <d6p1:_y>55</d6p1:_y>
+          </Acceleration>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimKeyDrive">
+          <Name>Motor</Name>
+          <AccBreak>60</AccBreak>
+          <Acceleration xmlns:d6p1="http://schemas.datacontract.org/2004/07/System.Windows">
+            <d6p1:_x>40</d6p1:_x>
+            <d6p1:_y>0</d6p1:_y>
+          </Acceleration>
+          <KeyBackward>A</KeyBackward>
+          <KeyBreak>S</KeyBreak>
+          <KeyForward>D</KeyForward>
+          <NeedsGround>true</NeedsGround>
+          <VMax>80</VMax>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimationAirDrag">
+          <Name>Ani::1719388</Name>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimKeyJump">
+          <Name>Jump</Name>
+          <JumpDirection xmlns:d6p1="http://schemas.datacontract.org/2004/07/System.Windows">
+            <d6p1:_x>0</d6p1:_x>
+            <d6p1:_y>-1</d6p1:_y>
+          </JumpDirection>
+          <JumpFillSpeed>100</JumpFillSpeed>
+          <JumpPowerRestore>20</JumpPowerRestore>
+          <JumpReservoir>260</JumpReservoir>
+          <JumpReservoirMax>260</JumpReservoirMax>
+          <KeyJump>W</KeyJump>
+          <NeedsGround>true</NeedsGround>
+          <StoredJumpPower>0</StoredJumpPower>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>63.883996533297378</d4p1:_x>
+        <d4p1:_y>53.236663777747879</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+      <DampingC>2</DampingC>
+      <IsDeformable>true</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>20</SpringC>
+      <isPointMass>true</isPointMass>
+      <AuspuffGenerationRate>8</AuspuffGenerationRate>
+      <AuspuffMaxParticles>30</AuspuffMaxParticles>
+      <AuspuffPSConfig>
+        <AverageLifetime>3000</AverageLifetime>
+        <EmmissionArea xmlns:d5p1="http://schemas.datacontract.org/2004/07/System.Windows">
+          <d5p1:_height>30</d5p1:_height>
+          <d5p1:_width>30</d5p1:_width>
+          <d5p1:_x>82.322935413354827</d5p1:_x>
+          <d5p1:_y>445.21333333333325</d5p1:_y>
+        </EmmissionArea>
+        <GroupSpread>5</GroupSpread>
+        <GroupVelocity xmlns:d5p1="http://schemas.datacontract.org/2004/07/System.Windows">
+          <d5p1:_x>-100</d5p1:_x>
+          <d5p1:_y>-35</d5p1:_y>
+        </GroupVelocity>
+        <LifetimeSpread>0</LifetimeSpread>
+        <Name i:nil="true" />
+        <TypeName>ParticleConfig</TypeName>
+        <AirDrag>0.6</AirDrag>
+        <AppearanceSpread>0.05</AppearanceSpread>
+        <BlurFrom>7</BlurFrom>
+        <BlurTo>20</BlurTo>
+        <ColorFrom xmlns:d5p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
+          <d5p1:A>230</d5p1:A>
+          <d5p1:B>30</d5p1:B>
+          <d5p1:G>30</d5p1:G>
+          <d5p1:R>30</d5p1:R>
+          <d5p1:ScA>0.9019608</d5p1:ScA>
+          <d5p1:ScB>0.0129830325</d5p1:ScB>
+          <d5p1:ScG>0.0129830325</d5p1:ScG>
+          <d5p1:ScR>0.0129830325</d5p1:ScR>
+        </ColorFrom>
+        <ColorTo xmlns:d5p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
+          <d5p1:A>0</d5p1:A>
+          <d5p1:B>108</d5p1:B>
+          <d5p1:G>108</d5p1:G>
+          <d5p1:R>108</d5p1:R>
+          <d5p1:ScA>0</d5p1:ScA>
+          <d5p1:ScB>0.149959788</d5p1:ScB>
+          <d5p1:ScG>0.149959788</d5p1:ScG>
+          <d5p1:ScR>0.149959788</d5p1:ScR>
+        </ColorTo>
+        <RadiusFrom>4</RadiusFrom>
+        <RadiusTo>50</RadiusTo>
+        <SubParticleSpread>20</SubParticleSpread>
+      </AuspuffPSConfig>
+      <PosAuspuff xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>-0.10000000000000009</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </PosAuspuff>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="CarObject">
+      <AirDrag>0.35</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.5</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>0.96758195873648078</d4p1:_height>
+        <d4p1:_width>1.0016805587289572</d4p1:_width>
+        <d4p1:_x>0.0033611174579144545</d4p1:_x>
+        <d4p1:_y>0.0084027936447861364</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>true</FlipHorizontal>
+      <ImagePath>data\tank5kl.png</ImagePath>
+      <IsMovable>true</IsMovable>
+      <IsObstacle>true</IsObstacle>
+      <Name>Tank1</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>2.362554326567484</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>4315.688666666666</d4p1:_x>
+        <d4p1:_y>434.54666666666662</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimationWobble">
+          <Name>Wobble</Name>
+          <WobbleAmplitude>0.004</WobbleAmplitude>
+          <WobbleSpeed>0.06</WobbleSpeed>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimationConstAcceleration">
+          <Name>Gravity</Name>
+          <Acceleration xmlns:d6p1="http://schemas.datacontract.org/2004/07/System.Windows">
+            <d6p1:_x>0</d6p1:_x>
+            <d6p1:_y>80</d6p1:_y>
+          </Acceleration>
+        </AnimationRigidBody>
+        <AnimationRigidBody i:type="AnimKeyDrive">
+          <Name>Ani::18304260</Name>
+          <AccBreak>60</AccBreak>
+          <Acceleration xmlns:d6p1="http://schemas.datacontract.org/2004/07/System.Windows">
+            <d6p1:_x>45</d6p1:_x>
+            <d6p1:_y>0</d6p1:_y>
+          </Acceleration>
+          <KeyBackward>A</KeyBackward>
+          <KeyBreak>S</KeyBreak>
+          <KeyForward>D</KeyForward>
+          <NeedsGround>true</NeedsGround>
+          <VMax>60</VMax>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>142.5068229169845</d4p1:_x>
+        <d4p1:_y>106.88011718773839</d4p1:_y>
+      </SizeV>
+      <Weight>6</Weight>
+      <DampingC>8</DampingC>
+      <IsDeformable>true</IsDeformable>
+      <IsLiquid>false</IsLiquid>
+      <SpringC>50</SpringC>
+      <isPointMass>true</isPointMass>
+      <AuspuffGenerationRate>5</AuspuffGenerationRate>
+      <AuspuffMaxParticles>20</AuspuffMaxParticles>
+      <AuspuffPSConfig>
+        <AverageLifetime>3000</AverageLifetime>
+        <EmmissionArea xmlns:d5p1="http://schemas.datacontract.org/2004/07/System.Windows">
+          <d5p1:_height>20</d5p1:_height>
+          <d5p1:_width>15</d5p1:_width>
+          <d5p1:_x>4363.7663276042895</d5p1:_x>
+          <d5p1:_y>415.99625729164757</d5p1:_y>
+        </EmmissionArea>
+        <GroupSpread>7</GroupSpread>
+        <GroupVelocity xmlns:d5p1="http://schemas.datacontract.org/2004/07/System.Windows">
+          <d5p1:_x>60</d5p1:_x>
+          <d5p1:_y>-35</d5p1:_y>
+        </GroupVelocity>
+        <LifetimeSpread>0.15</LifetimeSpread>
+        <Name i:nil="true" />
+        <TypeName>ParticleConfig</TypeName>
+        <AirDrag>0.6</AirDrag>
+        <AppearanceSpread>0.05</AppearanceSpread>
+        <BlurFrom>7</BlurFrom>
+        <BlurTo>20</BlurTo>
+        <ColorFrom xmlns:d5p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
+          <d5p1:A>236</d5p1:A>
+          <d5p1:B>20</d5p1:B>
+          <d5p1:G>14</d5p1:G>
+          <d5p1:R>14</d5p1:R>
+          <d5p1:ScA>0.9254902</d5p1:ScA>
+          <d5p1:ScB>0.00699541</d5p1:ScB>
+          <d5p1:ScG>0.004391442</d5p1:ScG>
+          <d5p1:ScR>0.004391442</d5p1:ScR>
+        </ColorFrom>
+        <ColorTo xmlns:d5p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
+          <d5p1:A>0</d5p1:A>
+          <d5p1:B>60</d5p1:B>
+          <d5p1:G>68</d5p1:G>
+          <d5p1:R>74</d5p1:R>
+          <d5p1:ScA>0</d5p1:ScA>
+          <d5p1:ScB>0.045186203</d5p1:ScB>
+          <d5p1:ScG>0.05780543</d5p1:ScG>
+          <d5p1:ScR>0.06847817</d5p1:ScR>
+        </ColorTo>
+        <RadiusFrom>10</RadiusFrom>
+        <RadiusTo>100</RadiusTo>
+        <SubParticleSpread>25</SubParticleSpread>
+      </AuspuffPSConfig>
+      <PosAuspuff xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.89</d4p1:_x>
+        <d4p1:_y>0.42</d4p1:_y>
+      </PosAuspuff>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="SpriteObject">
+      <AirDrag>0</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.5</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath>data\garage1.png</ImagePath>
+      <IsMovable>false</IsMovable>
+      <IsObstacle>false</IsObstacle>
+      <Name>Höhle berg</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>19.845333333333325</d4p1:_x>
+        <d4p1:_y>424.8959999999999</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>287.19584144933992</d4p1:_x>
+        <d4p1:_y>185.76071446936038</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+    </d2p1:anyType>
+    <d2p1:anyType i:type="SpriteObject">
+      <AirDrag>0</AirDrag>
+      <Angle>0</Angle>
+      <BlurEffectRadius>0</BlurEffectRadius>
+      <CanCollide>true</CanCollide>
+      <CenterOfMass xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0.5</d4p1:_x>
+        <d4p1:_y>0.5</d4p1:_y>
+      </CenterOfMass>
+      <Deformation xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_height>1</d4p1:_height>
+        <d4p1:_width>1</d4p1:_width>
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </Deformation>
+      <FlipHorizontal>false</FlipHorizontal>
+      <ImagePath>data\WoodLayer.png</ImagePath>
+      <IsMovable>false</IsMovable>
+      <IsObstacle>false</IsObstacle>
+      <Name>SpriteObject::50841092</Name>
+      <NormSpeed xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>0</d4p1:_x>
+        <d4p1:_y>0</d4p1:_y>
+      </NormSpeed>
+      <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>815.92266666666615</d4p1:_x>
+        <d4p1:_y>446.6613333333321</d4p1:_y>
+      </Position>
+      <ScrollScaling>1</ScrollScaling>
+      <SerializableAnimations>
+        <AnimationRigidBody i:type="AnimationLinearTranslation">
+          <Name>LinMove</Name>
+        </AnimationRigidBody>
+      </SerializableAnimations>
+      <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
+        <d4p1:_x>1583.5653772766784</d4p1:_x>
+        <d4p1:_y>301.89333333333514</d4p1:_y>
+      </SizeV>
+      <Weight>1</Weight>
+    </d2p1:anyType>
+  </Sprites>
+</LevelSet>

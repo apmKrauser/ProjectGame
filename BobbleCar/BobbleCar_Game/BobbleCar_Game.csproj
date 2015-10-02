@@ -120,6 +120,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="data\snow_cliffface_01b_al1.png" />
+    <Resource Include="data\snow_cliffface_01a_al1.png" />
     <Resource Include="data\tank5kl.png" />
     <Resource Include="data\tank5.png" />
     <Resource Include="data\test2.xml" />
@@ -148,6 +150,8 @@
     <Resource Include="data\gfx temp\wood_platform.png" />
     <Resource Include="data\img_lic_res.txt" />
     <Content Include="data\cyberscooty-cartoon-car.svg" />
+    <Resource Include="data\juju_grandma_tent_01a_al1.png" />
+    <Resource Include="data\flying_platform_6_remote.png" />
     <Content Include="data\Level One.svg" />
     <Resource Include="data\LevelOne - Kopie.xml" />
     <Resource Include="data\LevelOne.xml" />

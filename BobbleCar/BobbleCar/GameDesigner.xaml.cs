@@ -564,7 +564,14 @@ namespace BobbleCar
                               select s;
                     try
                     {
-                        lstSprites.SelectedItem = res.First();
+                        var spriteSel = res.First();
+                        lstSprites.SelectedItem = spriteSel;
+                        foreach (var sprite in ThisLevel.Sprites)
+                        {
+                            if (sprite != null)
+                                sprite.Highlight = false;
+                        }
+                        spriteSel.Highlight = true;
                     }
                     catch (Exception) { }
                 }
