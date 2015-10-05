@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MahApps.Metro.Resources", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BobbleCar_Game", "BobbleCar_Game\BobbleCar_Game.csproj", "{F930BCCA-B4CF-4CE3-B366-127613608467}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfPropertyInspectCtl", "WpfPropertyInspectCtl\WpfPropertyInspectCtl.csproj", "{46E9C64F-86EF-46CB-9FE1-DC2E6335B7A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F930BCCA-B4CF-4CE3-B366-127613608467}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F930BCCA-B4CF-4CE3-B366-127613608467}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F930BCCA-B4CF-4CE3-B366-127613608467}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46E9C64F-86EF-46CB-9FE1-DC2E6335B7A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46E9C64F-86EF-46CB-9FE1-DC2E6335B7A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46E9C64F-86EF-46CB-9FE1-DC2E6335B7A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46E9C64F-86EF-46CB-9FE1-DC2E6335B7A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

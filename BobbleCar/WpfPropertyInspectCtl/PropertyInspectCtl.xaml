@@ -1,19 +1,14 @@
-﻿<Controls:MetroWindow  x:Name="PropertyInspectWindow"
-        x:Class="BobbleCar.PropertyInspect"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-        xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        xmlns:sysinput="clr-namespace:System.Windows.Input;assembly=PresentationCore"
-        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"     
-        xmlns:local="clr-namespace:BobbleCar"
-        WindowStartupLocation="CenterScreen"
-        GlowBrush="{DynamicResource AccentColorBrush}"                      
-        Title="PropertyInspect" Height="360" Width="396">
-    <Window.Resources>
+﻿<UserControl x:Class="WPFPropertyInspector.PropertyInspectCtl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:local="clr-namespace:WPFPropertyInspector"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
         <ObjectDataProvider x:Key="EnumKeyValues"
                             MethodName="GetValues"
                             ObjectType="{x:Type sys:Enum}" >
@@ -24,7 +19,7 @@
         <!--Data Templates for GDataGrid :-->
         <DataTemplate x:Key="ObjectStaticTextTemplate">
             <TextBlock Text="{Binding ValueAsString}"  />
-        </DataTemplate>        
+        </DataTemplate>
         <DataTemplate x:Key="ObjectTextTemplate">
             <TextBox Text="{Binding ValueAsString}" Name="DGEditStyleTmpl" BorderBrush="{x:Null}" LostFocus="DGEditStyleTmpl_LostFocus"/>
         </DataTemplate>
@@ -37,7 +32,7 @@
         </DataTemplate>
         <DataTemplate x:Key="ObjectIntTemplate">
             <TextBox Text="{Binding ValueAsInteger}" BorderBrush="{Binding BorderBrush, ElementName=DGEditStyleTmpl}"  LostFocus="DGEditStyleTmpl_LostFocus"/>
-        </DataTemplate>        
+        </DataTemplate>
         <DataTemplate x:Key="ObjectKeyEnumTemplate">
             <ComboBox ItemsSource="{Binding Source={StaticResource EnumKeyValues}}" SelectedValue="{Binding ValueAsKey}" SelectionChanged="ComboBox_SelectionChanged"  />
         </DataTemplate>
@@ -55,11 +50,11 @@
         </DataTemplate>
         <DataTemplate x:Key="ObjectRectTemplate">
             <TextBox Text="{Binding ValueAsRect}" BorderBrush="{Binding BorderBrush, ElementName=DGEditStyleTmpl}"  LostFocus="DGEditStyleTmpl_LostFocus"/>
-        </DataTemplate>        
-    </Window.Resources>
+        </DataTemplate>
+    </UserControl.Resources>
 
     <Grid>
-        <DataGrid Name="PropertyGrid"  GridLinesVisibility="None" ItemsSource="{Binding}"  Height="Auto" Width="Auto" CellEditEnding="PropertyGrid_CellEditEnding" CanUserAddRows="False" AutoGenerateColumns="false" HorizontalAlignment="Center"  Margin="10,50,10,10" VerticalAlignment="Top" >
+        <DataGrid Name="PropertyGrid"  GridLinesVisibility="None" ItemsSource="{Binding}"  CellEditEnding="PropertyGrid_CellEditEnding" CanUserAddRows="False" AutoGenerateColumns="false" HorizontalAlignment="Center"  VerticalAlignment="Center" >
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Name" IsReadOnly="true" >
                     <DataGridTemplateColumn.CellTemplate>
@@ -97,7 +92,5 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Name="cmdEditAni"  Content="Edit Animators" Visibility="{Binding ShowEditAnimators, ElementName=PropertyInspectWindow}" HorizontalAlignment="Left" Margin="258,10,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click" Background="#FF878787"/>
-
     </Grid>
-</Controls:MetroWindow>
+</UserControl>

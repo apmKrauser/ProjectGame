@@ -21,10 +21,22 @@ using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
-using SimpleGraphicsLib;
 
-namespace BobbleCar
+namespace WPFPropertyInspector
 {
+
+    public class PropInspRoutedEventArgs : RoutedEventArgs
+    {
+
+        public IPropertyInspectable SubObject { get; set; }
+
+        public PropInspRoutedEventArgs(System.Windows.RoutedEvent InspectSubObjectEvent, IPropertyInspectable SubObject)
+            : base(InspectSubObjectEvent)
+        {
+            // TODO: Complete member initialization
+            this.SubObject = SubObject;
+        }
+    }
 
     public class PropertyGridItem
     {

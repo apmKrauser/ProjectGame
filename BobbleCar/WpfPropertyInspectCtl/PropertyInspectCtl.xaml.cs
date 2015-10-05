@@ -1,7 +1,5 @@
-﻿using SimpleGraphicsLib;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,71 +10,104 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MahApps.Metro.Controls;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Globalization;
 using Xceed.Wpf.Toolkit;
 
-namespace BobbleCar
+namespace WPFPropertyInspector
 {
     /// <summary>
-    /// Interaktionslogik für PropertyInspect.xaml
+    /// Interaktionslogik für PropertyInspectCtl.xaml
     /// </summary>
-    public partial class PropertyInspect : MetroWindow
+    public partial class PropertyInspectCtl : UserControl
     {
-        IPropertyInspectable GObj;
 
-//        public ObservableCollection<PropertyGridSet> PList = new ObservableCollection<PropertyGridSet>();
-        public List<PropertyGridItem> PList = new List<PropertyGridItem>();
-        //public BindingList<PropertyGridSet> PList = new BindingList<PropertyGridSet>();
+        // WPF Event Schritt 1: erzeugen
+        public static readonly RoutedEvent InspectSubObjectEvent =
+            EventManager.RegisterRoutedEvent("InspectSubObject",
+            RoutingStrategy.Bubble,
+            typeof(RoutedEventHandler), typeof(PropertyInspectCtl));
 
+        // WPF Event Schritt 1: Wrapper für Eventhandler
 
-        public Visibility ShowEditAnimators
+        //[System.ComponentModel.Description("Invoke")]
+        //[System.ComponentModel.Category("Invoke Category")]
+        [System.ComponentModel.Browsable(true)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+        public event RoutedEventHandler InspectSubObject
         {
-            get 
-            { 
-                return (GObj is SpriteObject) ? Visibility.Visible : Visibility.Hidden ; 
+            add
+            {
+                this.AddHandler(InspectSubObjectEvent, value);  // +=
             }
-            set { }
-        }
-        
-
-        public PropertyInspect()
-        {
-            InitializeComponent();
+            remove
+            {
+                this.RemoveHandler(InspectSubObjectEvent, value);  // -=
+            }
         }
 
-        public PropertyInspect(IPropertyInspectable obj)
+
+
+        // Using a DependencyProperty as the backing store for ObjectToInspect.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ObjectToInspectProperty =
+            DependencyProperty.Register("ObjectToInspect", typeof(IPropertyInspectable), typeof(PropertyInspectCtl), new PropertyMetadata(null, (o,e) => ((PropertyInspectCtl)o).OnObjectToInspectChanged() ));
+
+        public IPropertyInspectable ObjectToInspect
         {
-            GObj = obj;
-            InitializeComponent();
-            PropertyGrid.ItemsSource = PList;
+            get { return (IPropertyInspectable)GetValue(ObjectToInspectProperty); }
+            set 
+            { 
+                SetValue(ObjectToInspectProperty, value);
+                OnObjectToInspectChanged();
+            }
+        }
+
+        //public IPropertyInspectable ObjectToInspect
+        //{
+        //    get
+        //    { 
+        //        return GObj;
+        //    }
+
+        //    set
+        //    {
+        //        GObj = value;
+        //        PropertyGrid.ItemsSource = PList;
+        //        ReadProperties();
+        //        PropertyGrid.Items.Refresh();
+        //    }
+        //}
+
+        private void OnObjectToInspectChanged()
+        {
             ReadProperties();
             PropertyGrid.Items.Refresh();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        public PropertyInspectCtl()
         {
-            EditAnimators edani = new EditAnimators(GObj);
-            try
-            {
-                edani.Show();
-            }
-            catch (Exception)
-            {
-            }
+            InitializeComponent();
+            PropertyGrid.ItemsSource = PList;
         }
+
+        // IPropertyInspectable GObj;
+
+//        public ObservableCollection<PropertyGridSet> PList = new ObservableCollection<PropertyGridSet>();
+        public List<PropertyGridItem> PList = new List<PropertyGridItem>();
+        //public BindingList<PropertyGridSet> PList = new BindingList<PropertyGridSet>();
+        
+
+
 
         private void ReadProperties()
         {
             PList.Clear();
             //Assembly.GetExecutingAssembly();
-            var typ = GObj.GetType();
+            var typ = ObjectToInspect.GetType();
             foreach (var item in typ.GetProperties())
             {
-                object v = item.GetValue(GObj);
+                object v = item.GetValue(ObjectToInspect);
                 var t = item.PropertyType;
                 if (((v is String) ||
                    (v is Double) ||
@@ -99,9 +130,9 @@ namespace BobbleCar
 
         private void UpdateProperty(PropertyGridItem propItem)
         {
-            var typ = GObj.GetType();
+            var typ = ObjectToInspect.GetType();
             var prop = typ.GetProperty(propItem.Name);
-            prop.SetValue(GObj, propItem.ValueObj);
+            prop.SetValue(ObjectToInspect, propItem.ValueObj);
         }
 
         private void PropertyGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
@@ -143,8 +174,11 @@ namespace BobbleCar
             if (propItem == null) return;
             IPropertyInspectable item = propItem.ValueObj as IPropertyInspectable;
             if (item == null) return;
-            PropertyInspect pi = new PropertyInspect(item);
-            pi.Show();
+            // Todo: Event für Unterobject implementieren!!
+            RaiseEvent(new PropInspRoutedEventArgs(InspectSubObjectEvent, item));
+            //RaiseEvent(new RoutedEventArgs(InspectSubObjectEvent));
+            //PropertyInspect pi = new PropertyInspect(item);  
+            //pi.Show();
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -190,7 +224,6 @@ namespace BobbleCar
             catch (Exception ex)
             { } 
         }
-
 
     }
 }
