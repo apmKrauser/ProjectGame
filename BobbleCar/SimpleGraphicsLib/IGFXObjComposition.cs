@@ -9,9 +9,6 @@ namespace SimpleGraphicsLib
 {
     public interface IGFXObjComposable<T>
     {
-        //void AddObject(T obj);  // nur in container implementieren !
-
-        //void RemoveObject(T obj);
 
         ObservableCollection<T> GetChildren();
     }

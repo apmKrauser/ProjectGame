@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-//using System.IO;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
@@ -11,8 +10,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
-//using System.Drawing;
-//using System.Threading;
 
 namespace SimpleGraphicsLib
 {
@@ -79,8 +76,6 @@ namespace SimpleGraphicsLib
         {
             using (DrawingContext dc = (Visuals[0] as DrawingVisual).RenderOpen())
             {
-                //dc.DrawRectangle(Brushes.Red, new Pen(Brushes.Black, 2),
-                //    new Rect(new Point(0 + x, 0), new Size(40, 40)));
                 BitmapImage bmp = Properties.Resources.Splash1.ToMediaBitmap();
                 dc.DrawImage(bmp, new Rect(0, 0, this.Width, this.Height));
             }
@@ -91,7 +86,7 @@ namespace SimpleGraphicsLib
             if (index < 0 || index >= (Visuals.Count + SystemOverlayVisuals.Count))
                 throw new ArgumentOutOfRangeException("index");
             // SystemOverlayVisual are appended after normal visuals
-            // check if index lies in SystemOverlayVisual range
+            // check if index falls in SystemOverlayVisual range
             if (index >= Visuals.Count)
                 return SystemOverlayVisuals[index - Visuals.Count]; 
             else
@@ -106,30 +101,6 @@ namespace SimpleGraphicsLib
             }
         }
 
-        // @debug
-        public String TestHitTest(double x, double y)
-        {
-            //Point HitPoint = e.GetPosition(canvas1);
-            //hitArea = new EllipseGeometry(HitPoint, 1.0, 1.0);
-            ////This line will call a call back method HitTestCallBack
-            //VisualTreeHelper.HitTest(canvas1, null, HitTestCallBack,
-            //new GeometryHitTestParameters(hitArea));
-            // http://www.c-sharpcorner.com/UploadFile/yougerthen/wpf-and-user-interactivity-part-i-dealing-with-geometries-and-shapes/
-
-            //HitTestResult ht = (Visuals[1] as DrawingVisual).HitTest(new Point(x, y));
-            HitTestResult ht = VisualTreeHelper.HitTest(this,new Point(x, y));
-            string str = "null";
-            if (ht != null)
-            {
-                var dv = (ht.VisualHit as DrawingVisual);
-                str = dv == null ? "null" : "IDX[" + Visuals.IndexOf(dv) +"] : " + dv.ToString() + " > ";
-                //String str = ht == null ? "null" : (ht as DrawingVisual).ToString();
-                //str += (ht as GeometryHitTestResult).IntersectionDetail.ToString();
-            }
-            return str;
-        }
-
-
         private void DrawOverlays()
         {
             // Draw FPS infotext
@@ -141,10 +112,7 @@ namespace SimpleGraphicsLib
                       FlowDirection.LeftToRight,
                       new Typeface("Verdana"),
                       10, System.Windows.Media.Brushes.Black);
-                //dc.DrawText(fpstext, new Point(this.Width - fpstext.Width - 10, 0));
                 dc.DrawText(fpstext, new Point(5, 5));
-                // size of text
-                // http://stackoverflow.com/questions/6717199/how-to-calculate-size-of-formattedtext-or-glyphrun-in-wpf
             }
         }
 
@@ -179,6 +147,7 @@ namespace SimpleGraphicsLib
             this.UpdateFrame += obj.Frame_Update;
             //if (obj is IHasSeperateAnimationEvent)
             //this.UpdateAnimation += (obj as IHasSeperateAnimationEvent).Animation_Update;
+            // always assume SeperateAnimation events
             this.UpdateAnimation += obj.Animation_Update;
         }
 
@@ -193,6 +162,7 @@ namespace SimpleGraphicsLib
                     GFXObjects.Remove(obj.Name);
                     this.UpdateFrame -= obj.Frame_Update;
                     //if (obj is IHasSeperateAnimationEvent)
+                    // always assume SeperateAnimation events
                     this.UpdateAnimation -= obj.Animation_Update;
                     obj.ParentContainer = null; // invoke UnregisterAllVisuals. important to set before event is removed
                     obj.RegisterDrawingVisual -= this.RegisterVisual_Callback;
@@ -246,15 +216,12 @@ namespace SimpleGraphicsLib
             // Start Stopwatch and hook Frameupdates methods 
             TimingSource.TimingEvents.UpdateCTargetRendering -= UpdateFrame_Invoke;
             TimingSource.TimingEvents.UpdateCTargetRendering += UpdateFrame_Invoke;
-            //TimingSource.TimingEvents.UpdateDispatchTimer -= UpdateAnimation_Invoke;
-            //TimingSource.TimingEvents.UpdateDispatchTimer += UpdateAnimation_Invoke;
             TimingSource.TimingEvents.UpdateSeparateThread += UpdateAnimation_Invoke;
         }
 
         public void Stop()
         {
             TimingSource.TimingEvents.UpdateCTargetRendering -= UpdateFrame_Invoke;
-            //TimingSource.TimingEvents.UpdateDispatchTimer -= UpdateAnimation_Invoke;
             TimingSource.TimingEvents.UpdateSeparateThread -= UpdateAnimation_Invoke;
             IsRunning = false;
         }
@@ -285,9 +252,6 @@ namespace SimpleGraphicsLib
                 var dv = (ht.VisualHit as DrawingVisual);
 
                 str = dv == null ? "null" : "IDX[" + Visuals.IndexOf(dv) + "] : " + dv.ToString() + " > ";
-                //String str = ht == null ? "null" : (ht as DrawingVisual).ToString();
-                //str += (ht as GeometryHitTestResult).IntersectionDetail.ToString();
-                //Debug.WriteLine("############## " + str);
                 return dv;
             }
             return null;

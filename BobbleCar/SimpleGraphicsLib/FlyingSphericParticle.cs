@@ -30,10 +30,6 @@ namespace SimpleGraphicsLib
         public override GFXParticle.ParticleConfig BaseConfig { get { return _config; }  }
 
 
-       // private object _AnimationSem = new object();  // semaphore
-
-       // protected double GrowthSpeed;
-
         public double AirDrag
         {
             get { return _config.AirDrag; }
@@ -84,7 +80,6 @@ namespace SimpleGraphicsLib
             set
             {
                     _blurEffectRadius = value < 0 ? 0 : value;
-                    //((BlurEffect)DVisual.Effect).Radius = _blurEffectRadius;
             }
         }
 
@@ -123,7 +118,6 @@ namespace SimpleGraphicsLib
         public override void init()
         {
             _config = new ParticleConfig();
-            //Debug.WriteLine("=> Particle Init = "+ BaseConfig.GetType().FullName);
             _config.ColorFrom = Color.FromArgb(255, 30, 30, 30);
             _config.ColorTo = Color.FromArgb(128, 128, 128, 128);
             _config.RadiusFrom = 2;
@@ -165,14 +159,17 @@ namespace SimpleGraphicsLib
         // info: mit sealed override kann überschreiben verhindert werden
         public override void Animation_Update(object sender, FrameUpdateEventArgs e) 
         {
+            mixupProperties();
+            // Alternative: count time alive in Animation frame
+            // Warning: implementation not thread safe
             //TimeAlive += e.ElapsedMilliseconds;  // here because Frame_Update can be dropped
-           // try
-          //  {
-                mixupProperties();
+            //try
+            //{
+            //    mixupProperties();
             //}
             //catch (Exception ex)
             //{
-                
+
             //    //throw;
             //}
             if (IsAlive)
@@ -193,7 +190,6 @@ namespace SimpleGraphicsLib
                 {
                     IsAlive = false;
                     TimeAlive = 0;
-                    //Debug.WriteLine("=> Particle gone.");
                     using (DrawingContext dc = DVisual.RenderOpen()) { }
                 } else
                     DrawParticle();                
@@ -202,7 +198,6 @@ namespace SimpleGraphicsLib
 
         protected virtual void mixupProperties()
         {
-            //double fktAvg = (TimeAlive / ThisLifetime);
             ParticleConfig config = _config;
             double fkt = 1;
             double a, r, g, b;
@@ -215,7 +210,7 @@ namespace SimpleGraphicsLib
             r = config.ColorFrom.R + ((config.ColorTo.R - config.ColorFrom.R) * fkt);
             g = config.ColorFrom.G + ((config.ColorTo.G - config.ColorFrom.G) * fkt);
             b = config.ColorFrom.B + ((config.ColorTo.B - config.ColorFrom.B) * fkt);
-            // nihct Threadsafe
+            // todo: not Threadsafe:
                 ParticleColor = Color.FromArgb((byte)a, (byte)r, (byte)g, (byte)b);
                 BlurEffectRadius = config.BlurFrom + ((config.BlurTo - config.BlurFrom) * fkt * 0.4);
                 DRadius = config.RadiusFrom + ((config.RadiusTo - config.RadiusFrom) * fkt * 0.3);
@@ -225,12 +220,11 @@ namespace SimpleGraphicsLib
         {
             using (DrawingContext dc = DVisual.RenderOpen())
             {
-                // nicht Threadsafe
+                // todo not threadsafe Threadsafe: .Radius
                 ((BlurEffect)DVisual.Effect).Radius = _blurEffectRadius;
                 dc.PushTransform(new TranslateTransform(Position.X + DrawingOffset.X, Position.Y + DrawingOffset.Y));
                 SolidColorBrush brush = new SolidColorBrush(ParticleColor);
                 dc.DrawEllipse(brush, null, new Point(0, 0), SizeV.X, SizeV.Y);
-                //dc.DrawEllipse(Brushes.Beige, null, new Point(0, 0), 20, 20);
                 dc.Pop();
             }
         }

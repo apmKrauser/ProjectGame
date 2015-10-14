@@ -23,7 +23,6 @@ namespace SimpleGraphicsLib
 
         [DataMember]
         public IGameObject LevelBkg = null;
-        //public List<SpriteObject> Sprites = new List<SpriteObject>();
         [DataMember]
         public ObservableCollection<IGameObject> Sprites = new ObservableCollection<IGameObject>();
 

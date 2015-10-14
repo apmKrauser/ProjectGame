@@ -53,14 +53,10 @@ namespace SimpleGraphicsLib
                 return;
             }
 
-            //if (sinex > 2*Math.PI) sinex = 0;
             sinex %= 2 * Math.PI;
             sinex += 2.5;
             SpriteAngle += 1.5;
             SpriteAngle %= 360;
-            //SpriteBlur += 0.5;
-            //SpriteBlur %= 20;
-            // wrappanel benutzen für crop?
             Vector dpos = new Vector(Math.Round(Math.Sin(sinex) * 1),
                       Math.Round(Math.Sin(sinex) * 5));
             Vector dsize = new Vector(Math.Round(dpos.X / 2.0), -dpos.Y);

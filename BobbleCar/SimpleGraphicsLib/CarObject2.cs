@@ -14,14 +14,12 @@ namespace SimpleGraphicsLib
     public class CarObject2 : SpriteObjectElastic, IHasSeperateAnimationEvent
     {
 
-//        public ParticleSystem<SmokeParticle, SmokeParticle.ParticleConfig> PSAuspuff;
         public ParticleSystem<BitmapParticle, BitmapParticle.ParticleConfig> PSAuspuff;
 
         [DataMember]
         public int AuspuffMaxParticles { get; set; }
 
         [DataMember]
-        //public SmokeParticle.ParticleConfig AuspuffPSConfig { get; set; }
         public BitmapParticle.ParticleConfig AuspuffPSConfig { get; set; }
 
 
@@ -112,7 +110,6 @@ namespace SimpleGraphicsLib
 
         private void OnCreate()
         {
-            //Animated = AnimatedByDefault;
             IsDeformable = true;
             IsObstacle = true;
             CanCollide = true;
@@ -120,7 +117,7 @@ namespace SimpleGraphicsLib
             AuspuffGenerationRate = 15; // particles/sec
             _posAuspuffPixel = new Vector(0,0);
             PosAuspuff = new Vector(-0.1, 0.5);
-            // Provide an existing config object at deserialization
+            // Provide an existing config object after deserialization
             AuspuffPSConfig = new BitmapParticle.ParticleConfig();
             AuspuffPSConfig.AverageLifetime = 3000; // ms
             AuspuffPSConfig.GroupVelocity = new Vector(-100, -35);
@@ -128,12 +125,8 @@ namespace SimpleGraphicsLib
             AuspuffPSConfig.AirDrag = 0.6;
             AuspuffPSConfig.EmmissionArea = new Rect(0, 0, 30, 30);
             AuspuffPSConfig.AppearanceSpread = 0.05;
-// todo:            AuspuffPSConfig.SubParticleSpread = 20;
-
             AuspuffPSConfig.ColorFrom = Color.FromArgb(230, 30, 30, 30);
             AuspuffPSConfig.ColorTo = Color.FromArgb(0, 108, 108, 108);
-//  todo:          AuspuffPSConfig.RadiusFrom = 4;
-//  todo:          AuspuffPSConfig.RadiusTo = 50;
             AuspuffPSConfig.BlurFrom = 7;
             AuspuffPSConfig.BlurTo = 20;
             AddAnimation(new AnimationWobble(0.8, 0.005), "Wobble");
@@ -141,26 +134,17 @@ namespace SimpleGraphicsLib
 
         protected override void init()   // bei setparent aufrufen?  artikel über virtual in ctor aufrufen lesen
         {
-            //DrawingVisual vis = new DrawingVisual();
-            //RenderOptions.SetBitmapScalingMode(vis, BitmapScalingMode.Fant);
-            //Visuals.Add(vis);
-            //RegisterDrawingVisual(vis);
-            //AddAnimation(new AnimationLinearTranslation(), "LinMove");
-//            PSAuspuff = new ParticleSystem<SmokeParticle, SmokeParticle.ParticleConfig>(0, AuspuffMaxParticles, false, AuspuffPSConfig);
             PSAuspuff = new ParticleSystem<BitmapParticle, BitmapParticle.ParticleConfig>(0, AuspuffMaxParticles, false, AuspuffPSConfig);
             PSAuspuff.Animated = Animated;
             PSAuspuff.GenerationRate = AuspuffGenerationRate; // particles/sec
 
             _parentContainer.AddObject(PSAuspuff);
-            //Ps2.Start();
             base.init();
         }
 
         protected override void DrawShapeAndMarkers(DrawingContext dc)
         {
             base.DrawShapeAndMarkers(dc);
-           // dc.DrawRectangle(null, new Pen(Brushes.Black, 2), rectangle: new Rect(Shape.Location + (_parent.DrawingOffset * ScrollScaling), Shape.Size));
-           // dc.DrawEllipse(null, new Pen(Brushes.Red, 2), (Point)(Position + (_parent.DrawingOffset * ScrollScaling)), 5, 5);
             _posAuspuffPixel = new Vector(Shape.Width * _posAuspuff.X, Shape.Height * _posAuspuff.Y);
             _posAuspuffPixel += (Vector)Shape.Location;
             dc.DrawRectangle(null, new Pen(Brushes.Green, 2), new Rect( new Point(_posAuspuffPixel.X - (0.5 * PSAuspuff.Config.EmmissionArea.Width), _posAuspuffPixel.Y - (0.5 * PSAuspuff.Config.EmmissionArea.Height)) + (_parentContainer.DrawingOffset * ScrollScaling), AuspuffPSConfig.EmmissionArea.Size));

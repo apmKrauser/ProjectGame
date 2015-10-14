@@ -44,11 +44,9 @@ namespace SimpleGraphicsLib
                         Rect overlap = Rect.Intersect(rme,rother);
                         if (other is GroundObject)
                             hitsGround = true;
-                        //Vector overlap = new Vector(rme.Width, rme.Height);
                         if (other.IsObstacle)
                         {
                             ProcessCollision(me, other, overlap, rme, rother, e.ElapsedMilliseconds / 1000);
-                            //break;
                         }
                         me.RaiseOnCollision(me, other, true); // bool: me = caller of CheckCollision
                         other.RaiseOnCollision(other, me, false);
@@ -60,14 +58,6 @@ namespace SimpleGraphicsLib
 
         public void ProcessCollision(IGameObject me, IGameObject other, Rect overlap, Rect rme, Rect rother, double dt)
         {
-            //double overlap = voverlap.Length;
-            /* if beide IBallistic
-            Vector cogme = new Vector(me.Size.X * me.CenterOfMass.X, me.Size.Y * me.CenterOfMass.Y);
-            Vector cogother = new Vector(other.Size.X * other.CenterOfMass.X, other.Size.Y * other.CenterOfMass.Y);
-            cogme += me.Position;
-            cogother += other.Position;
-            */
-            // me gegen fixed_obstacle 
             double eps = 1;
             Vector voverlap = new Vector(overlap.Width, overlap.Height);
             Vector dx = new Vector(0, 0);
@@ -103,7 +93,6 @@ namespace SimpleGraphicsLib
                 else if (Math.Abs(voverlap.Length - v1.Length) < eps)
                 { dx = -v1; }
                 // avoid insane jumping off cliffs
-                //dx = new Vector( Math.Sign(dx.X) * Math.Abs(dx.Y), Math.Sign(dx.Y) * Math.Abs(dx.X) );
                 dx = new Vector( Math.Sign(dx.X) * Math.Min(Math.Abs(dx.X), Math.Abs(dx.Y)),
                     Math.Sign(dx.Y) * Math.Min(Math.Abs(dx.X), Math.Abs(dx.Y)));
             }
@@ -135,7 +124,6 @@ namespace SimpleGraphicsLib
                         {
                             dx = dCOG * dx.Length;
                             // force
-                            // delme double df = dx.Length * other.Weight / (me.Weight + other.Weight);  // displacement regarding ralation of masses
                             Vector df = dx * SpringC;
                             mel.NormSpeed += df * dt / me.Weight;
 
@@ -152,11 +140,9 @@ namespace SimpleGraphicsLib
                                 double fme = (other.Weight / (me.Weight + other.Weight));
                                 double fother = (me.Weight / (me.Weight + other.Weight));
                                 me.Position += dx * fme;
-                                //other.Position -= dx * fother;
                                 dx.Normalize();
                                 me.NormSpeed -= -Math.Abs(Vector.Multiply(me.NormSpeed, dx)) * dx * fme ;
                                 other.NormSpeed += -Math.Abs(Vector.Multiply(other.NormSpeed, dx)) * dx * fother;
-                                //Debug.WriteLine("## Inters V={0:##.0} dv={1:##.0}", dx, me.NormSpeed);
                             }
                         }
                     } else
@@ -227,7 +213,6 @@ namespace SimpleGraphicsLib
                             me.Position += dx;
                             dx.Normalize();
                             me.NormSpeed -= -Math.Abs(Vector.Multiply(me.NormSpeed, dx)) * dx;
-                            //Debug.WriteLine("## Inters V={0:##.0} dv={1:##.0}", dx, me.NormSpeed);
                         }
                     }  
                 }

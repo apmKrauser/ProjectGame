@@ -26,24 +26,11 @@ namespace SimpleGraphicsLib
         #region FieldsProperties
 
         public event Action<IGameObject, IGameObject, bool> OnCollision;  //  Me, Other, CalledByMe(me == caller of CheckCollision)
-        //[XmlIgnore]
         public event Action<DrawingVisual> RegisterDrawingVisual;
-        //[XmlIgnore]
         public event Action<DrawingVisual> UnregisterDrawingVisual;
-        // geht auch:
-        //event Action<DrawingVisual> IGFXObject.RegisterDrawingVisual
-        //{
-        //    add { throw new NotImplementedException(); }
-        //    remove { throw new NotImplementedException(); }
-        //}
 
-        //[Conditional("Debug")] bleded ganze Funktion aus
 
         protected List<DrawingVisual> Visuals = new List<DrawingVisual>();
-        //protected List<GFXAnimation> Animations = new List<GFXAnimation>();
-
-        // public and moved from IAnimation... to class due to XMLSerializer
-        //[DataMember]
         protected  ObservableCollection<IAnimationRigidBody> Animations = new ObservableCollection<IAnimationRigidBody>();
 
         // for serialization
@@ -121,7 +108,6 @@ namespace SimpleGraphicsLib
         }
         
 
-        //[XmlIgnore]
         public BitmapImage Bmp
         {
             get { return _bmp; }
@@ -132,7 +118,6 @@ namespace SimpleGraphicsLib
             } 
         }
 
-        //[XmlIgnore]
         public BitmapImage BmpNullfree
         {
             get 
@@ -161,8 +146,8 @@ namespace SimpleGraphicsLib
 
         [DataMember]
         public Vector Position
-        {  // [MethonImpl] methode nur für 1 thread
-            get { lock (_positionSync) return _position; }  // Interlocked. increment/.... für "Atomare" operationen
+        { 
+            get { lock (_positionSync) return _position; }  
             set { lock (_positionSync) _position = value; }
         }
 
@@ -227,8 +212,6 @@ namespace SimpleGraphicsLib
             {
                 _centerOfMass = value;
                 _centerOfMassAbs = new Vector(SizeV.X * _centerOfMass.X, SizeV.Y * _centerOfMass.Y);
-                //Debug.WriteLine("cog "+Name+" ## " + _centerOfMass + "  " + _centerOfMassAbs);
-                // todo: Wird nur aufgerufen wenn Vector mit new zugewiesen wird!!
             }
         }
 
@@ -333,7 +316,7 @@ namespace SimpleGraphicsLib
             AddAnimation(new AnimationLinearTranslation(), "LinMove");
         }
 
-        protected virtual void init ()   // bei setparent aufrufen?  artikel über virtual in ctor aufrufen lesen
+        protected virtual void init ()   
         {
             RegisterDrawingVisual(Visuals[0]);
             foreach (var animation in Animations)
@@ -362,9 +345,7 @@ namespace SimpleGraphicsLib
             }
             catch (Exception e)
             {
-                //1global::System.Windows.Forms.MessageBox.Show("UnregisterDrawingVisual w/o GFXContainer ["+ e.GetType().Name + "]" );
                 Debug.WriteLine("=> UnregisterDrawingVisual w/o GFXContainer [{0}]", e.GetType().Name);
-                //throw;
             }
         }
 
@@ -388,16 +369,7 @@ namespace SimpleGraphicsLib
             {
                 IsDisposed = true;
                 UnregisterAllVisuals();
-                // todo: rückwärts zählen wg remove
-                //foreach (var animation in Animations.Values)
-                //{
-                //    Debug.WriteLine("## Ani: " + animation.Name);
-                //}
-                // dispose is designed to remove ani from list, hence, foreach impossible 
                 RemoveAnimations();
-                //            foreach (var animation in Animations.Values)
-                //            {
-                //            }
                 Animations.Clear();
                 Visuals.Clear();
             }
@@ -421,7 +393,6 @@ namespace SimpleGraphicsLib
         {
             if (name != null) animation.Name = name;
             if ((animation.Name ?? "").Equals("")) animation.Name = "Ani" + "::" + animation.GetHashCode().ToString();
-            //if (String.IsNullOrEmpty(animation.Name))
             int i = Animations.IndexOf(animation);
             if (i < 0)
                 Animations.Add(animation);
@@ -437,8 +408,6 @@ namespace SimpleGraphicsLib
                 _parentContainer.WindowKeyDown += kani.OnKeyDown;
                 _parentContainer.WindowKeyUp += kani.OnKeyUp;
             }
-            //if (this.Parent != null)
-            //    animation.SetTimingSource(this.Parent);
         }
 
         public void RemoveAnimation(string animation)
@@ -446,7 +415,6 @@ namespace SimpleGraphicsLib
             try
             {
                 GetAnimation(animation).Dispose();
-                //Animations.Remove(animation);
             }
             catch (Exception e)
             {
@@ -456,7 +424,6 @@ namespace SimpleGraphicsLib
 
         public void RemoveAnimation(IAnimationRigidBody animation)
         {
-            //RemoveAnimation(animation.Name);
             try
             {
                 if ((animation is IAnimKeyInput) && (_parentContainer != null))
@@ -470,7 +437,6 @@ namespace SimpleGraphicsLib
             catch (Exception e)
             {
                 Debug.WriteLine("Animation {0} not present in {1}.", animation.Name, Name);
-                //throw;
             }
         }
 
@@ -487,9 +453,7 @@ namespace SimpleGraphicsLib
 
         public void Animation_OnDispose(IAnimationRigidBody animation)
         {
-                // if animations are added before GFXContainer
             RemoveAnimation(animation);
-            //Debug.WriteLine("=> Animation_OnDispose = {0}");
         }
 
         public virtual void Frame_Update(object sender, FrameUpdateEventArgs e)
@@ -506,7 +470,6 @@ namespace SimpleGraphicsLib
                         dc.PushTransform(new ScaleTransform(-1, 1));
                     dc.DrawImage(Bmp, new Rect((Point)(_deformationPos - _centerOfMassAbs), SizeV + _deformationSize));
 
-                    // dc.DrawImage(Bmp, new Rect(-_centerOfMassAbs.X, -_centerOfMassAbs.Y, SizeV.X, SizeV.Y));
                     if (FlipHorizontal)
                         dc.Pop();
                     dc.Pop();
@@ -519,7 +482,6 @@ namespace SimpleGraphicsLib
             }
         }
 
-        //[Conditional("Debug")]
         protected virtual void DrawShapeAndMarkers (DrawingContext dc)
         {
             System.Windows.Media.Brush br;
@@ -567,10 +529,7 @@ namespace SimpleGraphicsLib
             if (ImagePath.Equals("")) return;
             try
             {
-                //Bmp = new BitmapImage(new Uri(@"file:///" + ImagePath));
                 String path = Helper.AssemblyLocalPath + "\\" + ImagePath;
-                //Debug.WriteLine("=> Set Image: " + path);
-                //Bmp = new BitmapImage(new Uri(path));
                 Bmp = BitmapConversion.LoadBitmapAndDispose(path);
             }
             catch (Exception ex)

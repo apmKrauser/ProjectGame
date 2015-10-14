@@ -136,27 +136,19 @@ namespace SimpleGraphicsLib
             AddAnimation(new AnimationWobble(0.8, 0.005), "Wobble");
         }
 
-        protected override void init()   // bei setparent aufrufen?  artikel über virtual in ctor aufrufen lesen
+        protected override void init()   
         {
-            //DrawingVisual vis = new DrawingVisual();
-            //RenderOptions.SetBitmapScalingMode(vis, BitmapScalingMode.Fant);
-            //Visuals.Add(vis);
-            //RegisterDrawingVisual(vis);
-            //AddAnimation(new AnimationLinearTranslation(), "LinMove");
             PSAuspuff = new ParticleSystem<SmokeParticle, SmokeParticle.ParticleConfig>(0, AuspuffMaxParticles, false, AuspuffPSConfig);
             PSAuspuff.Animated = Animated;
             PSAuspuff.GenerationRate = AuspuffGenerationRate; // particles/sec
 
             _parentContainer.AddObject(PSAuspuff);
-            //Ps2.Start();
             base.init();
         }
 
         protected override void DrawShapeAndMarkers(DrawingContext dc)
         {
             base.DrawShapeAndMarkers(dc);
-           // dc.DrawRectangle(null, new Pen(Brushes.Black, 2), rectangle: new Rect(Shape.Location + (_parent.DrawingOffset * ScrollScaling), Shape.Size));
-           // dc.DrawEllipse(null, new Pen(Brushes.Red, 2), (Point)(Position + (_parent.DrawingOffset * ScrollScaling)), 5, 5);
             _posAuspuffPixel = new Vector(Shape.Width * _posAuspuff.X, Shape.Height * _posAuspuff.Y);
             _posAuspuffPixel += (Vector)Shape.Location;
             dc.DrawRectangle(null, new Pen(Brushes.Green, 2), new Rect( new Point(_posAuspuffPixel.X - (0.5 * PSAuspuff.Config.EmmissionArea.Width), _posAuspuffPixel.Y - (0.5 * PSAuspuff.Config.EmmissionArea.Height)) + (_parentContainer.DrawingOffset * ScrollScaling), AuspuffPSConfig.EmmissionArea.Size));

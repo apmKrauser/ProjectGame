@@ -17,7 +17,6 @@ namespace SimpleGraphicsLib
     public class AnimKeyDrive : AnimationRigidBody, IAnimKeyInput
     {
         [DataMember]
-        //[MethodImpl]
         public Vector Acceleration { get; set; }
 
         [DataMember]
@@ -64,7 +63,7 @@ namespace SimpleGraphicsLib
                 fkt = 0.1; // drive "in air"
 
             Vector dv = (currentAccel * fkt) * (e.ElapsedMilliseconds / 1000);
-            // speen in currentAccel direction
+            // speed in currentAccel direction
             if ((dv.Length > 0) && (Sprite.NormSpeed.Length > 0))
             {
                 double s = Vector.Multiply(Sprite.NormSpeed, currentAccel) / currentAccel.Length;

@@ -109,12 +109,6 @@ namespace SimpleGraphicsLib
             return bmp.ToWinFormsBitmap().ToMediaBitmap();
         }
 
-        // Geht nur in neuer Klasse die von Bitmap erbt
-        //public static explicit operator BitmapImage(Bitmap bitmap)
-        //{
-        //    return bitmap.ToMediaBitmap();
-        //}
-
 
     }
 }

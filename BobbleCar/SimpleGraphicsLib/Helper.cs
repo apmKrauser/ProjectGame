@@ -29,10 +29,6 @@ namespace SimpleGraphicsLib
         {
             get
             {
-                //string codeBase = Assembly.GetExecutingAssembly().CodeBase;
-                //UriBuilder uri = new UriBuilder(codeBase);
-                //string path = Uri.UnescapeDataString(uri.Path);
-                //return Path.GetDirectoryName(path);
                 String path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase);
                 path = path.Replace(@"\bin\Debug", "");
                 return path;

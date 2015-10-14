@@ -33,7 +33,6 @@ namespace SimpleGraphicsLib
         public TConf Config
         {
             get {  return (_configParticle.BaseConfig as TConf); }
-            //private set { Config = value; }
         }
 
         private int frameDrop = 3;  // 2 = draw every 2nd frame, 3 = draw every 3rd frame

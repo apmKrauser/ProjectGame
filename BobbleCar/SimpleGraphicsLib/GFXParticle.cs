@@ -86,14 +86,8 @@ namespace SimpleGraphicsLib
             TimeAlive = 0;
         }
 
-        //public void Spawn(ParticleSystem<GFXParticle> PS)
-        //{
-        //    // config aus PS und randomizen
-        //    this.Spawn();
-        //}
-      
 
-        // Todo: abstract method machen ?
+     
         public virtual void Animation_Update(object sender, FrameUpdateEventArgs e)
         {
             throw new System.NotImplementedException();

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using System.IO.Ports;
 
 namespace ModulTest
 {
@@ -21,9 +22,24 @@ namespace ModulTest
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+
+        public static RoutedCommand TabCommand = new RoutedCommand();
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
+        private void TabBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+
+        }
+
+        private void TabBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+
+
     }
 }

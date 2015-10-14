@@ -11,9 +11,6 @@ namespace SimpleGraphicsLib
     [DataContract]
     public class AnimationLinearTranslation : AnimationRigidBody
     {
-        //public IRigidBody Sprite { get; set; }
-
-        //public event Action<IAnimatonRigidBody> OnDispose;
 
         public override System.Windows.Media.Imaging.BitmapImage Symbol
         {

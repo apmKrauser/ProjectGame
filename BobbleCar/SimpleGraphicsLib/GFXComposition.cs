@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace SimpleGraphicsLib
 {
-    public class GFXComposition : IGFXObjComposition //, IRigidBody
+    public class GFXComposition : IGFXObjComposition 
     {
         public event Action<DrawingVisual> RegisterDrawingVisual;
 

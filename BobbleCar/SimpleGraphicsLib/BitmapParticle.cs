@@ -144,7 +144,6 @@ namespace SimpleGraphicsLib
         {
             CenterOfMass = new Vector(0.5, 0.5);
             _config = new ParticleConfig();
-            //Debug.WriteLine("=> Particle Init = "+ BaseConfig.GetType().FullName);
             _config.ColorFrom = Color.FromArgb(255, 30, 30, 30);
             _config.ColorTo = Color.FromArgb(128, 128, 128, 128);
             _config.SizeFrom = new Vector(15,15);
@@ -180,15 +179,15 @@ namespace SimpleGraphicsLib
             ThisLifetime = config.AverageLifetime + (config.AverageLifetime * ((rnd.NextDouble()-0.5) * config.LifetimeSpread * 2));
             fktSpread = (rnd.NextDouble() - 0.5) * fktSpread;
             spreadedLifetime = TimeAlive * fktSpread;
-            // Todo: @debug
-            //Debug.WriteLine("=> new Particle Pos:" + Position + " Speed:" + NormSpeed);
             base.Spawn();
         }
 
         // info: mit sealed override kann überschreiben verhindert werden
         public override void Animation_Update(object sender, FrameUpdateEventArgs e) 
         {
-            //TimeAlive += e.ElapsedMilliseconds;  // here because Frame_Update can be dropped
+            // mixupProperties in Animation Thread
+            //  nicht Threadsafe !
+           //TimeAlive += e.ElapsedMilliseconds; 
            // try
           //  {
            //     mixupProperties();
@@ -216,7 +215,6 @@ namespace SimpleGraphicsLib
                 {
                     IsAlive = false;
                     TimeAlive = 0;
-                    //Debug.WriteLine("=> Particle gone.");
                     using (DrawingContext dc = DVisual.RenderOpen()) { }
                 } else
                     DrawParticle();                
@@ -225,7 +223,6 @@ namespace SimpleGraphicsLib
 
         protected virtual void mixupProperties()
         {
-            //double fktAvg = (TimeAlive / ThisLifetime);
             ParticleConfig config = _config;
             double fkt = 1;
             double a, r, g, b;
@@ -238,7 +235,7 @@ namespace SimpleGraphicsLib
             r = config.ColorFrom.R + ((config.ColorTo.R - config.ColorFrom.R) * fkt);
             g = config.ColorFrom.G + ((config.ColorTo.G - config.ColorFrom.G) * fkt);
             b = config.ColorFrom.B + ((config.ColorTo.B - config.ColorFrom.B) * fkt);
-            // nihct Threadsafe
+            // Todo: not Threadsafe
                 ParticleColor = Color.FromArgb((byte)a, (byte)r, (byte)g, (byte)b);
                 BlurEffectRadius = config.BlurFrom + ((config.BlurTo - config.BlurFrom) * fkt * 0.4);
                 SizeV = config.SizeFrom + ((config.SizeTo - config.SizeFrom) * fkt * 1);
@@ -253,12 +250,7 @@ namespace SimpleGraphicsLib
                     ((BlurEffect)DVisual.Effect).Radius = _blurEffectRadius;
                     dc.PushTransform(new TranslateTransform(Position.X + (DrawingOffset.X ), Position.Y + DrawingOffset.Y));
                     dc.PushTransform(new RotateTransform(Angle));
-                    //if (FlipHorizontal)
-                    //    dc.PushTransform(new ScaleTransform(-1, 1));
-                    // dc.DrawImage(_config.Bmp, new Rect((Point)(_deformationPos - _centerOfMassAbs), SizeV + _deformationSize));
                     dc.DrawImage(_config.Bmp, new Rect((Point)( - _centerOfMassAbs), SizeV ));
-                    //if (FlipHorizontal)
-                    //    dc.Pop();
                     dc.Pop();
                     dc.Pop();
                 }
