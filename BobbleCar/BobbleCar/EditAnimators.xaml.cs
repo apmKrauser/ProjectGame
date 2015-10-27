@@ -24,7 +24,7 @@ using WPF.JoshSmith.ServiceProviders.UI;
 namespace BobbleCar
 {
     /// <summary>
-    /// Interaktionslogik für EditAnimators.xaml
+    /// Adding/Removing an changing animation properties
     /// </summary>
     public partial class EditAnimators : MetroWindow
     {
@@ -41,6 +41,10 @@ namespace BobbleCar
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="obj">Game object wich implement IAnimationRigidBody</param>
         public EditAnimators(IPropertyInspectable obj)
         {
             GObj = obj as SpriteObject;
@@ -134,22 +138,13 @@ namespace BobbleCar
 
         private void lstAnimations_Drop(object sender, DragEventArgs e)
         {
-            // todo: alles löschen
             if (e.Effects == System.Windows.DragDropEffects.None)
                 return;
 
-            //SpriteObject droppedData = e.Data.GetData(typeof(SpriteObject)) as SpriteObject;
-            //SpriteObject target = ((System.Windows.Controls.ListViewItem)(sender)).DataContext as SpriteObject;
-
-            //int removedIdx = lstSprites.Items.IndexOf(droppedData);
-            //int targetIdx = lstSprites.Items.IndexOf(target);
             if (sender == this.lstAnimations)
             {
                 if (this.dragMgr.IsDragInProgress)
                     return;
-
-                // so remove that item from the other ListView.
-                //(this.listView2.ItemsSource as ObservableCollection<Task>).Remove(task);
             }
         }
 
@@ -169,8 +164,6 @@ namespace BobbleCar
                 {
                     AList.Remove(obj);
                     (GObj as SpriteObject).RemoveAnimation(obj);
-                    //GObj as SpriteObject  RemoveHandler und add
-                    //lstAnimations.Items.Refresh();
                 }
             }
         }

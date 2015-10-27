@@ -162,24 +162,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cyberscooty-cartoon-car_kl.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cyberscooty-cartoon-car_kl2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cartoon_wood_texture_by_iemersonrosa-d5j02qc.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cartoon-jungle-background-09.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\water--ripples-texture-3-of-3.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\strip-of-wood-wood-border-wood-lath-wood-plank.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="data\cyberscooty-cartoon-car_kl2.png" />
     <Resource Include="data\garage1.png" />
     <Resource Include="data\garage2.png" />
@@ -234,6 +216,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

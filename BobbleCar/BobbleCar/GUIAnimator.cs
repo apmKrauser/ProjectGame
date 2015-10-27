@@ -9,6 +9,10 @@ using System.Windows;
 
 namespace BobbleCar
 {
+    /// <summary>
+    /// Updates jump power progress bar and other WPF GUI elements 
+    /// Jump progress bar: Player game object has to be named 'Player', Jump animatior's name: 'Jump'
+    /// </summary>
     public class GUIAnimator : GFXAnimation, IDisposable, IGFXAnimation
     {
 

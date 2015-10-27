@@ -9,6 +9,11 @@ using System.Windows;
 
 namespace BobbleCar
 {
+
+    /// <summary>
+    /// Game Logic
+    /// Collision callbacks, Level initialization
+    /// </summary>
     public static class LevelScript
     {
         static string FirstLevelPath = Helper.DataLocalPath + @"\LevelOne.xml";
@@ -20,7 +25,12 @@ namespace BobbleCar
         static GameWindow GWin;
         static Stopwatch SWatch = new Stopwatch();
 
-
+        /// <summary>
+        /// Load Level and start animators
+        /// </summary>
+        /// <param name="gWin">Main game window object</param>
+        /// <param name="levelFileName">Name of XML-File with level layout</param>
+        /// <returns></returns>
         public static LevelSet StartLevel(GameWindow gWin, string levelFileName)
         {
             LevelSet Level = null;
@@ -49,12 +59,20 @@ namespace BobbleCar
                 return Level;
             }
 
-            ThisLevel.AnimatedAllSprites = true;  // Particle Systems do not start by AnimatedByDefault = true
+            // Particle Systems do not start by AnimatedByDefault = true
+            // therefore call property setter
+            ThisLevel.AnimatedAllSprites = true;  
             Scroller = new SmoothGameScroller(Player, gWin.MainGFX, gWin.GameWrapper);
 
             return Level;
         }
 
+
+        /// <summary>
+        /// Level initalization (called after StartLevel)
+        /// </summary>
+        /// <param name="GWin">Main game window object</param>
+        /// <param name="LevelNumber">Number of Level</param>
         public static void LevelInit(GameWindow GWin, int LevelNumber)
         {
             switch (LevelNumber)
@@ -72,6 +90,12 @@ namespace BobbleCar
             }           
         }
 
+
+        /// <summary>
+        /// Show intro (instructive Messagebox, video ...)
+        /// </summary>
+        /// <param name="GWin">Main game window object</param>
+        /// <param name="LevelNumber">Number of Level</param>
         public static void Intro_Level(GameWindow GWin, int LevelNumber)
         {
             switch (LevelNumber)
@@ -85,9 +109,11 @@ namespace BobbleCar
                 default:
                     break;
             }
+            // StopWatch tracking time player needs to proceed level
             SWatch.Restart();
         }
 
+        // Collision Callbacks
 #region Collision_Event_Listener
         public static void Level1_Motor_OnCollision_BroughtHome(IGameObject me, IGameObject other, bool calledByMe)
         {

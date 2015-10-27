@@ -30,7 +30,6 @@ namespace BobbleCar
 
 //        public ObservableCollection<PropertyGridSet> PList = new ObservableCollection<PropertyGridSet>();
         public List<PropertyGridItem> PList = new List<PropertyGridItem>();
-        //public BindingList<PropertyGridSet> PList = new BindingList<PropertyGridSet>();
 
 
         public Visibility ShowEditAnimators
