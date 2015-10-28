@@ -22,7 +22,7 @@ using Xceed.Wpf.Toolkit;
 namespace BobbleCar
 {
     /// <summary>
-    /// Interaktionslogik für PropertyInspect.xaml
+    /// Property window for game objects
     /// </summary>
     public partial class PropertyInspect : MetroWindow
     {
@@ -56,6 +56,11 @@ namespace BobbleCar
             PropertyGrid.Items.Refresh();
         }
 
+        /// <summary>
+        /// Show animators of game object in animator browser
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             EditAnimators edani = new EditAnimators(GObj);
@@ -68,6 +73,9 @@ namespace BobbleCar
             }
         }
 
+        /// <summary>
+        /// Read all properties of a game object
+        /// </summary>
         private void ReadProperties()
         {
             PList.Clear();
@@ -96,6 +104,10 @@ namespace BobbleCar
 
         }
 
+        /// <summary>
+        /// update a certain property
+        /// </summary>
+        /// <param name="propItem"></param>
         private void UpdateProperty(PropertyGridItem propItem)
         {
             var typ = GObj.GetType();
@@ -110,7 +122,7 @@ namespace BobbleCar
 
         private void DGEditStyleTmpl_LostFocus(object sender, RoutedEventArgs e)
         {
-            //System.Windows.Forms.MessageBox.Show("lost");
+            // todo: sometimes buggy behavior on checkboxes/textboxes; selected item wrong
             try
             { 
                 PropertyGridItem item = PropertyGrid.SelectedItem as PropertyGridItem;
@@ -146,6 +158,7 @@ namespace BobbleCar
             pi.Show();
         }
 
+
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -179,12 +192,10 @@ namespace BobbleCar
                     {
                         var b = sender as ColorPicker;
                         item.SetValue(b.SelectedColor);
-                        // Debug.WriteLine("=> Selected = " + b.SelectedValue + ":" + b.SelectedValue.GetType().Name);
-                        //  Debug.WriteLine("=> Sett = " + item.ValueAsKey + ":" + item.ValueObj.GetType().Name);
                         UpdateProperty(item);
-                        //PropertyGrid.Items.Refresh();
                     }
                 }
+                
             }
             catch (Exception ex)
             { } 

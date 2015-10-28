@@ -26,6 +26,9 @@ using SimpleGraphicsLib;
 namespace BobbleCar
 {
 
+    /// <summary>
+    /// Template selector for PropertyInspect window
+    /// </summary>
     public class PropertyGridItem
     {
         public String Type { get; set; }
@@ -251,45 +254,4 @@ namespace BobbleCar
                 return base.SelectTemplate(item, container);
         }
     }
-    //public interface ITest
-    //{ }
-    //public class Test1 : ITest
-    //{
-    //    public String _a = "ooo";
-    //    public bool _b = false;
-
-
-    //    public String a
-    //    {
-    //        get { return _a; }
-    //        set { _a = value; }
-    //    }
-
-    //    public bool b
-    //    {
-    //        get { return _b; }
-    //        set { _b = value; }
-    //    }
-    //}
-
-    //public class Test2 : ITest
-    //{
-    //    private String _a = "Trööt";
-
-    //    public String a
-    //    {
-    //        get { return _a; }
-    //        set { _a = value; }
-    //    }
-
-    //    private int _b = 5;
-
-    //    public int b
-    //    {
-    //        get { return _b; }
-    //        set { _b = value; }
-    //    }
-
-
-    //}
 }
