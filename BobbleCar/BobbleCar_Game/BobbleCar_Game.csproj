@@ -33,9 +33,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\cyberscooty-cartoon-car.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -120,6 +124,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\cyberscooty-cartoon-car.ico" />
     <Resource Include="data\mplay_test - Kopie.xml" />
     <Resource Include="data\snow_cliffface_01b_al1.png" />
     <Resource Include="data\snow_cliffface_01a_al1.png" />

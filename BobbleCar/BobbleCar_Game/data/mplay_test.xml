@@ -1277,7 +1277,7 @@
         <AnimationRigidBody i:type="AnimationWobble">
           <Name>Wobble</Name>
           <WobbleAmplitude>0.005</WobbleAmplitude>
-          <WobbleSpeed>0.8</WobbleSpeed>
+          <WobbleSpeed>0.83</WobbleSpeed>
         </AnimationRigidBody>
         <AnimationRigidBody i:type="AnimationConstAcceleration">
           <Name>Gravity</Name>
@@ -1403,8 +1403,8 @@
         <d4p1:_y>0</d4p1:_y>
       </NormSpeed>
       <Position xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
-        <d4p1:_x>594.57333333333338</d4p1:_x>
-        <d4p1:_y>387.32</d4p1:_y>
+        <d4p1:_x>582.25333333333333</d4p1:_x>
+        <d4p1:_y>262.06666666666666</d4p1:_y>
       </Position>
       <ScrollScaling>1</ScrollScaling>
       <SerializableAnimations>
@@ -1418,15 +1418,15 @@
           <Name>Ani::39123394</Name>
           <Acceleration xmlns:d6p1="http://schemas.datacontract.org/2004/07/System.Windows">
             <d6p1:_x>0</d6p1:_x>
-            <d6p1:_y>120</d6p1:_y>
+            <d6p1:_y>50</d6p1:_y>
           </Acceleration>
         </AnimationRigidBody>
       </SerializableAnimations>
       <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
-        <d4p1:_x>147.46637819196172</d4p1:_x>
-        <d4p1:_y>159.26368844731866</d4p1:_y>
+        <d4p1:_x>104.68860041418402</d4p1:_x>
+        <d4p1:_y>113.06368844731867</d4p1:_y>
       </SizeV>
-      <Weight>1</Weight>
+      <Weight>0.3</Weight>
       <DampingC>0.1</DampingC>
       <IsDeformable>true</IsDeformable>
       <IsLiquid>false</IsLiquid>
@@ -1628,8 +1628,8 @@
         </AnimationRigidBody>
       </SerializableAnimations>
       <SizeV xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows">
-        <d4p1:_x>1583.5653772766784</d4p1:_x>
-        <d4p1:_y>301.89333333333514</d4p1:_y>
+        <d4p1:_x>1578.1800520381698</d4p1:_x>
+        <d4p1:_y>300.86666666666849</d4p1:_y>
       </SizeV>
       <Weight>1</Weight>
     </d2p1:anyType>
