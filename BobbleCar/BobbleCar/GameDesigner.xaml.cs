@@ -19,8 +19,6 @@ using System.Runtime.Serialization.Json;
 using System.Runtime.Serialization;
 //using System.Collections.ObjectModel;
 
-// todo: http://stackoverflow.com/questions/4616505/is-there-a-reason-why-a-base-class-decorated-with-xmlinclude-would-still-throw-a
-
 namespace BobbleCar
 {
     /// <summary>
@@ -34,11 +32,9 @@ namespace BobbleCar
         Vector objResizeRefpoint = new Vector();
         Vector objMoveRefpoint = new Vector();
         GUIAnimator GUIAni;
-        //Point dragDropPoint = new Point(0,0);
         private bool _shutdown = false;
 
         ListViewDragDropManager<IGameObject> dragMgr;
-        //ListViewDragDropManager<SpriteObject> dragMgr2;
 
         public double DesignWindowStartWidth
         {
@@ -138,28 +134,15 @@ namespace BobbleCar
             (ThisLevel.LevelBkg as SpriteObject).ZoomPreserveAspectRatio(height: GameWrapper.Height);
             (ThisLevel.Background as SpriteObject).ScrollScaling = (ThisLevel.Background.SizeV.X - (GameWrapper.Width/2))/ ThisLevel.LevelBkg.SizeV.X;
             MainGFX.AddObject(ThisLevel.LevelBkg);
-            // todo: eigentlich in setlvlbackg
             MainGFX.Width = ThisLevel.LevelBkg.SizeV.X;
-            // MainGFX.Height = 500; 
         }
 
-
-        private void Window_Activated(object sender, EventArgs e)
-        {
-            //if (!_activated)
-            //{
-            //    _activated = true;
-            //    Scroller = new GameScroller(GameSlider, MainGFX, GameWrapper);
-            //    MainGFX.Start();
-            //}
-        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             // After everything has loaded, rendered and so on
             Dispatcher.BeginInvoke(DispatcherPriority.ContextIdle, new Action(() =>
             {
-                //System.Windows.Forms.MessageBox.Show("dispatched");
                 lstSprites.ItemsSource = ThisLevel.Sprites;
                 Scroller = new GameScroller(GameSlider, MainGFX, GameWrapper);
                 MainGFX.Start();
@@ -178,27 +161,27 @@ namespace BobbleCar
             string filepath = Helper.OpenFile();
             if (filepath == null) return;
             ThisLevel.ClearLevel(MainGFX);
-            ThisLevel = LevelSet.LoadLevel(filepath);
-            ThisLevel.BuildLevel(MainGFX);
-            lstSprites.ItemsSource = ThisLevel.Sprites;
-            lstSprites.Items.Refresh();
-            GUIAni = new GUIAnimator(gfx: MainGFX,
-                                     lvl: ThisLevel,
-                                     timingSrc: TimingSource.Sources.CompositionTargetRendering,
-                                     pgJumpRes: pgJumpResource);
+            try
+            {
+                ThisLevel = LevelSet.LoadLevel(filepath);
+                ThisLevel.BuildLevel(MainGFX);
+                lstSprites.ItemsSource = ThisLevel.Sprites;
+                lstSprites.Items.Refresh();
+                GUIAni = new GUIAnimator(gfx: MainGFX,
+                                         lvl: ThisLevel,
+                                         timingSrc: TimingSource.Sources.CompositionTargetRendering,
+                                         pgJumpRes: pgJumpResource);
+            }
+            catch (Exception ex)
+            {
+                MessageBox_Dispatched("Failed loading level description", ex.Message);
+            }
         }
 
 
 
         private void cmdAddSprite_Click(object sender, RoutedEventArgs e)
         {
-            //MainGFX.RemoveObject(ThisLevel.LevelBkg);
-
-            // var name = await this.ShowInputAsync("Hello!", "What is your name?");
-            // txtSpriteName.Text = name ?? "";
-            //await this.ShowMessageAsync("Hello", "Hello " + result + "!");
-
-            //var sobj= new SpriteObject(txtSpriteName.Text);
 
             var sobj = Activator.CreateInstance(dbNewObj.SelectedItem as Type) as SpriteObject;
 
@@ -220,11 +203,6 @@ namespace BobbleCar
             lstSprites.Items.Refresh();
             txtSpriteName.Text = "";
 
-            //lstSprites.Items.Add()
-            //lstSprites.GroupStyle;
-            //lstSprites.ItemsSource = ThisLevel.Sprites;
-            //lstSprites.View = View.Details;
-            //lstSprites.ItemTemplate.tex
         }
 
 
@@ -588,7 +566,17 @@ namespace BobbleCar
             MainGFX.RaiseWindowKeyUp(this, e);
         }
 
+        public void MetroWindow_MessageBox(string title, string text)
+        {
+            Action<string, string> del = async (_title, _text) => { await this.ShowMessageAsync(_title, _text); };
+            del(title, text);
+        }
 
+        public void MessageBox_Dispatched(string title, string text)
+        {
+            //this.Dispatcher.Invoke(MetroWindow_MessageBox,(object)title, (object)text));
+            this.Dispatcher.Invoke(new Action(() => MetroWindow_MessageBox(title, text)));
+        }
 
 
 
