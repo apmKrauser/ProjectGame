@@ -101,10 +101,10 @@ namespace BobbleCar
             switch (LevelNumber)
             {
                 case 1:
-                    GWin.MessageBox_Dispatched("Bobblecar needs a new Engine", "Get the engine on top of the mountains by pushing it backwards towards Bobblecar's cave.\n\nControl keys:\n\tLeft\t= drive left\n\tRight\t= drive right\n\tDown\t= brake\n\tUp\t= load damper spring (release to jump)\n\n");
+                    GWin.MessageBox_Dispatched("Bobblecar needs a new engine", "Get the engine on top of the mountains by pushing it backwards towards Bobblecar's cave.\n\nControl keys:\n\tLeft\t= drive left\n\tRight\t= drive right\n\tDown\t= brake\n\tUp\t= load damper spring (release to jump)\n\n");
                     break;
                 case 10:
-                    GWin.MessageBox_Dispatched("Bobblecar needs a new Engine", "Player 1 control keys:\n\tLeft\t= drive left\n\tRight\t= drive right\n\tDown\t= brake\n\tUp\t= load damper spring (release to jump)\n\nPlayer 2 control keys:\n\ta\t= drive left\n\td\t= drive right\n\ts\t= brake\n\tw\t= load damper spring (release to jump)");
+                    GWin.MessageBox_Dispatched("Bobblecar needs a new engine", "Player 1 control keys:\n\tLeft\t= drive left\n\tRight\t= drive right\n\tDown\t= brake\n\tUp\t= load damper spring (release to jump)\n\nPlayer 2 control keys:\n\ta\t= drive left\n\td\t= drive right\n\ts\t= brake\n\tw\t= load damper spring (release to jump)");
                     break;
                 default:
                     break;
@@ -119,6 +119,7 @@ namespace BobbleCar
         {
             if (calledByMe)
             {
+                // Generator collides with Höhle == Motor brought home
                 if (other.Name.Contains("Höhle"))
                 {
                     SWatch.Stop();
